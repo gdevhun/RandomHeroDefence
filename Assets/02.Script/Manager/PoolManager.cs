@@ -22,6 +22,12 @@ public enum UnitType
     Aasole, Alisda, Banies, Louizy, Makdus
 }
 
+// 사운드 타입
+public enum SoundType
+{
+    Spawn
+}
+
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager instance;
@@ -31,17 +37,24 @@ public class PoolManager : MonoBehaviour
     [SerializeField] private ListGameObject NormalList = new ListGameObject(), EliteList = new ListGameObject(), RareList = new ListGameObject(), LegendList = new ListGameObject(), MythList = new ListGameObject();
     private Dictionary<UnitType, GameObject> prefUnitMap = new Dictionary<UnitType, GameObject>(); // (타입, 프리팹) 맵핑
     public Dictionary<UnitType, Queue<GameObject> > queUnitMap = new Dictionary<UnitType, Queue<GameObject> >(); // (타입, 큐) 맵핑
+    [Header ("사운드 맵핑")] [SerializeField] private List<ListGameObject> SoundList = new List<ListGameObject>();
+    [SerializeField] private ListGameObject UnitHandleSoundList = new ListGameObject();
+    private Dictionary<SoundType, GameObject> prefSoundMap = new Dictionary<SoundType, GameObject>(); // (타입, 프리팹) 맵핑
+    public Dictionary<SoundType, Queue<GameObject> > queSoundMap = new Dictionary<SoundType, Queue<GameObject> >(); // (타입, 큐) 맵핑
 
     private void Start()
     {
         // 리스트 초기화
         ListInit(UnitList, NormalList, EliteList, RareList, LegendList, MythList);
+        ListInit(SoundList, UnitHandleSoundList);
 
         // (타입, 프리팹) 맵핑
-        PrefMap(UnitList, prefUnitMap); 
+        PrefMap(UnitList, prefUnitMap);
+        PrefMap(SoundList, prefSoundMap);
 
         // (타입, 큐) 맵핑
         QueMap(queUnitMap, prefUnitMap);
+        QueMap(queSoundMap, prefSoundMap);
     }
 
     // 풀링 테스트
