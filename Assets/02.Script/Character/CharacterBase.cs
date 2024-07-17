@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
+
 public enum DamageType  //데미지타입
 {
     AD, AP
@@ -62,7 +64,15 @@ public class CharacterBase : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy")&&!isOnTarget)  //적(태그)이고, 타게팅중이 아니라면
         {
             isOnTarget = true;  //타게팅 활성화
-            //anim.SetBool("Attack"); //공격 애니메이션 활성화
+            
+            if (heroInfo.attackType == AttackType.Melee)
+            {
+                //anim.SetBool("Attack"); //공격 애니메이션 활성화
+            }
+            else   //원거리 처리
+            {
+                //PoolManager.instance.GetPool()
+            }
             if (other.gameObject.TryGetComponent(out Transform transform))
             {
                 //이펙트 생성.
