@@ -3,29 +3,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum DamageType
+[Serializable]
+public class HeroInfo  //히어로 정보 클래스
 {
-    AD, AP
-}
+    public enum DamageType  //데미지타입
+    {
+        AD, AP
+    }
 
-enum AttackType
-{
-    Melee, Ranged
-}
+    public enum AttackType  //공격방식타입
+    {
+        Melee, Ranged
+    }
 
-enum GradeType
-{
-    Normal, Elite, Rare, Legend, Hero 
+    public enum HeroGradeType  //히어로등급
+    {
+        Normal, Elite, Rare, Legend, Myth 
+    }
+
+    public DamageType damageType;
+    public AttackType attackType;
+    public HeroGradeType heroGradeType;
+
 }
 public class CharacterBase : MonoBehaviour
 {
-    public int AttackDamage;
+    private SpriteRenderer spriteRenderer;
+    public int attackDamage;
     private Animator anim;
     private float attackSpeed;
     private bool isOnTarget;
     
     void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         
     }
 
@@ -47,10 +59,15 @@ public class CharacterBase : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        
-        if(other.gameObject.CompareTag("Enemy")&&!isOnTarget)
+        //공격범위안에들어왔을 때 적이 머물고 있다면
+        if(other.gameObject.CompareTag("Enemy")&&!isOnTarget)  //적(태그)이고, 타게팅중이 아니라면
         {
-            isOnTarget = true;
+            isOnTarget = true;  //타게팅 활성화
+            //anim.SetBool("Attack"); //공격 애니메이션 활성화
+            if (other.gameObject.TryGetComponent(out Transform transform))
+            {
+                //이펙트 생성.
+            }
             //Attack(other.gameObject.GetComponent<Enemy>);
         }
     }
