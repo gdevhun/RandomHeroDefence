@@ -16,10 +16,11 @@ public class ListGameObject
 // 유닛 타입
 public enum UnitType
 {
+    Ganster, Hunter, Soldier, Thief, Wrestler,
     Alex, Assassin, Barbarian, Bunker, Warrior,
     Alonso, Barrel, Bat, Tonkey, Viking,
-    Batman, Macree, Magnus, Mario, Yumie,
-    Aasole, Alisda, Banies, Louizy, Makdus
+    Aasole, Alisda, Banies, Louizy, Makdus,
+    Batman, Macree, Magnus, Mario, Yumie
 }
 
 // 사운드 타입
@@ -72,28 +73,28 @@ public class PoolManager : MonoBehaviour
         {
             int random = UnityEngine.Random.Range(5, 10);
             GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = Vector3.zero;
+            instantObj.transform.position = new Vector3(1, 0, 0);
         }
         // 희귀 등급 뽑기
         else if(Input.GetKeyDown(KeyCode.Alpha3))
         {
             int random = UnityEngine.Random.Range(10, 15);
             GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = Vector3.zero;
+            instantObj.transform.position = new Vector3(2, 0, 0);
         }
         // 전설 등급 뽑기
         else if(Input.GetKeyDown(KeyCode.Alpha4))
         {
             int random = UnityEngine.Random.Range(15, 20);
             GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = Vector3.zero;
+            instantObj.transform.position = new Vector3(3, 0, 0);
         }
         // 신화 등급 뽑기
         else if(Input.GetKeyDown(KeyCode.Alpha5))
         {
             int random = UnityEngine.Random.Range(20, 25);
             GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = Vector3.zero;
+            instantObj.transform.position = new Vector3(4, 0, 0);
         }
     }
 
