@@ -2,25 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum DamageType  //데미지타입
+{
+    AD, AP
+}
+
+public enum AttackType  //공격방식타입
+{
+    Melee, Ranged
+}
+
+public enum HeroGradeType  //히어로등급
+{
+    Normal, Elite, Rare, Legend, Myth 
+}
 
 [Serializable]
 public class HeroInfo  //히어로 정보 클래스
 {
-    public enum DamageType  //데미지타입
-    {
-        AD, AP
-    }
-
-    public enum AttackType  //공격방식타입
-    {
-        Melee, Ranged
-    }
-
-    public enum HeroGradeType  //히어로등급
-    {
-        Normal, Elite, Rare, Legend, Myth 
-    }
-
     public DamageType damageType;
     public AttackType attackType;
     public HeroGradeType heroGradeType;
@@ -33,7 +32,7 @@ public class CharacterBase : MonoBehaviour
     private Animator anim;
     private float attackSpeed;
     private bool isOnTarget;
-    
+    public HeroInfo heroInfo;
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
