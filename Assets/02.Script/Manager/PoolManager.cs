@@ -61,41 +61,41 @@ public class PoolManager : MonoBehaviour
     // 풀링 테스트
     private void Update()
     {
-        // 일반 등급 뽑기
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            int random = UnityEngine.Random.Range(0, 5);
-            GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = Vector3.zero;
-        }
-        // 고급 등급 뽑기
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            int random = UnityEngine.Random.Range(5, 10);
-            GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = new Vector3(1, 0, 0);
-        }
-        // 희귀 등급 뽑기
-        else if(Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            int random = UnityEngine.Random.Range(10, 15);
-            GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = new Vector3(2, 0, 0);
-        }
-        // 전설 등급 뽑기
-        else if(Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            int random = UnityEngine.Random.Range(15, 20);
-            GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = new Vector3(3, 0, 0);
-        }
-        // 신화 등급 뽑기
-        else if(Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            int random = UnityEngine.Random.Range(20, 25);
-            GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
-            instantObj.transform.position = new Vector3(4, 0, 0);
-        }
+        // // 일반 등급 뽑기
+        // if(Input.GetKeyDown(KeyCode.Alpha1))
+        // {
+        //     int random = UnityEngine.Random.Range(0, 5);
+        //     GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
+        //     instantObj.transform.position = Vector3.zero;
+        // }
+        // // 고급 등급 뽑기
+        // else if(Input.GetKeyDown(KeyCode.Alpha2))
+        // {
+        //     int random = UnityEngine.Random.Range(5, 10);
+        //     GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
+        //     instantObj.transform.position = new Vector3(1, 0, 0);
+        // }
+        // // 희귀 등급 뽑기
+        // else if(Input.GetKeyDown(KeyCode.Alpha3))
+        // {
+        //     int random = UnityEngine.Random.Range(10, 15);
+        //     GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
+        //     instantObj.transform.position = new Vector3(2, 0, 0);
+        // }
+        // // 전설 등급 뽑기
+        // else if(Input.GetKeyDown(KeyCode.Alpha4))
+        // {
+        //     int random = UnityEngine.Random.Range(15, 20);
+        //     GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
+        //     instantObj.transform.position = new Vector3(3, 0, 0);
+        // }
+        // // 신화 등급 뽑기
+        // else if(Input.GetKeyDown(KeyCode.Alpha5))
+        // {
+        //     int random = UnityEngine.Random.Range(20, 25);
+        //     GameObject instantObj = GetPool(queUnitMap, (UnitType)random);
+        //     instantObj.transform.position = new Vector3(4, 0, 0);
+        // }
     }
 
     // 리스트 초기화
