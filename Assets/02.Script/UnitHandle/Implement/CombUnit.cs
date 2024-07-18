@@ -65,7 +65,7 @@ public class CombUnit : GetUnitBase
         for(int i = 0; i < 3; i++)
         {
             GameObject selectedCharacter = selectedPos.transform.GetChild(0).gameObject;
-            selectedCharacter.transform.SetParent(null);
+            selectedCharacter.transform.SetParent(PoolManager.instance.poolSet.transform);
             PoolManager.instance.ReturnPool(PoolManager.instance.queUnitMap, selectedCharacter, selectedUnitType);
         }
 
