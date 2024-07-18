@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4129015487574918092}
   - component: {fileID: 4761929962477988944}
   - component: {fileID: 7096079962806131585}
+  - component: {fileID: 4834679742835962754}
   m_Layer: 0
   m_Name: Macree
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4834679742835962754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6940129877198972237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 21
 --- !u!1001 &8777590954268494256
 PrefabInstance:
   m_ObjectHideFlags: 0

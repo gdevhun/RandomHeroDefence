@@ -25,7 +25,7 @@ public class HeroInfo  //히어로 정보 클래스
     public DamageType damageType;
     public AttackType attackType;
     public HeroGradeType heroGradeType;
-
+    public UnitType unitType;
 }
 public class CharacterBase : MonoBehaviour
 {

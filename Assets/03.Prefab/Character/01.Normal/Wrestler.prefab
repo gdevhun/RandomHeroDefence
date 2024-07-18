@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7503748333107613764}
   - component: {fileID: 3511188472408019240}
   - component: {fileID: 8671279362237391069}
+  - component: {fileID: 5269480997256705784}
   m_Layer: 0
   m_Name: Wrestler
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5269480997256705784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4136523924433054747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 4
 --- !u!1001 &7951691734612676396
 PrefabInstance:
   m_ObjectHideFlags: 0

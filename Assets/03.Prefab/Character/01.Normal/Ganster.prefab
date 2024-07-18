@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4863408457896279785}
   - component: {fileID: 5485975768849007356}
   - component: {fileID: 7317174934363592571}
+  - component: {fileID: -2859862574621568836}
   m_Layer: 0
   m_Name: Ganster
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2859862574621568836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6715264606764617040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 0
 --- !u!1001 &9093947423245446041
 PrefabInstance:
   m_ObjectHideFlags: 0

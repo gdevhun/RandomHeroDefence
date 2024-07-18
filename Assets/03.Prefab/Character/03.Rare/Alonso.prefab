@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2413266944406291048}
   - component: {fileID: 1223498490240997890}
   - component: {fileID: 3607540400543354377}
+  - component: {fileID: 5488215080545060668}
   m_Layer: 0
   m_Name: Alonso
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5488215080545060668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940115011484265282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 10
 --- !u!1001 &2515898070451657439
 PrefabInstance:
   m_ObjectHideFlags: 0

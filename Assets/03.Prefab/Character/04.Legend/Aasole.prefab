@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 767436913428574404}
   - component: {fileID: 7220743316373736837}
   - component: {fileID: 4286017371382190380}
+  - component: {fileID: 2536654182199600999}
   m_Layer: 0
   m_Name: Aasole
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2536654182199600999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260507220634536603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 15
 --- !u!1001 &335473933270549303
 PrefabInstance:
   m_ObjectHideFlags: 0

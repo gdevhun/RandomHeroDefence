@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5068007269686928288}
   - component: {fileID: 4774466418264516968}
   - component: {fileID: 3126666927697528238}
+  - component: {fileID: 6939667611049676437}
   m_Layer: 0
   m_Name: Assassin
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6939667611049676437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5261889940100354755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 6
 --- !u!1001 &8593035629985216137
 PrefabInstance:
   m_ObjectHideFlags: 0

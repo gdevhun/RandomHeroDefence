@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8738767917983083768}
   - component: {fileID: 3586489799566679607}
   - component: {fileID: 3895191673822247909}
+  - component: {fileID: -2497098215915649934}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2497098215915649934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3130543534156345176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 1
 --- !u!1001 &6257563799391909382
 PrefabInstance:
   m_ObjectHideFlags: 0

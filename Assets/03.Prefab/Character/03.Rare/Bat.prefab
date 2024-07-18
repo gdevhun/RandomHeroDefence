@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6050761266408012461}
   - component: {fileID: 1506638033588897243}
   - component: {fileID: 737986920743742601}
+  - component: {fileID: -5252999323027301679}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5252999323027301679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659709110813243696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 12
 --- !u!1001 &4100984089842770157
 PrefabInstance:
   m_ObjectHideFlags: 0

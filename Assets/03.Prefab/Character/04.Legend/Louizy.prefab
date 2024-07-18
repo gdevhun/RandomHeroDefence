@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 419481893808203533}
   - component: {fileID: 5010563394931649663}
   - component: {fileID: 6365951510441389602}
+  - component: {fileID: -2130561575796162051}
   m_Layer: 0
   m_Name: Louizy
   m_TagString: Untagged
@@ -107,6 +108,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-2130561575796162051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9128148145133237892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 0
+  heroInfo:
+    damageType: 0
+    attackType: 0
+    heroGradeType: 0
+    unitType: 18
 --- !u!1001 &2699017867612533465
 PrefabInstance:
   m_ObjectHideFlags: 0
