@@ -5,18 +5,34 @@ using System;
 
 public abstract class GetUnitBase : MonoBehaviour
 {
-    [Header ("유닛 스폰 위치")] [SerializeField] protected ListGameObject spawnPosList = new ListGameObject();
-    protected Dictionary<UnitType, Dictionary<GameObject, int> > unitPosMap = new Dictionary<UnitType, Dictionary<GameObject, int> >(); // (유닛, (위치, 자식 수)) 맵핑
-    [Header ("유닛 최대 수")] [SerializeField] protected int maxUnit = 50;
-    static protected int curUnit = 0; // 현재 유닛 수
+    static protected ListGameObject spawnPosList; // 스폰 위치들
+    static protected Dictionary<UnitType, Dictionary<GameObject, int> > unitPosMap; // (유닛, (위치, 자식 수)) 맵핑
+    static protected int maxUnit; // 최대 유닛 수
+    static protected int curUnit; // 현재 유닛 수
 
-    // 유닛 스폰 위치 딕셔너리 초기화
+    // 초기화
     private void Awake()
     {
+        if(maxUnit == 50) return;
+
+        spawnPosList = new ListGameObject();
+        Transform unitPosSet = GameObject.Find("UnitPosSet").transform;
+        for(int i = 0; i < unitPosSet.childCount; i++)
+        {
+            spawnPosList.gameObjectList.Add(unitPosSet.GetChild(i).gameObject);
+        }
+
+        unitPosMap = new Dictionary<UnitType, Dictionary<GameObject, int> >();
         for(int i = 0; i < Enum.GetValues(typeof(UnitType)).Length; i++)
         {
             unitPosMap[(UnitType)Enum.GetValues(typeof(UnitType)).GetValue(i)] = new Dictionary<GameObject, int>();
         }
+
+        maxUnit = 50;
+
+        curUnit = 0;
+
+        Debug.Log("초기화!");
     }
 
     // 가중치에 따라 유닛을 소환하는 함수

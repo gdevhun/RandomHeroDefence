@@ -124,7 +124,7 @@ MonoBehaviour:
   heroInfo:
     damageType: 0
     attackType: 0
-    heroGradeType: 0
+    heroGradeType: 2
     unitType: 13
 --- !u!1001 &5922900007290180302
 PrefabInstance:
