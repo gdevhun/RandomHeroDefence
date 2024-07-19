@@ -6,8 +6,8 @@ public enum BgmType { Main }
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource bgmSound; // 배경음 오디오
-	[SerializeField] private AudioClip[] bgmList; // 배경음 리스트
+    [Header ("BGM 오디오소스")] [SerializeField] private AudioSource bgmSound;
+	[Header ("BGM 클립 리스트")] [SerializeField] private AudioClip[] bgmList;
 	private Dictionary<BgmType, AudioClip> mapBgm = new Dictionary<BgmType, AudioClip>(); // (타입, 배경음) 맵핑
 	[HideInInspector] public float bgmVolume, sfxVolume; // 배경음 볼륨 및 효과음 볼륨
 

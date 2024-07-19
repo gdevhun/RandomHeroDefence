@@ -4,7 +4,7 @@ using UnityEngine;
 public class GambleUnit : GetUnitBase
 {
     // 도박에서 등급에 따른 가중치 설정
-    Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
+    private Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
     {
         { HeroGradeType.Normal, 50 },
         { HeroGradeType.Rare, 38 },

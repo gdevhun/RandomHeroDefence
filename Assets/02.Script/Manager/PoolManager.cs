@@ -33,7 +33,7 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager instance;
     private void Awake() { instance = this; }
-    public GameObject poolSet; // 오브젝트 부모
+    [Header ("풀링 오브젝트 부모")] public GameObject poolSet;
     [Header ("유닛 맵핑")] [SerializeField] private List<ListGameObject> UnitList = new List<ListGameObject>();
     [SerializeField] private ListGameObject NormalList = new ListGameObject(), EliteList = new ListGameObject(), RareList = new ListGameObject(), LegendList = new ListGameObject(), MythList = new ListGameObject();
     private Dictionary<UnitType, GameObject> prefUnitMap = new Dictionary<UnitType, GameObject>(); // (타입, 프리팹) 맵핑

@@ -5,10 +5,10 @@ using System;
 
 public abstract class GetUnitBase : MonoBehaviour
 {
-    static protected ListGameObject spawnPosList; // 스폰 위치들
-    static protected Dictionary<UnitType, Dictionary<GameObject, int> > unitPosMap; // (유닛, (위치, 자식 수)) 맵핑
+    static private ListGameObject spawnPosList; // 스폰 위치들
+    static public Dictionary<UnitType, Dictionary<GameObject, int> > unitPosMap; // (유닛, (위치, 자식 수)) 맵핑
     static protected int maxUnit; // 최대 유닛 수
-    static protected int curUnit; // 현재 유닛 수
+    static public int curUnit; // 현재 유닛 수
 
     // 초기화
     private void Awake()
