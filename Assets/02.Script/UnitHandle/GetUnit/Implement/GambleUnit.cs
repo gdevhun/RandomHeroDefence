@@ -31,10 +31,11 @@ public class GambleUnit : GetUnitBase
         GameObject instantUnit = GetUnit(gradeWeightMap);
 
         // 스폰 위치
-        GameObject unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
+        GameObject unitPos = null;
+        if(instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType != HeroGradeType.Normal) unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
 
         // 스폰 위치 체크, 노말 == 실패 체크
-        if(unitPos == null || instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.Normal)
+        if(unitPos == null)
         {
             PoolManager.instance.ReturnPool(PoolManager.instance.queUnitMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
             return;

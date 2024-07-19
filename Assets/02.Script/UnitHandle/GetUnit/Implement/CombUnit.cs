@@ -40,6 +40,7 @@ public class CombUnit : GetUnitBase
         // 4.풀에 반환하기
         CharacterBase selectedCharacterBase = SelectUnit.instance.selectedPos.transform.GetChild(0).GetComponent<CharacterBase>();
         HeroGradeType selectedGradeType = selectedCharacterBase.heroInfo.heroGradeType;
+        if(selectedGradeType == HeroGradeType.Legend || selectedGradeType == HeroGradeType.Myth) return; // 전설 / 신화 체크
         UnitType selectedUnitType = selectedCharacterBase.heroInfo.unitType;
         unitPosMap[selectedUnitType].Remove(SelectUnit.instance.selectedPos);
         for(int i = 0; i < 3; i++)
@@ -59,18 +60,20 @@ public class CombUnit : GetUnitBase
         }
 
         // 스폰 위치
-        GameObject unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
+        GameObject unitPos = null;
+        if(instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType != HeroGradeType.Normal) unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
 
         // 스폰 위치 체크, 노말 == 실패 체크
-        if(unitPos == null || instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.Normal)
+        if(unitPos == null)
         {
             PoolManager.instance.ReturnPool(PoolManager.instance.queUnitMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
+            curUnit -= 3;
             return;
         }
 
         // 유닛 소환
         instantUnit.transform.SetParent(unitPos.transform);
-        instantUnit.transform.localPosition = new Vector3(0.2f * (unitPos.transform.childCount - 1), 0, 0);
+        instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? -0.2f : 0, 0);
         curUnit -= 2;
     }
 }
