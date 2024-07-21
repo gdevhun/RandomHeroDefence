@@ -36,7 +36,7 @@ public abstract class GetUnitBase : MonoBehaviour
     }
 
     // 가중치에 따라 유닛을 소환하는 함수
-    protected GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap)
+    protected virtual GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap)
     {
         // 모든 가중치 합
         int totalWeight = 0;
@@ -59,7 +59,7 @@ public abstract class GetUnitBase : MonoBehaviour
     }
 
     // 소환 할 유닛 풀링
-    private GameObject GetUnitFromPool(HeroGradeType heroGradeType)
+    protected virtual GameObject GetUnitFromPool(HeroGradeType heroGradeType)
     {
         int random = UnityEngine.Random.Range(0 + 5 * (int)heroGradeType, 5 + 5 * (int)heroGradeType);
         return PoolManager.instance.GetPool(PoolManager.instance.queUnitMap, (UnitType)random);
@@ -111,6 +111,6 @@ public abstract class GetUnitBase : MonoBehaviour
         return null;
     }
 
-    // 소환, 합성, 도박에서 구현
+    // 소환, 합성, 도박, 신화에서 구현
     public abstract void GetUnitHandle();
 }
