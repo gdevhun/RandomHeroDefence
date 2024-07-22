@@ -5203,46 +5203,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolSet: {fileID: 929177662}
-  UnitList: []
-  NormalList:
-    gameObjectList:
-    - {fileID: 6715264606764617040, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
-    - {fileID: 3130543534156345176, guid: 1e01c2187d8ee5f48bad313d5a4c6b03, type: 3}
-    - {fileID: 7813241515735977848, guid: f407747bc3b23c545bfea985d8b77630, type: 3}
-    - {fileID: 4079279824701850116, guid: b7314328a544af145a02344dae0090af, type: 3}
-    - {fileID: 4136523924433054747, guid: bc71a6ec0edcb454da206c332f8540d5, type: 3}
-  EliteList:
-    gameObjectList:
-    - {fileID: 7105903017569538301, guid: 8fb7c918179e99d41b93f85e56611243, type: 3}
-    - {fileID: 5261889940100354755, guid: ff17d5b68038d7a4eb0cf83aed310c21, type: 3}
-    - {fileID: 2145697942778096153, guid: ad6499bc8821bbb44adcb5a33b34f328, type: 3}
-    - {fileID: 2941452737605994677, guid: 22b94b1de521f5142b27fe2f93eea732, type: 3}
-    - {fileID: 1865477407531972286, guid: 4a5b04e14df1a97449e3095bca2f918a, type: 3}
-  RareList:
-    gameObjectList:
-    - {fileID: 7940115011484265282, guid: f192f41c42fdb7d4bbf2fb86e6589aa4, type: 3}
-    - {fileID: 1277598253999656782, guid: 3342da804e5e49945bac8ff9da2fd722, type: 3}
-    - {fileID: 1659709110813243696, guid: 13b9fe7f8f611c545bea654cb27bf043, type: 3}
-    - {fileID: 2956869538233832565, guid: b7b17b766e51e2147889a8754dadb752, type: 3}
-    - {fileID: 3282594906433674096, guid: e76a7782e24722447b90b94584920a29, type: 3}
-  LegendList:
-    gameObjectList:
-    - {fileID: 1260507220634536603, guid: 0557a47be5357c24e868544d4c4ecaa2, type: 3}
-    - {fileID: 4969480003396674547, guid: 324cbd824ebb84a499495ab740b2906f, type: 3}
-    - {fileID: 3867111524742373401, guid: 3897874cf0169f846992e6797a5ccf25, type: 3}
-    - {fileID: 9128148145133237892, guid: dcba8ca1683c0a847bbdaab41b173b9a, type: 3}
-    - {fileID: 2087119594503938832, guid: 9216f197b9e291044a150876b80b5207, type: 3}
-  MythList:
-    gameObjectList:
-    - {fileID: 7596518995976380312, guid: 663b9d4f5335e884ab7dccada8fe3eda, type: 3}
-    - {fileID: 6940129877198972237, guid: 09d9656ec0c553a41af45e3fa1a1a700, type: 3}
-    - {fileID: 1484621466492084911, guid: e070e2c51b5020c45891c5eb2979f54b, type: 3}
-    - {fileID: 2561022052850752836, guid: 86ae18f12485ee2439af3eb64b8a43fa, type: 3}
-    - {fileID: 1703056807361636290, guid: 3c89dc60c6deddf4c82d958e5a9f1fed, type: 3}
-  SoundList: []
-  UnitHandleSoundList:
-    gameObjectList:
-    - {fileID: 5612101612285607420, guid: 36f8792945a0fe1488b6c52960d83ed8, type: 3}
+  unitPool:
+    allList:
+    - gameObjectList:
+      - {fileID: 6715264606764617040, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      - {fileID: 3130543534156345176, guid: 1e01c2187d8ee5f48bad313d5a4c6b03, type: 3}
+      - {fileID: 7813241515735977848, guid: f407747bc3b23c545bfea985d8b77630, type: 3}
+      - {fileID: 4079279824701850116, guid: b7314328a544af145a02344dae0090af, type: 3}
+      - {fileID: 4136523924433054747, guid: bc71a6ec0edcb454da206c332f8540d5, type: 3}
+    - gameObjectList:
+      - {fileID: 7105903017569538301, guid: 8fb7c918179e99d41b93f85e56611243, type: 3}
+      - {fileID: 5261889940100354755, guid: ff17d5b68038d7a4eb0cf83aed310c21, type: 3}
+      - {fileID: 2145697942778096153, guid: ad6499bc8821bbb44adcb5a33b34f328, type: 3}
+      - {fileID: 2941452737605994677, guid: 22b94b1de521f5142b27fe2f93eea732, type: 3}
+      - {fileID: 1865477407531972286, guid: 4a5b04e14df1a97449e3095bca2f918a, type: 3}
+    - gameObjectList:
+      - {fileID: 7940115011484265282, guid: f192f41c42fdb7d4bbf2fb86e6589aa4, type: 3}
+      - {fileID: 1277598253999656782, guid: 3342da804e5e49945bac8ff9da2fd722, type: 3}
+      - {fileID: 1659709110813243696, guid: 13b9fe7f8f611c545bea654cb27bf043, type: 3}
+      - {fileID: 2956869538233832565, guid: b7b17b766e51e2147889a8754dadb752, type: 3}
+      - {fileID: 3282594906433674096, guid: e76a7782e24722447b90b94584920a29, type: 3}
+    - gameObjectList:
+      - {fileID: 1260507220634536603, guid: 0557a47be5357c24e868544d4c4ecaa2, type: 3}
+      - {fileID: 4969480003396674547, guid: 324cbd824ebb84a499495ab740b2906f, type: 3}
+      - {fileID: 3867111524742373401, guid: 3897874cf0169f846992e6797a5ccf25, type: 3}
+      - {fileID: 9128148145133237892, guid: dcba8ca1683c0a847bbdaab41b173b9a, type: 3}
+      - {fileID: 2087119594503938832, guid: 9216f197b9e291044a150876b80b5207, type: 3}
+    - gameObjectList:
+      - {fileID: 7596518995976380312, guid: 663b9d4f5335e884ab7dccada8fe3eda, type: 3}
+      - {fileID: 6940129877198972237, guid: 09d9656ec0c553a41af45e3fa1a1a700, type: 3}
+      - {fileID: 1484621466492084911, guid: e070e2c51b5020c45891c5eb2979f54b, type: 3}
+      - {fileID: 2561022052850752836, guid: 86ae18f12485ee2439af3eb64b8a43fa, type: 3}
+      - {fileID: 1703056807361636290, guid: 3c89dc60c6deddf4c82d958e5a9f1fed, type: 3}
+  soundPool:
+    allList:
+    - gameObjectList:
+      - {fileID: 5612101612285607420, guid: 36f8792945a0fe1488b6c52960d83ed8, type: 3}
 --- !u!4 &1111152880
 Transform:
   m_ObjectHideFlags: 0

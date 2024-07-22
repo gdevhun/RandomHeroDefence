@@ -29,7 +29,7 @@ public class SellUnit : MonoBehaviour
         else --GetUnitBase.unitPosMap[selectedUnitType][SelectUnit.instance.selectedPos];
         GameObject selectedCharacter = SelectUnit.instance.selectedPos.transform.GetChild(SelectUnit.instance.selectedPos.transform.childCount - 1).gameObject;
         selectedCharacter.transform.SetParent(PoolManager.instance.poolSet.transform);
-        PoolManager.instance.ReturnPool(PoolManager.instance.queUnitMap, selectedCharacter, selectedUnitType);
+        PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, selectedCharacter, selectedUnitType);
         if(selectedGradeType == HeroGradeType.Normal || selectedGradeType == HeroGradeType.Elite) CurrencyManager.instance.AcquireCurrency(50 + 50 * (int)selectedGradeType, true);
         else if(selectedGradeType == HeroGradeType.Rare || selectedGradeType == HeroGradeType.Legend) CurrencyManager.instance.AcquireCurrency((int)selectedGradeType, false);
         GetUnitBase.curUnit -= 1;

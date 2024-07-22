@@ -41,7 +41,7 @@ public class SpawnUnit : GetUnitBase, IConsumable
         // 스폰 위치 체크
         if(unitPos == null)
         {
-            PoolManager.instance.ReturnPool(PoolManager.instance.queUnitMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
+            PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
             return;
         }
 

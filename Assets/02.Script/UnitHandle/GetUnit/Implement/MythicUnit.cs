@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 // 신화 조합식
@@ -36,7 +35,7 @@ public class MythicUnit : GetUnitBase
     // 소환 할 신화 풀링
     protected override GameObject GetUnitFromPool(HeroGradeType heroGradeType)
     {
-        return PoolManager.instance.GetPool(PoolManager.instance.queUnitMap, mythicComb.mythicType);
+        return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, mythicComb.mythicType);
     }
 
     public override void GetUnitHandle()
@@ -113,7 +112,7 @@ public class MythicUnit : GetUnitBase
             {
                 GameObject curUnit = curPos.Key.transform.GetChild(0).gameObject;
                 curUnit.transform.SetParent(PoolManager.instance.poolSet.transform);
-                PoolManager.instance.ReturnPool(PoolManager.instance.queUnitMap, curUnit, curUnitType);
+                PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, curUnit, curUnitType);
             }
 
             // 3.유닛 수 처리

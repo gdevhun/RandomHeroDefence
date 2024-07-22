@@ -47,7 +47,7 @@ public class CombUnit : GetUnitBase
         {
             GameObject selectedCharacter = SelectUnit.instance.selectedPos.transform.GetChild(0).gameObject;
             selectedCharacter.transform.SetParent(PoolManager.instance.poolSet.transform);
-            PoolManager.instance.ReturnPool(PoolManager.instance.queUnitMap, selectedCharacter, selectedUnitType);
+            PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, selectedCharacter, selectedUnitType);
         }
 
         // 합성 할 유닛의 등급에 따라 유닛 합성
@@ -66,7 +66,7 @@ public class CombUnit : GetUnitBase
         // 스폰 위치 체크, 노말 == 실패 체크
         if(unitPos == null)
         {
-            PoolManager.instance.ReturnPool(PoolManager.instance.queUnitMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
+            PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
             curUnit -= 3;
             return;
         }

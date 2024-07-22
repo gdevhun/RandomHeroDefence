@@ -8,5 +8,5 @@ public class SoundDeActive : MonoBehaviour
     private void Awake() { audioSource = GetComponent<AudioSource>(); }
 
     // 사운드 재생이 끝나면 풀에 자동 반환
-    private void Update() { if(!audioSource.isPlaying) PoolManager.instance.ReturnPool(PoolManager.instance.queSoundMap, gameObject, type); }
+    private void Update() { if(!audioSource.isPlaying) PoolManager.instance.ReturnPool(PoolManager.instance.soundPool.queMap, gameObject, type); }
 }
