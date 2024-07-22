@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1591961435492843463}
+  - {fileID: 5768264311381160783}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5010563394931649663
@@ -126,7 +126,7 @@ MonoBehaviour:
     attackType: 0
     heroGradeType: 3
     unitType: 18
---- !u!1001 &2699017867612533465
+--- !u!1001 &7165196059923070545
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -136,11 +136,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.204
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -152,15 +152,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -174,10 +174,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7105437883543496746, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
-      propertyPath: m_SortingOrder
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 7740656395620133697, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_Name
       value: MythCircle
@@ -187,8 +183,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
---- !u!4 &1591961435492843463 stripped
+--- !u!4 &5768264311381160783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
-  m_PrefabInstance: {fileID: 2699017867612533465}
+  m_PrefabInstance: {fileID: 7165196059923070545}
   m_PrefabAsset: {fileID: 0}

@@ -47,3 +47,6 @@ TagManager:
   - name: Hero
     uniqueID: 2112097299
     locked: 0
+  - name: Weapon
+    uniqueID: 3609840689
+    locked: 0
