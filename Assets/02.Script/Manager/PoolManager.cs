@@ -2,6 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 맵핑 관련 클래스
+[Serializable]
+public class Pool<T>
+{
+    [Header ("모든 프리팹")] public List<ListGameObject> allList = new List<ListGameObject>();
+    public Dictionary<T, GameObject> prefMap = new Dictionary<T, GameObject>(); // (타입, 프리팹) 맵핑
+    public Dictionary<T, Queue<GameObject> > queMap = new Dictionary<T, Queue<GameObject> >(); // (타입, 큐) 맵핑
+}
+
 // 게임 오브젝트 형 리스트를 가지는 클래스
 [Serializable]
 public class ListGameObject
@@ -34,32 +43,19 @@ public class PoolManager : MonoBehaviour
     public static PoolManager instance;
     private void Awake() { instance = this; }
     [Header ("풀링 오브젝트 부모")] public GameObject poolSet;
-    [Header ("유닛 맵핑")] [SerializeField] private List<ListGameObject> UnitList = new List<ListGameObject>();
-    [SerializeField] private ListGameObject NormalList = new ListGameObject(), EliteList = new ListGameObject(), RareList = new ListGameObject(), LegendList = new ListGameObject(), MythList = new ListGameObject();
-    private Dictionary<UnitType, GameObject> prefUnitMap = new Dictionary<UnitType, GameObject>(); // (타입, 프리팹) 맵핑
-    public Dictionary<UnitType, Queue<GameObject> > queUnitMap = new Dictionary<UnitType, Queue<GameObject> >(); // (타입, 큐) 맵핑
-    [Header ("사운드 맵핑")] [SerializeField] private List<ListGameObject> SoundList = new List<ListGameObject>();
-    [SerializeField] private ListGameObject UnitHandleSoundList = new ListGameObject();
-    private Dictionary<SoundType, GameObject> prefSoundMap = new Dictionary<SoundType, GameObject>(); // (타입, 프리팹) 맵핑
-    public Dictionary<SoundType, Queue<GameObject> > queSoundMap = new Dictionary<SoundType, Queue<GameObject> >(); // (타입, 큐) 맵핑
+    [Header ("유닛 풀")] public Pool<UnitType> unitPool;
+    [Header ("사운드 풀")] public Pool<SoundType> soundPool;
 
     private void Start()
     {
-        // 리스트 초기화
-        ListInit(UnitList, NormalList, EliteList, RareList, LegendList, MythList);
-        ListInit(SoundList, UnitHandleSoundList);
-
         // (타입, 프리팹) 맵핑
-        PrefMap(UnitList, prefUnitMap);
-        PrefMap(SoundList, prefSoundMap);
+        PrefMap(unitPool.allList, unitPool.prefMap);
+        PrefMap(soundPool.allList, soundPool.prefMap);
 
         // (타입, 큐) 맵핑
-        QueMap(queUnitMap, prefUnitMap);
-        QueMap(queSoundMap, prefSoundMap);
+        QueMap(unitPool.queMap, unitPool.prefMap);
+        QueMap(soundPool.queMap, soundPool.prefMap);
     }
-
-    // 리스트 초기화
-    private void ListInit(List<ListGameObject> allPrefList, params ListGameObject[] lists) { allPrefList.AddRange(lists); }
 
     // (타입, 프리팹) 맵핑
     private void PrefMap<T>(List<ListGameObject> pList, Dictionary<T, GameObject> pMap) where T : Enum

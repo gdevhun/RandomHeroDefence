@@ -62,7 +62,7 @@ public abstract class GetUnitBase : MonoBehaviour
     protected virtual GameObject GetUnitFromPool(HeroGradeType heroGradeType)
     {
         int random = UnityEngine.Random.Range(0 + 5 * (int)heroGradeType, 5 + 5 * (int)heroGradeType);
-        return PoolManager.instance.GetPool(PoolManager.instance.queUnitMap, (UnitType)random);
+        return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, (UnitType)random);
     }
 
     // 유닛 스폰 위치 반환

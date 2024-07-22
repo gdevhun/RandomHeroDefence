@@ -4,6 +4,8 @@ public class SelectUnit : MonoBehaviour
 {
     public static SelectUnit instance;
     private void Awake() { instance = this; }
+
+    [Header ("유닛 툴팁 패널")] [SerializeField] private ToolTipUnit unitToolTipPanel;
     [HideInInspector] public GameObject selectedPos; // 선택된 유닛 스폰 위치
     [Header ("유닛 스폰 위치만 클릭되게")] [SerializeField] private LayerMask posLayerMask;
     private Vector3 sPos = Vector3.zero; // 시작 위치
@@ -28,10 +30,13 @@ public class SelectUnit : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(inputPosition, Vector2.zero, Mathf.Infinity, posLayerMask);
 
             // 히트된 콜라이더가 있는지 체크
-            if(hit.collider == null) return;
-
             // 유닛이 있는지 체크
-            if(hit.transform.childCount < 1) return;
+            if(hit.collider == null || hit.transform.childCount < 1)
+            {
+                // 툴팁 켜져있으면 꺼줌
+                if(unitToolTipPanel.gameObject.activeSelf) unitToolTipPanel.HandleToolTip(false);
+                return;
+            }
 
             // 선택된 유닛 스폰 위치 오브젝트
             selectedPos = hit.transform.gameObject;
@@ -79,7 +84,11 @@ public class SelectUnit : MonoBehaviour
                 // 시작 위치 초기화
                 sPos = Vector3.zero;
 
-                // 유닛 패널 띄우기
+                // 유닛 툴팁 띄우기
+                if(!unitToolTipPanel.gameObject.activeSelf) unitToolTipPanel.HandleToolTip(true);
+                unitToolTipPanel.SetToolTip(selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo);
+
+                // 판매 및 합성 패널 띄우기
 
                 return;
             }

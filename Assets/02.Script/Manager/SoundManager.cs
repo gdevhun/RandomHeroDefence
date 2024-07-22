@@ -64,7 +64,7 @@ public class SoundManager : MonoBehaviour
     // 효과음
     public void SFXPlay(SoundType type)
     {
-        PoolManager.instance.GetPool(PoolManager.instance.queSoundMap, type).GetComponent<AudioSource>().volume = sfxVolume;
+        PoolManager.instance.GetPool(PoolManager.instance.soundPool.queMap, type).GetComponent<AudioSource>().volume = sfxVolume;
     }
 
     // 배경음 볼륨 조절
