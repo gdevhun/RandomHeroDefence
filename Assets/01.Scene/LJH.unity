@@ -5238,7 +5238,11 @@ MonoBehaviour:
   soundPool:
     allList:
     - gameObjectList:
-      - {fileID: 5612101612285607420, guid: 36f8792945a0fe1488b6c52960d83ed8, type: 3}
+      - {fileID: 5612101612285607420, guid: c50acbf8764aa0b45a6db333fb739276, type: 3}
+      - {fileID: 5612101612285607420, guid: a77377709e57daa4baa49ad3e1735735, type: 3}
+      - {fileID: 5612101612285607420, guid: cd68719899af7b54d95d59cbd79a1c4f, type: 3}
+      - {fileID: 5612101612285607420, guid: 62cc12623b00aae4fae38b2b6fe7f8b6, type: 3}
+      - {fileID: 5612101612285607420, guid: 18a746ee9938e4148bc78561b9e43451, type: 3}
 --- !u!4 &1111152880
 Transform:
   m_ObjectHideFlags: 0

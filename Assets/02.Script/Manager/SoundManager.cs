@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
     // 효과음 테스트
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha0)) SFXPlay(SoundType.Spawn);
+        if(Input.GetKeyDown(KeyCode.Alpha0)) SFXPlay(SoundType.GetUnit);
     }
     
     // (타입, 배경음) 맵핑

@@ -43,6 +43,9 @@ public class SelectUnit : MonoBehaviour
 
             // 시작 위치 백업
             sPos = selectedPos.transform.position;
+
+            // 사운드
+            SoundManager.instance.SFXPlay(SoundType.Click);
         }
 
         // 시작 위치가 있는지 체크

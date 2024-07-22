@@ -32,6 +32,9 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
 
         gradeUpgradeMap[curGradeType = heroGradeType]++;
 
+        // 사운드
+        SoundManager.instance.SFXPlay(SoundType.Upgrade);
+
         for(int i = 0; i < gradeUpgradeMap.Count; i++)
         {
             Debug.Log($"{gradeUpgradeMap.ElementAt(i).Key} 업그레이드 수치: {gradeUpgradeMap.ElementAt(i).Value}");

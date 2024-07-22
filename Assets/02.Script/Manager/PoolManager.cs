@@ -35,7 +35,7 @@ public enum UnitType
 // 사운드 타입
 public enum SoundType
 {
-    Spawn
+    GetUnit, Sell, Click, Upgrade, NotEnough
 }
 
 public class PoolManager : MonoBehaviour
@@ -67,6 +67,9 @@ public class PoolManager : MonoBehaviour
         {
             for(int j = 0; j < pList[i].gameObjectList.Count; j++)
             {
+                // 사운드 타입 설정
+                if(typeof(T) == typeof(SoundType)) pList[i].gameObjectList[j].GetComponent<SoundDeActive>().type = (SoundType)(object)curType;
+
                 // 현재 타입에 해당하는 프리팹 맵핑
                 pMap.Add(curType, pList[i].gameObjectList[j]);
                 

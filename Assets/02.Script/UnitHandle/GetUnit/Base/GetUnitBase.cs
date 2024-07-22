@@ -51,6 +51,9 @@ public abstract class GetUnitBase : MonoBehaviour
             accumulatedWeight += gradeWeightMap.ElementAt(i).Value;
             if(randomWeight >= accumulatedWeight) continue;
 
+            // 사운드
+            SoundManager.instance.SFXPlay(SoundType.GetUnit);
+
             // 소환 할 유닛 풀링
             return GetUnitFromPool(gradeWeightMap.ElementAt(i).Key);
         }

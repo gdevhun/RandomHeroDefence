@@ -58,6 +58,9 @@ public class CurrencyManager : MonoBehaviour
                 Gold -= amount;
                 return true;
             }
+
+            // 사운드
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
             return false;
         }
 
@@ -66,6 +69,9 @@ public class CurrencyManager : MonoBehaviour
             Dia -= amount;
             return true;
         }
+
+        // 사운드
+        SoundManager.instance.SFXPlay(SoundType.NotEnough);
         return false;
     }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class SoundDeActive : MonoBehaviour
 {
     private AudioSource audioSource; // 오디오소스
-    [SerializeField] [Header ("사운드 타입")] private SoundType type;
+    [HideInInspector] public SoundType type; // 사운드 타입
 
     private void Awake() { audioSource = GetComponent<AudioSource>(); }
 

@@ -24,6 +24,7 @@ public class SellUnit : MonoBehaviour
         // 2.가장 마지막 자식 부모 해제하고 풀에 반환하기
         // 3.재화 처리
         // 4.유닛 수 처리
+        // 5.사운드
         UnitType selectedUnitType = selectedUnit.heroInfo.unitType;
         if(SelectUnit.instance.selectedPos.transform.childCount == 1) GetUnitBase.unitPosMap[selectedUnitType].Remove(SelectUnit.instance.selectedPos);
         else --GetUnitBase.unitPosMap[selectedUnitType][SelectUnit.instance.selectedPos];
@@ -33,5 +34,6 @@ public class SellUnit : MonoBehaviour
         if(selectedGradeType == HeroGradeType.Normal || selectedGradeType == HeroGradeType.Elite) CurrencyManager.instance.AcquireCurrency(50 + 50 * (int)selectedGradeType, true);
         else if(selectedGradeType == HeroGradeType.Rare || selectedGradeType == HeroGradeType.Legend) CurrencyManager.instance.AcquireCurrency((int)selectedGradeType, false);
         GetUnitBase.curUnit -= 1;
+        SoundManager.instance.SFXPlay(SoundType.Sell);
     }
 }
