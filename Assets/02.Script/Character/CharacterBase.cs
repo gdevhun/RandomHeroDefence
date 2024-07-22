@@ -30,11 +30,21 @@ public class HeroInfo  //히어로 정보 클래스
 public class CharacterBase : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    public int attackDamage;
     private Animator anim;
-    private float attackSpeed;
     private bool isOnTarget;
     public HeroInfo heroInfo;
+    
+    
+    [SerializeField] private int attackDamage;
+    [SerializeField] private float attackSpeed;
+    
+
+    /*public delegate void IncreaseDamage(int damage);
+    public event IncreaseDamage OnIncreaseDamage;
+
+    public delegate void IncreaseAttackSpeed(float speed);
+    public event IncreaseAttackSpeed OnIncreaseAttackSpeed;*/
+    
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -44,6 +54,7 @@ public class CharacterBase : MonoBehaviour
 
     private void Start()
     {
+        //인스펙터 초기 설정 공격력, 공격속도로 초기화
         
     }
 
@@ -65,18 +76,23 @@ public class CharacterBase : MonoBehaviour
         {
             isOnTarget = true;  //타게팅 활성화
             
-            if (heroInfo.attackType == AttackType.Melee)
-            {
-                //anim.SetBool("Attack"); //공격 애니메이션 활성화
-            }
-            else   //원거리 처리
-            {
-                //PoolManager.instance.GetPool()
-            }
             if (other.gameObject.TryGetComponent(out Transform transform))
             {
                 //이펙트 생성.
+                if (heroInfo.attackType == AttackType.Melee)
+                {
+                    //anim.SetBool("Attack"); //공격 애니메이션 활성화
+                    //transform을 바탕으로 해당위치에 밀리웨폰생성하기
+                }
+                else   //원거리 처리
+                {
+                    //PoolManager.instance.GetPool()
+                    //Bullet bullet = BulletManager.instance.GetSpecialBullet(gunTransform.position, bulletRotation);
+                    //bullet.additiveDamage = additiveDmg;
+                }
+                
             }
+            
             //Attack(other.gameObject.GetComponent<Enemy>);
         }
     }
@@ -84,5 +100,13 @@ public class CharacterBase : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         isOnTarget = false;
+    }
+
+    public void CalculateDirection(Transform enemyTrans)
+    {
+        //발사되는 총알의 방향 구현 로직
+        Vector2 bulletDirection = (enemyTrans.position - this.transform.position).normalized; //방향
+        float angle = Mathf.Atan2(bulletDirection.y, bulletDirection.x) * Mathf.Rad2Deg; //각도
+        Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward); //쿼터니언
     }
 }
