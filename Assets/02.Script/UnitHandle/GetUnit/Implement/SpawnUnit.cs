@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnUnit : GetUnitBase
+public class SpawnUnit : GetUnitBase, IConsumable
 {
     // 소환에서 등급에 따른 가중치 설정
     private Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
@@ -21,6 +21,10 @@ public class SpawnUnit : GetUnitBase
     // 소환 구체화
     public override void GetUnitHandle()
     {
+        // 재화 체크
+        if(!ConsumeCurrency()) return;
+        ++spawnCnt;
+
         // 최대 유닛 체크
         if(curUnit >= maxUnit)
         {
@@ -45,5 +49,13 @@ public class SpawnUnit : GetUnitBase
         instantUnit.transform.SetParent(unitPos.transform);
         instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? -0.2f : 0, 0);
         ++curUnit;
+    }
+
+    // 재화
+    private int spawnCnt = 0;
+    public int amount { get; set; }
+    public bool ConsumeCurrency()
+    {
+        return CurrencyManager.instance.ConsumeCurrency(10 + spawnCnt / 2, true);
     }
 }

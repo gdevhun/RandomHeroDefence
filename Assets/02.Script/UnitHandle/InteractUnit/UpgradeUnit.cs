@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class UpgradeUnit : MonoBehaviour
+public class UpgradeUnit : MonoBehaviour, IConsumable
 {
     public static UpgradeUnit instance;
     private void Awake() { instance = this; }
@@ -26,11 +26,23 @@ public class UpgradeUnit : MonoBehaviour
     // 유닛 업그레이드
     public void Upgrade(HeroGradeType heroGradeType)
     {
-        gradeUpgradeMap[heroGradeType]++;
+        // 재화 체크
+        curGradeType = heroGradeType;
+        if(!ConsumeCurrency()) return;
+
+        gradeUpgradeMap[curGradeType = heroGradeType]++;
 
         for(int i = 0; i < gradeUpgradeMap.Count; i++)
         {
             Debug.Log($"{gradeUpgradeMap.ElementAt(i).Key} 업그레이드 수치: {gradeUpgradeMap.ElementAt(i).Value}");
         }
+    }
+
+    // 재화
+    private HeroGradeType curGradeType;
+    public int amount { get; set; }
+    public bool ConsumeCurrency()
+    {
+        return CurrencyManager.instance.ConsumeCurrency(2 + gradeUpgradeMap[curGradeType], false);
     }
 }
