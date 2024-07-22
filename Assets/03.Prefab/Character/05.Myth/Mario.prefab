@@ -120,12 +120,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0
   heroInfo:
     damageType: 0
     attackType: 0
     heroGradeType: 4
     unitType: 23
+  attackDamage: 0
+  attackSpeed: 0
 --- !u!1001 &2327733235034432761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.376
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3702836368063450398, guid: 3abd289d96b441a48aaafef9512560b8, type: 3}
       propertyPath: m_LocalPosition.z
