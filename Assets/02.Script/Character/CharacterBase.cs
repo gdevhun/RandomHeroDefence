@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -26,6 +27,9 @@ public class HeroInfo  //히어로 정보 클래스
     public AttackType attackType;
     public HeroGradeType heroGradeType;
     public UnitType unitType;
+    public Sprite unitSprite;
+    public int attackDamage;
+    public float attackSpeed;
 }
 public class CharacterBase : MonoBehaviour
 {
@@ -33,11 +37,6 @@ public class CharacterBase : MonoBehaviour
     private Animator anim;
     private bool isOnTarget;
     public HeroInfo heroInfo;
-    
-    
-    [SerializeField] private int attackDamage;
-    [SerializeField] private float attackSpeed;
-    
 
     /*public delegate void IncreaseDamage(int damage);
     public event IncreaseDamage OnIncreaseDamage;

@@ -120,12 +120,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 0
   heroInfo:
     damageType: 0
     attackType: 0
     heroGradeType: 2
     unitType: 10
+    unitSprite: {fileID: 21300000, guid: f27e3a2c432b99548a8e9c394a3aa679, type: 3}
+    attackDamage: 300
+    attackSpeed: 3
 --- !u!1001 &2515898070451657439
 PrefabInstance:
   m_ObjectHideFlags: 0
