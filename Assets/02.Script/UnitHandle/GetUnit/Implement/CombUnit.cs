@@ -31,7 +31,11 @@ public class CombUnit : GetUnitBase
     public override void GetUnitHandle()
     {
         // 유닛이 3 개 인지 체크
-        if(SelectUnit.instance.selectedPos.transform.childCount < 3) return;
+        if(SelectUnit.instance.selectedPos.transform.childCount < 3)
+        {
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
+            return;
+        }
 
         // 합성 할 유닛 처리
         // 1.등급 가져오기
@@ -75,5 +79,9 @@ public class CombUnit : GetUnitBase
         instantUnit.transform.SetParent(unitPos.transform);
         instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? -0.2f : 0, 0);
         CurUnit -= 2;
+
+        // 패널
+        UiUnit.instance.ExitPanel(UiUnit.instance.unitSellCompPanel);
+        UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);
     }
 }

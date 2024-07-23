@@ -25,6 +25,7 @@ public class SellUnit : MonoBehaviour
         // 3.재화 처리
         // 4.유닛 수 처리
         // 5.사운드
+        // 6.패널
         UnitType selectedUnitType = selectedUnit.heroInfo.unitType;
         if(SelectUnit.instance.selectedPos.transform.childCount == 1) GetUnitBase.unitPosMap[selectedUnitType].Remove(SelectUnit.instance.selectedPos);
         else --GetUnitBase.unitPosMap[selectedUnitType][SelectUnit.instance.selectedPos];
@@ -35,5 +36,10 @@ public class SellUnit : MonoBehaviour
         else if(selectedGradeType == HeroGradeType.Rare || selectedGradeType == HeroGradeType.Legend) CurrencyManager.instance.AcquireCurrency((int)selectedGradeType, false);
         GetUnitBase.CurUnit -= 1;
         SoundManager.instance.SFXPlay(SoundType.Sell);
+        if(SelectUnit.instance.selectedPos.transform.childCount == 0)
+        {
+            UiUnit.instance.ExitPanel(UiUnit.instance.unitSellCompPanel);
+            UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);  
+        }
     }
 }

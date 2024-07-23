@@ -1,11 +1,10 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SelectUnit : MonoBehaviour
 {
     public static SelectUnit instance;
     private void Awake() { instance = this; }
-
-    [Header ("유닛 툴팁 패널")] [SerializeField] private ToolTipUnit unitToolTipPanel;
     [HideInInspector] public GameObject selectedPos; // 선택된 유닛 스폰 위치
     [Header ("유닛 스폰 위치만 클릭되게")] [SerializeField] private LayerMask posLayerMask;
     private Vector3 sPos = Vector3.zero; // 시작 위치
@@ -34,7 +33,8 @@ public class SelectUnit : MonoBehaviour
             if(hit.collider == null || hit.transform.childCount < 1)
             {
                 // 툴팁 켜져있으면 꺼줌
-                if(unitToolTipPanel.gameObject.activeSelf) UiUnit.instance.ExitPanel(unitToolTipPanel.gameObject);
+                if(UiUnit.instance.toolTipPanel.gameObject.gameObject.activeSelf && !UiUnit.instance.unitSellCompPanel.activeSelf) UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);
+
                 return;
             }
 
@@ -88,11 +88,19 @@ public class SelectUnit : MonoBehaviour
                 sPos = Vector3.zero;
 
                 // 유닛 툴팁 띄우기
-                if(!unitToolTipPanel.gameObject.activeSelf) UiUnit.instance.OpenPanel(unitToolTipPanel.gameObject);
-                unitToolTipPanel.SetToolTip(selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo);
+                if(!UiUnit.instance.toolTipPanel.gameObject.activeSelf) UiUnit.instance.OpenPanel(UiUnit.instance.toolTipPanel.gameObject);
+                UiUnit.instance.toolTipPanel.SetToolTip(selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo);
 
                 // 판매 및 합성 패널 띄우기
-
+                HeroGradeType selectedHeroGradeType = selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType;
+                if(!UiUnit.instance.unitSellCompPanel.activeSelf && selectedHeroGradeType != HeroGradeType.Myth)
+                {
+                    UiUnit.instance.OpenPanel(UiUnit.instance.unitSellCompPanel);
+                    UiUnit.instance.unitSellGoldImage.SetActive(selectedHeroGradeType == HeroGradeType.Normal || selectedHeroGradeType == HeroGradeType.Elite);
+                    UiUnit.instance.unitSellDiaImage.SetActive(selectedHeroGradeType == HeroGradeType.Rare || selectedHeroGradeType == HeroGradeType.Legend);
+                    if(selectedHeroGradeType == HeroGradeType.Normal || selectedHeroGradeType == HeroGradeType.Elite) UiUnit.instance.unitSellGoldText.text = (50 + 50 * (int)selectedHeroGradeType).ToString();
+                    else if(selectedHeroGradeType == HeroGradeType.Rare || selectedHeroGradeType == HeroGradeType.Legend) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
+                }
                 return;
             }
 
