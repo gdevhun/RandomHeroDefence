@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7317174934363592571}
   - component: {fileID: -2859862574621568836}
   m_Layer: 0
-  m_Name: Ganster
+  m_Name: Gangster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

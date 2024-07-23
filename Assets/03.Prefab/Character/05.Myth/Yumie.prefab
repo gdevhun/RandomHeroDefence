@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroInfo:
-    damageType: 0
+    damageType: 1
     attackType: 0
     heroGradeType: 4
     unitType: 24
