@@ -34,7 +34,7 @@ public class SelectUnit : MonoBehaviour
             if(hit.collider == null || hit.transform.childCount < 1)
             {
                 // 툴팁 켜져있으면 꺼줌
-                if(unitToolTipPanel.gameObject.activeSelf) unitToolTipPanel.HandleToolTip(false);
+                if(unitToolTipPanel.gameObject.activeSelf) UiUnit.instance.ExitPanel(unitToolTipPanel.gameObject);
                 return;
             }
 
@@ -88,7 +88,7 @@ public class SelectUnit : MonoBehaviour
                 sPos = Vector3.zero;
 
                 // 유닛 툴팁 띄우기
-                if(!unitToolTipPanel.gameObject.activeSelf) unitToolTipPanel.HandleToolTip(true);
+                if(!unitToolTipPanel.gameObject.activeSelf) UiUnit.instance.OpenPanel(unitToolTipPanel.gameObject);
                 unitToolTipPanel.SetToolTip(selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo);
 
                 // 판매 및 합성 패널 띄우기

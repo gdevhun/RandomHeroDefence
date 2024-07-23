@@ -15,14 +15,8 @@ public class ToolTipUnit : MonoBehaviour
     {
         unitImage.sprite = heroInfo.unitSprite;
         unitNameText.text = heroInfo.unitType.ToString();
-        unitInfoText.text = $"{heroInfo.heroGradeType.ToString()} / {heroInfo.damageType.ToString()} / {heroInfo.attackType.ToString()}";
+        unitInfoText.text = $"{heroInfo.heroGradeType} / {heroInfo.damageType} / {heroInfo.attackType}";
         unitDmgText.text = heroInfo.attackDamage.ToString();
         unitSpeedText.text = heroInfo.attackSpeed.ToString();
-    }
-
-    // 툴팁 패널 여닫기
-    public void HandleToolTip(bool op)
-    {
-        gameObject.SetActive(op);
     }
 }

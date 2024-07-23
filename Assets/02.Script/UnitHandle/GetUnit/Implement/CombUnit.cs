@@ -67,13 +67,13 @@ public class CombUnit : GetUnitBase
         if(unitPos == null)
         {
             PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
-            curUnit -= 3;
+            CurUnit -= 3;
             return;
         }
 
         // 유닛 소환
         instantUnit.transform.SetParent(unitPos.transform);
         instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? -0.2f : 0, 0);
-        curUnit -= 2;
+        CurUnit -= 2;
     }
 }

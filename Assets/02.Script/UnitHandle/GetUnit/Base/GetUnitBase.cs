@@ -2,13 +2,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using TMPro;
 
 public abstract class GetUnitBase : MonoBehaviour
 {
     static private ListGameObject spawnPosList; // 스폰 위치들
     static public Dictionary<UnitType, Dictionary<GameObject, int> > unitPosMap; // (유닛, (위치, 자식 수)) 맵핑
     static protected int maxUnit; // 최대 유닛 수
-    static public int curUnit; // 현재 유닛 수
+    static private int curUnit; // 현재 유닛 수
+    static public int CurUnit
+    {
+        get { return curUnit; }
+        set
+        {
+            curUnit = value;
+            UpdateUnitUI(value);
+        }
+    }
+    private static TextMeshProUGUI unitCntText;
 
     // 초기화
     private void Awake()
@@ -31,6 +42,8 @@ public abstract class GetUnitBase : MonoBehaviour
         maxUnit = 50;
 
         curUnit = 0;
+
+        unitCntText = GameObject.Find("UnitCntText").GetComponent<TextMeshProUGUI>();
 
         Debug.Log("초기화!");
     }
@@ -112,6 +125,12 @@ public abstract class GetUnitBase : MonoBehaviour
         // 여기 오는 경우
         // 1.스폰되지 않은 새로운 스폰 위치도 없는 경우 => 모든 스폰 위치가 사용 중
         return null;
+    }
+
+    // 유닛 UI 갱신
+    public static void UpdateUnitUI(int val)
+    {
+        unitCntText.text = val.ToString() + " / " + maxUnit;
     }
 
     // 소환, 합성, 도박, 신화에서 구현

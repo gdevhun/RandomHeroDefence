@@ -116,7 +116,7 @@ public class MythicUnit : GetUnitBase
             }
 
             // 3.유닛 수 처리
-            curUnit -= curPos.Value;
+            CurUnit -= curPos.Value;
         }
 
         // 신화 소환
@@ -124,6 +124,6 @@ public class MythicUnit : GetUnitBase
         GameObject mythPos = GetUnitPos(mythicComb.mythicType);
         instantMyth.transform.SetParent(mythPos.transform);
         instantMyth.transform.localPosition = new Vector3(mythPos.transform.childCount == 3 ? 0.1f : 0.2f * (mythPos.transform.childCount - 1), mythPos.transform.childCount == 3 ? -0.2f : 0, 0);
-        ++curUnit;
+        ++CurUnit;
     }
 }

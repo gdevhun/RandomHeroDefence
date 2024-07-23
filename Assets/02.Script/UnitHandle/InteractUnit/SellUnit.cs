@@ -33,7 +33,7 @@ public class SellUnit : MonoBehaviour
         PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, selectedCharacter, selectedUnitType);
         if(selectedGradeType == HeroGradeType.Normal || selectedGradeType == HeroGradeType.Elite) CurrencyManager.instance.AcquireCurrency(50 + 50 * (int)selectedGradeType, true);
         else if(selectedGradeType == HeroGradeType.Rare || selectedGradeType == HeroGradeType.Legend) CurrencyManager.instance.AcquireCurrency((int)selectedGradeType, false);
-        GetUnitBase.curUnit -= 1;
+        GetUnitBase.CurUnit -= 1;
         SoundManager.instance.SFXPlay(SoundType.Sell);
     }
 }

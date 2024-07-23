@@ -24,7 +24,7 @@ public class GambleUnit : GetUnitBase, IConsumable
         if(!ConsumeCurrency()) return;
 
         // 최대 유닛 체크
-        if(curUnit >= maxUnit)
+        if(CurUnit >= maxUnit)
         {
             Debug.Log("최대 유닛 수!");
             return;
@@ -47,7 +47,7 @@ public class GambleUnit : GetUnitBase, IConsumable
         // 유닛 소환
         instantUnit.transform.SetParent(unitPos.transform);
         instantUnit.transform.localPosition = new Vector3(0.2f * (unitPos.transform.childCount - 1), 0, 0);
-        ++curUnit;
+        ++CurUnit;
     }
 
     // 재화

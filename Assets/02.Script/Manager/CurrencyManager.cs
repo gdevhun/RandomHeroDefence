@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class CurrencyManager : MonoBehaviour
@@ -18,7 +19,7 @@ public class CurrencyManager : MonoBehaviour
         set
         {
             gold = value;
-            UpdateCurrencyUI();
+            UpdateCurrencyUI(value, true);
             Debug.Log("현재 골드 : " + gold);
         }
     }
@@ -31,10 +32,13 @@ public class CurrencyManager : MonoBehaviour
         set
         {
             dia = value;
-            UpdateCurrencyUI();
+            UpdateCurrencyUI(value, false);
             Debug.Log("현재 다이아 : " + dia);
         }
     }
+
+    [Header ("골드 텍스트")] [SerializeField] private TextMeshProUGUI goldText;
+    [Header ("다이아 텍스트")] [SerializeField] private TextMeshProUGUI diaText;
 
     // 재화 얻기
     public void AcquireCurrency(int amount, bool isGold)
@@ -76,5 +80,14 @@ public class CurrencyManager : MonoBehaviour
     }
 
     // 재화 UI 갱신
-    private void UpdateCurrencyUI() {}
+    private void UpdateCurrencyUI(int val, bool isGold)
+    {
+        if(isGold)
+        {
+            goldText.text = val.ToString();
+            return;
+        }
+
+        diaText.text = val.ToString();
+    }
 }
