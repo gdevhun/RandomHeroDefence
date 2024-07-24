@@ -128,6 +128,7 @@ MonoBehaviour:
     unitSprite: {fileID: 21300000, guid: 09c96143fb16e7846a4bab9b14b0525f, type: 3}
     attackDamage: 200
     attackSpeed: 2
+    heroDefaultSpriteDir: 1
 --- !u!1001 &6539798837055320473
 PrefabInstance:
   m_ObjectHideFlags: 0

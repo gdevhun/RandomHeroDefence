@@ -20,6 +20,10 @@ public enum HeroGradeType  //히어로등급
     Normal, Elite, Rare, Legend, Myth 
 }
 
+public enum HeroDefaultSpriteDir //스프라이트기본 방향
+{   //스프라이트렌더러 플립 처리를 위한 enum 클래스
+    Left, Right
+}
 [Serializable]
 public class HeroInfo  //히어로 정보 클래스
 {
@@ -30,6 +34,7 @@ public class HeroInfo  //히어로 정보 클래스
     public Sprite unitSprite;
     public int attackDamage;
     public float attackSpeed;
+    public HeroDefaultSpriteDir heroDefaultSpriteDir;
 }
 public class CharacterBase : MonoBehaviour
 {
@@ -75,8 +80,9 @@ public class CharacterBase : MonoBehaviour
         {
             isOnTarget = true;  //타게팅 활성화
             
-            if (other.gameObject.TryGetComponent(out Transform transform))
+            if (other.gameObject.TryGetComponent(out Transform enemyTrans))
             {
+                CalculateSpriteRen(enemyTrans); //방향 계산
                 //이펙트 생성.
                 if (heroInfo.attackType == AttackType.Melee)
                 {
@@ -85,7 +91,7 @@ public class CharacterBase : MonoBehaviour
                 }
                 else   //원거리 처리
                 {
-                    //PoolManager.instance.GetPool()
+                    //PoolManager.instance.GetPool() 9  0.6500563   0.27
                     //Bullet bullet = BulletManager.instance.GetSpecialBullet(gunTransform.position, bulletRotation);
                     //bullet.additiveDamage = additiveDmg;
                 }
@@ -107,5 +113,32 @@ public class CharacterBase : MonoBehaviour
         Vector2 bulletDirection = (enemyTrans.position - this.transform.position).normalized; //방향
         float angle = Mathf.Atan2(bulletDirection.y, bulletDirection.x) * Mathf.Rad2Deg; //각도
         Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward); //쿼터니언
+    }
+
+    private void CalculateSpriteRen(Transform enemyTrans) //적을 바라보는 스프라이트렌더러 교체함수
+    {  
+        Vector2 heroDirection = enemyTrans.position - transform.position;
+        if (heroDirection.x > 0)
+        {   //오른쪽바라보게 렌더러 교체
+            if (heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Left)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Right)
+            {
+                spriteRenderer.flipX = false;
+            }
+        }
+        else //왼쪽 바라보게 렌더러 교체
+        {
+            if (heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Right)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Left)
+            {
+                spriteRenderer.flipX = false;
+            }
+        }
     }
 }
