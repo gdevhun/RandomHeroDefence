@@ -9436,6 +9436,38 @@ MonoBehaviour:
       - {fileID: 1484621466492084911, guid: e070e2c51b5020c45891c5eb2979f54b, type: 3}
       - {fileID: 2561022052850752836, guid: 86ae18f12485ee2439af3eb64b8a43fa, type: 3}
       - {fileID: 1703056807361636290, guid: 3c89dc60c6deddf4c82d958e5a9f1fed, type: 3}
+  weaponEffectPool:
+    allList:
+    - gameObjectList:
+      - {fileID: 6831531895199409016, guid: 8daa255af92a1834386f5263d216b90b, type: 3}
+      - {fileID: 5590649807536952850, guid: 87ec600923f474145a6fae2c53bc9bd5, type: 3}
+      - {fileID: 1452169668744339269, guid: c4924bde5ffd41746b16b25ef9ed984d, type: 3}
+      - {fileID: 5021439820167013614, guid: d01468053a360df4d8dc5e49de12e133, type: 3}
+      - {fileID: 4016076708925311577, guid: 20b58fbbb6ba0324589b2e2267d43616, type: 3}
+    - gameObjectList:
+      - {fileID: 642291696109055282, guid: d401514914c879149a38adee98d82cbc, type: 3}
+      - {fileID: 6058444156908373864, guid: db7ed4e3301003d418f2ec23b0d20267, type: 3}
+      - {fileID: 6130842450065611265, guid: 0303d006fad157c4196e431046a626dd, type: 3}
+      - {fileID: 7927537483328408692, guid: 4605eb3d5477b12468dc54e793dd1ae2, type: 3}
+      - {fileID: 3342213011338447033, guid: b78260e8446a4c742ae3b81f4452ab23, type: 3}
+    - gameObjectList:
+      - {fileID: 932485038178536778, guid: dbbbece95ae4eab4eb34349cdcef8a95, type: 3}
+      - {fileID: 3857168880899843536, guid: 2f20462af04f9c543af538b543bf7395, type: 3}
+      - {fileID: 2778260936951374976, guid: 810a857836a94fe428bad6b943ccf9f9, type: 3}
+      - {fileID: 7487292102557838482, guid: 4c53dd36b49346848b804071feaf9b5a, type: 3}
+      - {fileID: 9941539063167722, guid: 5ff21be226e94af41a5c0eb6080bc2b8, type: 3}
+    - gameObjectList:
+      - {fileID: 5525281893713113271, guid: 53af86eddcc874740bcc34b6079be03f, type: 3}
+      - {fileID: 4787749243795536576, guid: 9a8763489eed4c7428aacf43ad15294f, type: 3}
+      - {fileID: 3623423929786281333, guid: e03e95ecca3bf3b4fa1408579025a356, type: 3}
+      - {fileID: 5574013486362615511, guid: 4f561d4be2e6e7545835d7d702c5854d, type: 3}
+      - {fileID: 7723972173022295526, guid: 52094ad44f7451e4d8d5fdbccfbf05c5, type: 3}
+    - gameObjectList:
+      - {fileID: 752532324352591717, guid: e1f0d526b5a2e6048a7e6328a1cc0a5d, type: 3}
+      - {fileID: 83124047043708080, guid: fd0c754995a7d3842b84624476ca75a5, type: 3}
+      - {fileID: 238246730443398419, guid: 94dfc6e9ceff0f346a231e7cb165293b, type: 3}
+      - {fileID: 8778528797859579355, guid: 8fcaa04a35cf22c4587108dfecba3238, type: 3}
+      - {fileID: 4201740073533986445, guid: 297428c01f75dab498e7b35e1a93330f, type: 3}
   soundPool:
     allList:
     - gameObjectList:

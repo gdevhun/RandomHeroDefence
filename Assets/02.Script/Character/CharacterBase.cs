@@ -42,7 +42,7 @@ public class CharacterBase : MonoBehaviour
     private Animator anim;
     private bool isOnTarget;
     public HeroInfo heroInfo;
-
+    private static readonly int IsAttacking = Animator.StringToHash("isAttack");
     /*public delegate void IncreaseDamage(int damage);
     public event IncreaseDamage OnIncreaseDamage;
 
@@ -86,7 +86,7 @@ public class CharacterBase : MonoBehaviour
                 //이펙트 생성.
                 if (heroInfo.attackType == AttackType.Melee)
                 {
-                    //anim.SetBool("Attack"); //공격 애니메이션 활성화
+                    anim.SetBool(IsAttacking,true); //공격 애니메이션 활성화
                     //transform을 바탕으로 해당위치에 밀리웨폰생성하기
                 }
                 else   //원거리 처리
@@ -105,6 +105,7 @@ public class CharacterBase : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         isOnTarget = false;
+        anim.SetBool(IsAttacking,false); //공격 애니메이션 비활성화
     }
 
     public void CalculateDirection(Transform enemyTrans)
