@@ -1,24 +1,50 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 // 신화 조합식
-[System.Serializable]
+[Serializable]
 public class MythicComb
 { 
     [Header ("조합 할 신화 유닛")] public UnitType mythicType;
+    [Header ("조합 할 신화 유닛 스프라이트")] public Sprite mythicSprite;
     [Header ("필요한 유닛과 수")] public List<UnitRequire> requireList;
 }
-[System.Serializable]
+[Serializable]
 public class UnitRequire
 {
     [Header ("필요한 유닛 타입")] public UnitType unitType;
-    [Header ("필요한 유닛 수")] public int cnt;
+    [Header ("필요한 유닛 스프라이트")] public Sprite unitSprite;
+    [Header ("필요한 유닛 수")] public int cnt; // 유닛 수 => 같은 유닛 3 개 필요 시 1, 2, 3 할당 => ex) Hunter 3 개 필요 시 Hunter 1, Hunter 2, Hunter 3
 }
 
 public class MythicUnit : GetUnitBase
 {
-    [Header ("신화 조합식")] [SerializeField] private MythicComb mythicComb;
+    [Header ("신화 조합식")] [SerializeField] private List<MythicComb> mythicCombList = new List<MythicComb>();
+    private Dictionary<UnitType, MythicComb> mythicCombMap = new Dictionary<UnitType, MythicComb>(); // 신화 조합식 맵핑
+    private UnitType selectedMythic; // 소환 할 신화
+    public UnitType SelectedMythic
+    {
+        get { return selectedMythic; }
+        set
+        {
+            selectedMythic = value;
+            UpdateMythicInfoUI(value);
+        }
+    }
+    [Header ("신화 이미지")] [SerializeField] private Image mythicImage;
+    [Header ("신화 이름 텍스트")] [SerializeField] private TextMeshProUGUI mythicText;
+    [Header ("필요 유닛 이미지")] [SerializeField] private List<Image> requireImageList = new List<Image>();
+
+    // 신화 조합식 맵핑
+    private void Start()
+    {
+        for(int i = 0; i < mythicCombList.Count; i++) mythicCombMap.Add(mythicCombList[i].mythicType, mythicCombList[i]);
+        selectedMythic = UnitType.Batman;
+    }
 
     // 신화 조합 테스트
     private void Update()
@@ -35,19 +61,51 @@ public class MythicUnit : GetUnitBase
     // 소환 할 신화 풀링
     protected override GameObject GetUnitFromPool(HeroGradeType heroGradeType)
     {
-        return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, mythicComb.mythicType);
+        return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, selectedMythic);
     }
 
+    // 소환 할 신화 선택
+    public void SelectMythic(string mythicName)
+    {
+        SelectedMythic = (UnitType)Enum.Parse(typeof(UnitType), mythicName, true);
+    }
+
+    // 신화 소환 정보 UI 갱신
+    private void UpdateMythicInfoUI(UnitType mythicType)
+    {
+        mythicImage.sprite = mythicCombMap[mythicType].mythicSprite;
+        mythicText.text = mythicType.ToString();
+        for(int i = 0; i < requireImageList.Count; i++)
+        {
+            requireImageList[i].sprite = mythicCombMap[mythicType].requireList[i].unitSprite;
+
+            // 유닛 수 구하기
+            int unitCnt = 0;
+            for(int j = 0; j < unitPosMap[mythicCombMap[mythicType].requireList[i].unitType].Count; j++) unitCnt += unitPosMap[mythicCombMap[mythicType].requireList[i].unitType].ElementAt(j).Key.transform.childCount;
+
+            // 보유 유닛 체크 표시
+            requireImageList[i].transform.GetChild(0).gameObject.SetActive(unitCnt > mythicCombMap[mythicType].requireList[i].cnt - 1);
+        }
+    }
+
+    // 신화 조합
     public override void GetUnitHandle()
     {
         // 신화 조합에 들어간 유닛 위치와 수 맵핑
         Dictionary<GameObject, int> usedPosMap = new Dictionary<GameObject, int>();
 
-        // 필요한 유닛과 수가 있는지 체크
-        for(int i = 0; i < mythicComb.requireList.Count; i++)
+        // 신화 조합에 들어간 유닛 맵핑
+        Dictionary<UnitType, int> uesdUnitMap = new Dictionary<UnitType, int>();
+
+        // 필요한 유닛과 수가 있는지 체크 => reverse 체크 => 뒤에 있는 유닛의 cnt 부터 계산
+        for(int i = mythicCombMap[selectedMythic].requireList.Count - 1; i > -1; i--)
         {
             // 필요한 유닛과 수
-            UnitRequire require = mythicComb.requireList.ElementAt(i);
+            UnitRequire require = mythicCombMap[selectedMythic].requireList.ElementAt(i);
+
+            // 이미 같은 유닛을 체크한 적이 있는지 체크
+            if(uesdUnitMap.ContainsKey(require.unitType)) continue;
+            uesdUnitMap.Add(require.unitType, 1);
 
             // 필요한 유닛의 수가 있는지 체크
             bool isCnt = false;
@@ -84,10 +142,15 @@ public class MythicUnit : GetUnitBase
                 // 필요한 유닛 수 이상이면 continue
                 if(isCnt) continue;
             }
-            else return; // 필요한 유닛이 없으면 리턴
+            else
+            {
+                SoundManager.instance.SFXPlay(SoundType.NotEnough);
+                return; // 필요한 유닛이 없으면 리턴
+            }
 
             // 여기 오는 경우
             // 필요한 유닛은 있는데 수가 부족한 경우
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
             return;
         }
 
@@ -121,9 +184,12 @@ public class MythicUnit : GetUnitBase
 
         // 신화 소환
         GameObject instantMyth = GetUnit(null);
-        GameObject mythPos = GetUnitPos(mythicComb.mythicType);
+        GameObject mythPos = GetUnitPos(selectedMythic);
         instantMyth.transform.SetParent(mythPos.transform);
         instantMyth.transform.localPosition = new Vector3(mythPos.transform.childCount == 3 ? 0.1f : 0.2f * (mythPos.transform.childCount - 1), mythPos.transform.childCount == 3 ? -0.2f : 0, 0);
         ++CurUnit;
+
+        // 사운드
+        SoundManager.instance.SFXPlay(SoundType.GetUnit);
     }
 }
