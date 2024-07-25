@@ -32,18 +32,9 @@ public class SoundManager : MonoBehaviour
         }
         else Destroy(gameObject);
     }
-
-    // 효과음 테스트
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha0)) SFXPlay(SoundType.GetUnit);
-    }
     
     // (타입, 배경음) 맵핑
-    private void Map()
-    {
-        for(int i = 0; i < bgmList.Length; i++) mapBgm.Add((BgmType)i, bgmList[i]);
-    }
+    private void Map() { for(int i = 0; i < bgmList.Length; i++) mapBgm.Add((BgmType)i, bgmList[i]); }
 
     // 배경음
     public void BgmSoundPlay(BgmType bgmType)
@@ -62,10 +53,7 @@ public class SoundManager : MonoBehaviour
     }
 
     // 효과음
-    public void SFXPlay(SoundType type)
-    {
-        PoolManager.instance.GetPool(PoolManager.instance.soundPool.queMap, type).GetComponent<AudioSource>().volume = sfxVolume;
-    }
+    public void SFXPlay(SoundType type) { PoolManager.instance.GetPool(PoolManager.instance.soundPool.queMap, type).GetComponent<AudioSource>().volume = sfxVolume; }
 
     // 배경음 볼륨 조절
     public void SetBgmVolume(float volume)
@@ -78,9 +66,5 @@ public class SoundManager : MonoBehaviour
     }
 
     // 효과음 볼륨 조절
-    public void SetSfxVolume(float volume)
-    {
-        // 슬라이더 값을 변수에 저장해서 효과음을 실행할때마다 볼륨을 지정
-        sfxVolume = volume;
-    }
+    public void SetSfxVolume(float volume) { sfxVolume = volume; }
 }

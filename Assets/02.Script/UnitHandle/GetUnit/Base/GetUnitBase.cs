@@ -19,7 +19,7 @@ public abstract class GetUnitBase : MonoBehaviour
             UpdateUnitUI(value);
         }
     }
-    private static TextMeshProUGUI unitCntText;
+    private static TextMeshProUGUI unitCntText; // 유닛 수 텍스트
 
     // 초기화
     private void Awake()
@@ -28,24 +28,16 @@ public abstract class GetUnitBase : MonoBehaviour
 
         spawnPosList = new ListGameObject();
         Transform unitPosSet = GameObject.Find("UnitPosSet").transform;
-        for(int i = 0; i < unitPosSet.childCount; i++)
-        {
-            spawnPosList.gameObjectList.Add(unitPosSet.GetChild(i).gameObject);
-        }
+        for(int i = 0; i < unitPosSet.childCount; i++) spawnPosList.gameObjectList.Add(unitPosSet.GetChild(i).gameObject);
 
         unitPosMap = new Dictionary<UnitType, Dictionary<GameObject, int> >();
-        for(int i = 0; i < Enum.GetValues(typeof(UnitType)).Length; i++)
-        {
-            unitPosMap[(UnitType)Enum.GetValues(typeof(UnitType)).GetValue(i)] = new Dictionary<GameObject, int>();
-        }
+        for(int i = 0; i < Enum.GetValues(typeof(UnitType)).Length; i++) unitPosMap[(UnitType)Enum.GetValues(typeof(UnitType)).GetValue(i)] = new Dictionary<GameObject, int>();
 
         maxUnit = 50;
 
         curUnit = 0;
 
         unitCntText = GameObject.Find("UnitCntText").GetComponent<TextMeshProUGUI>();
-
-        Debug.Log("초기화!");
     }
 
     // 가중치에 따라 유닛을 소환하는 함수
@@ -128,10 +120,7 @@ public abstract class GetUnitBase : MonoBehaviour
     }
 
     // 유닛 UI 갱신
-    public static void UpdateUnitUI(int val)
-    {
-        unitCntText.text = val.ToString() + " / " + maxUnit;
-    }
+    public static void UpdateUnitUI(int val) { unitCntText.text = val.ToString() + " / " + maxUnit; }
 
     // 소환, 합성, 도박, 신화에서 구현
     public abstract void GetUnitHandle();

@@ -21,12 +21,6 @@ public class CombUnit : GetUnitBase
         { HeroGradeType.Legend, 50 }
     };
 
-    // 합성 테스트
-    private void Update()
-    {
-        if(SelectUnit.instance.selectedPos != null && Input.GetKeyDown(KeyCode.Alpha3)) GetUnitHandle();
-    }
-
     // 합성 구체화
     public override void GetUnitHandle()
     {
@@ -44,7 +38,11 @@ public class CombUnit : GetUnitBase
         // 4.풀에 반환하기
         CharacterBase selectedCharacterBase = SelectUnit.instance.selectedPos.transform.GetChild(0).GetComponent<CharacterBase>();
         HeroGradeType selectedGradeType = selectedCharacterBase.heroInfo.heroGradeType;
-        if(selectedGradeType == HeroGradeType.Legend || selectedGradeType == HeroGradeType.Myth) return; // 전설 / 신화 체크
+        if(selectedGradeType == HeroGradeType.Legend || selectedGradeType == HeroGradeType.Myth) // 전설 / 신화 체크
+        {
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
+            return;
+        }
         UnitType selectedUnitType = selectedCharacterBase.heroInfo.unitType;
         unitPosMap[selectedUnitType].Remove(SelectUnit.instance.selectedPos);
         for(int i = 0; i < 3; i++)
@@ -72,6 +70,7 @@ public class CombUnit : GetUnitBase
         {
             PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
             CurUnit -= 3;
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
             return;
         }
 

@@ -24,8 +24,5 @@ public class UiUnit : MonoBehaviour
     }
 
     // 패널 닫기
-    public void ExitPanel(GameObject panel)
-    {
-        panel.SetActive(false);
-    }
+    public void ExitPanel(GameObject panel) { panel.SetActive(false); }
 }

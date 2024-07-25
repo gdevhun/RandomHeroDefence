@@ -23,19 +23,16 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     [Header ("골드 텍스트")] [SerializeField] private TextMeshProUGUI goldText;
     [Header ("다이아 텍스트")] [SerializeField] private TextMeshProUGUI diaText;
 
-    // 업그레이드 테스트
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha5)) Upgrade(HeroGradeType.Normal);
-        if(Input.GetKeyDown(KeyCode.Alpha6)) Upgrade(HeroGradeType.Legend);
-    }
-
     // 유닛 업그레이드
     private void Upgrade(HeroGradeType heroGradeType)
     {
         // 재화 체크
         curGradeType = heroGradeType;
-        if(!ConsumeCurrency()) return;
+        if(!ConsumeCurrency())
+        {
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
+            return;
+        }
 
         // 업그레이드
         int e = 3;
@@ -47,22 +44,10 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
 
         // 사운드
         SoundManager.instance.SFXPlay(SoundType.Upgrade);
-
-        for(int i = 0; i < gradeUpgradeMap.Count; i++)
-        {
-            Debug.Log($"{gradeUpgradeMap.ElementAt(i).Key} 업그레이드 수치: {gradeUpgradeMap.ElementAt(i).Value}");
-        }
     }
 
-    public void NormalUpgrade()
-    {
-        Upgrade(HeroGradeType.Normal);
-    }
-
-    public void LegendUpgrade()
-    {
-        Upgrade(HeroGradeType.Legend);
-    }
+    public void NormalUpgrade() { Upgrade(HeroGradeType.Normal); }
+    public void LegendUpgrade() { Upgrade(HeroGradeType.Legend); }
 
     // 재화
     private HeroGradeType curGradeType;

@@ -46,23 +46,11 @@ public class MythicUnit : GetUnitBase
         selectedMythic = UnitType.Batman;
     }
 
-    // 신화 조합 테스트
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha8)) GetUnitHandle();
-    }
-
     // 소환 할 신화 소환
-    protected override GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap)
-    {
-        return GetUnitFromPool(HeroGradeType.Myth);
-    }
+    protected override GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap) { return GetUnitFromPool(HeroGradeType.Myth); }
 
     // 소환 할 신화 풀링
-    protected override GameObject GetUnitFromPool(HeroGradeType heroGradeType)
-    {
-        return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, selectedMythic);
-    }
+    protected override GameObject GetUnitFromPool(HeroGradeType heroGradeType) { return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, selectedMythic); }
 
     // 소환 할 신화 위치 반환
     protected override GameObject GetUnitPos(UnitType unitType)
@@ -93,10 +81,7 @@ public class MythicUnit : GetUnitBase
     }
 
     // 소환 할 신화 선택
-    public void SelectMythic(string mythicName)
-    {
-        SelectedMythic = (UnitType)Enum.Parse(typeof(UnitType), mythicName, true);
-    }
+    public void SelectMythic(string mythicName) { SelectedMythic = (UnitType)Enum.Parse(typeof(UnitType), mythicName, true); }
 
     // 신화 소환 정보 UI 갱신
     private void UpdateMythicInfoUI(UnitType mythicType)

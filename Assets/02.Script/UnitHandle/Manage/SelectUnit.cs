@@ -11,10 +11,7 @@ public class SelectUnit : MonoBehaviour
     private const float dragThreshold = 1f; // 클릭과 드래그를 구분하는 임계 값
     private bool isDrag = false; // 드래그 체크
 
-    private void Update()
-    {
-        Down();
-    }
+    private void Update() { Down(); }
 
     // 마우스 클릭
     private void Down()
@@ -34,7 +31,6 @@ public class SelectUnit : MonoBehaviour
             {
                 // 툴팁 켜져있으면 꺼줌
                 if(UiUnit.instance.toolTipPanel.gameObject.gameObject.activeSelf && !UiUnit.instance.unitSellCompPanel.activeSelf) UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);
-
                 return;
             }
 
@@ -93,7 +89,12 @@ public class SelectUnit : MonoBehaviour
 
                 // 판매 및 합성 패널 띄우기
                 HeroGradeType selectedHeroGradeType = selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType;
-                if(!UiUnit.instance.unitSellCompPanel.activeSelf && selectedHeroGradeType != HeroGradeType.Myth)
+                if(selectedHeroGradeType == HeroGradeType.Myth) // 신화는 판매 및 합성 패널 켜져있으면 꺼줌
+                {
+                    if(UiUnit.instance.unitSellCompPanel.activeSelf) UiUnit.instance.ExitPanel(UiUnit.instance.unitSellCompPanel);
+                    return;
+                }
+                if(!UiUnit.instance.unitSellCompPanel.activeSelf)
                 {
                     UiUnit.instance.OpenPanel(UiUnit.instance.unitSellCompPanel);
                     UiUnit.instance.unitSellGoldImage.SetActive(selectedHeroGradeType == HeroGradeType.Normal || selectedHeroGradeType == HeroGradeType.Elite);

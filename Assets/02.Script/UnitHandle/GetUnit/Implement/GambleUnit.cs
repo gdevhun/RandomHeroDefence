@@ -11,22 +11,20 @@ public class GambleUnit : GetUnitBase, IConsumable
         { HeroGradeType.Legend, 12 }
     };
 
-    // 도박 테스트
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha2)) GetUnitHandle();
-    }
-
     // 도박 구체화
     public override void GetUnitHandle()
     {
         // 재화 체크
-        if(!ConsumeCurrency()) return;
+        if(!ConsumeCurrency())
+        {
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
+            return;
+        }
 
         // 최대 유닛 체크
         if(CurUnit >= maxUnit)
         {
-            Debug.Log("최대 유닛 수!");
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
             return;
         }
 
@@ -41,6 +39,7 @@ public class GambleUnit : GetUnitBase, IConsumable
         if(unitPos == null)
         {
             PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
             return;
         }
 
@@ -52,8 +51,5 @@ public class GambleUnit : GetUnitBase, IConsumable
 
     // 재화
     public int amount { get; set; }
-    public bool ConsumeCurrency()
-    {
-        return CurrencyManager.instance.ConsumeCurrency(2, false);
-    }
+    public bool ConsumeCurrency() { return CurrencyManager.instance.ConsumeCurrency(2, false); }
 }

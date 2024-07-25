@@ -20,7 +20,6 @@ public class CurrencyManager : MonoBehaviour
         {
             gold = value;
             UpdateCurrencyUI(value, true);
-            Debug.Log("현재 골드 : " + gold);
         }
     }
 
@@ -33,7 +32,6 @@ public class CurrencyManager : MonoBehaviour
         {
             dia = value;
             UpdateCurrencyUI(value, false);
-            Debug.Log("현재 다이아 : " + dia);
         }
     }
 
