@@ -26,19 +26,19 @@ public class ListGameObject
 public enum UnitType
 {
     Ganster, Hunter, Soldier, Thief, Wrestler,
-    Alex, Assassin, Barbarian, Bunker, Warrior,
-    Alonso, Barrel, Bat, Tonkey, Viking,
+    Alex, Assassin, Barbarian, Bunker, Ekion,
+    Alonso, Aden, Bat, Tonkey, Viking,
     Aasole, Alisda, Banies, Louizy, Makdus,
-    Batman, Macree, Magnus, Mario, Yumie
+    Batman, Teodor, Magnus, Mario, Yumie
 }
 // 공격 무기 이펙트 (원거리무기총알, 근접무기이펙트)
 public enum WeaponEffect
 {
     GansterMelee, HunteBullet, SoldierBullet, ThiefMelee, WrestlerMelee,
-    AlexBullet, AssassinMelee, BarbarianMelee, BunkerBullet, WarriorMelee,
-    AlonsoMelee, BarrelBullet, BatBullet, TonkeyBullet, VikingMelee,
+    AlexBullet, AssassinMelee, BarbarianMelee, BunkerBullet, EkionMelee,
+    AlonsoMelee, AdenMelee, BatBullet, TonkeyBullet, VikingMelee,
     AasoleBullet, AlisdaMelee, BaniesBullet, LouizyBullet, MakdusMelee,
-    BatmanBullet, MacreeBullet, MagnusMelee, MarioBullet, YumieMelee
+    BatmanBullet, TeodorMelee, MagnusMelee, MarioBullet, YumieMelee
 }
 // 사운드 타입
 public enum SoundType

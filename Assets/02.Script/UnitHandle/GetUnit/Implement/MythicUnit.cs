@@ -214,7 +214,7 @@ public class MythicUnit : GetUnitBase
         GameObject instantMyth = GetUnit(null);
         GameObject mythPos = GetUnitPos(selectedMythic);
         instantMyth.transform.SetParent(mythPos.transform);
-        instantMyth.transform.localPosition = new Vector3(mythPos.transform.childCount == 3 ? 0.1f : 0.2f * (mythPos.transform.childCount - 1), mythPos.transform.childCount == 3 ? -0.2f : 0, 0);
+        instantMyth.transform.localPosition = new Vector3(mythPos.transform.childCount == 3 ? 0.1f : 0.2f * (mythPos.transform.childCount - 1), mythPos.transform.childCount == 3 ? 0 : 0.2f, 0);
         ++CurUnit;
 
         // 사운드

@@ -9417,10 +9417,10 @@ MonoBehaviour:
       - {fileID: 5261889940100354755, guid: ff17d5b68038d7a4eb0cf83aed310c21, type: 3}
       - {fileID: 2145697942778096153, guid: ad6499bc8821bbb44adcb5a33b34f328, type: 3}
       - {fileID: 2941452737605994677, guid: 22b94b1de521f5142b27fe2f93eea732, type: 3}
-      - {fileID: 1865477407531972286, guid: 4a5b04e14df1a97449e3095bca2f918a, type: 3}
+      - {fileID: 9032080491498601046, guid: 128f21d456872cc43bb8cf570fad16a6, type: 3}
     - gameObjectList:
       - {fileID: 7940115011484265282, guid: f192f41c42fdb7d4bbf2fb86e6589aa4, type: 3}
-      - {fileID: 1277598253999656782, guid: 3342da804e5e49945bac8ff9da2fd722, type: 3}
+      - {fileID: 1747529081742522658, guid: d212ce6814ccd4049afc17d8883bf6a4, type: 3}
       - {fileID: 1659709110813243696, guid: 13b9fe7f8f611c545bea654cb27bf043, type: 3}
       - {fileID: 2956869538233832565, guid: b7b17b766e51e2147889a8754dadb752, type: 3}
       - {fileID: 3282594906433674096, guid: e76a7782e24722447b90b94584920a29, type: 3}
@@ -9432,7 +9432,7 @@ MonoBehaviour:
       - {fileID: 2087119594503938832, guid: 9216f197b9e291044a150876b80b5207, type: 3}
     - gameObjectList:
       - {fileID: 7596518995976380312, guid: 663b9d4f5335e884ab7dccada8fe3eda, type: 3}
-      - {fileID: 6940129877198972237, guid: 09d9656ec0c553a41af45e3fa1a1a700, type: 3}
+      - {fileID: 2486459208079425555, guid: 817e8af787fe13044aee70f822611367, type: 3}
       - {fileID: 1484621466492084911, guid: e070e2c51b5020c45891c5eb2979f54b, type: 3}
       - {fileID: 2561022052850752836, guid: 86ae18f12485ee2439af3eb64b8a43fa, type: 3}
       - {fileID: 1703056807361636290, guid: 3c89dc60c6deddf4c82d958e5a9f1fed, type: 3}
@@ -14561,7 +14561,7 @@ MonoBehaviour:
       unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
       cnt: 3
   - mythicType: 21
-    mythicSprite: {fileID: 21300000, guid: e7801bd0513458040901e68f28f888ea, type: 3}
+    mythicSprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
     requireList:
     - unitType: 1
       unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
@@ -15965,7 +15965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e7801bd0513458040901e68f28f888ea, type: 3}
+  m_Sprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17405,7 +17405,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Macree
+          m_StringArgument: Teodor
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1898256121
