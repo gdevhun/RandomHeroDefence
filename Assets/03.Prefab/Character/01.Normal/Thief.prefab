@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 322929438724993460}
   - component: {fileID: 6259382432125723611}
   - component: {fileID: -7540928016392787946}
+  - component: {fileID: 9154943288688391539}
   m_Layer: 0
   m_Name: Thief
   m_TagString: Untagged
@@ -120,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695eecf56ba078c4cbe95c5a9954a6b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponEffect: 3
   heroInfo:
     damageType: 1
     attackType: 0
@@ -129,6 +131,42 @@ MonoBehaviour:
     attackDamage: 100
     attackSpeed: 1
     heroDefaultSpriteDir: 1
+  gunPointTrans: {fileID: 0}
+--- !u!58 &9154943288688391539
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079279824701850116}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1001 &1647124267202873184
 PrefabInstance:
   m_ObjectHideFlags: 0

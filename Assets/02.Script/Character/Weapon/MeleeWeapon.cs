@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public enum MeleeWeaponHost
-{
-    Gangster, Thief, Wrestler,  //일반
-    Warrior, Assassin, Barbarian,  //고급
-    Alonso, Viking,  //영웅
-    Alisda, Makdus,  //전설
-    Magnus, Yumie  //신화
-}
 public class MeleeWeapon: MonoBehaviour
 {
-    public MeleeWeaponHost meleeWeaponHost;
+    public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     private int attackDamage;
     void Start()
     {
+        thisWaitForSeconds = new WaitForSeconds(activeTime);
         StartCoroutine(ActiveTime());
     }
 

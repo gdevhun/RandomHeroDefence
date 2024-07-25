@@ -77,38 +77,43 @@ public class CharacterBase : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        //CalculateSpriteRen(enemyTrans); //방향 계산
+
+        Transform enemyTrans = null;
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            enemyTrans = other.gameObject.transform;
+        }
+        if(enemyTrans != null) CalculateSpriteRen(enemyTrans);
+        
         //공격범위안에들어왔을 때 적이 머물고 있다면
         if(other.gameObject.CompareTag("Enemy")&&!isOnTarget)  //적(태그)이고, 타게팅중이 아니라면
         {
             isOnTarget = true;  //타게팅 활성화
             
-            if (other.gameObject.TryGetComponent(out Transform enemyTrans))
+            //이펙트 생성.
+            if (heroInfo.attackType == AttackType.Melee)
             {
-                CalculateSpriteRen(enemyTrans); //방향 계산
-                //이펙트 생성.
-                if (heroInfo.attackType == AttackType.Melee)
-                {
-                    anim.SetBool(IsAttacking,true); //공격 애니메이션 활성화
-                    GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
-                    go.transform.position = enemyTrans.position;
-                    //transform을 바탕으로 해당위치에 밀리웨폰생성하기
-                }
-                else   //원거리 처리
-                {
-                    GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
-                    SetLastBulletPos(go,enemyTrans);
-                }
-                
+                anim.SetBool(IsAttacking,true); //공격 애니메이션 활성화
+                GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
+                go.transform.position = enemyTrans.position;
+                //transform을 바탕으로 해당위치에 밀리웨폰생성하기
             }
-            
-            //Attack(other.gameObject.GetComponent<Enemy>);
+            else   //원거리 처리
+            {
+                GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
+                SetLastBulletPos(go,enemyTrans);
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         isOnTarget = false;
-        anim.SetBool(IsAttacking,false); //공격 애니메이션 비활성화
+        if (heroInfo.attackType == AttackType.Melee)
+        {
+            anim.SetBool(IsAttacking, false); //공격 애니메이션 비활성화
+        }
     }
 
     private Quaternion CalculateBulletRotation(Transform enemyTrans)

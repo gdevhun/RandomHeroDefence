@@ -3,24 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
-public enum RangeWeaponHost
-{
-    Hunter, Soldier, //일반
-    Alex, Bunker, //고급
-    Barrel, Bat, Tonkey, //영웅
-    Banies, Louisy, Aasole, //전설
-    Magree, Batman, Mario //신화
-}
 public class RangeWeapon : MonoBehaviour
 {
-    public RangeWeaponHost rangeWeaponHost;
+    public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
-    private float moveSpeed;
+    public float moveSpeed;
     private float moveDirection;
     private int attackDamage;
     void Start()
     {
+        thisWaitForSeconds = new WaitForSeconds(activeTime);
         StartCoroutine(ActiveTime());
     }
 

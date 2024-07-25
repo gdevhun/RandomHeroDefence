@@ -60,10 +60,12 @@ public class PoolManager : MonoBehaviour
         // (타입, 프리팹) 맵핑
         PrefMap(unitPool.allList, unitPool.prefMap);
         PrefMap(soundPool.allList, soundPool.prefMap);
+        PrefMap(weaponEffectPool.allList,weaponEffectPool.prefMap);
 
         // (타입, 큐) 맵핑
         QueMap(unitPool.queMap, unitPool.prefMap);
         QueMap(soundPool.queMap, soundPool.prefMap);
+        QueMap(weaponEffectPool.queMap,weaponEffectPool.prefMap);
     }
 
     // (타입, 프리팹) 맵핑
