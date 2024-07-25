@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class RangeWeapon : MonoBehaviour
 {
+    public WeaponEffect weaponEffect;
     public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     public float moveSpeed;
@@ -24,7 +25,7 @@ public class RangeWeapon : MonoBehaviour
     private IEnumerator ActiveTime()
     {
         yield return thisWaitForSeconds;
-        gameObject.SetActive(false);
+        PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, gameObject, weaponEffect);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

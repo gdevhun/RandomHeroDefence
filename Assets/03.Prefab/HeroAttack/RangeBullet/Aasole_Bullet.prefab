@@ -133,5 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a318b6bdb3c8514a89fb83478a0b4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponEffect: 15
   activeTime: 4.5
   moveSpeed: 4.5

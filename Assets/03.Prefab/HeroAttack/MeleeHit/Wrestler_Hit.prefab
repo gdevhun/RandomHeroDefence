@@ -155,4 +155,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d85bbef0462a54290fb14ab8b238c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponEffect: 4
   activeTime: 0.8

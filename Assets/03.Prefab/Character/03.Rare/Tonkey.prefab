@@ -133,6 +133,7 @@ MonoBehaviour:
     attackSpeed: 3
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 8048308994141371706}
+  limitAtkSpeed: 0
 --- !u!58 &2386370272419704329
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 2012236a23e31ba448c929d7e28943cb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.05, y: 0.93}
@@ -132,6 +132,7 @@ MonoBehaviour:
     attackSpeed: 4
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 0}
+  limitAtkSpeed: 0
 --- !u!58 &5271317176962912626
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -111,6 +111,7 @@ MonoBehaviour:
     attackSpeed: 2
     heroDefaultSpriteDir: 0
   gunPointTrans: {fileID: 0}
+  limitAtkSpeed: 0
 --- !u!95 &2489706490217335231
 Animator:
   serializedVersion: 5

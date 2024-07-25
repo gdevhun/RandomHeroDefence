@@ -45,12 +45,9 @@ public class CharacterBase : MonoBehaviour
     public HeroInfo heroInfo;
     private static readonly int IsAttacking = Animator.StringToHash("isAttack");
     public Transform gunPointTrans;
-    /*public delegate void IncreaseDamage(int damage);
-    public event IncreaseDamage OnIncreaseDamage;
+    private float prevAtkSpeed = 0;
+    public float limitAtkSpeed;
 
-    public delegate void IncreaseAttackSpeed(float speed);
-    public event IncreaseAttackSpeed OnIncreaseAttackSpeed;*/
-    
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -61,20 +58,17 @@ public class CharacterBase : MonoBehaviour
     private void Start()
     {
         //인스펙터 초기 설정 공격력, 공격속도로 초기화
-        
+        prevAtkSpeed = limitAtkSpeed;
     }
 
 
     void Update()
     {
-        
+        if (prevAtkSpeed < limitAtkSpeed)
+        {
+            prevAtkSpeed += Time.deltaTime;
+        }
     }
-
-    // private void Attack(Enemy enemy)
-    // {
-    //     enemy.hp -= AttackDamage;
-    // }
-
     private void OnTriggerStay2D(Collider2D other)
     {
         //CalculateSpriteRen(enemyTrans); //방향 계산
@@ -87,9 +81,10 @@ public class CharacterBase : MonoBehaviour
         if(enemyTrans != null) CalculateSpriteRen(enemyTrans);
         
         //공격범위안에들어왔을 때 적이 머물고 있다면
-        if(other.gameObject.CompareTag("Enemy")&&!isOnTarget)  //적(태그)이고, 타게팅중이 아니라면
+        if(other.gameObject.CompareTag("Enemy") && prevAtkSpeed >= limitAtkSpeed)  //적(태그)이고, 타게팅중이 아니라면
         {
-            isOnTarget = true;  //타게팅 활성화
+            //isOnTarget = true;  //타게팅 활성화
+            prevAtkSpeed = 0f;
             
             //이펙트 생성.
             if (heroInfo.attackType == AttackType.Melee)
@@ -97,11 +92,13 @@ public class CharacterBase : MonoBehaviour
                 anim.SetBool(IsAttacking,true); //공격 애니메이션 활성화
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.transform.position = enemyTrans.position;
+                go.GetComponent<MeleeWeapon>().weaponEffect = weaponEffect;
                 //transform을 바탕으로 해당위치에 밀리웨폰생성하기
             }
             else   //원거리 처리
             {
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
+                go.GetComponent<RangeWeapon>().weaponEffect = weaponEffect;
                 SetLastBulletPos(go,enemyTrans);
             }
         }
@@ -109,7 +106,7 @@ public class CharacterBase : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        isOnTarget = false;
+        //isOnTarget = false;
         if (heroInfo.attackType == AttackType.Melee)
         {
             anim.SetBool(IsAttacking, false); //공격 애니메이션 비활성화

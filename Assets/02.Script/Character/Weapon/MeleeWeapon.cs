@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MeleeWeapon: MonoBehaviour
 {
+    public WeaponEffect weaponEffect;
     public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     private int attackDamage;
@@ -17,7 +18,7 @@ public class MeleeWeapon: MonoBehaviour
     private IEnumerator ActiveTime()
     {
         yield return thisWaitForSeconds;
-        gameObject.SetActive(false);
+        PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, gameObject, weaponEffect);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
