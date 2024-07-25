@@ -64,6 +64,34 @@ public class MythicUnit : GetUnitBase
         return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, selectedMythic);
     }
 
+    // 소환 할 신화 위치 반환
+    protected override GameObject GetUnitPos(UnitType unitType)
+    {   
+        // 새로운 유닛 스폰 위치 반환
+        // 1.아직 스폰되지 않은 새로운 스폰 위치들 중
+        // 2.랜덤 스폰 위치 반환
+
+        // 일단 스폰되지 않은 새로운 스폰 위치들 구함
+        ListGameObject newUnitPosList = new ListGameObject();
+        for(int i = 0; i < spawnPosList.gameObjectList.Count; i++)
+        {
+            if(spawnPosList.gameObjectList[i].transform.childCount > 0) continue;
+            newUnitPosList.gameObjectList.Add(spawnPosList.gameObjectList[i]);
+        }
+
+        // 새로운 스폰 위치가 있으면 새로운 스폰 위치 반환
+        if(newUnitPosList.gameObjectList.Count > 0)
+        {
+            GameObject newUnitPos = newUnitPosList.gameObjectList[UnityEngine.Random.Range(0, newUnitPosList.gameObjectList.Count)];
+            unitPosMap[unitType][newUnitPos] = 1;
+            return newUnitPos;
+        }
+
+        // 여기 오는 경우
+        // 1.스폰되지 않은 새로운 스폰 위치도 없는 경우 => 모든 스폰 위치가 사용 중
+        return null;
+    }
+
     // 소환 할 신화 선택
     public void SelectMythic(string mythicName)
     {

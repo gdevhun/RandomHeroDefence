@@ -6,7 +6,7 @@ using TMPro;
 
 public abstract class GetUnitBase : MonoBehaviour
 {
-    static private ListGameObject spawnPosList; // 스폰 위치들
+    static protected ListGameObject spawnPosList; // 스폰 위치들
     static public Dictionary<UnitType, Dictionary<GameObject, int> > unitPosMap; // (유닛, (위치, 자식 수)) 맵핑
     static protected int maxUnit; // 최대 유닛 수
     static private int curUnit; // 현재 유닛 수
@@ -82,7 +82,7 @@ public abstract class GetUnitBase : MonoBehaviour
     }
 
     // 유닛 스폰 위치 반환
-    protected GameObject GetUnitPos(UnitType unitType)
+    protected virtual GameObject GetUnitPos(UnitType unitType)
     {
         // 같은 유닛이 스폰된 위치가 있으면서
         if(unitPosMap.ContainsKey(unitType))
