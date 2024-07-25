@@ -14715,7 +14715,7 @@ GameObject:
   - component: {fileID: 3140209283490986460}
   - component: {fileID: 7151256889612630470}
   m_Layer: 0
-  m_Name: 'Love Hit '
+  m_Name: Love Hit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
