@@ -38,11 +38,13 @@ public class HeroInfo  //히어로 정보 클래스
 }
 public class CharacterBase : MonoBehaviour
 {
+    [SerializeField] private WeaponEffect weaponEffect;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
     private bool isOnTarget;
     public HeroInfo heroInfo;
     private static readonly int IsAttacking = Animator.StringToHash("isAttack");
+    public Transform gunPointTrans;
     /*public delegate void IncreaseDamage(int damage);
     public event IncreaseDamage OnIncreaseDamage;
 
@@ -53,7 +55,7 @@ public class CharacterBase : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        
+        if (heroInfo.attackType == AttackType.Melee) gunPointTrans = null;
     }
 
     private void Start()
@@ -87,13 +89,14 @@ public class CharacterBase : MonoBehaviour
                 if (heroInfo.attackType == AttackType.Melee)
                 {
                     anim.SetBool(IsAttacking,true); //공격 애니메이션 활성화
+                    GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
+                    go.transform.position = enemyTrans.position;
                     //transform을 바탕으로 해당위치에 밀리웨폰생성하기
                 }
                 else   //원거리 처리
                 {
-                    //PoolManager.instance.GetPool() 9  0.6500563   0.27
-                    //Bullet bullet = BulletManager.instance.GetSpecialBullet(gunTransform.position, bulletRotation);
-                    //bullet.additiveDamage = additiveDmg;
+                    GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
+                    SetLastBulletPos(go,enemyTrans);
                 }
                 
             }
@@ -108,14 +111,19 @@ public class CharacterBase : MonoBehaviour
         anim.SetBool(IsAttacking,false); //공격 애니메이션 비활성화
     }
 
-    public void CalculateDirection(Transform enemyTrans)
+    private Quaternion CalculateBulletRotation(Transform enemyTrans)
     {
         //발사되는 총알의 방향 구현 로직
-        Vector2 bulletDirection = (enemyTrans.position - this.transform.position).normalized; //방향
-        float angle = Mathf.Atan2(bulletDirection.y, bulletDirection.x) * Mathf.Rad2Deg; //각도
-        Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward); //쿼터니언
+        Vector2 bulletDirection = (enemyTrans.position - this.transform.position); //방향계산
+        float angle = Mathf.Atan2(bulletDirection.y, bulletDirection.x) * Mathf.Rad2Deg; //방향을 기반으로 각도 계산
+        Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward); //쿼터니언 계산
+        return bulletRotation;
     }
-
+    private void SetLastBulletPos(GameObject bullet,Transform enemyTrans) //최종 총알 발사 입구 설정
+    {
+        bullet.transform.SetPositionAndRotation(gunPointTrans.position,CalculateBulletRotation(enemyTrans));
+    }
+    
     private void CalculateSpriteRen(Transform enemyTrans) //적을 바라보는 스프라이트렌더러 교체함수
     {  
         Vector2 heroDirection = enemyTrans.position - transform.position;
