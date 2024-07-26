@@ -46,7 +46,7 @@ public class SpawnUnit : GetUnitBase, IConsumable
 
         // 유닛 소환
         instantUnit.transform.SetParent(unitPos.transform);
-        instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? 0 : 0.2f, 0);
+        instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? 0 : 0.2f, -0.1f * (unitPos.transform.childCount - 1));
         ++CurUnit;
     }
 
