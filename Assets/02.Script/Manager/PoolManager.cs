@@ -46,26 +46,40 @@ public enum SoundType
     GetUnit, Sell, Click, Upgrade, NotEnough
 }
 
+// 몬스터 타입
+public enum EnemyType
+{
+    Normal1, MiniBoss1, Normal2, Boss1,
+    Normal3, MiniBoss2, Normal4, Boss2,
+    Normal5, MiniBoss3, Normal6, Boss3,
+    Normal7, MiniBoss4, Normal8, Boss4,
+    Normal9, MiniBoss5, Normal10, Boss5
+}
+
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager instance;
-    private void Awake() { instance = this; }
     [Header ("풀링 오브젝트 부모")] public GameObject poolSet;
     [Header ("유닛 풀")] public Pool<UnitType> unitPool;
     [Header ("히어로 무기")] public Pool<WeaponEffect> weaponEffectPool;
     [Header ("사운드 풀")] public Pool<SoundType> soundPool;
+    [Header ("몬스터 풀")] public Pool<EnemyType> enemyPool;
 
-    private void Start()
+    private void Awake()
     {
+        instance = this;
+
         // (타입, 프리팹) 맵핑
         PrefMap(unitPool.allList, unitPool.prefMap);
         PrefMap(soundPool.allList, soundPool.prefMap);
         PrefMap(weaponEffectPool.allList,weaponEffectPool.prefMap);
+        PrefMap(enemyPool.allList, enemyPool.prefMap);
 
         // (타입, 큐) 맵핑
         QueMap(unitPool.queMap, unitPool.prefMap);
         QueMap(soundPool.queMap, soundPool.prefMap);
         QueMap(weaponEffectPool.queMap,weaponEffectPool.prefMap);
+        QueMap(enemyPool.queMap, enemyPool.prefMap);
     }
 
     // (타입, 프리팹) 맵핑
