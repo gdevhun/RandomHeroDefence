@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 재생할 배경음 타입 => 키로 사용
-public enum BgmType { Main }
+public enum BgmType { Main, Normal, MiniBoss, Boss }
 
 public class SoundManager : MonoBehaviour
 {
