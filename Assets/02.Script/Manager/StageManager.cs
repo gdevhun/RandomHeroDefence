@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 // 스테이지 타입
 public enum StageType
@@ -32,6 +34,7 @@ public class StageManager : MonoBehaviour
 
     // 현재 몬스터 수
     [Header ("최대 몬스터 수")] [SerializeField] private int maxEnemyCnt;
+    private float maxEnemyFloatCnt;
     private int enemyCnt;
     public int EnemyCnt
     {
@@ -40,7 +43,6 @@ public class StageManager : MonoBehaviour
         {
             enemyCnt = value;
             if(EnemyCnt > maxEnemyCnt) Debug.Log("몬스터 120 마리 초과");
-            else Debug.Log(enemyCnt);
             UpdateEnemyCntUI(value);
         }
     }
@@ -53,9 +55,16 @@ public class StageManager : MonoBehaviour
     // 캐싱
     private WaitForSeconds oneSecond = new WaitForSeconds(1f);
 
+    // UI
+    [Header ("스테이지 번호 텍스트")] [SerializeField] private TextMeshProUGUI stageNumText;
+    [Header ("스테이지 시간 텍스트")] [SerializeField] private TextMeshProUGUI stageTimeText;
+    [Header ("몬스터 수 텍스트")] [SerializeField] private TextMeshProUGUI enemyCntText;
+    [Header ("몬스터 수 필 이미지")] [SerializeField] private Image enemyCntFillImage;
+
     // 스테이지 데이터 초기화 및 스테이지 시작
     private void Start()
     {
+        maxEnemyFloatCnt = maxEnemyCnt;
         InitStage();
         StartStage(curStage);
     }
@@ -83,18 +92,18 @@ public class StageManager : MonoBehaviour
             switch(stageData.stageType)
             {
                 case StageType.Normal :
-                    stageData.stageTime = 1; // 20
+                    stageData.stageTime = 20;
                     stageData.enemyType = (EnemyType)(stageData.stageNumber / 5 * 2);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[0]);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[1]);
                     break;
                 case StageType.MiniBoss :
-                    stageData.stageTime = 2; // 30
+                    stageData.stageTime = 30;
                     stageData.enemyType = (EnemyType)(1 + 4 * (stageData.stageNumber / 10));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     break;
                 case StageType.Boss :
-                    stageData.stageTime = 3; // 60
+                    stageData.stageTime = 60;
                     stageData.enemyType = (EnemyType)(3 + 4 * (stageData.stageNumber / 10 - 1));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     break;
@@ -118,7 +127,7 @@ public class StageManager : MonoBehaviour
         
         // UI 갱신
         UpdateStageNumUI(stage);
-        UpdateStageTimeUI(stage);
+        UpdateStageTimeUI(stage.stageTime);
     }
 
     // 일반 스테이지
@@ -128,10 +137,12 @@ public class StageManager : MonoBehaviour
         SoundManager.instance.BgmSoundPlay(BgmType.Normal);
 
         // 몬스터 소환
+        int stageTime = stage.stageTime;
         for(int i = 0; i < stage.stageTime; i++)
         {
             EnemySpawn(stage);
             yield return oneSecond;
+            UpdateStageTimeUI(--stageTime);
         }
 
         // 다음 스테이지
@@ -146,7 +157,12 @@ public class StageManager : MonoBehaviour
 
         // 몬스터 소환
         EnemySpawn(stage);
-        for(int i = 0; i < stage.stageTime; i++) yield return oneSecond;
+        int stageTime = stage.stageTime;
+        for(int i = 0; i < stage.stageTime; i++)
+        {
+            yield return oneSecond;
+            UpdateStageTimeUI(--stageTime);
+        }
 
         // 다음 스테이지
         ++CurStage;
@@ -160,7 +176,12 @@ public class StageManager : MonoBehaviour
 
         // 몬스터 소환
         GameObject boss = EnemySpawn(stage);
-        for(int i = 0; i < stage.stageTime; i++) yield return oneSecond;
+        int stageTime = stage.stageTime;
+        for(int i = 0; i < stage.stageTime; i++)
+        {
+            yield return oneSecond;
+            UpdateStageTimeUI(--stageTime);
+        }
 
         // 보스 잡았는지 체크
         if(boss.activeSelf) Debug.Log("보스 잡기 실패");
@@ -183,7 +204,17 @@ public class StageManager : MonoBehaviour
     }
 
     // 스테이지 UI 갱신
-    private void UpdateStageNumUI(StageData stage) {}
-    private void UpdateStageTimeUI(StageData stage) {}
-    private void UpdateEnemyCntUI(int cur) {}
+    private void UpdateStageNumUI(StageData stage)
+    {
+        stageNumText.text = stage.stageNumber.ToString();
+    }
+    private void UpdateStageTimeUI(int cur)
+    {
+        stageTimeText.text = cur.ToString();
+    }
+    private void UpdateEnemyCntUI(int cur)
+    {
+        enemyCntText.text = $"{cur} / {maxEnemyCnt}";
+        enemyCntFillImage.fillAmount = cur / maxEnemyFloatCnt;
+    }
 }
