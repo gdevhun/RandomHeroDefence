@@ -74,7 +74,7 @@ public abstract class GetUnitBase : MonoBehaviour
     }
 
     // 유닛 스폰 위치 반환
-    protected virtual GameObject GetUnitPos(UnitType unitType)
+    public virtual GameObject GetUnitPos(UnitType unitType)
     {
         // 같은 유닛이 스폰된 위치가 있으면서
         if(unitPosMap.ContainsKey(unitType))
@@ -120,7 +120,7 @@ public abstract class GetUnitBase : MonoBehaviour
     }
 
     // 유닛 UI 갱신
-    public static void UpdateUnitUI(int val) { unitCntText.text = val.ToString() + " / " + maxUnit; }
+    private static void UpdateUnitUI(int val) { unitCntText.text = val.ToString() + " / " + maxUnit; }
 
     // 소환, 합성, 도박, 신화에서 구현
     public abstract void GetUnitHandle();

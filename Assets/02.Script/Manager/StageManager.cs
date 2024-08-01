@@ -48,12 +48,12 @@ public class StageManager : MonoBehaviour
     }
 
     // 몬스터 이동경로
-    [Header ("몬스터 이동 위치")] public ListGameObject pathPosList;
+    [Header ("몬스터 이동 위치")] [SerializeField] private ListGameObject pathPosList;
     public Dictionary<GameObject, ListGameObject> stageTypePathMap = new Dictionary<GameObject, ListGameObject>(); // 몬스터 스폰 위치에 따른 이동경로 맵핑
-    [Header ("모든 이동경로 리스트")] public List<ListGameObject> pathList;
+    [Header ("모든 이동경로 리스트")] [SerializeField] private List<ListGameObject> pathList;
 
     // 캐싱
-    private WaitForSeconds oneSecond = new WaitForSeconds(1f);
+    public WaitForSeconds oneSecond = new WaitForSeconds(1f);
 
     // UI
     [Header ("스테이지 번호 텍스트")] [SerializeField] private TextMeshProUGUI stageNumText;

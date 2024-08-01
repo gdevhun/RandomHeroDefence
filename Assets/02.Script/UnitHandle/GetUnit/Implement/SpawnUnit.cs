@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnUnit : GetUnitBase, IConsumable
@@ -16,12 +17,12 @@ public class SpawnUnit : GetUnitBase, IConsumable
     public override void GetUnitHandle()
     {
         // 재화 체크
+        ++SpawnCnt;
         if(!ConsumeCurrency())
         {
             SoundManager.instance.SFXPlay(SoundType.NotEnough);
             return;
         }
-        ++spawnCnt;
 
         // 최대 유닛 체크
         if(CurUnit >= maxUnit)
@@ -51,7 +52,19 @@ public class SpawnUnit : GetUnitBase, IConsumable
     }
 
     // 재화
-    private int spawnCnt = 0;
+    private int spawnCnt;
+    public int SpawnCnt
+    {
+        get { return spawnCnt; } 
+        set
+        {
+            spawnCnt = value;
+            amount = 10 + spawnCnt / 2;
+            UpdateSpawnGoldUI();
+        }
+    }
     public int amount { get; set; }
-    public bool ConsumeCurrency() { return CurrencyManager.instance.ConsumeCurrency(10 + spawnCnt / 2, true); }
+    public bool ConsumeCurrency() { return CurrencyManager.instance.ConsumeCurrency(amount, true); }
+    [Header ("소환 골드 텍스트")] [SerializeField] private TextMeshProUGUI spawnGoldText;
+    private void UpdateSpawnGoldUI() { spawnGoldText.text = amount.ToString(); }
 }

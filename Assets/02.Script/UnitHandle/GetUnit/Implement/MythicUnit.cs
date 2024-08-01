@@ -24,7 +24,7 @@ public class UnitRequire
 public class MythicUnit : GetUnitBase
 {
     [Header ("신화 조합식")] [SerializeField] private List<MythicComb> mythicCombList = new List<MythicComb>();
-    private Dictionary<UnitType, MythicComb> mythicCombMap = new Dictionary<UnitType, MythicComb>(); // 신화 조합식 맵핑
+    public Dictionary<UnitType, MythicComb> mythicCombMap = new Dictionary<UnitType, MythicComb>(); // 신화 조합식 맵핑
     private UnitType selectedMythic; // 소환 할 신화
     public UnitType SelectedMythic
     {
@@ -53,7 +53,7 @@ public class MythicUnit : GetUnitBase
     protected override GameObject GetUnitFromPool(HeroGradeType heroGradeType) { return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, selectedMythic); }
 
     // 소환 할 신화 위치 반환
-    protected override GameObject GetUnitPos(UnitType unitType)
+    public override GameObject GetUnitPos(UnitType unitType)
     {   
         // 새로운 유닛 스폰 위치 반환
         // 1.아직 스폰되지 않은 새로운 스폰 위치들 중
@@ -81,7 +81,11 @@ public class MythicUnit : GetUnitBase
     }
 
     // 소환 할 신화 선택
-    public void SelectMythic(string mythicName) { SelectedMythic = (UnitType)Enum.Parse(typeof(UnitType), mythicName, true); }
+    public void SelectMythic(string mythicName)
+    {
+        SelectedMythic = (UnitType)Enum.Parse(typeof(UnitType), mythicName, true);
+        SoundManager.instance.SFXPlay(SoundType.Click);
+    }
 
     // 신화 소환 정보 UI 갱신
     private void UpdateMythicInfoUI(UnitType mythicType)

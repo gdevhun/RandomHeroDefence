@@ -11,6 +11,8 @@ public class GambleUnit : GetUnitBase, IConsumable
         { HeroGradeType.Legend, 12 }
     };
 
+    private void Start() { amount = 2; }
+
     // 도박 구체화
     public override void GetUnitHandle()
     {
@@ -51,5 +53,5 @@ public class GambleUnit : GetUnitBase, IConsumable
 
     // 재화
     public int amount { get; set; }
-    public bool ConsumeCurrency() { return CurrencyManager.instance.ConsumeCurrency(2, false); }
+    public bool ConsumeCurrency() { return CurrencyManager.instance.ConsumeCurrency(amount, false); }
 }

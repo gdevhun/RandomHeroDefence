@@ -43,7 +43,7 @@ public enum WeaponEffect
 // 사운드 타입
 public enum SoundType
 {
-    GetUnit, Sell, Click, Upgrade, NotEnough
+    GetUnit, Sell, Click, Upgrade, NotEnough, Roulette
 }
 
 // 몬스터 타입

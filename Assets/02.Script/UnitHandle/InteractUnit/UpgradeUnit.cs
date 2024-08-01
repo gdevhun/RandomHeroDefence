@@ -28,6 +28,7 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     {
         // 재화 체크
         curGradeType = heroGradeType;
+        amount = curGradeType == HeroGradeType.Normal ? 30 + 10 * gradeUpgradeMap[curGradeType] : 2 + gradeUpgradeMap[curGradeType];
         if(!ConsumeCurrency())
         {
             SoundManager.instance.SFXPlay(SoundType.NotEnough);
@@ -54,8 +55,8 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     public int amount { get; set; }
     public bool ConsumeCurrency()
     {
-        if(curGradeType == HeroGradeType.Normal) return CurrencyManager.instance.ConsumeCurrency(30 + 10 * gradeUpgradeMap[curGradeType], true);
-        return CurrencyManager.instance.ConsumeCurrency(2 + gradeUpgradeMap[curGradeType], false);
+        if(curGradeType == HeroGradeType.Normal) return CurrencyManager.instance.ConsumeCurrency(amount, true);
+        return CurrencyManager.instance.ConsumeCurrency(amount, false);
     }
 
     // 업그레이드 UI 갱신
