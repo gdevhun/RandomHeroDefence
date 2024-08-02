@@ -47,6 +47,7 @@ public class CharacterBase : MonoBehaviour
     public Transform gunPointTrans;
     private float prevAtkSpeed = 0;
     public float limitAtkSpeed;
+    private Transform enemyTrans;
 
     void Awake()
     {
@@ -58,6 +59,7 @@ public class CharacterBase : MonoBehaviour
     private void Start()
     {
         //인스펙터 초기 설정 공격력, 공격속도로 초기화
+        limitAtkSpeed = heroInfo.attackSpeed;
         prevAtkSpeed = limitAtkSpeed;
     }
 
@@ -73,7 +75,7 @@ public class CharacterBase : MonoBehaviour
     {
         //CalculateSpriteRen(enemyTrans); //방향 계산
 
-        Transform enemyTrans = null;
+        
         if (other.gameObject.CompareTag("Enemy"))
         {
             enemyTrans = other.gameObject.transform;
@@ -93,12 +95,14 @@ public class CharacterBase : MonoBehaviour
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.transform.position = enemyTrans.position;
                 go.GetComponent<MeleeWeapon>().weaponEffect = weaponEffect;
+                go.GetComponent<MeleeWeapon>().attackDamage = heroInfo.attackDamage;
                 //transform을 바탕으로 해당위치에 밀리웨폰생성하기
             }
             else   //원거리 처리
             {
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.GetComponent<RangeWeapon>().weaponEffect = weaponEffect;
+                go.GetComponent<RangeWeapon>().attackDamage = heroInfo.attackDamage;
                 SetLastBulletPos(go,enemyTrans);
             }
         }
