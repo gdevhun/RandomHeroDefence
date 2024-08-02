@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1034387894828904380}
   - component: {fileID: 3945254509365180252}
   - component: {fileID: 1308855266545230168}
+  - component: {fileID: 486070566879636926}
   m_Layer: 7
   m_Name: MiniBoss5
   m_TagString: Enemy
@@ -170,3 +171,19 @@ CapsuleCollider2D:
   m_Offset: {x: -0.05392164, y: -0.017332017}
   m_Size: {x: 0.15497625, y: 0.22045267}
   m_Direction: 0
+--- !u!114 &486070566879636926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832279207956081591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e3c8a998084e445a01dee242205a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 0
+  moveSpeed: 1
+  spawnPos: {fileID: 0}
+  curPathIdx: 0
