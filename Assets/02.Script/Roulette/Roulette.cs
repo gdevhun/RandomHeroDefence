@@ -13,7 +13,7 @@ public class Roulette : MonoBehaviour
 
 	private	float pieceAngle, halfPieceAngle, halfPieceAngleWithPaddings; // 룰렛 내부에 아이템 하나가 배치되는 각도, 룰렛 내부에 아이템 하나가 배치되는 각도의 절반, 룰렛 내부에 아이템 하나가 배치되는 각도의 절반에 패딩 적용
 	private	int	accumulatedWeight; // 가중치 계산용
-	private	bool isSpin = false; // 회전 중 인지 체크
+	[HideInInspector] public bool isSpin = false; // 회전 중 인지 체크
 	private	int	selectedIdx = 0; // 선택된 아이템 인덱스
 
 	private void Awake()

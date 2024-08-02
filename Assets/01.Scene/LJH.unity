@@ -1217,7 +1217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &109008072
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4570,6 +4570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolTipPanel: {fileID: 1786862451}
+  unitHandlePanel: {fileID: 2058956676}
+  unitGamblePanel: {fileID: 109008071}
   unitSellCompPanel: {fileID: 1218152117}
   unitSellGoldImage: {fileID: 1657374036}
   unitSellDiaImage: {fileID: 129589354}
@@ -5819,6 +5821,9 @@ MonoBehaviour:
   - {fileID: 1997613948}
   - {fileID: 25374155}
   jackPotBtn: {fileID: 1149227500}
+  hideUnitHandleBtn: {fileID: 1495621391}
+  gambleExitBtn: {fileID: 964174706}
+  isJackPot: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -9813,13 +9818,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 437366048}
-        m_TargetAssemblyTypeName: UiUnit, Assembly-CSharp
-        m_MethodName: ExitPanel
-        m_Mode: 2
+      - m_Target: {fileID: 1306885828}
+        m_TargetAssemblyTypeName: GambleHideExitBtn, Assembly-CSharp
+        m_MethodName: OnBtn
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 109008071}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13530,6 +13535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1306885827}
   - component: {fileID: 1306885826}
+  - component: {fileID: 1306885828}
   m_Layer: 0
   m_Name: UnitGamble
   m_TagString: Untagged
@@ -13564,6 +13570,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1306885828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306885825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc9b3258364ea2246ba8f43c714b9f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roulette: {fileID: 9204897089409381673}
+  jackPot: {fileID: 518126130}
 --- !u!1 &1310576460
 GameObject:
   m_ObjectHideFlags: 0
@@ -15986,17 +16006,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 437366048}
-        m_TargetAssemblyTypeName: UiUnit, Assembly-CSharp
-        m_MethodName: ExitPanel
-        m_Mode: 2
+      - m_Target: {fileID: 1306885828}
+        m_TargetAssemblyTypeName: GambleHideExitBtn, Assembly-CSharp
+        m_MethodName: OnBtn
+        m_Mode: 6
         m_Arguments:
-          m_ObjectArgument: {fileID: 2058956676}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1495621392
 MonoBehaviour:
@@ -24298,6 +24318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roulette: {fileID: 9204897089409381673}
   spinBtn: {fileID: 4132781550655934256}
+  jackPot: {fileID: 518126130}
 --- !u!4 &5520363243894867003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7195571648027880629, guid: 917cad3e92b6a854f954226b01467e49, type: 3}
@@ -25237,6 +25258,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  isSpin: 0
 --- !u!4 &9208241057066798331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6347009781500354031, guid: e105d48f9fa46b1439c143866f10e2f3, type: 3}

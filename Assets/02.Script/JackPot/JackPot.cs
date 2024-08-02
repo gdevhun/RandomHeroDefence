@@ -9,6 +9,9 @@ public class JackPot : MonoBehaviour, IConsumable
     [Header ("신화 조합")] [SerializeField] private MythicUnit mythicUnit;
     [Header ("잭팟 유닛이 들어갈 칸")] [SerializeField] private List<Image> jackPotUnitImage = new List<Image>();
     [Header ("잭팟 버튼")] [SerializeField] private Button jackPotBtn;
+    [Header ("유닛 핸들 패널 숨기기 버튼")] public Button hideUnitHandleBtn;
+    [Header ("도박 나가기 버튼")] public Button gambleExitBtn;
+    [HideInInspector] public bool isJackPot;
 
     private void Awake() { amount = 5; }
 

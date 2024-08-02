@@ -10,6 +10,8 @@ public class UiUnit : MonoBehaviour
     private void Awake() { instance = this; }
 
     [Header ("툴팁 패널")] public ToolTipUnit toolTipPanel;
+    [Header ("유닛 핸들 패널")] public GameObject unitHandlePanel;
+    [Header ("유닛 도박 패널")] public GameObject unitGamblePanel;
     [Header ("유닛 판매 / 합성 패널")] public GameObject unitSellCompPanel;
     [Header ("유닛 판매 골드 이미지")] public GameObject unitSellGoldImage;
     [Header ("유닛 판매 다이아 이미지")] public GameObject unitSellDiaImage;
