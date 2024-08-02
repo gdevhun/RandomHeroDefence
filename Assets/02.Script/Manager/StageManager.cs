@@ -199,6 +199,7 @@ public class StageManager : MonoBehaviour
             instantEnemy = PoolManager.instance.GetPool(PoolManager.instance.enemyPool.queMap, stage.enemyType);
             instantEnemy.transform.position = stage.spawnPos.gameObjectList[i].transform.position;
             instantEnemy.GetComponent<EnemyBase>().spawnPos = stage.spawnPos.gameObjectList[i];
+            instantEnemy.GetComponent<EnemyBase>().enemyType = stage.enemyType;
             ++EnemyCnt;
         }
         return instantEnemy;

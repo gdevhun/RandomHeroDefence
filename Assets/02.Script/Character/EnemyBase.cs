@@ -12,7 +12,7 @@ public class EnemyBase : MonoBehaviour
     [HideInInspector] public GameObject spawnPos; // 몬스터 스폰 위치
     private int curPathIdx = 0; // 현재 이동 할 위치 인덱스
     [Header ("렌더러")] [SerializeField] private SpriteRenderer rend;
-
+    public EnemyType enemyType;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -44,6 +44,7 @@ public class EnemyBase : MonoBehaviour
     public void InactiveObj()
     {
         gameObject.SetActive(false); //에니메이션 데드이벤트 끝쪽에서 호출
+        PoolManager.instance.ReturnPool(PoolManager.instance.enemyPool.queMap,gameObject,enemyType);
     }
     void Update()
     {
