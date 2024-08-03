@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class SelectUnit : MonoBehaviour
 {
@@ -8,8 +9,9 @@ public class SelectUnit : MonoBehaviour
     [HideInInspector] public GameObject selectedPos; // 선택된 유닛 스폰 위치
     [Header ("유닛 스폰 위치만 클릭되게")] [SerializeField] private LayerMask posLayerMask;
     private Vector3 sPos = Vector3.zero; // 시작 위치
-    private const float dragThreshold = 1f; // 클릭과 드래그를 구분하는 임계 값
+    private const float dragThreshold = 0.5f; // 클릭과 드래그를 구분하는 임계 값
     private bool isDrag = false; // 드래그 체크
+    [Header ("이동 할 위치 표시")] [SerializeField] private GameObject targetPos;
 
     private void Update() { Down(); }
 
@@ -66,6 +68,16 @@ public class SelectUnit : MonoBehaviour
             
             // 임계 값 벗어나면 드래그
             isDrag = Vector3.Distance(sPos, cPos) > dragThreshold ? true : false;
+
+            // 히트된 콜라이더 가져와서
+            RaycastHit2D hit = Physics2D.Raycast(selectedPos.transform.position, Vector2.zero, Mathf.Infinity, posLayerMask);
+
+            // 이동 할 위치 표시
+            if(hit.collider != null)
+            {
+                targetPos.SetActive(true);
+                targetPos.transform.position = hit.collider == selectedPos.GetComponent<Collider2D>() ? sPos : hit.transform.position;
+            }
         }
     }
 
@@ -102,6 +114,10 @@ public class SelectUnit : MonoBehaviour
                     if(selectedHeroGradeType == HeroGradeType.Normal || selectedHeroGradeType == HeroGradeType.Elite) UiUnit.instance.unitSellGoldText.text = (50 + 50 * (int)selectedHeroGradeType).ToString();
                     else if(selectedHeroGradeType == HeroGradeType.Rare || selectedHeroGradeType == HeroGradeType.Legend) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
                 }
+
+                // 이동 할 위치 표시 끔
+                targetPos.SetActive(false);
+
                 return;
             }
 
@@ -122,6 +138,9 @@ public class SelectUnit : MonoBehaviour
                 // 드래그 종료
                 isDrag = false;
 
+                // 이동 할 위치 표시 끔
+                targetPos.SetActive(false);
+
                 return;
             }
 
@@ -138,6 +157,9 @@ public class SelectUnit : MonoBehaviour
 
             // 드래그 종료
             isDrag = false;
+
+            // 이동 할 위치 표시 끔
+            targetPos.SetActive(false);
         }
     }
 }
