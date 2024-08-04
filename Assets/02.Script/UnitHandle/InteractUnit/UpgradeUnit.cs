@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -29,11 +28,7 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         // 재화 체크
         curGradeType = heroGradeType;
         amount = curGradeType == HeroGradeType.Normal ? 30 + 10 * gradeUpgradeMap[curGradeType] : 2 + gradeUpgradeMap[curGradeType];
-        if(!ConsumeCurrency())
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 업그레이드
         int e = 3;
@@ -60,7 +55,7 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     }
 
     // 업그레이드 UI 갱신
-    public void UpdateUpgradeUI(HeroGradeType heroGradeType)
+    private void UpdateUpgradeUI(HeroGradeType heroGradeType)
     {
         if(heroGradeType == HeroGradeType.Normal)
         {

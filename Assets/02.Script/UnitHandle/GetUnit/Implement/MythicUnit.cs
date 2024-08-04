@@ -29,11 +29,7 @@ public class MythicUnit : GetUnitBase
     public UnitType SelectedMythic
     {
         get { return selectedMythic; }
-        set
-        {
-            selectedMythic = value;
-            UpdateMythicInfoUI(value);
-        }
+        set { selectedMythic = value; UpdateMythicInfoUI(value); }
     }
     [Header ("신화 이미지")] [SerializeField] private Image mythicImage;
     [Header ("신화 이름 텍스트")] [SerializeField] private TextMeshProUGUI mythicText;

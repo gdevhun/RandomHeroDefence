@@ -9,8 +9,8 @@ public class JackPot : MonoBehaviour, IConsumable
     [Header ("신화 조합")] [SerializeField] private MythicUnit mythicUnit;
     [Header ("잭팟 유닛이 들어갈 칸")] [SerializeField] private List<Image> jackPotUnitImage = new List<Image>();
     [Header ("잭팟 버튼")] [SerializeField] private Button jackPotBtn;
-    [Header ("유닛 핸들 패널 숨기기 버튼")] public Button hideUnitHandleBtn;
-    [Header ("도박 나가기 버튼")] public Button gambleExitBtn;
+    [Header ("유닛 핸들 패널 숨기기 버튼")] [SerializeField] private Button hideUnitHandleBtn;
+    [Header ("도박 나가기 버튼")] [SerializeField] private Button gambleExitBtn;
     [HideInInspector] public bool isJackPot;
 
     private void Awake() { amount = 5; }
@@ -22,18 +22,13 @@ public class JackPot : MonoBehaviour, IConsumable
     private IEnumerator JackPotCo()
     {
         // 재화 체크
-        if(!ConsumeCurrency())
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            yield break;
-        }
+        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); yield break; }
 
         // 버튼 비활성화
         jackPotBtn.interactable = false;
 
-        Dictionary<UnitType, int> jackPotUnitMap = new Dictionary<UnitType, int>(); // 잭팟 유닛 맵핑
-
         // 신화 유닛 이미지 채움
+        Dictionary<UnitType, int> jackPotUnitMap = new Dictionary<UnitType, int>(); // 잭팟 유닛 맵핑
         for(int i = 0; i < jackPotUnitImage.Count; i++)
         {
             // 신화 유닛 가져옴
@@ -63,11 +58,7 @@ public class JackPot : MonoBehaviour, IConsumable
         jackPotBtn.interactable = true;
 
         // 모두 다른 신화면 실패
-        if(jackPotUnitMap.Count == 3)
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(jackPotUnitMap.Count == 3) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 같은 신화가 둘이면 원금 돌려줌
         if(jackPotUnitMap.Count == 2)

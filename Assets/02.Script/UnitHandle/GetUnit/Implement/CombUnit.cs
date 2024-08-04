@@ -25,11 +25,7 @@ public class CombUnit : GetUnitBase
     public override void GetUnitHandle()
     {
         // 유닛이 3 개 인지 체크
-        if(SelectUnit.instance.selectedPos.transform.childCount < 3)
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(SelectUnit.instance.selectedPos.transform.childCount < 3) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 합성 할 유닛 처리
         // 1.등급 가져오기
@@ -38,11 +34,7 @@ public class CombUnit : GetUnitBase
         // 4.풀에 반환하기
         CharacterBase selectedCharacterBase = SelectUnit.instance.selectedPos.transform.GetChild(0).GetComponent<CharacterBase>();
         HeroGradeType selectedGradeType = selectedCharacterBase.heroInfo.heroGradeType;
-        if(selectedGradeType == HeroGradeType.Legend || selectedGradeType == HeroGradeType.Myth) // 전설 / 신화 체크
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(selectedGradeType == HeroGradeType.Legend || selectedGradeType == HeroGradeType.Myth) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; } // 전설 / 신화 체크
         UnitType selectedUnitType = selectedCharacterBase.heroInfo.unitType;
         unitPosMap[selectedUnitType].Remove(SelectUnit.instance.selectedPos);
         for(int i = 0; i < 3; i++)

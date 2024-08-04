@@ -15,7 +15,7 @@ public class Pool<T>
 [Serializable]
 public class ListGameObject
 {
-    public List<GameObject> gameObjectList;
+    [Header ("프리팹")] public List<GameObject> gameObjectList;
 
     // 생성자
     public ListGameObject() { gameObjectList = new List<GameObject>(); }

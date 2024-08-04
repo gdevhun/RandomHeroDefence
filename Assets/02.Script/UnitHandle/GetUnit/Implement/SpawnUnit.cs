@@ -18,18 +18,10 @@ public class SpawnUnit : GetUnitBase, IConsumable
     {
         // 재화 체크
         ++SpawnCnt;
-        if(!ConsumeCurrency())
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 최대 유닛 체크
-        if(CurUnit >= maxUnit)
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(CurUnit >= maxUnit) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 랜덤 유닛
         GameObject instantUnit = GetUnit(gradeWeightMap);

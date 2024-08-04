@@ -6,20 +6,12 @@ public class SellUnit : MonoBehaviour
     public void Sell()
     {
         // 유닛이 있는지 체크
-        if(SelectUnit.instance.selectedPos.transform.childCount < 1)
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(SelectUnit.instance.selectedPos.transform.childCount < 1) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 신화 등급인지 체크
         CharacterBase selectedUnit = SelectUnit.instance.selectedPos.transform.GetChild(0).GetComponent<CharacterBase>();
         HeroGradeType selectedGradeType = selectedUnit.heroInfo.heroGradeType;
-        if(selectedGradeType == HeroGradeType.Myth)
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(selectedGradeType == HeroGradeType.Myth) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 판매 유닛 처리
         // 1.유닛이 한 개면 맵핑 삭제하기, 아니면 자식 수 감소하기

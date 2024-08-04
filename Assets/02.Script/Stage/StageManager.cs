@@ -5,10 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // 스테이지 타입
-public enum StageType
-{
-    Normal, MiniBoss, Boss
-}
+public enum StageType { Normal, MiniBoss, Boss }
 
 public class StageManager : MonoBehaviour
 {
@@ -206,17 +203,7 @@ public class StageManager : MonoBehaviour
     }
 
     // 스테이지 UI 갱신
-    private void UpdateStageNumUI(StageData stage)
-    {
-        stageNumText.text = stage.stageNumber.ToString();
-    }
-    private void UpdateStageTimeUI(int cur)
-    {
-        stageTimeText.text = cur.ToString();
-    }
-    private void UpdateEnemyCntUI(int cur)
-    {
-        enemyCntText.text = $"{cur} / {maxEnemyCnt}";
-        enemyCntFillImage.fillAmount = cur / maxEnemyFloatCnt;
-    }
+    private void UpdateStageNumUI(StageData stage) { stageNumText.text = stage.stageNumber.ToString(); }
+    private void UpdateStageTimeUI(int cur) { stageTimeText.text = cur.ToString(); }
+    private void UpdateEnemyCntUI(int cur) { enemyCntText.text = $"{cur} / {maxEnemyCnt}"; enemyCntFillImage.fillAmount = cur / maxEnemyFloatCnt; }
 }

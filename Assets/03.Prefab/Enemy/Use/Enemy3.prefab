@@ -168,7 +168,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15277296, y: -0.003346309}
+  m_Offset: {x: 0, y: -0.003346309}
   m_Size: {x: 0.093981385, y: 0.23013702}
   m_Direction: 0
 --- !u!114 &-2383128542704058530
@@ -187,3 +187,4 @@ MonoBehaviour:
   moveSpeed: 1
   spawnPos: {fileID: 0}
   rend: {fileID: 0}
+  enemyType: 0
