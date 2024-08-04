@@ -13,11 +13,7 @@ public abstract class GetUnitBase : MonoBehaviour
     static public int CurUnit
     {
         get { return curUnit; }
-        set
-        {
-            curUnit = value;
-            UpdateUnitUI(value);
-        }
+        set { curUnit = value; UpdateUnitUI(value); }
     }
     private static TextMeshProUGUI unitCntText; // 유닛 수 텍스트
 
@@ -67,11 +63,7 @@ public abstract class GetUnitBase : MonoBehaviour
     }
 
     // 소환 할 유닛 풀링
-    protected virtual GameObject GetUnitFromPool(HeroGradeType heroGradeType)
-    {
-        int random = UnityEngine.Random.Range(0 + 5 * (int)heroGradeType, 5 + 5 * (int)heroGradeType);
-        return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, (UnitType)random);
-    }
+    protected virtual GameObject GetUnitFromPool(HeroGradeType heroGradeType) { return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, (UnitType)UnityEngine.Random.Range(0 + 5 * (int)heroGradeType, 5 + 5 * (int)heroGradeType)); }
 
     // 유닛 스폰 위치 반환
     public virtual GameObject GetUnitPos(UnitType unitType)

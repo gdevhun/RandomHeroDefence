@@ -15,7 +15,7 @@ public class Pool<T>
 [Serializable]
 public class ListGameObject
 {
-    public List<GameObject> gameObjectList;
+    [Header ("프리팹")] public List<GameObject> gameObjectList;
 
     // 생성자
     public ListGameObject() { gameObjectList = new List<GameObject>(); }
@@ -25,11 +25,11 @@ public class ListGameObject
 // 유닛 타입
 public enum UnitType
 {
-    Ganster, Hunter, Soldier, Thief, Wrestler,
-    Alex, Assassin, Barbarian, Bunker, Ekion,
-    Alonso, Aden, Bat, Tonkey, Viking,
-    Aasole, Alisda, Banies, Louizy, Makdus,
-    Batman, Teodor, Magnus, Mario, Yumie
+    갱스터, 헌터, 솔져, 시프, 레슬러,
+    알렉스, 어쌔신, 바바리안, 벙커, 에키온,
+    알론소, 에이든, 뱃, 통키, 바이킹,
+    아아솔, 알리스다, 배니스, 루이지, 막더스,
+    배트맨, 테오도르, 마그너스, 마리오, 유미
 }
 // 공격 무기 이펙트 (원거리무기총알, 근접무기이펙트)
 public enum WeaponEffect

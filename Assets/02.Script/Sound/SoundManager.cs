@@ -18,6 +18,8 @@ public class SoundManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+
+            // 씬 전환 시 파괴 X
             DontDestroyOnLoad(instance);
 
             // 볼륨 초기화
@@ -27,7 +29,7 @@ public class SoundManager : MonoBehaviour
             // (타입, 배경음) 맵핑
             Map();
 
-            // 초기 BGM 테스트
+            // 메인 BGM
             BgmSoundPlay(BgmType.Main);
         }
         else Destroy(gameObject);

@@ -6,20 +6,12 @@ public class SellUnit : MonoBehaviour
     public void Sell()
     {
         // 유닛이 있는지 체크
-        if(SelectUnit.instance.selectedPos.transform.childCount < 1)
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(SelectUnit.instance.selectedPos.transform.childCount < 1) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 신화 등급인지 체크
         CharacterBase selectedUnit = SelectUnit.instance.selectedPos.transform.GetChild(0).GetComponent<CharacterBase>();
         HeroGradeType selectedGradeType = selectedUnit.heroInfo.heroGradeType;
-        if(selectedGradeType == HeroGradeType.Myth)
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(selectedGradeType == HeroGradeType.신화) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 판매 유닛 처리
         // 1.유닛이 한 개면 맵핑 삭제하기, 아니면 자식 수 감소하기
@@ -34,8 +26,8 @@ public class SellUnit : MonoBehaviour
         GameObject selectedCharacter = SelectUnit.instance.selectedPos.transform.GetChild(SelectUnit.instance.selectedPos.transform.childCount - 1).gameObject;
         selectedCharacter.transform.SetParent(PoolManager.instance.poolSet.transform);
         PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, selectedCharacter, selectedUnitType);
-        if(selectedGradeType == HeroGradeType.Normal || selectedGradeType == HeroGradeType.Elite) CurrencyManager.instance.AcquireCurrency(50 + 50 * (int)selectedGradeType, true);
-        else if(selectedGradeType == HeroGradeType.Rare || selectedGradeType == HeroGradeType.Legend) CurrencyManager.instance.AcquireCurrency((int)selectedGradeType, false);
+        if(selectedGradeType == HeroGradeType.일반 || selectedGradeType == HeroGradeType.고급) CurrencyManager.instance.AcquireCurrency(50 + 50 * (int)selectedGradeType, true);
+        else if(selectedGradeType == HeroGradeType.희귀 || selectedGradeType == HeroGradeType.전설) CurrencyManager.instance.AcquireCurrency((int)selectedGradeType, false);
         GetUnitBase.CurUnit -= 1;
         SoundManager.instance.SFXPlay(SoundType.Sell);
         if(SelectUnit.instance.selectedPos.transform.childCount == 0)

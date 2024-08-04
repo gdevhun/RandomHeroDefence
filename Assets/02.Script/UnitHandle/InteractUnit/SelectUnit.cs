@@ -1,6 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.WSA;
 
 public class SelectUnit : MonoBehaviour
 {
@@ -101,7 +99,7 @@ public class SelectUnit : MonoBehaviour
 
                 // 판매 및 합성 패널 띄우기
                 HeroGradeType selectedHeroGradeType = selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType;
-                if(selectedHeroGradeType == HeroGradeType.Myth) // 신화는 판매 및 합성 패널 켜져있으면 꺼줌
+                if(selectedHeroGradeType == HeroGradeType.신화) // 신화는 판매 및 합성 패널 켜져있으면 꺼줌
                 {
                     if(UiUnit.instance.unitSellCompPanel.activeSelf) UiUnit.instance.ExitPanel(UiUnit.instance.unitSellCompPanel);
                     return;
@@ -109,10 +107,10 @@ public class SelectUnit : MonoBehaviour
                 if(!UiUnit.instance.unitSellCompPanel.activeSelf)
                 {
                     UiUnit.instance.OpenPanel(UiUnit.instance.unitSellCompPanel);
-                    UiUnit.instance.unitSellGoldImage.SetActive(selectedHeroGradeType == HeroGradeType.Normal || selectedHeroGradeType == HeroGradeType.Elite);
-                    UiUnit.instance.unitSellDiaImage.SetActive(selectedHeroGradeType == HeroGradeType.Rare || selectedHeroGradeType == HeroGradeType.Legend);
-                    if(selectedHeroGradeType == HeroGradeType.Normal || selectedHeroGradeType == HeroGradeType.Elite) UiUnit.instance.unitSellGoldText.text = (50 + 50 * (int)selectedHeroGradeType).ToString();
-                    else if(selectedHeroGradeType == HeroGradeType.Rare || selectedHeroGradeType == HeroGradeType.Legend) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
+                    UiUnit.instance.unitSellGoldImage.SetActive(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급);
+                    UiUnit.instance.unitSellDiaImage.SetActive(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설);
+                    if(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급) UiUnit.instance.unitSellGoldText.text = (50 + 50 * (int)selectedHeroGradeType).ToString();
+                    else if(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
                 }
 
                 // 이동 할 위치 표시 끔

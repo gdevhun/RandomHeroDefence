@@ -6,9 +6,9 @@ public class GambleUnit : GetUnitBase, IConsumable
     // 도박에서 등급에 따른 가중치 설정
     private Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
     {
-        { HeroGradeType.Normal, 50 },
-        { HeroGradeType.Rare, 38 },
-        { HeroGradeType.Legend, 12 }
+        { HeroGradeType.일반, 50 },
+        { HeroGradeType.희귀, 38 },
+        { HeroGradeType.전설, 12 }
     };
 
     private void Start() { amount = 2; }
@@ -17,25 +17,17 @@ public class GambleUnit : GetUnitBase, IConsumable
     public override void GetUnitHandle()
     {
         // 재화 체크
-        if(!ConsumeCurrency())
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 최대 유닛 체크
-        if(CurUnit >= maxUnit)
-        {
-            SoundManager.instance.SFXPlay(SoundType.NotEnough);
-            return;
-        }
+        if(CurUnit >= maxUnit) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 랜덤 유닛
         GameObject instantUnit = GetUnit(gradeWeightMap);
 
         // 스폰 위치
         GameObject unitPos = null;
-        if(instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType != HeroGradeType.Normal) unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
+        if(instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType != HeroGradeType.일반) unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
 
         // 스폰 위치 체크, 노말 == 실패 체크
         if(unitPos == null)

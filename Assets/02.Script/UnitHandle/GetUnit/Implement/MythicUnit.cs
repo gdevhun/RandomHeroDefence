@@ -29,11 +29,7 @@ public class MythicUnit : GetUnitBase
     public UnitType SelectedMythic
     {
         get { return selectedMythic; }
-        set
-        {
-            selectedMythic = value;
-            UpdateMythicInfoUI(value);
-        }
+        set { selectedMythic = value; UpdateMythicInfoUI(value); }
     }
     [Header ("신화 이미지")] [SerializeField] private Image mythicImage;
     [Header ("신화 이름 텍스트")] [SerializeField] private TextMeshProUGUI mythicText;
@@ -43,11 +39,11 @@ public class MythicUnit : GetUnitBase
     private void Start()
     {
         for(int i = 0; i < mythicCombList.Count; i++) mythicCombMap.Add(mythicCombList[i].mythicType, mythicCombList[i]);
-        selectedMythic = UnitType.Batman;
+        selectedMythic = UnitType.배트맨;
     }
 
     // 소환 할 신화 소환
-    protected override GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap) { return GetUnitFromPool(HeroGradeType.Myth); }
+    protected override GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap) { return GetUnitFromPool(HeroGradeType.신화); }
 
     // 소환 할 신화 풀링
     protected override GameObject GetUnitFromPool(HeroGradeType heroGradeType) { return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, selectedMythic); }

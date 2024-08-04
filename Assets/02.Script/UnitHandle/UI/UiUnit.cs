@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 
@@ -19,11 +16,7 @@ public class UiUnit : MonoBehaviour
     [Header ("유닛 판매 다이아 텍스트")] public TextMeshProUGUI unitSellDiaText;
 
     // 패널 열기
-    public void OpenPanel(GameObject panel)
-    {
-        SoundManager.instance.SFXPlay(SoundType.Click);
-        panel.SetActive(true);
-    }
+    public void OpenPanel(GameObject panel) { panel.SetActive(true); SoundManager.instance.SFXPlay(SoundType.Click); }
 
     // 패널 닫기
     public void ExitPanel(GameObject panel) { panel.SetActive(false); }
