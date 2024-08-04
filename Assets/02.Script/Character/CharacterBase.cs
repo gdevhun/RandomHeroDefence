@@ -41,7 +41,7 @@ public class CharacterBase : MonoBehaviour
     [SerializeField] private WeaponEffect weaponEffect;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
-    private bool isOnTarget;
+    [HideInInspector] public bool isOnTarget;
     public HeroInfo heroInfo;
     private static readonly int IsAttacking = Animator.StringToHash("isAttack");
     public Transform gunPointTrans;
@@ -85,7 +85,7 @@ public class CharacterBase : MonoBehaviour
         //공격범위안에들어왔을 때 적이 머물고 있다면
         if(other.gameObject.CompareTag("Enemy") && prevAtkSpeed >= limitAtkSpeed)  //적(태그)이고, 타게팅중이 아니라면
         {
-            //isOnTarget = true;  //타게팅 활성화
+            isOnTarget = true;  //타게팅 활성화
             prevAtkSpeed = 0f;
             
             //이펙트 생성.
@@ -110,7 +110,7 @@ public class CharacterBase : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        //isOnTarget = false;
+        isOnTarget = false;
         if (heroInfo.attackType == AttackType.근거리)
         {
             anim.SetBool(IsAttacking, false); //공격 애니메이션 비활성화

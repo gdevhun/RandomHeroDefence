@@ -1,5 +1,15 @@
+using System;
 using System.Collections;
 using UnityEngine;
+
+// 스킬 정보
+[Serializable]
+public class AbilityInfo
+{
+    [Header ("스킬 스프라이트")] public Sprite abilitySprite;
+    [Header ("스킬 이름")] public string abilityName;
+    [Header ("스킬 내용")] public string abilityContent;
+}
 
 public abstract class AbilityBase : MonoBehaviour
 {
@@ -14,8 +24,8 @@ public abstract class AbilityBase : MonoBehaviour
             stamina = value;
             Debug.Log("현재 스태미나 :" + stamina);
 
-            // 최대 스태미너가 되면 스킬 시전
-            if(stamina >= maxStamina)
+            // 최대 스태미너가 되고 타겟이 존재 할 때 스킬 시전
+            if(stamina >= maxStamina && characterBase.isOnTarget)
             {
                 CastAbility();
                 stamina = 0;
@@ -23,8 +33,15 @@ public abstract class AbilityBase : MonoBehaviour
         }
     }
 
+    private CharacterBase characterBase;
+    public AbilityInfo abilityInfo;
+    private void Start()
+    {
+        if(maxStamina > 0) StartCoroutine(StaminaIncreament());
+        characterBase = GetComponent<CharacterBase>();
+    }
+
     // 스태미나 증가
-    private void Start() { if(maxStamina > 0) StartCoroutine(StaminaIncreament()); }
     private IEnumerator StaminaIncreament()
     {
         while(true)
