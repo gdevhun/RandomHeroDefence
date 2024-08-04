@@ -48,7 +48,7 @@ public class CharacterBase : MonoBehaviour
     private float prevAtkSpeed = 0;
     public float limitAtkSpeed;
     private Transform enemyTrans;
-
+    
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
