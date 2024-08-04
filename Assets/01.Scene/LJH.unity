@@ -3101,6 +3101,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &218828585 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6715264606764617040, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+  m_PrefabInstance: {fileID: 2107552414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &218828586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218828585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 404871b6445d2f54fae6e0d0a57d51f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStamina: 5
 --- !u!1 &256324274
 GameObject:
   m_ObjectHideFlags: 0
@@ -16383,7 +16401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27607,6 +27625,66 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &2107552414
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4863408457896279785, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6715264606764617040, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      propertyPath: m_Name
+      value: Gangster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6715264606764617040, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 218828586}
+  m_SourcePrefab: {fileID: 100100000, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
 --- !u!1 &2144530729
 GameObject:
   m_ObjectHideFlags: 0
@@ -28460,7 +28538,7 @@ MonoBehaviour:
   pieceInfoList:
   - img: {fileID: 21300000, guid: a8a9b66740a0e41e0bfcb8bbac54ab4a, type: 3}
     desc: "\uAF5D"
-    percent: 35
+    percent: 50
     idx: 0
     weight: 0
   - img: {fileID: 21300000, guid: a8a9b66740a0e41e0bfcb8bbac54ab4a, type: 3}
@@ -28470,12 +28548,12 @@ MonoBehaviour:
     weight: 0
   - img: {fileID: 21300000, guid: a8a9b66740a0e41e0bfcb8bbac54ab4a, type: 3}
     desc: X 2
-    percent: 25
+    percent: 15
     idx: 0
     weight: 0
   - img: {fileID: 21300000, guid: a8a9b66740a0e41e0bfcb8bbac54ab4a, type: 3}
     desc: X 5
-    percent: 10
+    percent: 5
     idx: 0
     weight: 0
   spinDuration: 5
@@ -28547,3 +28625,4 @@ SceneRoots:
   - {fileID: 437366049}
   - {fileID: 1027499573}
   - {fileID: 1873966733}
+  - {fileID: 2107552414}

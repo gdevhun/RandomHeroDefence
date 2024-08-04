@@ -51,6 +51,7 @@ public class StageManager : MonoBehaviour
 
     // 캐싱
     public WaitForSeconds oneSecond = new WaitForSeconds(1f);
+    public WaitForSeconds halfSecond = new WaitForSeconds(0.5f);
 
     // UI
     [Header ("스테이지 번호 텍스트")] [SerializeField] private TextMeshProUGUI stageNumText;

@@ -13,7 +13,7 @@ public class JackPot : MonoBehaviour, IConsumable
     [Header ("도박 나가기 버튼")] [SerializeField] private Button gambleExitBtn;
     [HideInInspector] public bool isJackPot;
 
-    private void Awake() { amount = 5; }
+    private void Awake() { amount = 2; }
 
     // 잭팟 시작
     public void StartJackPot() { StartCoroutine(JackPotCo()); }
@@ -41,7 +41,7 @@ public class JackPot : MonoBehaviour, IConsumable
             // 잭팟 슬롯 이미지
             jackPotUnitImage[i].sprite = mythicUnitInfo.Value.mythicSprite;
             SoundManager.instance.SFXPlay(SoundType.GetUnit);
-            yield return StageManager.instance.oneSecond;
+            yield return StageManager.instance.halfSecond;
         }
 
         // 잭팟 결과 처리
