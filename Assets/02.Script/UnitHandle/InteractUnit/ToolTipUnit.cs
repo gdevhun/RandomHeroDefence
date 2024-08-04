@@ -9,14 +9,33 @@ public class ToolTipUnit : MonoBehaviour
     [Header ("유닛 정보 텍스트")] [SerializeField] private TextMeshProUGUI unitInfoText;  
     [Header ("유닛 데미지 텍스트")] [SerializeField] private TextMeshProUGUI unitDmgText;  
     [Header ("유닛 공격속도 텍스트")] [SerializeField] private TextMeshProUGUI unitSpeedText;
+    [Header ("스킬 이미지")] [SerializeField] private Image abilityImage;
+    [Header ("히든 스킬 이미지")] [SerializeField] private Image hiddenAbilityImage;
+    [Header ("스킬 이름 텍스트")] [SerializeField] private TextMeshProUGUI abilityNameText;
+    [Header ("스킬 설명 텍스트")] [SerializeField] private TextMeshProUGUI abilityContentText;
+    [Header ("히든 스킬 이름 텍스트")] [SerializeField] private TextMeshProUGUI hiddenAbilityNameText;
+    [Header ("히든 스킬 설명 텍스트")] [SerializeField] private TextMeshProUGUI hiddenAbilityContentText;
 
     // 툴팁 정보 설정
-    public void SetToolTip(HeroInfo heroInfo)
+    public void SetToolTip(HeroInfo heroInfo, AbilityInfo abilityInfo, AbilityInfo hiddenAbilityInfo)
     {
         unitImage.sprite = heroInfo.unitSprite;
         unitNameText.text = heroInfo.unitType.ToString();
         unitInfoText.text = $"{heroInfo.heroGradeType} / {heroInfo.damageType} / {heroInfo.attackType}";
         unitDmgText.text = heroInfo.attackDamage.ToString();
         unitSpeedText.text = heroInfo.attackSpeed.ToString();
+        abilityImage.sprite = abilityInfo.abilitySprite;
+        hiddenAbilityImage.gameObject.SetActive(heroInfo.heroGradeType == HeroGradeType.신화);
+        abilityNameText.text = abilityInfo.abilityName;
+        abilityContentText.text = abilityInfo.abilityContent;
+        if(heroInfo.heroGradeType == HeroGradeType.신화)
+        {
+            hiddenAbilityImage.gameObject.SetActive(true);
+            hiddenAbilityImage.sprite = hiddenAbilityInfo.abilitySprite;
+            hiddenAbilityNameText.text = hiddenAbilityInfo.abilityName;
+            hiddenAbilityContentText.text = hiddenAbilityInfo.abilityContent;
+        }
+        else hiddenAbilityImage.gameObject.SetActive(false);
+
     }
 }
