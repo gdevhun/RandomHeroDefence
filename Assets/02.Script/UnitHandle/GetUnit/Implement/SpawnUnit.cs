@@ -7,10 +7,10 @@ public class SpawnUnit : GetUnitBase, IConsumable
     // 소환에서 등급에 따른 가중치 설정
     private Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
     {
-        { HeroGradeType.Normal, 72 },
-        { HeroGradeType.Elite, 24 },
-        { HeroGradeType.Rare, 6 },
-        { HeroGradeType.Legend, 1 }
+        { HeroGradeType.일반, 72 },
+        { HeroGradeType.고급, 24 },
+        { HeroGradeType.희귀, 6 },
+        { HeroGradeType.전설, 1 }
     };
 
     // 소환 구체화

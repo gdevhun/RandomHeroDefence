@@ -6,19 +6,19 @@ public class CombUnit : GetUnitBase
     // 일반 합성, 고급 합성, 희귀 합성
     private Dictionary<HeroGradeType, int> NormalCombMap = new Dictionary<HeroGradeType, int>
     {
-        { HeroGradeType.Elite, 100 }
+        { HeroGradeType.고급, 100 }
     };
 
     private Dictionary<HeroGradeType, int> EliteCombMap = new Dictionary<HeroGradeType, int>
     {
-        { HeroGradeType.Normal, 25 },
-        { HeroGradeType.Rare, 75 }
+        { HeroGradeType.일반, 25 },
+        { HeroGradeType.희귀, 75 }
     };
 
     private Dictionary<HeroGradeType, int> RareCombMap = new Dictionary<HeroGradeType, int>
     {
-        { HeroGradeType.Normal, 50 },
-        { HeroGradeType.Legend, 50 }
+        { HeroGradeType.일반, 50 },
+        { HeroGradeType.전설, 50 }
     };
 
     // 합성 구체화
@@ -34,7 +34,7 @@ public class CombUnit : GetUnitBase
         // 4.풀에 반환하기
         CharacterBase selectedCharacterBase = SelectUnit.instance.selectedPos.transform.GetChild(0).GetComponent<CharacterBase>();
         HeroGradeType selectedGradeType = selectedCharacterBase.heroInfo.heroGradeType;
-        if(selectedGradeType == HeroGradeType.Legend || selectedGradeType == HeroGradeType.Myth) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; } // 전설 / 신화 체크
+        if(selectedGradeType == HeroGradeType.전설 || selectedGradeType == HeroGradeType.신화) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; } // 전설 / 신화 체크
         UnitType selectedUnitType = selectedCharacterBase.heroInfo.unitType;
         unitPosMap[selectedUnitType].Remove(SelectUnit.instance.selectedPos);
         for(int i = 0; i < 3; i++)
@@ -48,14 +48,14 @@ public class CombUnit : GetUnitBase
         GameObject instantUnit = null;
         switch(selectedGradeType)
         {
-            case HeroGradeType.Normal : instantUnit = GetUnit(NormalCombMap); break;
-            case HeroGradeType.Elite : instantUnit = GetUnit(EliteCombMap); break;
-            case HeroGradeType.Rare : instantUnit = GetUnit(RareCombMap); break;
+            case HeroGradeType.일반 : instantUnit = GetUnit(NormalCombMap); break;
+            case HeroGradeType.고급 : instantUnit = GetUnit(EliteCombMap); break;
+            case HeroGradeType.희귀 : instantUnit = GetUnit(RareCombMap); break;
         }
 
         // 스폰 위치
         GameObject unitPos = null;
-        if(instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType != HeroGradeType.Normal) unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
+        if(instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType != HeroGradeType.일반) unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
 
         // 스폰 위치 체크, 노말 == 실패 체크
         if(unitPos == null)

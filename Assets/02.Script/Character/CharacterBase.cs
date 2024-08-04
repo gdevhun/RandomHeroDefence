@@ -7,17 +7,17 @@ using UnityEngine.Pool;
 
 public enum DamageType  //데미지타입
 {
-    AD, AP
+    물리, 마법
 }
 
 public enum AttackType  //공격방식타입
 {
-    Melee, Ranged
+    근거리, 원거리
 }
 
 public enum HeroGradeType  //히어로등급
 {
-    Normal, Elite, Rare, Legend, Myth 
+    일반, 고급, 희귀, 전설, 신화 
 }
 
 public enum HeroDefaultSpriteDir //스프라이트기본 방향
@@ -53,7 +53,7 @@ public class CharacterBase : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        if (heroInfo.attackType == AttackType.Melee) gunPointTrans = null;
+        if (heroInfo.attackType == AttackType.근거리) gunPointTrans = null;
     }
 
     private void Start()
@@ -89,7 +89,7 @@ public class CharacterBase : MonoBehaviour
             prevAtkSpeed = 0f;
             
             //이펙트 생성.
-            if (heroInfo.attackType == AttackType.Melee)
+            if (heroInfo.attackType == AttackType.근거리)
             {
                 anim.SetBool(IsAttacking,true); //공격 애니메이션 활성화
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
@@ -111,7 +111,7 @@ public class CharacterBase : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         //isOnTarget = false;
-        if (heroInfo.attackType == AttackType.Melee)
+        if (heroInfo.attackType == AttackType.근거리)
         {
             anim.SetBool(IsAttacking, false); //공격 애니메이션 비활성화
         }

@@ -10,11 +10,11 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     // 업그레이드 수치
     public Dictionary<HeroGradeType, int> gradeUpgradeMap = new Dictionary<HeroGradeType, int>
     {
-        { HeroGradeType.Normal, 0 },
-        { HeroGradeType.Elite, 0 },
-        { HeroGradeType.Rare, 0 },
-        { HeroGradeType.Legend, 0 },
-        { HeroGradeType.Myth, 0 },
+        { HeroGradeType.일반, 0 },
+        { HeroGradeType.고급, 0 },
+        { HeroGradeType.희귀, 0 },
+        { HeroGradeType.전설, 0 },
+        { HeroGradeType.신화, 0 },
     };
 
     [Header ("일반 레벨 텍스트")] [SerializeField] private TextMeshProUGUI normalLvText;
@@ -27,12 +27,12 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     {
         // 재화 체크
         curGradeType = heroGradeType;
-        amount = curGradeType == HeroGradeType.Normal ? 30 + 10 * gradeUpgradeMap[curGradeType] : 2 + gradeUpgradeMap[curGradeType];
+        amount = curGradeType == HeroGradeType.일반 ? 30 + 10 * gradeUpgradeMap[curGradeType] : 2 + gradeUpgradeMap[curGradeType];
         if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 업그레이드
         int e = 3;
-        if(heroGradeType == HeroGradeType.Legend) --e;
+        if(heroGradeType == HeroGradeType.전설) --e;
         for(int i = 0; i < e; i++) gradeUpgradeMap[curGradeType++]++;
 
         // UI 갱신
@@ -42,22 +42,22 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         SoundManager.instance.SFXPlay(SoundType.Upgrade);
     }
 
-    public void NormalUpgrade() { Upgrade(HeroGradeType.Normal); }
-    public void LegendUpgrade() { Upgrade(HeroGradeType.Legend); }
+    public void NormalUpgrade() { Upgrade(HeroGradeType.일반); }
+    public void LegendUpgrade() { Upgrade(HeroGradeType.전설); }
 
     // 재화
     private HeroGradeType curGradeType;
     public int amount { get; set; }
     public bool ConsumeCurrency()
     {
-        if(curGradeType == HeroGradeType.Normal) return CurrencyManager.instance.ConsumeCurrency(amount, true);
+        if(curGradeType == HeroGradeType.일반) return CurrencyManager.instance.ConsumeCurrency(amount, true);
         return CurrencyManager.instance.ConsumeCurrency(amount, false);
     }
 
     // 업그레이드 UI 갱신
     private void UpdateUpgradeUI(HeroGradeType heroGradeType)
     {
-        if(heroGradeType == HeroGradeType.Normal)
+        if(heroGradeType == HeroGradeType.일반)
         {
             normalLvText.text = "Lv." + gradeUpgradeMap[heroGradeType].ToString();
             goldText.text = (30 + 10 * gradeUpgradeMap[heroGradeType]).ToString();
