@@ -72,4 +72,27 @@ public class AbilityManage : MonoBehaviour
         curScale.y = Mathf.Lerp(0, 0.68f, Stamina / maxStaminaFloat);
         staminaFillObj.transform.localScale = curScale;
     }
+
+    // 특정 유닛 비활성화 처리
+    private void OnDisable()
+    {
+        if(characterBase == null) return;
+        switch(characterBase.heroInfo.unitType)
+        {
+            case UnitType.솔져 : SellUnit.instance.soldierCnt--; Debug.Log(SellUnit.instance.soldierCnt);
+                break;
+            case UnitType.에키온 : EnemyBase.decreaseMoveSpeed -= 0.05f; if(EnemyBase.decreaseMoveSpeed < 0) EnemyBase.decreaseMoveSpeed = 0;
+                break;
+            case UnitType.뱃 : EnemyBase.decreaseMagDef -= 10f; if(EnemyBase.decreaseMagDef < 0) EnemyBase.decreaseMagDef = 0;
+                break;
+            case UnitType.바이킹 : EnemyBase.decreasePhyDef -= 10f; if(EnemyBase.decreasePhyDef < 0) EnemyBase.decreasePhyDef = 0;
+                break;
+            case UnitType.에이든 : UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] += 4; if(UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] > 72) UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] = 72; 
+                break;
+            case UnitType.알론소 : EnemyBase.increaseEnemyGold -= 10; if(EnemyBase.increaseEnemyGold < 0) EnemyBase.increaseEnemyGold = 0;
+                break;
+            default :
+                break;
+        }
+    }
 }

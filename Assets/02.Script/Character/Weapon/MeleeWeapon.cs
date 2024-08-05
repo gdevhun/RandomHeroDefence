@@ -8,7 +8,7 @@ public class MeleeWeapon: MonoBehaviour
     public WeaponEffect weaponEffect;
     public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
-    public int attackDamage;
+    public float attackDamage;
     void Start()
     {
         

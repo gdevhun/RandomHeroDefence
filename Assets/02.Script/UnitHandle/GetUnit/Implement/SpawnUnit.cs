@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnUnit : GetUnitBase, IConsumable
 {
     // 소환에서 등급에 따른 가중치 설정
-    private Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
+    public Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
     {
         { HeroGradeType.일반, 72 },
         { HeroGradeType.고급, 24 },

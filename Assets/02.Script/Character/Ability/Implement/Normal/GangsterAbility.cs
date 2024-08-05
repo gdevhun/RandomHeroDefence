@@ -17,7 +17,7 @@ public class GangsterAbility : AsyncAbilityBase
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
                 enemyBase.moveSpeed = 0;
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage + characterBase.heroInfo.attackDamage / 2);
+                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 1.5f);
             }
         }
 

@@ -59,7 +59,9 @@ public enum EnemyType
 // 스킬 이펙트
 public enum AbilityEffectType
 {
-    갱스터, 시프, 레슬러
+    갱스터, 시프, 레슬러,
+    어쌔신, 바바리안, 벙커,
+    통키
 }
 
 public class PoolManager : MonoBehaviour

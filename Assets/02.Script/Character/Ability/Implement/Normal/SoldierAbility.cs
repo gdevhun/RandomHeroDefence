@@ -4,5 +4,5 @@ using UnityEngine;
 public class SoldierAbility : SyncAbilityBase
 {
     // 유닛 판매 추가 골드
-    public override void CastAbility(CharacterBase characterBase) { SellUnit.instance.soldierCnt++; }
+    public override void CastAbility(CharacterBase characterBase) { SellUnit.instance.soldierCnt++; Debug.Log("솔져 스킬 시전"); }
 }

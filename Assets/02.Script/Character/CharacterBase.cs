@@ -32,7 +32,7 @@ public class HeroInfo  //히어로 정보 클래스
     public HeroGradeType heroGradeType;
     public UnitType unitType;
     public Sprite unitSprite;
-    public int attackDamage;
+    public float attackDamage;
     public float attackSpeed;
     public HeroDefaultSpriteDir heroDefaultSpriteDir;
 }
@@ -48,6 +48,7 @@ public class CharacterBase : MonoBehaviour
     private float prevAtkSpeed = 0;
     public float limitAtkSpeed;
     public Transform enemyTrans;
+    
     
     void Awake()
     {
@@ -76,16 +77,16 @@ public class CharacterBase : MonoBehaviour
         //CalculateSpriteRen(enemyTrans); //방향 계산
 
         
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && (!isOnTarget || enemyTrans.GetComponent<EnemyBase>().isDead))
         {
             enemyTrans = other.gameObject.transform;
+            isOnTarget = true;
         }
         if(enemyTrans != null) CalculateSpriteRen(enemyTrans);
         
         //공격범위안에들어왔을 때 적이 머물고 있다면
         if(other.gameObject.CompareTag("Enemy") && prevAtkSpeed >= limitAtkSpeed)  //적(태그)이고, 타게팅중이 아니라면
         {
-            isOnTarget = true;  //타게팅 활성화
             prevAtkSpeed = 0f;
             
             //이펙트 생성.
@@ -110,7 +111,7 @@ public class CharacterBase : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        isOnTarget = false;
+        if(other.transform == enemyTrans) isOnTarget = false;
         if (heroInfo.attackType == AttackType.근거리)
         {
             anim.SetBool(IsAttacking, false); //공격 애니메이션 비활성화

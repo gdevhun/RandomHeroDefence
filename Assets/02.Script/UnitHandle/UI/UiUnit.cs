@@ -14,6 +14,7 @@ public class UiUnit : MonoBehaviour
     [Header ("유닛 판매 다이아 이미지")] public GameObject unitSellDiaImage;
     [Header ("유닛 판매 골드 텍스트")] public TextMeshProUGUI unitSellGoldText;
     [Header ("유닛 판매 다이아 텍스트")] public TextMeshProUGUI unitSellDiaText;
+    [Header ("유닛 소환")] public SpawnUnit unitSpawn;
 
     // 패널 열기
     public void OpenPanel(GameObject panel) { panel.SetActive(true); SoundManager.instance.SFXPlay(SoundType.Click); }

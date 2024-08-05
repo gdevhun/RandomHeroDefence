@@ -6623,6 +6623,7 @@ MonoBehaviour:
   unitSellDiaImage: {fileID: 129589354}
   unitSellGoldText: {fileID: 820307215}
   unitSellDiaText: {fileID: 1750285233}
+  unitSpawn: {fileID: 0}
 --- !u!4 &437366049
 Transform:
   m_ObjectHideFlags: 0
@@ -18299,6 +18300,10 @@ MonoBehaviour:
       - {fileID: 6831531895199409016, guid: 40031757ae418564c931b0884d09f518, type: 3}
       - {fileID: 5590649807536952850, guid: 06c0eae135798c54fa0d2fbdb9412b6c, type: 3}
       - {fileID: 1452169668744339269, guid: cb974595ed7edad42bd3870154f3f47d, type: 3}
+      - {fileID: 642291696109055282, guid: 575f93f470e13c34f9b9ceeeae791768, type: 3}
+      - {fileID: 6058444156908373864, guid: 33e3b039e4599f4449a3d1980b2ac293, type: 3}
+      - {fileID: 7927537483328408692, guid: 1ac66de06a7800d4389c9aad0a91a1d5, type: 3}
+      - {fileID: 9941539063167722, guid: 64a5501d59fbae34ea9ca7a9fc5c3f07, type: 3}
 --- !u!4 &1352452129
 Transform:
   m_ObjectHideFlags: 0

@@ -6,14 +6,20 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     private Animator animator;
-    [SerializeField] private int maxHp; //초기설정 Hp
-    private int currentHp;
-    public int originMoveSpeed; // 원본 이동속도
-    public int moveSpeed; //몬스터이동속도
+    public float maxHp; //초기설정 Hp
+    public float currentHp;
+    public float originMoveSpeed; // 원본 이동속도
+    public float moveSpeed; //몬스터이동속도
+    public static float decreaseMoveSpeed; // 몬스터 이동속도 감소 수치
     [HideInInspector] public GameObject spawnPos; // 몬스터 스폰 위치
     private int curPathIdx = 0; // 현재 이동 할 위치 인덱스
     [Header ("렌더러")] [SerializeField] private SpriteRenderer rend;
     public EnemyType enemyType;
+    [HideInInspector] public bool isDead;
+    public float phyDef, magDef; // 물방, 마방
+    public static float decreasePhyDef, decreaseMagDef; // 물방, 마방 감소 수치
+    public int enemyGold; // 몬스터 골드
+    public static int increaseEnemyGold; // 몬스터 골드 증가량
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -26,7 +32,7 @@ public class EnemyBase : MonoBehaviour
         currentHp = maxHp;
     }
     
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHp -= damage;
         Debug.Log($"Enemy took {damage} damage, remaining HP: {currentHp}");
@@ -58,7 +64,7 @@ public class EnemyBase : MonoBehaviour
     private void EnemyMove()
     {
         if(spawnPos == null) return;
-        transform.position = Vector2.MoveTowards(transform.position, StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position, (moveSpeed - decreaseMoveSpeed) * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

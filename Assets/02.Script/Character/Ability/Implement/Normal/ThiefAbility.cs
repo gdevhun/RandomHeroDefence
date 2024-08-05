@@ -14,7 +14,7 @@ public class ThiefAbility : SyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage + characterBase.heroInfo.attackDamage / 2);
+                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 1.5f);
             }
         }
         CurrencyManager.instance.AcquireCurrency(10, true);

@@ -10,7 +10,7 @@ public class RangeWeapon : MonoBehaviour
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     public float moveSpeed;
     private float moveDirection;
-    [HideInInspector] public int attackDamage;
+    [HideInInspector] public float attackDamage;
     void Awake()
     {
         thisWaitForSeconds = new WaitForSeconds(activeTime);

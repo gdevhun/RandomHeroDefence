@@ -6,7 +6,7 @@ public class HunterAbility : AsyncAbilityBase
 {
     public override IEnumerator CastAbility(CharacterBase characterBase)
     {
-        // 5초 동안 100% 데미지 총알 1개씩 발사
+        // 5초 동안 100% 데미지 총알 1개 추가 발사
         for(int i = 0; i < 5; i++)
         {
             // 타겟이 있는지 체크
@@ -19,7 +19,6 @@ public class HunterAbility : AsyncAbilityBase
             characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans);
             instantAbilityEffect.transform.position += new Vector3(1f, 0, 0);
             yield return oneSecond;
-            PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, instantAbilityEffect, characterBase.weaponEffect);
         }
     }
 }
