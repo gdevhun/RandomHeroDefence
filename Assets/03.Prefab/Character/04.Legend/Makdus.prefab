@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2955167166076178934}
   - component: {fileID: -1244078525610548945}
   - component: {fileID: 7701594665730806196}
-  - component: {fileID: 4221550127320728129}
+  - component: {fileID: 2100111989773853242}
   m_Layer: 0
   m_Name: Makdus
   m_TagString: Untagged
@@ -136,6 +136,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &7701594665730806196
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,8 +171,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.10650796, y: 0.19047621}
   serializedVersion: 2
-  m_Radius: 4
---- !u!114 &4221550127320728129
+  m_Radius: 3
+--- !u!114 &2100111989773853242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,15 +181,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2087119594503938832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08be00792f4c06478c4c5eed8d89440, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 68afe946380e8e743a03f6214ded6fe5, type: 2}
   maxStamina: 6
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 8321771537310109143}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 326199c5020889649af1ab4c682d2437, type: 3}
-    abilityName: "\uD669\uC18C\uC758 \uBD84\uB178"
-    abilityContent: "\uD604\uC7AC\uCCB4\uB825 10% \uB370\uBBF8\uC9C0"
 --- !u!1 &2976084523273565074
 GameObject:
   m_ObjectHideFlags: 0

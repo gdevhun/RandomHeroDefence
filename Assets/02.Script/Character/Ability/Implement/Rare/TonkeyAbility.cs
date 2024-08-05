@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class TonkeyAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/희귀/통키")]
+public class TonkeyAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

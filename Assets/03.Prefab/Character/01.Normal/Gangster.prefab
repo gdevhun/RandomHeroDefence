@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 7317174934363592571}
   - component: {fileID: -2859862574621568836}
   - component: {fileID: 3703335326308905603}
-  - component: {fileID: 2062680448656996432}
+  - component: {fileID: 644093024665518553}
   m_Layer: 0
   m_Name: Gangster
   m_TagString: Untagged
@@ -305,6 +305,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 0
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &3703335326308905603
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -339,8 +340,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.1619047, y: 0.116031736}
   serializedVersion: 2
-  m_Radius: 2
---- !u!114 &2062680448656996432
+  m_Radius: 3
+--- !u!114 &644093024665518553
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,15 +350,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6715264606764617040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404871b6445d2f54fae6e0d0a57d51f0, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 940235731fb26df4487b343c0fab4f09, type: 2}
   maxStamina: 10
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 4214200969049894126}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: d8da0f918c005fb4c83e65ba6eea95a0, type: 3}
-    abilityName: "\uC2B5\uACA9"
-    abilityContent: "0.5\uCD08 \uC2A4\uD134"
 --- !u!1001 &9093947423245446041
 PrefabInstance:
   m_ObjectHideFlags: 0

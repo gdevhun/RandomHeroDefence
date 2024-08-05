@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class VikingAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/희귀/바이킹")]
+public class VikingAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

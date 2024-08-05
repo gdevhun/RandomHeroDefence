@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class LouizyAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/전설/루이지")]
+public class LouizyAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

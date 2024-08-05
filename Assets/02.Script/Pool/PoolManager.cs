@@ -56,6 +56,12 @@ public enum EnemyType
     Normal9, MiniBoss5, Normal10, Boss5
 }
 
+// 스킬 이펙트
+public enum AbilityEffectType
+{
+    갱스터, 시프, 레슬러
+}
+
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager instance;
@@ -64,6 +70,7 @@ public class PoolManager : MonoBehaviour
     [Header ("히어로 무기")] public Pool<WeaponEffect> weaponEffectPool;
     [Header ("사운드 풀")] public Pool<SoundType> soundPool;
     [Header ("몬스터 풀")] public Pool<EnemyType> enemyPool;
+    [Header ("스킬 이펙트 풀")] public Pool<AbilityEffectType> abilityEffectPool;
 
     private void Awake()
     {
@@ -74,12 +81,14 @@ public class PoolManager : MonoBehaviour
         PrefMap(soundPool.allList, soundPool.prefMap);
         PrefMap(weaponEffectPool.allList,weaponEffectPool.prefMap);
         PrefMap(enemyPool.allList, enemyPool.prefMap);
+        PrefMap(abilityEffectPool.allList, abilityEffectPool.prefMap);
 
         // (타입, 큐) 맵핑
         QueMap(unitPool.queMap, unitPool.prefMap);
         QueMap(soundPool.queMap, soundPool.prefMap);
-        QueMap(weaponEffectPool.queMap,weaponEffectPool.prefMap);
+        QueMap(weaponEffectPool.queMap,weaponEffectPool.prefMap, 200);
         QueMap(enemyPool.queMap, enemyPool.prefMap, 200);
+        QueMap(abilityEffectPool.queMap, abilityEffectPool.prefMap);
     }
 
     // (타입, 프리팹) 맵핑

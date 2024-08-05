@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3785260456517379696}
   - component: {fileID: -2179722466812087339}
   - component: {fileID: 691630933683542802}
-  - component: {fileID: 6086522921827790900}
+  - component: {fileID: 2136661873628135119}
   m_Layer: 0
   m_Name: Yumie
   m_TagString: Untagged
@@ -136,6 +136,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &691630933683542802
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,8 +171,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.067118645, y: 0.10203388}
   serializedVersion: 2
-  m_Radius: 5
---- !u!114 &6086522921827790900
+  m_Radius: 3
+--- !u!114 &2136661873628135119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,19 +181,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1703056807361636290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56265beac53548045a72e85874058878, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 067b3198ce9a9634192040fbf88f08d3, type: 2}
   maxStamina: 4
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 8425631753969291418}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: ab7880740e5174f408626f50a14bcf26, type: 3}
-    abilityName: "\uC2AC\uB85C\uC6B0\uB85C\uB4DC"
-    abilityContent: "\uC2AC\uB85C\uC6B0 \uC7A5\uD310 \uC124\uCE58(3\uCD08 \uC720\uC9C0)"
-  hiddenAbilityInfo:
-    abilitySprite: {fileID: 21300000, guid: ab7880740e5174f408626f50a14bcf26, type: 3}
-    abilityName: "\uC720\uBBF8 \uD788\uB4E0\uC2A4\uD0AC \uC774\uB984"
-    abilityContent: "\uC720\uBBF8 \uD788\uB4E0\uC2A4\uD0AC \uB0B4\uC6A9"
 --- !u!1 &7145664142685133053
 GameObject:
   m_ObjectHideFlags: 0

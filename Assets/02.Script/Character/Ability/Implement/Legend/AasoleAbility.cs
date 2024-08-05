@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class AasoleAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/전설/아아솔")]
+public class AasoleAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

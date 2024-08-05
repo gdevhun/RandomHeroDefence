@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 3997036384536237688}
   - component: {fileID: 5733420530164671797}
   - component: {fileID: 8857199831356159512}
-  - component: {fileID: 359579285793767339}
+  - component: {fileID: 6267822562837116040}
   m_Layer: 0
   m_Name: Viking
   m_TagString: Untagged
@@ -305,6 +305,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &8857199831356159512
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -340,7 +341,7 @@ CircleCollider2D:
   m_Offset: {x: -0.11694917, y: 0.33838987}
   serializedVersion: 2
   m_Radius: 3
---- !u!114 &359579285793767339
+--- !u!114 &6267822562837116040
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,15 +350,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3282594906433674096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 476a3b339f6e1d343afb380b61a8ae03, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 10
+  ability: {fileID: 11400000, guid: 3cd1f3a2d2fb18e45986831a9bce663e, type: 2}
+  maxStamina: 0
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 2373184301087869712}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: af97816715c692641ad8087b382efb8c, type: 3}
-    abilityName: "\uBC14\uC774\uD551"
-    abilityContent: "\uBB3C\uBC29 10% \uAC10\uC18C(2\uCD08 \uC720\uC9C0)"
 --- !u!1001 &745180410296728589
 PrefabInstance:
   m_ObjectHideFlags: 0

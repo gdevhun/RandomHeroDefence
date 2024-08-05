@@ -96,8 +96,8 @@ public class SelectUnit : MonoBehaviour
                 // 유닛 툴팁 띄우기
                 if(!UiUnit.instance.toolTipPanel.gameObject.activeSelf) UiUnit.instance.OpenPanel(UiUnit.instance.toolTipPanel.gameObject);
                 UiUnit.instance.toolTipPanel.SetToolTip(selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo,
-                    selectedPos.transform.GetChild(0).GetComponent<AbilityBase>().abilityInfo,
-                        selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.신화 ? selectedPos.transform.GetChild(0).GetComponent<IHiddenAbility>().HiddenAbilityInfo : null);
+                    selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability.abilityUiInfo,
+                        selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.신화 ? (selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability as IHiddenAbility).HiddenAbilityUiInfo : null);
 
                 // 판매 및 합성 패널 띄우기
                 HeroGradeType selectedHeroGradeType = selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType;

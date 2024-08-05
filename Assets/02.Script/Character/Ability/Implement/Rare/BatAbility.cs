@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class BatAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/희귀/배트")]
+public class BatAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8980234285379874916}
   - component: {fileID: 9195190712048617640}
   - component: {fileID: 7943715037784204795}
-  - component: {fileID: 7213230680980045511}
+  - component: {fileID: 3825786267780366085}
   m_Layer: 0
   m_Name: Teodor
   m_TagString: Untagged
@@ -115,6 +115,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 0
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!95 &9195190712048617640
 Animator:
   serializedVersion: 5
@@ -170,8 +171,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.058916688, y: 0}
   serializedVersion: 2
-  m_Radius: 5
---- !u!114 &7213230680980045511
+  m_Radius: 3
+--- !u!114 &3825786267780366085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,19 +181,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2486459208079425555}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f2326571791dd644a1c6e9af122dc0d, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 6282e51833ec5e44c91843b9fa9cf4f4, type: 2}
   maxStamina: 4
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 7366301547126251837}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
-    abilityName: "\uAC15\uD0C0"
-    abilityContent: "1\uCD08 \uC2A4\uD134"
-  hiddenAbilityInfo:
-    abilitySprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
-    abilityName: "\uD14C\uC624\uB3C4\uB974 \uD788\uB4E0\uC2A4\uD0AC \uC774\uB984"
-    abilityContent: "\uD14C\uC624\uB3C4\uB974 \uD788\uB4E0\uC2A4\uD0AC \uB0B4\uC6A9"
 --- !u!1 &6246789641233594241
 GameObject:
   m_ObjectHideFlags: 0

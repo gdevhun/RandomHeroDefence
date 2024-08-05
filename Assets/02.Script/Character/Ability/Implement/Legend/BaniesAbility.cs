@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class BaniesAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/전설/배니스")]
+public class BaniesAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

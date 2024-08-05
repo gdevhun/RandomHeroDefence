@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4999469281733074699}
   - component: {fileID: 1515615452299513825}
   - component: {fileID: 2386370272419704329}
-  - component: {fileID: 6033220835257671207}
+  - component: {fileID: 404656068511553856}
   m_Layer: 0
   m_Name: Tonkey
   m_TagString: Untagged
@@ -222,6 +222,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 8048308994141371706}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &2386370272419704329
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -257,7 +258,7 @@ CircleCollider2D:
   m_Offset: {x: 0.106093735, y: 0.195}
   serializedVersion: 2
   m_Radius: 3
---- !u!114 &6033220835257671207
+--- !u!114 &404656068511553856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,15 +267,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2956869538233832565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c5dbdc8a12eb9a448fa68942a5d2b9c, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 28077c8b8e7e4754584b381e5c97e6ac, type: 2}
   maxStamina: 30
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 7526027600901358958}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: c6832efce5324c14d8e9ac2b771f11ed, type: 3}
-    abilityName: "\uBC84\uB2DD"
-    abilityContent: "\uB2E4\uC774\uC544 1\uAC1C \uD68D\uB4DD"
 --- !u!1 &6093922487945793602
 GameObject:
   m_ObjectHideFlags: 0

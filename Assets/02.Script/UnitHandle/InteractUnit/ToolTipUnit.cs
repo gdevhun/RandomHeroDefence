@@ -17,7 +17,7 @@ public class ToolTipUnit : MonoBehaviour
     [Header ("히든 스킬 설명 텍스트")] [SerializeField] private TextMeshProUGUI hiddenAbilityContentText;
 
     // 툴팁 정보 설정
-    public void SetToolTip(HeroInfo heroInfo, AbilityInfo abilityInfo, AbilityInfo hiddenAbilityInfo)
+    public void SetToolTip(HeroInfo heroInfo, AbilityUiInfo abilityInfo, AbilityUiInfo hiddenAbilityInfo)
     {
         unitImage.sprite = heroInfo.unitSprite;
         unitNameText.text = heroInfo.unitType.ToString();

@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class AlisdaAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/전설/알리스다")]
+public class AlisdaAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

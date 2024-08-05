@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6748414163412435319}
   - component: {fileID: -293422055595679336}
   - component: {fileID: 5802991131166170249}
-  - component: {fileID: 4697759802127586536}
+  - component: {fileID: 9020821370396280881}
   m_Layer: 0
   m_Name: Banies
   m_TagString: Untagged
@@ -137,6 +137,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 1216399469994180830}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &5802991131166170249
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,8 +172,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
---- !u!114 &4697759802127586536
+  m_Radius: 3
+--- !u!114 &9020821370396280881
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,16 +182,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3867111524742373401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d36fe5ce8b9f00f4aa9d051bc67d439a, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 4e00cd50571349a479fb6da76b42fdf7, type: 2}
   maxStamina: 0
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 5864461498743792519}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: a3cc1430a27d21d4abacdc36e190670a, type: 3}
-    abilityName: "\uC5D8\uB9AD\uC11C"
-    abilityContent: "\uC8FC\uBCC0 \uB9C8\uBC95 \uCE90\uB9AD\uD130 \uACF5\uACA9\uB825
-      10% \uC99D\uAC00"
 --- !u!1 &3909623571128134880
 GameObject:
   m_ObjectHideFlags: 0

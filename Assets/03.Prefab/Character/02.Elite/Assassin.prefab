@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3126666927697528238}
   - component: {fileID: 6939667611049676437}
   - component: {fileID: 3595631692045043186}
-  - component: {fileID: 5478997221483033080}
+  - component: {fileID: 5610535235617622897}
   m_Layer: 0
   m_Name: Assassin
   m_TagString: Untagged
@@ -136,6 +136,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &3595631692045043186
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,8 +171,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.17859375, y: 0.27585936}
   serializedVersion: 2
-  m_Radius: 2.5
---- !u!114 &5478997221483033080
+  m_Radius: 3
+--- !u!114 &5610535235617622897
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,15 +181,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5261889940100354755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2c07d61ff2d48845ad8082342889ddc, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 0be1779feb190be4fbc28f808496ea8f, type: 2}
   maxStamina: 8
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 5792605998194888226}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 5ad21bbcc65cf114894f9cfc240f668c, type: 3}
-    abilityName: "\uAE30\uC2B5"
-    abilityContent: "200% \uB370\uBBF8\uC9C0"
 --- !u!1 &5792605998194888226
 GameObject:
   m_ObjectHideFlags: 0

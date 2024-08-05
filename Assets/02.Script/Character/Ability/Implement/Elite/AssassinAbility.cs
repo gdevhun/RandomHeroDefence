@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class AssassinAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/고급/어쌔신")]
+public class AssassinAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

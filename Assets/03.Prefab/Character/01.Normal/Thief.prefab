@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6259382432125723611}
   - component: {fileID: -7540928016392787946}
   - component: {fileID: 9154943288688391539}
-  - component: {fileID: 3971162563769322698}
+  - component: {fileID: 4086688641887395618}
   m_Layer: 0
   m_Name: Thief
   m_TagString: Untagged
@@ -220,6 +220,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &9154943288688391539
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -254,8 +255,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
---- !u!114 &3971162563769322698
+  m_Radius: 3
+--- !u!114 &4086688641887395618
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,15 +265,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4079279824701850116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1104a5a27ef9c2d42bf17560153dd8cd, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: b1feded4f44c137419d83d39bfe7a647, type: 2}
   maxStamina: 10
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 3299271437118405555}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 0ad7c8245f96dec44abb837b1a6f5f6f, type: 3}
-    abilityName: "\uAC15\uD0C8"
-    abilityContent: "\uACE8\uB4DC 10 \uD68D\uB4DD"
 --- !u!1 &7307416652683694562
 GameObject:
   m_ObjectHideFlags: 0

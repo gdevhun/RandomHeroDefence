@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8257713912368910101}
   - component: {fileID: -3022793612806426580}
   - component: {fileID: 4949892976204204006}
-  - component: {fileID: 3153745463654619002}
+  - component: {fileID: 4372153800012109850}
   m_Layer: 0
   m_Name: Magnus
   m_TagString: Untagged
@@ -136,6 +136,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 0
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &4949892976204204006
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,8 +171,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.1619047, y: 0.23571426}
   serializedVersion: 2
-  m_Radius: 5
---- !u!114 &3153745463654619002
+  m_Radius: 3
+--- !u!114 &4372153800012109850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,19 +181,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1484621466492084911}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed5d255faeeb8604eba41c4e800ca03b, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 1db34992536dfdd4286bdd50b14e8d36, type: 2}
   maxStamina: 3
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 6763055478781066966}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: ea37309a756c66f46a068173e80f9e12, type: 3}
-    abilityName: "\uB274\uD074\uB9AC\uC5B4"
-    abilityContent: "\uCD5C\uB300\uCCB4\uB825 8% \uB370\uBBF8\uC9C0"
-  hiddenAbilityInfo:
-    abilitySprite: {fileID: 21300000, guid: ea37309a756c66f46a068173e80f9e12, type: 3}
-    abilityName: "\uB9C8\uADF8\uB108\uC2A4 \uD788\uB4E0\uC2A4\uD0AC \uC774\uB984"
-    abilityContent: "\uB9C8\uADF8\uB108\uC2A4 \uD788\uB4E0\uC2A4\uD0AC \uB0B4\uC6A9"
 --- !u!1 &4381659505337704227
 GameObject:
   m_ObjectHideFlags: 0

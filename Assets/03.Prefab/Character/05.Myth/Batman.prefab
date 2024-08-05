@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 4071589615941195411}
   - component: {fileID: 8360292707818577653}
   - component: {fileID: 149753294557777595}
-  - component: {fileID: 8924135621771799230}
+  - component: {fileID: 1047624920418215598}
   m_Layer: 0
   m_Name: Batman
   m_TagString: Untagged
@@ -337,6 +337,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 7790920032840501523}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &149753294557777595
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -371,8 +372,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.1311017, y: 0.20338982}
   serializedVersion: 2
-  m_Radius: 5
---- !u!114 &8924135621771799230
+  m_Radius: 3
+--- !u!114 &1047624920418215598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,20 +382,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7596518995976380312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35635202666bc1d4780f924815403cc8, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 3b289b2aeb9066d4fb4d653b4c466c2c, type: 2}
   maxStamina: 4
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 6026026637863726918}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 8291a699b70ae91439aa1fc04b7aa0ad, type: 3}
-    abilityName: "\uB09C\uC0AC"
-    abilityContent: "\uBAA8\uB4E0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C 500% \uB370\uBBF8\uC9C0
-      \uCD1D\uC54C \uBC1C\uC0AC"
-  hiddenAbilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 8291a699b70ae91439aa1fc04b7aa0ad, type: 3}
-    abilityName: "\uBC30\uD2B8\uB9E8 \uD788\uB4E0\uC2A4\uD0AC"
-    abilityContent: "\uBC30\uD2B8\uB9E8 \uD788\uB4E0\uC2A4\uD0AC \uB0B4\uC6A9"
 --- !u!1001 &4792076343738154149
 PrefabInstance:
   m_ObjectHideFlags: 0

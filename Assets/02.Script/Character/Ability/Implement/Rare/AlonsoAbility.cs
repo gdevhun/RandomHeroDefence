@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class AlonsoAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/희귀/알론소")]
+public class AlonsoAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

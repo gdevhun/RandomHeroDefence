@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class EkionAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/고급/에키온")]
+public class EkionAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

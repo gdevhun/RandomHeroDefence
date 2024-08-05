@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class AdenAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/희귀/에이든")]
+public class AdenAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

@@ -1,19 +1,19 @@
-
 using UnityEngine;
 
-public class YumieAbility : AbilityBase, IHiddenAbility
+[CreateAssetMenu(menuName = "스킬/신화/유미")]
+public class YumieAbility : SyncAbilityBase, IHiddenAbility
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }
 
     // 히든 스킬
-    [SerializeField] private AbilityInfo hiddenAbilityInfo;
-    public AbilityInfo HiddenAbilityInfo
+    [Header ("히든 스킬 UI 정보")] [SerializeField] private AbilityUiInfo hiddenAbilityUiInfo;
+    public AbilityUiInfo HiddenAbilityUiInfo
     {
-        get { return hiddenAbilityInfo; }
-        set { hiddenAbilityInfo = value; }
+        get { return hiddenAbilityUiInfo; }
+        set { hiddenAbilityUiInfo = value; }
     }
     public bool IsHidden()
     {

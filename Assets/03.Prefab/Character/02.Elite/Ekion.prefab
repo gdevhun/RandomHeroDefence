@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 8820567047268944048}
   - component: {fileID: 2489706490217335231}
   - component: {fileID: 6311574584328795628}
-  - component: {fileID: 6859827746326816499}
+  - component: {fileID: 5432746238304806333}
   m_Layer: 0
   m_Name: Ekion
   m_TagString: Untagged
@@ -284,6 +284,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 0
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!95 &2489706490217335231
 Animator:
   serializedVersion: 5
@@ -339,8 +340,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.10949996, y: 0.071333334}
   serializedVersion: 2
-  m_Radius: 2.5
---- !u!114 &6859827746326816499
+  m_Radius: 3
+--- !u!114 &5432746238304806333
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,15 +350,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9032080491498601046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f041678be4bdc468686b348fd95a9f, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 8
+  ability: {fileID: 11400000, guid: eeba50f451ff6d4469e925162bcd831f, type: 2}
+  maxStamina: 0
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 1064521558774805531}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 431c455b0dc25eb46b82e59fda03f068, type: 3}
-    abilityName: "\uB77C\uC774\uD305\uB85C\uB4DC"
-    abilityContent: "\uC2AC\uB85C\uC6B0 \uC7A5\uD310 \uC124\uCE58(1\uCD08 \uC720\uC9C0)"
 --- !u!1001 &7728525456081813514
 PrefabInstance:
   m_ObjectHideFlags: 0

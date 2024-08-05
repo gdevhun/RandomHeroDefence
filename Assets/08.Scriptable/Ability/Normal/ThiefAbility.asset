@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1104a5a27ef9c2d42bf17560153dd8cd, type: 3}
+  m_Name: ThiefAbility
+  m_EditorClassIdentifier: 
+  abilityUiInfo:
+    abilitySprite: {fileID: 21300000, guid: 0ad7c8245f96dec44abb837b1a6f5f6f, type: 3}
+    abilityName: "\uAC15\uD0C8"
+    abilityContent: "150% \uB370\uBBF8\uC9C0, \uACE8\uB4DC 10 \uD68D\uB4DD"
+  abilityEffectType: 1
+  instantAbilityEffect: {fileID: 0}

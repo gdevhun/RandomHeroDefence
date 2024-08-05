@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2326571791dd644a1c6e9af122dc0d, type: 3}
+  m_Name: TeodorAbility
+  m_EditorClassIdentifier: 
+  characterBase: {fileID: 0}
+  abilityUiInfo:
+    abilitySprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
+    abilityName: "\uAC15\uD0C0"
+    abilityContent: "1\uCD08 \uC2A4\uD134"
+  abilityEffectType: 21
+  hiddenAbilityUiInfo:
+    abilitySprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
+    abilityName: "\uD788\uB4E0 \uAC15\uD0C0"
+    abilityContent: "\uC5D0\uC774\uB4E0\uACFC \uC5D0\uD0A4\uC628\uC774 \uC874\uC7AC\uD558\uBA74
+      \uC2A4\uD134 2\uCD08"

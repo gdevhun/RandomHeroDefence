@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ce6408fbd44ab04497732827d911218, type: 3}
+  m_Name: BatAbility
+  m_EditorClassIdentifier: 
+  characterBase: {fileID: 0}
+  abilityUiInfo:
+    abilitySprite: {fileID: 21300000, guid: fda38e573562ea44997dba87d454af70, type: 3}
+    abilityName: "\uCF00\uC774\uBE0C"
+    abilityContent: "2\uCD08 \uB3D9\uC548 \uB9C8\uBC29 10 \uAC10\uC18C"
+  abilityEffectType: 12

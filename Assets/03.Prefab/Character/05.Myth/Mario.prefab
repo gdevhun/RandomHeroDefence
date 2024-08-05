@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 18634520642353225}
   - component: {fileID: -1176668100241511254}
   - component: {fileID: 4982323525652236937}
-  - component: {fileID: 6318881153234922523}
+  - component: {fileID: 1413666065858314966}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Untagged
@@ -221,6 +221,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 0
   gunPointTrans: {fileID: 8384913242510813355}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &4982323525652236937
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -255,8 +256,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.10571428, y: 0.08857143}
   serializedVersion: 2
-  m_Radius: 5
---- !u!114 &6318881153234922523
+  m_Radius: 3
+--- !u!114 &1413666065858314966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,19 +266,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2561022052850752836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fccb492d75382b14c997d12995c69565, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: b7a8a5a887e5ab347a3db40a445b8840, type: 2}
   maxStamina: 2
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 2164993343558425964}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 98ba5744b8d69a14b85c6805435f28db, type: 3}
-    abilityName: "\uC2A4\uB098\uC774\uD551"
-    abilityContent: "200% \uB370\uBBF8\uC9C0 \uCD1D\uC54C 1\uAC1C \uBC1C\uC0AC"
-  hiddenAbilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 98ba5744b8d69a14b85c6805435f28db, type: 3}
-    abilityName: "\uB9C8\uB9AC\uC624 \uD788\uB4E0\uC2A4\uD0AC \uC774\uB984"
-    abilityContent: "\uB9C8\uB9AC\uC624 \uD788\uB4E0\uC2A4\uD0AC \uB0B4\uC6A9"
 --- !u!1 &3310206268374531593
 GameObject:
   m_ObjectHideFlags: 0

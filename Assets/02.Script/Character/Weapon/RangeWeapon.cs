@@ -11,9 +11,13 @@ public class RangeWeapon : MonoBehaviour
     public float moveSpeed;
     private float moveDirection;
     [HideInInspector] public int attackDamage;
-    void Start()
+    void Awake()
     {
         thisWaitForSeconds = new WaitForSeconds(activeTime);
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(ActiveTime());
     }
 

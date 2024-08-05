@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 6365951510441389602}
   - component: {fileID: -2130561575796162051}
   - component: {fileID: 1059505790753558558}
-  - component: {fileID: 6128808640429108378}
+  - component: {fileID: 3365453780763900878}
   m_Layer: 0
   m_Name: Louizy
   m_TagString: Untagged
@@ -337,6 +337,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 6236123271944193788}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &1059505790753558558
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -371,8 +372,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.12812501, y: 0.1640625}
   serializedVersion: 2
-  m_Radius: 4
---- !u!114 &6128808640429108378
+  m_Radius: 3
+--- !u!114 &3365453780763900878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,16 +382,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9128148145133237892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 024e95588d2d3514ab4faa2833a59672, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 9f5f563ad8e6a1d41988653b2f77e249, type: 2}
   maxStamina: 0
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 4827081411748203981}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 8d68cbfddafea804490abed63aa1592d, type: 3}
-    abilityName: "\uCD95\uBCF5"
-    abilityContent: "\uBAA8\uB4E0 \uCE90\uB9AD\uD130 \uD544\uC694 \uC2A4\uD0DC\uBBF8\uB108
-      1 \uAC10\uC18C(\uC81C\uD55C 1\uBC88)"
 --- !u!1001 &4364680560834069810
 PrefabInstance:
   m_ObjectHideFlags: 0

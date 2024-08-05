@@ -90,18 +90,18 @@ public class StageManager : MonoBehaviour
             switch(stageData.stageType)
             {
                 case StageType.Normal :
-                    stageData.stageTime = 1;
+                    stageData.stageTime = 20;
                     stageData.enemyType = (EnemyType)(stageData.stageNumber / 5 * 2);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[0]);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[1]);
                     break;
                 case StageType.MiniBoss :
-                    stageData.stageTime = 2;
+                    stageData.stageTime = 30;
                     stageData.enemyType = (EnemyType)(1 + 4 * (stageData.stageNumber / 10));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     break;
                 case StageType.Boss :
-                    stageData.stageTime = 3;
+                    stageData.stageTime = 60;
                     stageData.enemyType = (EnemyType)(3 + 4 * (stageData.stageNumber / 10 - 1));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     break;

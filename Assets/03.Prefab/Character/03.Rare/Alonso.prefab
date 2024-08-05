@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 3607540400543354377}
   - component: {fileID: 5488215080545060668}
   - component: {fileID: 9128005208450905032}
-  - component: {fileID: 803829345882446689}
+  - component: {fileID: 6674786884396527780}
   m_Layer: 0
   m_Name: Alonso
   m_TagString: Untagged
@@ -305,6 +305,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &9128005208450905032
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -340,7 +341,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
---- !u!114 &803829345882446689
+--- !u!114 &6674786884396527780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -349,15 +350,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7940115011484265282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03ec3e55c51b115458f3c6cc6010271b, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 0762ad6e8c6d0cf49ac1fdf29e9a2fa8, type: 2}
   maxStamina: 0
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 3321533790562124734}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: f27e3a2c432b99548a8e9c394a3aa679, type: 3}
-    abilityName: "\uACE8\uB4DC\uD578\uB354"
-    abilityContent: "\uBAAC\uC2A4\uD130 \uACE8\uB4DC\uB7C9 10% \uC99D\uAC00"
 --- !u!1001 &2515898070451657439
 PrefabInstance:
   m_ObjectHideFlags: 0

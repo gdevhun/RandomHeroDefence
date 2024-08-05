@@ -183,7 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e3c8a998084e445a01dee242205a12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 0
+  maxHp: 1000
+  originMoveSpeed: 1
   moveSpeed: 1
   spawnPos: {fileID: 0}
   rend: {fileID: 0}
+  enemyType: 0

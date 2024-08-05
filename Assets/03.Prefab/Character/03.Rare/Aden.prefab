@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5395117063595396075}
   - component: {fileID: 1314569639571405967}
   - component: {fileID: 2855067156953998550}
-  - component: {fileID: 166843296238878856}
+  - component: {fileID: 5899655638328947379}
   m_Layer: 0
   m_Name: Aden
   m_TagString: Untagged
@@ -115,6 +115,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 0
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!95 &1314569639571405967
 Animator:
   serializedVersion: 5
@@ -171,7 +172,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
---- !u!114 &166843296238878856
+--- !u!114 &5899655638328947379
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,16 +181,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1747529081742522658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba45f90bde4c4e4185dfbdeb829da38, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: d9b3cb4478c2b64408b885ffd628d0a4, type: 2}
   maxStamina: 0
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 3958692159952344867}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: 489e93b313a3eb54d9c0ab41545d4e98, type: 3}
-    abilityName: "\uD2B8\uB808\uC774\uC11C"
-    abilityContent: "\uC77C\uBC18 \uB4F1\uAE09 \uC18C\uD658 4 \uAC10\uC18C(\uC81C\uD55C
-      3\uBC88)"
 --- !u!1 &3958692159952344867
 GameObject:
   m_ObjectHideFlags: 0

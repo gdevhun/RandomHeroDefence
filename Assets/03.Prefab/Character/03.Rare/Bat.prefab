@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 737986920743742601}
   - component: {fileID: -5252999323027301679}
   - component: {fileID: 6262353389579257270}
-  - component: {fileID: 469295398077323245}
+  - component: {fileID: 5547930029680947235}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
@@ -222,6 +222,7 @@ MonoBehaviour:
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 8741137913525518452}
   limitAtkSpeed: 0
+  enemyTrans: {fileID: 0}
 --- !u!58 &6262353389579257270
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -257,7 +258,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 3
---- !u!114 &469295398077323245
+--- !u!114 &5547930029680947235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,15 +267,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1659709110813243696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ce6408fbd44ab04497732827d911218, type: 3}
+  m_Script: {fileID: 11500000, guid: cc64d099f44db804f9ddfdebbf221864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 10
+  ability: {fileID: 11400000, guid: 330ca030c2abc824d96923ec0f5c623c, type: 2}
+  maxStamina: 0
+  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 3306090561124914053}
-  abilityInfo:
-    abilitySprite: {fileID: 21300000, guid: fda38e573562ea44997dba87d454af70, type: 3}
-    abilityName: "\uCF00\uC774\uBE0C"
-    abilityContent: "\uB9C8\uBC29 10% \uAC10\uC18C(2\uCD08 \uC720\uC9C0)"
 --- !u!1 &3306090561124914053
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,8 @@ public class EnemyBase : MonoBehaviour
     private Animator animator;
     [SerializeField] private int maxHp; //초기설정 Hp
     private int currentHp;
-    [SerializeField] private int moveSpeed; //몬스터이동속도
+    public int originMoveSpeed; // 원본 이동속도
+    public int moveSpeed; //몬스터이동속도
     [HideInInspector] public GameObject spawnPos; // 몬스터 스폰 위치
     private int curPathIdx = 0; // 현재 이동 할 위치 인덱스
     [Header ("렌더러")] [SerializeField] private SpriteRenderer rend;
@@ -21,6 +22,7 @@ public class EnemyBase : MonoBehaviour
 
     void Start()
     {
+        originMoveSpeed = moveSpeed;
         currentHp = maxHp;
     }
     

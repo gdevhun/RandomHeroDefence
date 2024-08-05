@@ -1,7 +1,9 @@
+using UnityEngine;
 
-public class BunkerAbility : AbilityBase
+[CreateAssetMenu(menuName = "스킬/고급/벙커")]
+public class BunkerAbility : SyncAbilityBase
 {
-    protected override void CastAbility()
+    public override void CastAbility(CharacterBase characterBase)
     {
         
     }

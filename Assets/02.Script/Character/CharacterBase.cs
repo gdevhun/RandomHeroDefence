@@ -38,7 +38,7 @@ public class HeroInfo  //히어로 정보 클래스
 }
 public class CharacterBase : MonoBehaviour
 {
-    [SerializeField] private WeaponEffect weaponEffect;
+    public WeaponEffect weaponEffect;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
     [HideInInspector] public bool isOnTarget;
@@ -47,7 +47,7 @@ public class CharacterBase : MonoBehaviour
     public Transform gunPointTrans;
     private float prevAtkSpeed = 0;
     public float limitAtkSpeed;
-    private Transform enemyTrans;
+    public Transform enemyTrans;
     
     void Awake()
     {
@@ -125,7 +125,7 @@ public class CharacterBase : MonoBehaviour
         Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward); //쿼터니언 계산
         return bulletRotation;
     }
-    private void SetLastBulletPos(GameObject bullet,Transform enemyTrans) //최종 총알 발사 입구 설정
+    public void SetLastBulletPos(GameObject bullet,Transform enemyTrans) //최종 총알 발사 입구 설정
     {
         bullet.transform.SetPositionAndRotation(gunPointTrans.position,CalculateBulletRotation(enemyTrans));
     }
