@@ -104,7 +104,7 @@ public class CharacterBase : MonoBehaviour
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.GetComponent<RangeWeapon>().weaponEffect = weaponEffect;
                 go.GetComponent<RangeWeapon>().attackDamage = heroInfo.attackDamage;
-                SetLastBulletPos(go,enemyTrans);
+                SetLastBulletPos(go,enemyTrans,gunPointTrans);
             }
         }
     }
@@ -118,17 +118,17 @@ public class CharacterBase : MonoBehaviour
         }
     }
 
-    private Quaternion CalculateBulletRotation(Transform enemyTrans)
+    private Quaternion CalculateBulletRotation(Transform enemyTrans, Transform startTrans)
     {
         //발사되는 총알의 방향 구현 로직
-        Vector2 bulletDirection = (enemyTrans.position - this.transform.position); //방향계산
+        Vector2 bulletDirection = (enemyTrans.position - startTrans.position); //방향계산
         float angle = Mathf.Atan2(bulletDirection.y, bulletDirection.x) * Mathf.Rad2Deg; //방향을 기반으로 각도 계산
         Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward); //쿼터니언 계산
         return bulletRotation;
     }
-    public void SetLastBulletPos(GameObject bullet,Transform enemyTrans) //최종 총알 발사 입구 설정
+    public void SetLastBulletPos(GameObject bullet,Transform enemyTrans, Transform gunTrans) //최종 총알 발사 입구 설정
     {
-        bullet.transform.SetPositionAndRotation(gunPointTrans.position,CalculateBulletRotation(enemyTrans));
+        bullet.transform.SetPositionAndRotation(gunTrans.position,CalculateBulletRotation(enemyTrans, transform));
     }
     
     private void CalculateSpriteRen(Transform enemyTrans) //적을 바라보는 스프라이트렌더러 교체함수

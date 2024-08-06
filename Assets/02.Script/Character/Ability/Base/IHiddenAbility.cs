@@ -2,5 +2,5 @@
 public interface IHiddenAbility
 {
     AbilityUiInfo HiddenAbilityUiInfo { get; set; }
-    bool IsHidden();
+    void CastHiddenAbility(CharacterBase characterBase);
 }
