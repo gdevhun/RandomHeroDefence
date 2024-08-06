@@ -47,20 +47,14 @@ public class AbilityManage : MonoBehaviour
         maxStaminaFloat = maxStamina;
 
         // 스태미너 O => 스태미너에 따라 스킬 시전
-        // 스태미너 X => 바로 스킬 시전
         if(maxStamina > 0) StartCoroutine(StaminaIncreament());
-        else
-        {
-            if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);
-            else if(ability is AsyncAbilityBase asyncAbilityBase) StartCoroutine(asyncAbilityBase.CastAbility(characterBase));
-        }
     }
     private void OnEnable()
     {
         // 스태미너 X => 활성화 할 때 마다 스킬 시전
         if(maxStamina > 0 || characterBase == null) return;
-        if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);
-        else if(ability is AsyncAbilityBase asyncAbilityBase) StartCoroutine(asyncAbilityBase.CastAbility(characterBase));
+        SyncAbilityBase syncAbilityBase = ability as SyncAbilityBase;
+        syncAbilityBase.CastAbility(characterBase);
     }
 
     // 스태미나 증가
@@ -110,5 +104,6 @@ public class AbilityManage : MonoBehaviour
             default :
                 break;
         }
+        if(maxStamina > 0) Stamina = 0;
     }
 }

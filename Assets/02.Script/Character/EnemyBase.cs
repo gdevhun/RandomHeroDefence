@@ -47,6 +47,7 @@ public class EnemyBase : MonoBehaviour
     {
         animator.SetTrigger("isDead");
         //풀에 다시 집어넣기
+        StageManager.instance.instantEnemyList.gameObjectList.Remove(gameObject);
     }
 
     public void InactiveObj()

@@ -6623,7 +6623,7 @@ MonoBehaviour:
   unitSellDiaImage: {fileID: 129589354}
   unitSellGoldText: {fileID: 820307215}
   unitSellDiaText: {fileID: 1750285233}
-  unitSpawn: {fileID: 0}
+  unitSpawn: {fileID: 1306569377}
 --- !u!4 &437366049
 Transform:
   m_ObjectHideFlags: 0
@@ -14150,6 +14150,8 @@ MonoBehaviour:
   stageList: []
   maxStage: 50
   maxEnemyCnt: 120
+  instantEnemyList:
+    gameObjectList: []
   pathPosList:
     gameObjectList:
     - {fileID: 437979256}

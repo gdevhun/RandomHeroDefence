@@ -43,6 +43,7 @@ public class StageManager : MonoBehaviour
             UpdateEnemyCntUI(value);
         }
     }
+    public ListGameObject instantEnemyList = new ListGameObject(); // 소환된 몬스터 관리
 
     // 몬스터 이동경로
     [Header ("몬스터 이동 위치")] [SerializeField] private ListGameObject pathPosList;
@@ -199,6 +200,7 @@ public class StageManager : MonoBehaviour
             instantEnemy.GetComponent<EnemyBase>().spawnPos = stage.spawnPos.gameObjectList[i];
             instantEnemy.GetComponent<EnemyBase>().enemyType = stage.enemyType;
             ++EnemyCnt;
+            instantEnemyList.gameObjectList.Add(instantEnemy);
         }
         return instantEnemy;
     }

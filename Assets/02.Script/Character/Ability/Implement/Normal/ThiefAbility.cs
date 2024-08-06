@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class ThiefAbility : SyncAbilityBase
 {
+    // 150% 데미지, 골드 10 획득
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
 
-        // 150% 데미지, 골드 10 획득
         Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
         foreach (Collider2D hit in hits)
         {

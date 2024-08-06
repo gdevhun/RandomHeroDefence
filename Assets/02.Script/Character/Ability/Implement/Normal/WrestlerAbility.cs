@@ -3,12 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "스킬/일반/레슬러")]
 public class WrestlerAbility : SyncAbilityBase
 {
+    // 200% 데미지
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
-
-        // 200% 데미지
+        
         Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
         foreach (Collider2D hit in hits)
         {

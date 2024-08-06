@@ -57,6 +57,10 @@ public class CombUnit : GetUnitBase
         GameObject unitPos = null;
         if(instantUnit.GetComponent<CharacterBase>().heroInfo.heroGradeType != HeroGradeType.일반) unitPos = GetUnitPos(instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
 
+        // 패널
+        UiUnit.instance.ExitPanel(UiUnit.instance.unitSellCompPanel);
+        UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);
+
         // 스폰 위치 체크, 노말 == 실패 체크
         if(unitPos == null)
         {
@@ -70,9 +74,5 @@ public class CombUnit : GetUnitBase
         instantUnit.transform.SetParent(unitPos.transform);
         instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? 0 : 0.2f, -0.1f * (unitPos.transform.childCount - 1));
         CurUnit -= 2;
-
-        // 패널
-        UiUnit.instance.ExitPanel(UiUnit.instance.unitSellCompPanel);
-        UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);
     }
 }
