@@ -39,20 +39,28 @@ public class AbilityManage : MonoBehaviour
             UpdateStaminaUI();
         }
     }
-    [HideInInspector] public CharacterBase characterBase;
+    public CharacterBase characterBase;
     public static int louizyCnt;
     [Header ("스태미나 필 오브젝트")] [SerializeField] private GameObject staminaFillObj;
+
+    // 인스턴스화 => OnEnable 까지만 호출됨
+    // 소환 => Start 호출됨
     private void Start()
     {
         characterBase = GetComponent<CharacterBase>();
         maxStaminaFloat = maxStamina;
 
-        // 스태미너 O => 스태미너에 따라 스킬 시전
+        // 스태미너 O => 소환 될 때 한 번 스태미너에 따라 스킬 시전
         if(maxStamina > 0) StartCoroutine(StaminaIncreament());
+        else // 스태미너 X => 소환 될 때 한 번 즉시 시전
+        {
+            SyncAbilityBase syncAbilityBase = ability as SyncAbilityBase;
+            syncAbilityBase.CastAbility(characterBase);
+        }
     }
     private void OnEnable()
     {
-        // 스태미너 X => 활성화 할 때 마다 스킬 시전
+        // 스태미너 X => 활성화 할 때 마다 한 번 스킬 시전
         if(maxStamina > 0 || characterBase == null) return;
         SyncAbilityBase syncAbilityBase = ability as SyncAbilityBase;
         syncAbilityBase.CastAbility(characterBase);

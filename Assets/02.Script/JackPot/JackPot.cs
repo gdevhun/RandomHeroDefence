@@ -58,7 +58,12 @@ public class JackPot : MonoBehaviour, IConsumable
         jackPotBtn.interactable = true;
 
         // 모두 다른 신화면 실패
-        if(jackPotUnitMap.Count == 3) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
+        if(jackPotUnitMap.Count == 3)
+        {
+            SoundManager.instance.SFXPlay(SoundType.NotEnough);
+            MissionManager.instance.gachaFailures++;
+            return;
+        }
 
         // 같은 신화가 둘이면 원금 돌려줌
         if(jackPotUnitMap.Count == 2)

@@ -37,7 +37,7 @@ public abstract class GetUnitBase : MonoBehaviour
     }
 
     // 가중치에 따라 유닛을 소환하는 함수
-    protected virtual GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap)
+    public virtual GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap)
     {
         // 모든 가중치 합
         int totalWeight = 0;

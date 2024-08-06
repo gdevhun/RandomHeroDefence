@@ -34,6 +34,7 @@ public class GambleUnit : GetUnitBase, IConsumable
         {
             PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
             SoundManager.instance.SFXPlay(SoundType.NotEnough);
+            MissionManager.instance.summonFailures++;
             return;
         }
 
