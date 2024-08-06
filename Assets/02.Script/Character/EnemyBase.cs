@@ -64,7 +64,7 @@ public class EnemyBase : MonoBehaviour
     private void EnemyMove()
     {
         if(spawnPos == null) return;
-        transform.position = Vector2.MoveTowards(transform.position, StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position, (moveSpeed - decreaseMoveSpeed) * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position, decreaseMoveSpeed >= moveSpeed ? 0f : (moveSpeed - decreaseMoveSpeed) * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

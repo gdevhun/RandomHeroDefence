@@ -5,8 +5,7 @@ public class EkionAbility : SyncAbilityBase
 {
     public override void CastAbility(CharacterBase characterBase)
     {
-        // 모든 몬스터 이동속도 감소 5(6번 제한)
-        if(EnemyBase.decreaseMoveSpeed >= 0.3f) return;
+        // 모든 몬스터 이동속도 감소 5
         EnemyBase.decreaseMoveSpeed += 0.05f;
     }
 }

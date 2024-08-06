@@ -61,7 +61,8 @@ public enum AbilityEffectType
 {
     갱스터, 시프, 레슬러,
     어쌔신, 바바리안, 벙커,
-    통키
+    통키,
+    알리스다, 막더스
 }
 
 public class PoolManager : MonoBehaviour

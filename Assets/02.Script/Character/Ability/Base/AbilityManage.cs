@@ -28,7 +28,7 @@ public class AbilityManage : MonoBehaviour
             stamina = value;
 
             // 최대 스태미너가 되고 타겟이 존재 할 때 스킬 시전
-            if(stamina >= maxStamina && characterBase.isOnTarget)
+            if((louizyCnt == 0 && stamina >= maxStamina && characterBase.isOnTarget) || (louizyCnt > 0 && stamina >= maxStamina - 1 && characterBase.isOnTarget))
             {
                 if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);
                 else if(ability is AsyncAbilityBase asyncAbilityBase) StartCoroutine(asyncAbilityBase.CastAbility(characterBase));
@@ -39,6 +39,7 @@ public class AbilityManage : MonoBehaviour
         }
     }
     [HideInInspector] public CharacterBase characterBase;
+    public static int louizyCnt;
     [Header ("스태미나 필 오브젝트")] [SerializeField] private GameObject staminaFillObj;
     private void Start()
     {
@@ -53,6 +54,13 @@ public class AbilityManage : MonoBehaviour
             if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);
             else if(ability is AsyncAbilityBase asyncAbilityBase) StartCoroutine(asyncAbilityBase.CastAbility(characterBase));
         }
+    }
+    private void OnEnable()
+    {
+        // 스태미너 X => 활성화 할 때 마다 스킬 시전
+        if(maxStamina > 0 || characterBase == null) return;
+        if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);
+        else if(ability is AsyncAbilityBase asyncAbilityBase) StartCoroutine(asyncAbilityBase.CastAbility(characterBase));
     }
 
     // 스태미나 증가
@@ -79,7 +87,7 @@ public class AbilityManage : MonoBehaviour
         if(characterBase == null) return;
         switch(characterBase.heroInfo.unitType)
         {
-            case UnitType.솔져 : SellUnit.instance.soldierCnt--; Debug.Log(SellUnit.instance.soldierCnt);
+            case UnitType.솔져 : SellUnit.instance.soldierCnt--;
                 break;
             case UnitType.에키온 : EnemyBase.decreaseMoveSpeed -= 0.05f; if(EnemyBase.decreaseMoveSpeed < 0) EnemyBase.decreaseMoveSpeed = 0;
                 break;
@@ -90,6 +98,14 @@ public class AbilityManage : MonoBehaviour
             case UnitType.에이든 : UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] += 4; if(UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] > 72) UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] = 72; 
                 break;
             case UnitType.알론소 : EnemyBase.increaseEnemyGold -= 10; if(EnemyBase.increaseEnemyGold < 0) EnemyBase.increaseEnemyGold = 0;
+                break;
+            case UnitType.아아솔 : UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] -= 10; if(UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] < 0) UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] = 0;
+                break;
+            case UnitType.배니스 : UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] -= 10; if(UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] < 0) UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] = 0;
+                break;
+            case UnitType.루이지 : louizyCnt--; if(louizyCnt < 0) louizyCnt = 0;
+                break;
+            case UnitType.막더스 : EnemyBase.decreaseMagDef -= 50f; if(EnemyBase.decreaseMagDef < 0) EnemyBase.decreaseMagDef = 0; EnemyBase.decreasePhyDef -= 50f; if(EnemyBase.decreasePhyDef < 0) EnemyBase.decreasePhyDef = 0;
                 break;
             default :
                 break;

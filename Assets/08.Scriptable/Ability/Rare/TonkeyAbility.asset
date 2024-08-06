@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5dbdc8a12eb9a448fa68942a5d2b9c, type: 3}
   m_Name: TonkeyAbility
   m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
   abilityUiInfo:
     abilitySprite: {fileID: 21300000, guid: c6832efce5324c14d8e9ac2b771f11ed, type: 3}
     abilityName: "\uBC84\uB2DD"
     abilityContent: "\uB2E4\uC774\uC544 1\uAC1C \uCD94\uAC00"
-  abilityEffectType: 13
+  abilityEffectType: 6
+  instantAbilityEffect: {fileID: 0}

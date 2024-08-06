@@ -16,6 +16,11 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         { HeroGradeType.전설, 0 },
         { HeroGradeType.신화, 0 },
     };
+    public Dictionary<DamageType, int> damageUpgradeMap = new Dictionary<DamageType, int>
+    {
+        { DamageType.물리, 0 },
+        { DamageType.마법, 0 }
+    };
 
     [Header ("일반 레벨 텍스트")] [SerializeField] private TextMeshProUGUI normalLvText;
     [Header ("전설 레벨 텍스트")] [SerializeField] private TextMeshProUGUI legendLvText;
