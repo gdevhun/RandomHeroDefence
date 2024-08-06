@@ -15,7 +15,7 @@ public class AlexAbility : AsyncAbilityBase
                 instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, characterBase.weaponEffect);
                 instantAbilityEffect.GetComponent<RangeWeapon>().weaponEffect = characterBase.weaponEffect;
                 instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.heroInfo.attackDamage;
-                characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans);
+                characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans, characterBase.gunPointTrans);
                 instantAbilityEffect.transform.position += new Vector3(1f * j, 0, 0);
             }
             yield return oneSecond;

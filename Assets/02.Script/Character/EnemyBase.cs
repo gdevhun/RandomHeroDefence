@@ -35,7 +35,7 @@ public class EnemyBase : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHp -= damage;
-        Debug.Log($"Enemy took {damage} damage, remaining HP: {currentHp}");
+        //Debug.Log($"Enemy took {damage} damage, remaining HP: {currentHp}");
 
         if (currentHp <= 0)
         {

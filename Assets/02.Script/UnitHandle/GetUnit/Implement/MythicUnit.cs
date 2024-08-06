@@ -23,6 +23,8 @@ public class UnitRequire
 
 public class MythicUnit : GetUnitBase
 {
+    public static MythicUnit instance;
+    private void Awake() { instance = this; }
     [Header ("신화 조합식")] [SerializeField] private List<MythicComb> mythicCombList = new List<MythicComb>();
     public Dictionary<UnitType, MythicComb> mythicCombMap = new Dictionary<UnitType, MythicComb>(); // 신화 조합식 맵핑
     private UnitType selectedMythic; // 소환 할 신화
@@ -43,7 +45,7 @@ public class MythicUnit : GetUnitBase
     }
 
     // 소환 할 신화 소환
-    protected override GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap) { return GetUnitFromPool(HeroGradeType.신화); }
+    public override GameObject GetUnit(Dictionary<HeroGradeType, int> gradeWeightMap) { return GetUnitFromPool(HeroGradeType.신화); }
 
     // 소환 할 신화 풀링
     protected override GameObject GetUnitFromPool(HeroGradeType heroGradeType) { return PoolManager.instance.GetPool(PoolManager.instance.unitPool.queMap, selectedMythic); }

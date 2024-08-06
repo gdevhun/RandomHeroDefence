@@ -60,9 +60,10 @@ public enum EnemyType
 public enum AbilityEffectType
 {
     갱스터, 시프, 레슬러,
-    어쌔신, 바바리안, 벙커,
+    어쌔신, 바바리안,
     통키,
-    알리스다, 막더스
+    알리스다, 막더스,
+    테오도르, 마그너스, 마리오, 유미
 }
 
 public class PoolManager : MonoBehaviour

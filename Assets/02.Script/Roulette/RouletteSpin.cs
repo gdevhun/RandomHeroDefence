@@ -48,7 +48,7 @@ public class RouletteSpin : MonoBehaviour, IConsumable
 		// 회전이 끝나면 사운드 반환
 		PoolManager.instance.ReturnPool(PoolManager.instance.soundPool.queMap, rouletteSound, SoundType.Roulette);
 		if(isSuccess) SoundManager.instance.SFXPlay(SoundType.GetUnit);
-		else SoundManager.instance.SFXPlay(SoundType.NotEnough);
+		else { SoundManager.instance.SFXPlay(SoundType.NotEnough); MissionManager.instance.rouletteFailures++; }
 	}
 
     // 재화

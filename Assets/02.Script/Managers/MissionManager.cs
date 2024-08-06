@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum MissionList
@@ -21,6 +22,9 @@ public enum MissionList
 }
 public class MissionManager : MonoBehaviour
 {
+    public static MissionManager instance;
+    private void Awake() { instance = this; }
+
     private Dictionary<MissionList,bool> missionStatus;
     
     //아래 3개변수 사용하면됨
@@ -98,31 +102,31 @@ public class MissionManager : MonoBehaviour
     }
     void CheckCollectionMissions() //모으기미션
     {
-        if (!missionStatus[MissionList.일반수집가] && HasAllItems("General"))
+        if (!missionStatus[MissionList.일반수집가] && HasAllItems(HeroGradeType.일반))
         {
             missionStatus[MissionList.일반수집가] = true;
             CurrencyManager.instance.AcquireCurrency(80, true);
             Debug.Log("일반수집가 퀘 완 80골드 획득");
         }
-        if (!missionStatus[MissionList.고급수집가] && HasAllItems("Advanced"))
+        if (!missionStatus[MissionList.고급수집가] && HasAllItems(HeroGradeType.고급))
         {
             missionStatus[MissionList.고급수집가] = true;
             CurrencyManager.instance.AcquireCurrency(200, true);
             Debug.Log("고급수집가 퀘 완 200골드 획득");
         }
-        if (!missionStatus[MissionList.희귀수집가] && HasAllItems("General"))
+        if (!missionStatus[MissionList.희귀수집가] && HasAllItems(HeroGradeType.희귀))
         {
             missionStatus[MissionList.희귀수집가] = true;
             CurrencyManager.instance.AcquireCurrency(3, false);
             Debug.Log("희귀수집가 퀘 완 3다이아 획득");
         }
-        if (!missionStatus[MissionList.전설수집가] && HasAllItems("Legend"))
+        if (!missionStatus[MissionList.전설수집가] && HasAllItems(HeroGradeType.전설))
         {
             missionStatus[MissionList.전설수집가] = true;
             CurrencyManager.instance.AcquireCurrency(10, false);
             Debug.Log("전설수집가 퀘 완 10다이아 획득");
         }
-        if (!missionStatus[MissionList.신화수집가] && HasAllItems("Myth"))
+        if (!missionStatus[MissionList.신화수집가] && HasAllItems(HeroGradeType.신화))
         {
             missionStatus[MissionList.신화수집가] = true;
             CurrencyManager.instance.AcquireCurrency(20, false);
@@ -251,10 +255,47 @@ public class MissionManager : MonoBehaviour
         }
     }
 
-    bool HasAllItems(string rarity)
+    bool HasAllItems(HeroGradeType heroGradeType)
     {
         //필드에 해당 영웅이 존재하는지에 대한 함수 처리
-        return true;
+        Dictionary<UnitType, int> MissionUnitMap = new Dictionary<UnitType, int>(); // 미션 유닛 맵핑
+        for(int i = 0; i < 5; i++)
+        {
+            for(int j = 0; j < GetUnitBase.unitPosMap[(UnitType)(5 * (int)heroGradeType + i)].Count; j++)
+            {
+                // 유닛 위치 가져옴
+                GameObject unitPos = GetUnitBase.unitPosMap[(UnitType)(5 * (int)heroGradeType + i)].ElementAt(j).Key;
+
+                // 유닛 체크
+                if(unitPos.transform.childCount == 0) continue;
+
+                // 유닛 타입 가져옴
+                UnitType unitType = unitPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.unitType;
+
+                // 맵핑 체크
+                if(MissionUnitMap.ContainsKey(unitType)) continue;
+
+                // 유닛 맵핑
+                MissionUnitMap.Add(unitType, 1);
+            }
+        }
+
+        // 유미 히든 스킬
+        if(heroGradeType == HeroGradeType.전설 && MissionUnitMap.Count == 5)
+        {
+            // 유미 소환
+            MythicUnit.instance.SelectMythic("유미");
+            GameObject instantMyth = MythicUnit.instance.GetUnit(null);
+            GameObject mythPos = MythicUnit.instance.GetUnitPos(MythicUnit.instance.SelectedMythic);
+            instantMyth.transform.SetParent(mythPos.transform);
+            instantMyth.transform.localPosition = new Vector3(0, 0.2f, 0);
+            ++GetUnitBase.CurUnit;
+
+            // 사운드
+            SoundManager.instance.SFXPlay(SoundType.GetUnit);
+        }
+
+        return MissionUnitMap.Count == 5;
     }
 
 }
