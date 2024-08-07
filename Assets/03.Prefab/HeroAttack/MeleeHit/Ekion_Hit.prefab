@@ -4905,7 +4905,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEffect: 9
-  activeTime: 1.4
+  activeTime: 1
+  attackDamage: 0
 --- !u!58 &6032239277233337872
 CircleCollider2D:
   m_ObjectHideFlags: 0

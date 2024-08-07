@@ -5,22 +5,32 @@ using UnityEngine;
 
 public class MeleeWeapon: MonoBehaviour
 {
-    public WeaponEffect weaponEffect;
-    public float activeTime;
+    [HideInInspector] public WeaponEffect weaponEffect;
+    [Header ("유지 시간")] public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
-    public float attackDamage;
-    void Start()
+    [HideInInspector] public float attackDamage;
+
+    // 초기화
+    void Awake()
     {
         
         thisWaitForSeconds = new WaitForSeconds(activeTime);
+    }
+
+    // 유지 시간 지나면 반환
+    private void OnEnable()
+    {
         StartCoroutine(ActiveTime());
     }
 
+    // 유지 시간 지나면 반환
     private IEnumerator ActiveTime()
     {
         yield return thisWaitForSeconds;
         PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, gameObject, weaponEffect);
     }
+
+    // 몬스터 타격
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -30,10 +40,5 @@ public class MeleeWeapon: MonoBehaviour
                 enemyBase.TakeDamage(attackDamage); 
             }
         }
-    }
-
-    private void ReturnInActiveTime()
-    {
-       
     }
 }

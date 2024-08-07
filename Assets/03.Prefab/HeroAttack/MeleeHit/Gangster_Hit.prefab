@@ -156,4 +156,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEffect: 0
-  activeTime: 0.8
+  activeTime: 1
+  attackDamage: 0

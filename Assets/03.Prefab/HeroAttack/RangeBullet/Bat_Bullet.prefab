@@ -134,5 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEffect: 12
-  activeTime: 4.5
-  moveSpeed: 3.5
+  activeTime: 4
+  moveSpeed: 4
+  attackDamage: 0
