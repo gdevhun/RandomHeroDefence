@@ -6,68 +6,64 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     private Animator animator;
-    public float maxHp; //초기설정 Hp
-    public float currentHp;
-    public float originMoveSpeed; // 원본 이동속도
-    public float moveSpeed; //몬스터이동속도
-    public static float decreaseMoveSpeed; // 몬스터 이동속도 감소 수치
+    [Header ("최대 체력")] public float maxHp;
+    [HideInInspector] public float currentHp; // 현재 체력
+    [HideInInspector] public float originMoveSpeed; // 원본 이속
+    [Header ("이동 속도")] public float moveSpeed;
+    public static float decreaseMoveSpeed; // 이속 감소 수치
     [HideInInspector] public GameObject spawnPos; // 몬스터 스폰 위치
     private int curPathIdx = 0; // 현재 이동 할 위치 인덱스
-    [Header ("렌더러")] [SerializeField] private SpriteRenderer rend;
-    public EnemyType enemyType;
-    [HideInInspector] public bool isDead;
-    public float phyDef, magDef; // 물방, 마방
-    public static float decreasePhyDef, decreaseMagDef; // 물방, 마방 감소 수치
-    public int enemyGold; // 몬스터 골드
+    private SpriteRenderer rend; // 렌더러
+    [HideInInspector] public EnemyType enemyType; // 몬스터 타입
+    [HideInInspector] public bool isDead; // 죽었는지 체크
+    [Header ("물방 마방")] public float phyDef, magDef;
+    public static float decreasePhyDef, decreaseMagDef; // 물방 마방 감소 수치
+    [Header ("몬스터 골드")] public int enemyGold;
     public static int increaseEnemyGold; // 몬스터 골드 증가량
+
+    // 초기화
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
     }
-
     void Start()
     {
         originMoveSpeed = moveSpeed;
         currentHp = maxHp;
     }
     
+    // 피격
     public void TakeDamage(float damage)
     {
         currentHp -= damage;
-        //Debug.Log($"Enemy took {damage} damage, remaining HP: {currentHp}");
-
-        if (currentHp <= 0)
-        {
-            Die();
-        }
+        if (currentHp <= 0) Die();
     }
 
+    // 죽음
     private void Die()
     {
         animator.SetTrigger("isDead");
-        //풀에 다시 집어넣기
+        CurrencyManager.instance.AcquireCurrency(enemyGold, true);
         StageManager.instance.instantEnemyList.gameObjectList.Remove(gameObject);
     }
-
+    
+    // 죽는 애니메이션이 끝날 때 호출
     public void InactiveObj()
     {
-        gameObject.SetActive(false); //에니메이션 데드이벤트 끝쪽에서 호출
         PoolManager.instance.ReturnPool(PoolManager.instance.enemyPool.queMap,gameObject,enemyType);
-    }
-    void Update()
-    {
-        // 몬스터 이동
-        EnemyMove();
     }
 
     // 몬스터 이동
+    private void Update()
+    {
+        EnemyMove();
+    }
     private void EnemyMove()
     {
         if(spawnPos == null) return;
         transform.position = Vector2.MoveTowards(transform.position, StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position, decreaseMoveSpeed >= moveSpeed ? 0f : (moveSpeed - decreaseMoveSpeed) * Time.deltaTime);
     }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (spawnPos != null && other.gameObject.name.Equals(StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].name))

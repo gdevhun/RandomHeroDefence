@@ -27,36 +27,35 @@ public enum HeroDefaultSpriteDir //스프라이트기본 방향
 [Serializable]
 public class HeroInfo  //히어로 정보 클래스
 {
-    public DamageType damageType;
-    public AttackType attackType;
-    public HeroGradeType heroGradeType;
-    public UnitType unitType;
-    public Sprite unitSprite;
-    public float attackDamage;
-    public float attackSpeed;
-    public HeroDefaultSpriteDir heroDefaultSpriteDir;
+    [Header ("데미지 타입")] public DamageType damageType;
+    [Header ("공격방식 타입")] public AttackType attackType;
+    [Header ("유닛 등급")]public HeroGradeType heroGradeType;
+    [Header ("유닛 타입")]public UnitType unitType;
+    [Header ("유닛 스프라이트")] public Sprite unitSprite;
+    [Header ("공격력")] public float attackDamage;
+    [Header ("공격 속도")] public float attackSpeed;
+    [Header ("초기 렌더러 방향")] public HeroDefaultSpriteDir heroDefaultSpriteDir;
 }
 public class CharacterBase : MonoBehaviour
 {
-    public WeaponEffect weaponEffect;
-    private SpriteRenderer spriteRenderer;
-    private Animator anim;
-    [HideInInspector] public bool isOnTarget;
-    public HeroInfo heroInfo;
+    [Header ("평타 이펙트 타입")] public WeaponEffect weaponEffect;
+    private SpriteRenderer spriteRenderer; // 렌더러
+    private Animator anim; // 애니메이션
+    [HideInInspector] public bool isOnTarget; // 타겟이 있는지 체크
+    public HeroInfo heroInfo; // 유닛 정보
     private static readonly int IsAttacking = Animator.StringToHash("isAttack");
-    public Transform gunPointTrans;
-    private float prevAtkSpeed = 0;
-    public float limitAtkSpeed;
-    public Transform enemyTrans;
+    [HideInInspector] public Transform gunPointTrans; // 원거리 발사 위치
+    private float prevAtkSpeed = 0; // 공속 계산용
+    [HideInInspector] public float limitAtkSpeed; // 공속
+    [HideInInspector] public Transform enemyTrans; // 타겟 몬스터 트랜스폼
     
-    
+    // 초기화
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         if (heroInfo.attackType == AttackType.근거리) gunPointTrans = null;
     }
-
     private void Start()
     {
         //인스펙터 초기 설정 공격력, 공격속도로 초기화
@@ -64,7 +63,7 @@ public class CharacterBase : MonoBehaviour
         prevAtkSpeed = limitAtkSpeed;
     }
 
-
+    // 공속 계산
     void Update()
     {
         if (prevAtkSpeed < limitAtkSpeed)
@@ -72,11 +71,10 @@ public class CharacterBase : MonoBehaviour
             prevAtkSpeed += Time.deltaTime;
         }
     }
+
+    // 타겟 공격
     private void OnTriggerStay2D(Collider2D other)
     {
-        //CalculateSpriteRen(enemyTrans); //방향 계산
-
-        
         if (other.gameObject.CompareTag("Enemy") && (!isOnTarget || enemyTrans.GetComponent<EnemyBase>().isDead))
         {
             enemyTrans = other.gameObject.transform;
@@ -109,6 +107,7 @@ public class CharacterBase : MonoBehaviour
         }
     }
 
+    // 타겟 나감
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.transform == enemyTrans) isOnTarget = false;
@@ -118,6 +117,7 @@ public class CharacterBase : MonoBehaviour
         }
     }
 
+    // 원거리 발사 방향 셋
     private Quaternion CalculateBulletRotation(Transform enemyTrans, Transform startTrans)
     {
         //발사되는 총알의 방향 구현 로직
@@ -131,6 +131,7 @@ public class CharacterBase : MonoBehaviour
         bullet.transform.SetPositionAndRotation(gunTrans.position,CalculateBulletRotation(enemyTrans, transform));
     }
     
+    // 스프라이트 플립
     private void CalculateSpriteRen(Transform enemyTrans) //적을 바라보는 스프라이트렌더러 교체함수
     {  
         Vector2 heroDirection = enemyTrans.position - transform.position;

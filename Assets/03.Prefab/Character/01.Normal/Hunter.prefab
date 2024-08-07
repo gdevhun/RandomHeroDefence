@@ -247,7 +247,7 @@ MonoBehaviour:
     heroGradeType: 0
     unitType: 1
     unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
-    attackDamage: 100
+    attackDamage: 200
     attackSpeed: 1
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 4686209107330335546}
@@ -287,7 +287,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 4
 --- !u!114 &2138669427700605889
 MonoBehaviour:
   m_ObjectHideFlags: 0
