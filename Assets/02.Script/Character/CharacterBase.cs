@@ -48,6 +48,7 @@ public class CharacterBase : MonoBehaviour
     private float prevAtkSpeed = 0; // 공속 계산용
     [HideInInspector] public float limitAtkSpeed; // 공속
     [HideInInspector] public Transform enemyTrans; // 타겟 몬스터 트랜스폼
+    [Header ("평타 사운드 타입")] [SerializeField] private SoundType atkSoundType;
     
     // 초기화
     void Awake()
@@ -103,6 +104,7 @@ public class CharacterBase : MonoBehaviour
                 go.GetComponent<RangeWeapon>().weaponEffect = weaponEffect;
                 go.GetComponent<RangeWeapon>().attackDamage = heroInfo.attackDamage;
                 SetLastBulletPos(go,enemyTrans,gunPointTrans);
+                SoundManager.instance.SFXPlay(atkSoundType);
             }
         }
     }
@@ -157,5 +159,11 @@ public class CharacterBase : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
+    }
+
+    // 공격 애니메이션이 끝나면 사운드 재생
+    public void AtkSound()
+    {
+        SoundManager.instance.SFXPlay(atkSoundType);
     }
 }

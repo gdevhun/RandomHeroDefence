@@ -18477,6 +18477,11 @@ MonoBehaviour:
       - {fileID: 5612101612285607420, guid: 62cc12623b00aae4fae38b2b6fe7f8b6, type: 3}
       - {fileID: 5612101612285607420, guid: 18a746ee9938e4148bc78561b9e43451, type: 3}
       - {fileID: 5612101612285607420, guid: bdb2b1b0e7fbf504a9b273b2924e136e, type: 3}
+    - gameObjectList:
+      - {fileID: 5612101612285607420, guid: b01f836b42308df4f8f78c07fbe87d52, type: 3}
+      - {fileID: 5612101612285607420, guid: 1b408d5ef9845f746a79baa070c0846e, type: 3}
+      - {fileID: 5612101612285607420, guid: 8665eeb372a82f04986d11b00f07ac1a, type: 3}
+      - {fileID: 5612101612285607420, guid: cdf9ab51b882e1548ae676525d5ede42, type: 3}
   enemyPool:
     allList:
     - gameObjectList:

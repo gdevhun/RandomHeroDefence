@@ -285,6 +285,7 @@ MonoBehaviour:
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
   enemyTrans: {fileID: 0}
+  atkSoundType: 6
 --- !u!95 &2489706490217335231
 Animator:
   serializedVersion: 5
@@ -355,7 +356,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: eeba50f451ff6d4469e925162bcd831f, type: 2}
   maxStamina: 0
-  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 1064521558774805531}
 --- !u!1001 &7728525456081813514
 PrefabInstance:

@@ -222,6 +222,7 @@ MonoBehaviour:
   gunPointTrans: {fileID: 6014299675663932450}
   limitAtkSpeed: 0
   enemyTrans: {fileID: 0}
+  atkSoundType: 7
 --- !u!58 &5595578119839920485
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -271,7 +272,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 302833201fdd941418e3326690f2c34c, type: 2}
   maxStamina: 8
-  characterBase: {fileID: 0}
   staminaFillObj: {fileID: 1635173617934853588}
 --- !u!1 &7623325520176023547
 GameObject:
