@@ -39,7 +39,7 @@ public class AbilityManage : MonoBehaviour
             UpdateStaminaUI();
         }
     }
-    public CharacterBase characterBase;
+    private CharacterBase characterBase;
     public static int louizyCnt;
     [Header ("스태미나 필 오브젝트")] [SerializeField] private GameObject staminaFillObj;
 

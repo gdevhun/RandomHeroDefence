@@ -7,7 +7,17 @@ public class EnemyBase : MonoBehaviour
 {
     private Animator animator;
     [Header ("최대 체력")] public float maxHp;
-    [HideInInspector] public float currentHp; // 현재 체력
+    private float currentHp; // 현재 체력
+    public float CurrentHp
+    {
+        get { return currentHp; }
+        set
+        {
+            currentHp = value;
+            if(currentHp <= 0) Die();
+            UpdateHpUI();
+        }
+    }
     [HideInInspector] public float originMoveSpeed; // 원본 이속
     [Header ("이동 속도")] public float moveSpeed;
     public static float decreaseMoveSpeed; // 이속 감소 수치
@@ -20,6 +30,7 @@ public class EnemyBase : MonoBehaviour
     public static float decreasePhyDef, decreaseMagDef; // 물방 마방 감소 수치
     [Header ("몬스터 골드")] public int enemyGold;
     public static int increaseEnemyGold; // 몬스터 골드 증가량
+    [Header ("체력 필 오브젝트")] [SerializeField] private GameObject hpFillObj;
 
     // 초기화
     private void Awake()
@@ -30,14 +41,13 @@ public class EnemyBase : MonoBehaviour
     void Start()
     {
         originMoveSpeed = moveSpeed;
-        currentHp = maxHp;
+        CurrentHp = maxHp;
     }
     
     // 피격
     public void TakeDamage(float damage)
     {
-        currentHp -= damage;
-        if (currentHp <= 0) Die();
+        CurrentHp -= damage;
     }
 
     // 죽음
@@ -75,5 +85,13 @@ public class EnemyBase : MonoBehaviour
             // 플립
             rend.flipX = StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position.x < transform.position.x ? true : false;
         }
+    }
+
+    // 체력 UI 갱신
+    private void UpdateHpUI()
+    {
+        Vector3 curScale = hpFillObj.transform.localScale;
+        curScale.y = Mathf.Lerp(0, 2.6f, CurrentHp / maxHp);
+        hpFillObj.transform.localScale = curScale;
     }
 }
