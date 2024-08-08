@@ -13,22 +13,13 @@ public class RangeWeapon : MonoBehaviour
     [HideInInspector] public float attackDamage;
 
     // 초기화
-    void Awake()
-    {
-        thisWaitForSeconds = new WaitForSeconds(activeTime);
-    }
+    void Awake() { thisWaitForSeconds = new WaitForSeconds(activeTime); }
 
     // 유지 시간 지나면 반환
-    private void OnEnable()
-    {
-        StartCoroutine(ActiveTime());
-    }
+    private void OnEnable() { StartCoroutine(ActiveTime()); }
 
     // 이동
-    private void Update()
-    {
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-    }
+    private void Update() { transform.Translate(Vector2.right * moveSpeed * Time.deltaTime); }
 
     // 유지 시간 지나면 반환
     private IEnumerator ActiveTime()

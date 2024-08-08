@@ -11,17 +11,10 @@ public class MeleeWeapon: MonoBehaviour
     [HideInInspector] public float attackDamage;
 
     // 초기화
-    void Awake()
-    {
-        
-        thisWaitForSeconds = new WaitForSeconds(activeTime);
-    }
+    void Awake() { thisWaitForSeconds = new WaitForSeconds(activeTime); }
 
     // 유지 시간 지나면 반환
-    private void OnEnable()
-    {
-        StartCoroutine(ActiveTime());
-    }
+    private void OnEnable() { StartCoroutine(ActiveTime()); }
 
     // 유지 시간 지나면 반환
     private IEnumerator ActiveTime()

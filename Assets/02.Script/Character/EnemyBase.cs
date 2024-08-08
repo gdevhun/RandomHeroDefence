@@ -45,10 +45,7 @@ public class EnemyBase : MonoBehaviour
     }
     
     // 피격
-    public void TakeDamage(float damage)
-    {
-        CurrentHp -= damage;
-    }
+    public void TakeDamage(float damage) { CurrentHp -= damage; }
 
     // 죽음
     private void Die()
@@ -59,16 +56,10 @@ public class EnemyBase : MonoBehaviour
     }
     
     // 죽는 애니메이션이 끝날 때 호출
-    public void InactiveObj()
-    {
-        PoolManager.instance.ReturnPool(PoolManager.instance.enemyPool.queMap,gameObject,enemyType);
-    }
+    public void InactiveObj() { PoolManager.instance.ReturnPool(PoolManager.instance.enemyPool.queMap,gameObject,enemyType); }
 
     // 몬스터 이동
-    private void Update()
-    {
-        EnemyMove();
-    }
+    private void Update() { EnemyMove(); }
     private void EnemyMove()
     {
         if(spawnPos == null) return;

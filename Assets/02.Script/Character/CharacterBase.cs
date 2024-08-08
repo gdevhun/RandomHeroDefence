@@ -49,6 +49,20 @@ public class CharacterBase : MonoBehaviour
     [HideInInspector] public float limitAtkSpeed; // 공속
     [HideInInspector] public Transform enemyTrans; // 타겟 몬스터 트랜스폼
     [Header ("평타 사운드 타입")] [SerializeField] private SoundType atkSoundType;
+    public bool FlipX
+    {
+        get { return spriteRenderer.flipX; }
+        set
+        {
+            // 원거리 발사 위치 재설정
+            if(spriteRenderer.flipX != value)
+            {
+                Vector3 newGunPos = new Vector3(-gunPointTrans.localPosition.x, gunPointTrans.localPosition.y, gunPointTrans.localPosition.z);
+                gunPointTrans.localPosition = newGunPos;
+            }
+            spriteRenderer.flipX = value;
+        }
+    }
     
     // 초기화
     void Awake()
@@ -59,46 +73,38 @@ public class CharacterBase : MonoBehaviour
     }
     private void Start()
     {
-        //인스펙터 초기 설정 공격력, 공격속도로 초기화
         limitAtkSpeed = heroInfo.attackSpeed;
         prevAtkSpeed = limitAtkSpeed;
     }
 
     // 공속 계산
-    void Update()
-    {
-        if (prevAtkSpeed < limitAtkSpeed)
-        {
-            prevAtkSpeed += Time.deltaTime;
-        }
-    }
+    void Update() { if (prevAtkSpeed < limitAtkSpeed) prevAtkSpeed += Time.deltaTime; }
 
     // 타겟 공격
     private void OnTriggerStay2D(Collider2D other)
     {
+        // 타겟 체크
         if (other.gameObject.CompareTag("Enemy") && (!isOnTarget || enemyTrans.GetComponent<EnemyBase>().isDead))
         {
             enemyTrans = other.gameObject.transform;
             isOnTarget = true;
         }
         if(enemyTrans != null) CalculateSpriteRen(enemyTrans);
-        
-        //공격범위안에들어왔을 때 적이 머물고 있다면
-        if(other.gameObject.CompareTag("Enemy") && prevAtkSpeed >= limitAtkSpeed)  //적(태그)이고, 타게팅중이 아니라면
+
+        // 타겟 공격
+        if(other.gameObject.CompareTag("Enemy") && prevAtkSpeed >= limitAtkSpeed)
         {
             prevAtkSpeed = 0f;
-            
-            //이펙트 생성.
+
             if (heroInfo.attackType == AttackType.근거리)
             {
-                anim.SetBool(IsAttacking,true); //공격 애니메이션 활성화
+                anim.SetBool(IsAttacking,true);
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.transform.position = enemyTrans.position;
                 go.GetComponent<MeleeWeapon>().weaponEffect = weaponEffect;
                 go.GetComponent<MeleeWeapon>().attackDamage = heroInfo.attackDamage;
-                //transform을 바탕으로 해당위치에 밀리웨폰생성하기
             }
-            else   //원거리 처리
+            else
             {
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.GetComponent<RangeWeapon>().weaponEffect = weaponEffect;
@@ -113,57 +119,27 @@ public class CharacterBase : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.transform == enemyTrans) isOnTarget = false;
-        if (heroInfo.attackType == AttackType.근거리)
-        {
-            anim.SetBool(IsAttacking, false); //공격 애니메이션 비활성화
-        }
+        if (heroInfo.attackType == AttackType.근거리) anim.SetBool(IsAttacking, false);
     }
 
     // 원거리 발사 방향 셋
     private Quaternion CalculateBulletRotation(Transform enemyTrans, Transform startTrans)
     {
-        //발사되는 총알의 방향 구현 로직
-        Vector2 bulletDirection = (enemyTrans.position - startTrans.position); //방향계산
-        float angle = Mathf.Atan2(bulletDirection.y, bulletDirection.x) * Mathf.Rad2Deg; //방향을 기반으로 각도 계산
-        Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward); //쿼터니언 계산
+        Vector2 bulletDirection = (enemyTrans.position - startTrans.position); // 방향
+        float angle = Mathf.Atan2(bulletDirection.y, bulletDirection.x) * Mathf.Rad2Deg; // 각도
+        Quaternion bulletRotation = Quaternion.AngleAxis(angle, Vector3.forward); // 쿼터니언
         return bulletRotation;
     }
-    public void SetLastBulletPos(GameObject bullet,Transform enemyTrans, Transform gunTrans) //최종 총알 발사 입구 설정
-    {
-        bullet.transform.SetPositionAndRotation(gunTrans.position,CalculateBulletRotation(enemyTrans, transform));
-    }
+    public void SetLastBulletPos(GameObject bullet,Transform enemyTrans, Transform gunTrans) { bullet.transform.SetPositionAndRotation(gunTrans.position,CalculateBulletRotation(enemyTrans, transform)); }
     
     // 스프라이트 플립
     private void CalculateSpriteRen(Transform enemyTrans) //적을 바라보는 스프라이트렌더러 교체함수
     {  
         Vector2 heroDirection = enemyTrans.position - transform.position;
-        if (heroDirection.x > 0)
-        {   //오른쪽바라보게 렌더러 교체
-            if (heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Left)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Right)
-            {
-                spriteRenderer.flipX = false;
-            }
-        }
-        else //왼쪽 바라보게 렌더러 교체
-        {
-            if (heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Right)
-            {
-                spriteRenderer.flipX = true;
-            }
-            else if (heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Left)
-            {
-                spriteRenderer.flipX = false;
-            }
-        }
+        if (heroDirection.x > 0) FlipX = heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Left ? true : false; // Left
+        else FlipX = heroInfo.heroDefaultSpriteDir == HeroDefaultSpriteDir.Right ? true : false; // Right
     }
 
     // 공격 애니메이션이 끝나면 사운드 재생
-    public void AtkSound()
-    {
-        SoundManager.instance.SFXPlay(atkSoundType);
-    }
+    public void AtkSound() { SoundManager.instance.SFXPlay(atkSoundType); }
 }
