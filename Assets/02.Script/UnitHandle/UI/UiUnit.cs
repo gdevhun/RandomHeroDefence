@@ -15,6 +15,11 @@ public class UiUnit : MonoBehaviour
     [Header ("유닛 판매 골드 텍스트")] public TextMeshProUGUI unitSellGoldText;
     [Header ("유닛 판매 다이아 텍스트")] public TextMeshProUGUI unitSellDiaText;
     [Header ("유닛 소환")] public SpawnUnit unitSpawn;
+    [Header ("물리 증가 텍스트")] public TextMeshProUGUI phyText;
+    [Header ("마법 증가 텍스트")] public TextMeshProUGUI magText;
+    [Header ("물리 방깎 텍스트")] public TextMeshProUGUI phyDecText;
+    [Header ("마법 방깎 텍스트")] public TextMeshProUGUI magDecText;
+    [Header ("이속 감소 텍스트")] public TextMeshProUGUI slowText;
 
     // 패널 열기
     public void OpenPanel(GameObject panel) { panel.SetActive(true); SoundManager.instance.SFXPlay(SoundType.Click); }

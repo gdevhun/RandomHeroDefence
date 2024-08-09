@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
@@ -20,14 +22,42 @@ public class EnemyBase : MonoBehaviour
     }
     [HideInInspector] public float originMoveSpeed; // 원본 이속
     [Header ("이동 속도")] public float moveSpeed;
-    public static float decreaseMoveSpeed; // 이속 감소 수치
+    private static float decreaseMoveSpeed; // 이속 감소 수치
+    public static float DecreaseMoveSpeed
+    {
+        get { return decreaseMoveSpeed; }
+        set
+        {
+            decreaseMoveSpeed = value;
+            UpdateBuffUI(value * 100, UiUnit.instance.slowText);
+        }
+    }
     [HideInInspector] public GameObject spawnPos; // 몬스터 스폰 위치
     private int curPathIdx = 0; // 현재 이동 할 위치 인덱스
     private SpriteRenderer rend; // 렌더러
     [HideInInspector] public EnemyType enemyType; // 몬스터 타입
     [HideInInspector] public bool isDead; // 죽었는지 체크
     [Header ("물방 마방")] public float phyDef, magDef;
-    public static float decreasePhyDef, decreaseMagDef; // 물방 마방 감소 수치
+    private static float decreasePhyDef; // 물방 감소 수치
+    public static float DecreasePhyDef
+    {
+        get { return decreasePhyDef; }
+        set
+        {
+            decreasePhyDef = value;
+            UpdateBuffUI(value, UiUnit.instance.phyDecText);
+        }
+    }
+    private static float decreaseMagDef; // 마방 감소 수치
+    public static float DecreaseMagDef
+    {
+        get { return decreaseMagDef; }
+        set
+        {
+            decreaseMagDef = value;
+            UpdateBuffUI(value, UiUnit.instance.magDecText);
+        }
+    }
     [Header ("몬스터 골드")] public int enemyGold;
     public static int increaseEnemyGold; // 몬스터 골드 증가량
     [Header ("체력 필 오브젝트")] [SerializeField] private GameObject hpFillObj;
@@ -71,7 +101,7 @@ public class EnemyBase : MonoBehaviour
     private void EnemyMove()
     {
         if(spawnPos == null) return;
-        transform.position = Vector2.MoveTowards(transform.position, StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position, decreaseMoveSpeed >= moveSpeed ? 0f : (moveSpeed - decreaseMoveSpeed) * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position, DecreaseMoveSpeed >= moveSpeed ? 0f : (moveSpeed - DecreaseMoveSpeed) * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -92,5 +122,11 @@ public class EnemyBase : MonoBehaviour
         Vector3 curScale = hpFillObj.transform.localScale;
         curScale.y = Mathf.Lerp(0, 2.6f, CurrentHp / maxHp);
         hpFillObj.transform.localScale = curScale;
+    }
+
+    // 버프 UI 갱신
+    private static void UpdateBuffUI(float val, TextMeshProUGUI txt)
+    {
+        txt.text = val.ToString() + " %";
     }
 }

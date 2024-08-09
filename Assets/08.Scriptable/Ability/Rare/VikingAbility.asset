@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476a3b339f6e1d343afb380b61a8ae03, type: 3}
   m_Name: VikingAbility
   m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
   abilityUiInfo:
     abilitySprite: {fileID: 21300000, guid: af97816715c692641ad8087b382efb8c, type: 3}
     abilityName: "\uBC14\uC774\uD551"
-    abilityContent: "2\uCD08 \uB3D9\uC548 \uBB3C\uBC29 10 \uAC10\uC18C"
+    abilityContent: "\uBB3C\uBC29 10 \uAC10\uC18C"
   abilityEffectType: 14
+  instantAbilityEffect: {fileID: 0}

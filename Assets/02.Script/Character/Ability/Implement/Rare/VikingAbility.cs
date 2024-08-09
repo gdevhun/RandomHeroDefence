@@ -4,5 +4,5 @@ using UnityEngine;
 public class VikingAbility : SyncAbilityBase
 {
     // 모든 몬스터 물방 10 감소
-    public override void CastAbility(CharacterBase characterBase) { EnemyBase.decreasePhyDef += 10f; }
+    public override void CastAbility(CharacterBase characterBase) { EnemyBase.DecreasePhyDef += 10f; }
 }
