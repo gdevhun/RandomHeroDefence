@@ -10,10 +10,8 @@ public class ToolTipUnit : MonoBehaviour
     [Header ("유닛 데미지 텍스트")] [SerializeField] private TextMeshProUGUI unitDmgText;  
     [Header ("유닛 공격속도 텍스트")] [SerializeField] private TextMeshProUGUI unitSpeedText;
     [Header ("스킬 이미지")] [SerializeField] private Image abilityImage;
-    [Header ("히든 스킬 이미지")] [SerializeField] private Image hiddenAbilityImage;
     [Header ("스킬 이름 텍스트")] [SerializeField] private TextMeshProUGUI abilityNameText;
     [Header ("스킬 설명 텍스트")] [SerializeField] private TextMeshProUGUI abilityContentText;
-    [Header ("히든 스킬 이름 텍스트")] [SerializeField] private TextMeshProUGUI hiddenAbilityNameText;
     [Header ("히든 스킬 설명 텍스트")] [SerializeField] private TextMeshProUGUI hiddenAbilityContentText;
 
     // 툴팁 정보 설정
@@ -25,17 +23,13 @@ public class ToolTipUnit : MonoBehaviour
         unitDmgText.text = heroInfo.attackDamage.ToString();
         unitSpeedText.text = heroInfo.attackSpeed.ToString();
         abilityImage.sprite = abilityInfo.abilitySprite;
-        hiddenAbilityImage.gameObject.SetActive(heroInfo.heroGradeType == HeroGradeType.신화);
         abilityNameText.text = abilityInfo.abilityName;
         abilityContentText.text = abilityInfo.abilityContent;
         if(heroInfo.heroGradeType == HeroGradeType.신화)
         {
-            hiddenAbilityImage.gameObject.SetActive(true);
-            hiddenAbilityImage.sprite = hiddenAbilityInfo.abilitySprite;
-            hiddenAbilityNameText.text = hiddenAbilityInfo.abilityName;
+            hiddenAbilityContentText.gameObject.SetActive(true);
             hiddenAbilityContentText.text = hiddenAbilityInfo.abilityContent;
         }
-        else hiddenAbilityImage.gameObject.SetActive(false);
-
+        else hiddenAbilityContentText.gameObject.SetActive(false);
     }
 }

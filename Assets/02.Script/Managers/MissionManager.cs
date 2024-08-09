@@ -63,7 +63,11 @@ public class MissionManager : MonoBehaviour
         }
     }
     
-    public void OpenMissionListBtn() => missionListPanel.localPosition = targetPanelRect;
+    public void OpenMissionListBtn()
+    {
+        missionListPanel.localPosition = targetPanelRect;
+        SoundManager.instance.SFXPlay(SoundType.Click);
+    }
     public void CloseMissionListBtn() => missionListPanel.localPosition = invisiblePanelRect;
 
     private IEnumerator NotifyMissionClear()

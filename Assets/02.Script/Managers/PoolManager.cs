@@ -79,6 +79,7 @@ public class PoolManager : MonoBehaviour
 {
     public static PoolManager instance;
     [Header ("풀링 오브젝트 부모")] public GameObject poolSet;
+    [Header ("플로팅 텍스트 부모")] public GameObject floatingTextSet;
     [Header ("유닛 풀")] public Pool<UnitType> unitPool;
     [Header ("히어로 무기")] public Pool<WeaponEffect> weaponEffectPool;
     [Header ("사운드 풀")] public Pool<SoundType> soundPool;
@@ -146,7 +147,8 @@ public class PoolManager : MonoBehaviour
                 GameObject obj = Instantiate(prefab);
 
                 // 부모 설정
-                obj.transform.SetParent(poolSet.transform);
+                if(typeof(T) == typeof(FloatingTextType)) obj.transform.SetParent(floatingTextSet.transform);
+                else obj.transform.SetParent(poolSet.transform);
 
                 // 비활성화
                 obj.SetActive(false);
