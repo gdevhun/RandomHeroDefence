@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 // 재생할 배경음 타입 => 키로 사용
 public enum BgmType { Main, Normal, MiniBoss, Boss }
 
@@ -11,6 +11,10 @@ public class SoundManager : MonoBehaviour
 	private Dictionary<BgmType, AudioClip> mapBgm = new Dictionary<BgmType, AudioClip>(); // (타입, 배경음) 맵핑
 	[HideInInspector] public float bgmVolume, sfxVolume; // 배경음 볼륨 및 효과음 볼륨
 
+    public Sprite offSoundSprite;
+    public Sprite onSoundSprite;
+    public Image bgmImg;
+    public Image sfxImg;
     // 싱글톤
     public static SoundManager instance;
     private void Awake()
@@ -65,8 +69,18 @@ public class SoundManager : MonoBehaviour
 
         // 슬라이더 값을 변수에 저장해서 배경음악을 실행할때마다 볼륨을 지정
         bgmVolume = volume;
+
+        bgmImg.sprite = bgmVolume == 0 ? offSoundSprite : onSoundSprite;
     }
 
     // 효과음 볼륨 조절
-    public void SetSfxVolume(float volume) { sfxVolume = volume; }
+    public void SetSfxVolume(float volume)
+    {
+        sfxVolume = volume;
+        sfxImg.sprite = sfxVolume == 0 ? offSoundSprite : onSoundSprite;
+    } 
+    
+    /*사운드 페널 버튼 처리 함수
+    public void OpenSoundSettingPanelBtn() => soundSettingPanel.SetActive(true);
+    public void CloseSoundSettingPanelBtn() => soundSettingPanel.SetActive(false);*/
 }
