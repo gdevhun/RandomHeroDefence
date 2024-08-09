@@ -45,6 +45,8 @@ public enum SoundType
 {
     GetUnit, Sell, Click, Upgrade, NotEnough, Roulette,
     Fist, Bullet, Sword, HeavySword,
+    Stun, CurrencyGet,
+    BatmanAbility, TeodorAbilit, MagnusAbility, MarioAbility, YumieAbility
 }
 
 // 몬스터 타입

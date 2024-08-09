@@ -18482,6 +18482,14 @@ MonoBehaviour:
       - {fileID: 5612101612285607420, guid: 1b408d5ef9845f746a79baa070c0846e, type: 3}
       - {fileID: 5612101612285607420, guid: 8665eeb372a82f04986d11b00f07ac1a, type: 3}
       - {fileID: 5612101612285607420, guid: cdf9ab51b882e1548ae676525d5ede42, type: 3}
+    - gameObjectList:
+      - {fileID: 5612101612285607420, guid: 6292259ef1507de45b7800b6d99d73fc, type: 3}
+      - {fileID: 5612101612285607420, guid: 7c7b0ca79520c994f9c1cfc23b041e5d, type: 3}
+      - {fileID: 5612101612285607420, guid: 1b6af4fa4b3ddba47be52c8280c2c749, type: 3}
+      - {fileID: 5612101612285607420, guid: ea71389a51bc8fc48a7b60aa66e567f0, type: 3}
+      - {fileID: 5612101612285607420, guid: 70f49bef0a730ca439634ad832738870, type: 3}
+      - {fileID: 5612101612285607420, guid: 874ccecdc92d5b94dacbab229f76c139, type: 3}
+      - {fileID: 5612101612285607420, guid: ead385a9c11854340bb9ff7ad608add2, type: 3}
   enemyPool:
     allList:
     - gameObjectList:
@@ -18523,7 +18531,7 @@ MonoBehaviour:
       - {fileID: 1232712395313365512, guid: 16d5eae1b54531f4a90239168bebc43e, type: 3}
       - {fileID: 752532324352591717, guid: 4f500f91be434be4da37efe0eabd9605, type: 3}
       - {fileID: 8778528797859579355, guid: be2361d712c7626418e00bc40d6acc98, type: 3}
-      - {fileID: 83124047043708080, guid: bb60cc3ba34e32144874aab6b3442895, type: 3}
+      - {fileID: 6601234491956253250, guid: a617faca5a520694d9f88c90236fa564, type: 3}
 --- !u!4 &1352452129
 Transform:
   m_ObjectHideFlags: 0
