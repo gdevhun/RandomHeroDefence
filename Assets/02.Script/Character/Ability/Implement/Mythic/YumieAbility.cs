@@ -8,27 +8,12 @@ public class YumieAbility : AsyncAbilityBase, IHiddenAbility
     public override IEnumerator CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
-        instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
-        
-        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
-        foreach (Collider2D hit in hits)
-        {
-            if (hit.CompareTag("Enemy"))
-            {
-                EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.moveSpeed -= 0.3f;
-            }
-        }
+
+        EnemyBase.decreaseMoveSpeed += 0.3f;
         yield return oneSecond;
         yield return oneSecond;
         yield return oneSecond;
-        foreach (Collider2D hit in hits)
-        {
-            if (hit.CompareTag("Enemy"))
-            {
-                hit.GetComponent<EnemyBase>().moveSpeed = hit.GetComponent<EnemyBase>().originMoveSpeed;
-            }
-        }
+        EnemyBase.decreaseMoveSpeed -= 0.3f;
 
         PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
     }
@@ -41,8 +26,5 @@ public class YumieAbility : AsyncAbilityBase, IHiddenAbility
         get { return hiddenAbilityUiInfo; }
         set { hiddenAbilityUiInfo = value; }
     }
-    public void CastHiddenAbility(CharacterBase characterBase)
-    {
-        
-    }
+    public void CastHiddenAbility(CharacterBase characterBase) {}
 }

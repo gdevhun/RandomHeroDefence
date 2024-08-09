@@ -55,7 +55,7 @@ public class CharacterBase : MonoBehaviour
         set
         {
             // 원거리 발사 위치 재설정
-            if(spriteRenderer.flipX != value)
+            if(heroInfo.attackType == AttackType.원거리 && spriteRenderer.flipX != value)
             {
                 Vector3 newGunPos = new Vector3(-gunPointTrans.localPosition.x, gunPointTrans.localPosition.y, gunPointTrans.localPosition.z);
                 gunPointTrans.localPosition = newGunPos;

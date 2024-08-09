@@ -45,6 +45,8 @@ public enum SoundType
 {
     GetUnit, Sell, Click, Upgrade, NotEnough, Roulette,
     Fist, Bullet, Sword, HeavySword,
+    Stun, CurrencyGet,
+    BatmanAbility, TeodorAbilit, MagnusAbility, MarioAbility, YumieAbility
 }
 
 // 몬스터 타입
@@ -67,6 +69,12 @@ public enum AbilityEffectType
     테오도르, 마그너스, 마리오, 유미
 }
 
+// 플로팅 텍스트
+public enum FloatingTextType
+{
+    데미지플로팅
+}
+
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager instance;
@@ -76,6 +84,7 @@ public class PoolManager : MonoBehaviour
     [Header ("사운드 풀")] public Pool<SoundType> soundPool;
     [Header ("몬스터 풀")] public Pool<EnemyType> enemyPool;
     [Header ("스킬 이펙트 풀")] public Pool<AbilityEffectType> abilityEffectPool;
+    [Header ("플로팅 텍스트 풀")] public Pool<FloatingTextType> floatingTextPool;
 
     private void Awake()
     {
@@ -87,6 +96,7 @@ public class PoolManager : MonoBehaviour
         PrefMap(weaponEffectPool.allList,weaponEffectPool.prefMap);
         PrefMap(enemyPool.allList, enemyPool.prefMap);
         PrefMap(abilityEffectPool.allList, abilityEffectPool.prefMap);
+        PrefMap(floatingTextPool.allList, floatingTextPool.prefMap);
 
         // (타입, 큐) 맵핑
         QueMap(unitPool.queMap, unitPool.prefMap);
@@ -94,6 +104,7 @@ public class PoolManager : MonoBehaviour
         QueMap(weaponEffectPool.queMap,weaponEffectPool.prefMap, 200);
         QueMap(enemyPool.queMap, enemyPool.prefMap, 200);
         QueMap(abilityEffectPool.queMap, abilityEffectPool.prefMap);
+        QueMap(floatingTextPool.queMap, floatingTextPool.prefMap, 300);
     }
 
     // (타입, 프리팹) 맵핑
@@ -134,7 +145,7 @@ public class PoolManager : MonoBehaviour
                 // 프리팹 생성
                 GameObject obj = Instantiate(prefab);
 
-                // 부모를 풀셋으로
+                // 부모 설정
                 obj.transform.SetParent(poolSet.transform);
 
                 // 비활성화

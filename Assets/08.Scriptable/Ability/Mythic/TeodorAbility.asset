@@ -20,6 +20,6 @@ MonoBehaviour:
   instantAbilityEffect: {fileID: 0}
   hiddenAbilityUiInfo:
     abilitySprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
-    abilityName: "\uD788\uB4E0 \uAC15\uD0C0"
+    abilityName: ???
     abilityContent: "\uC5D0\uC774\uB4E0\uACFC \uC5D0\uD0A4\uC628\uC774 \uC874\uC7AC\uD558\uBA74
-      \uC2A4\uD134 2\uCD08"
+      \uBAA8\uB4E0 \uBAAC\uC2A4\uD130 \uC2A4\uD134"

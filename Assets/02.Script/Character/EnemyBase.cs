@@ -45,7 +45,15 @@ public class EnemyBase : MonoBehaviour
     }
     
     // 피격
-    public void TakeDamage(float damage) { CurrentHp -= damage; }
+    public void TakeDamage(float damage) { CurrentHp -= damage; FloatingDmg(damage); }
+    private void FloatingDmg(float dmg)
+    {
+        FloatingText instantFloatingText = PoolManager.instance.GetPool(PoolManager.instance.floatingTextPool.queMap, FloatingTextType.데미지플로팅).GetComponent<FloatingText>();
+        instantFloatingText.text.text = dmg.ToString();
+        Vector3 worldToScreen = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 0.5f);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)instantFloatingText.canvasTransform, worldToScreen, null, out Vector2 localPoint);
+        instantFloatingText.GetComponent<RectTransform>().localPosition = localPoint;
+    }
 
     // 죽음
     private void Die()
