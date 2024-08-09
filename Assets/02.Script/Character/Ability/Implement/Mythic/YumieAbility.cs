@@ -9,11 +9,11 @@ public class YumieAbility : AsyncAbilityBase, IHiddenAbility
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
 
-        EnemyBase.decreaseMoveSpeed += 0.3f;
+        EnemyBase.DecreaseMoveSpeed += 0.3f;
         yield return oneSecond;
         yield return oneSecond;
         yield return oneSecond;
-        EnemyBase.decreaseMoveSpeed -= 0.3f;
+        EnemyBase.DecreaseMoveSpeed -= 0.3f;
 
         PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
     }

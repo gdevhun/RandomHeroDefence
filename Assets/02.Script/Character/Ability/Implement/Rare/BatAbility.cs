@@ -4,5 +4,5 @@ using UnityEngine;
 public class BatAbility : SyncAbilityBase
 {
     // 모든 몬스터 마방 10 감소
-    public override void CastAbility(CharacterBase characterBase) { EnemyBase.decreaseMagDef += 10f; }
+    public override void CastAbility(CharacterBase characterBase) { EnemyBase.DecreaseMagDef += 10f; }
 }

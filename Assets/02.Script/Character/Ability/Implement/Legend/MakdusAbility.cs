@@ -18,8 +18,8 @@ public class MakdusAbility : SyncAbilityBase
                 enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 5);
             }
         }
-        EnemyBase.decreaseMagDef += 50f;
-        EnemyBase.decreasePhyDef += 50f;
+        EnemyBase.DecreaseMagDef += 50f;
+        EnemyBase.DecreasePhyDef += 50f;
 
         PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
     }

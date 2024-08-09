@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ce6408fbd44ab04497732827d911218, type: 3}
   m_Name: BatAbility
   m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
   abilityUiInfo:
     abilitySprite: {fileID: 21300000, guid: fda38e573562ea44997dba87d454af70, type: 3}
     abilityName: "\uCF00\uC774\uBE0C"
-    abilityContent: "2\uCD08 \uB3D9\uC548 \uB9C8\uBC29 10 \uAC10\uC18C"
+    abilityContent: "\uB9C8\uBC29 10 \uAC10\uC18C"
   abilityEffectType: 12
+  instantAbilityEffect: {fileID: 0}

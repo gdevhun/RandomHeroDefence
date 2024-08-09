@@ -4,5 +4,5 @@ using UnityEngine;
 public class EkionAbility : SyncAbilityBase
 {
     // 모든 몬스터 이동속도 감소 5
-    public override void CastAbility(CharacterBase characterBase) { EnemyBase.decreaseMoveSpeed += 0.05f; }
+    public override void CastAbility(CharacterBase characterBase) { EnemyBase.DecreaseMoveSpeed += 0.05f; }
 }
