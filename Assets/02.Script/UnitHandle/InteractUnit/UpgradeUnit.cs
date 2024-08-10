@@ -26,19 +26,37 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     [Header ("전설 레벨 텍스트")] [SerializeField] private TextMeshProUGUI legendLvText;
     [Header ("골드 텍스트")] [SerializeField] private TextMeshProUGUI goldText;
     [Header ("다이아 텍스트")] [SerializeField] private TextMeshProUGUI diaText;
+    private List<int> upgradeCoefList = new List<int>{100, 300, 600, 1000, 1500, 2100};
+    private int normalUpgradeCnt = 0, legendUpgradeCnt = 0;
 
     // 유닛 업그레이드
     private void Upgrade(HeroGradeType heroGradeType)
     {
-        // 재화 체크
         curGradeType = heroGradeType;
-        amount = curGradeType == HeroGradeType.일반 ? 30 + 10 * gradeUpgradeMap[curGradeType] : 2 + gradeUpgradeMap[curGradeType];
+
+        // 최대 업그레이드 체크
+        if(gradeUpgradeMap[curGradeType] >= 2100) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
+
+        // 재화 체크
+        amount = curGradeType == HeroGradeType.일반 ? 30 + 10 * ++normalUpgradeCnt : 2 + ++legendUpgradeCnt;
         if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 업그레이드
         int e = 3;
         if(heroGradeType == HeroGradeType.전설) --e;
-        for(int i = 0; i < e; i++) gradeUpgradeMap[curGradeType++] += 10;
+
+        int upgradeCoef = 0;
+        for(int i = 0; i < upgradeCoefList.Count; i++)
+        {
+            if(gradeUpgradeMap[curGradeType] < upgradeCoefList[i])
+            {
+                upgradeCoef = i;
+                break;
+            }
+        }
+
+        HeroGradeType standardGradeType = heroGradeType;
+        for(int i = 0; i < e; i++) gradeUpgradeMap[standardGradeType++] += 20 + 20 * upgradeCoef;
 
         // UI 갱신
         UpdateUpgradeUI(heroGradeType);
@@ -64,13 +82,12 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     {
         if(heroGradeType == HeroGradeType.일반)
         {
-            normalLvText.text = "Lv." + gradeUpgradeMap[heroGradeType].ToString();
-            goldText.text = (30 + 10 * gradeUpgradeMap[heroGradeType]).ToString();
-
+            normalLvText.text = "Lv." + normalUpgradeCnt.ToString();
+            goldText.text = (30 + 10 * normalUpgradeCnt).ToString();
             return;
         }
 
-        legendLvText.text = "Lv." + gradeUpgradeMap[heroGradeType].ToString();
-        diaText.text = (2 + gradeUpgradeMap[heroGradeType]).ToString();
+        legendLvText.text = "Lv." + legendUpgradeCnt.ToString();
+        diaText.text = (2 + legendUpgradeCnt).ToString();
     }
 }

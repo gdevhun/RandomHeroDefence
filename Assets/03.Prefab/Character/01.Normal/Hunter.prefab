@@ -332,7 +332,7 @@ MonoBehaviour:
     heroGradeType: 0
     unitType: 1
     unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
-    attackDamage: 200
+    attackDamage: 150
     attackSpeed: 1
     heroDefaultSpriteDir: 1
   gunPointTrans: {fileID: 4686209107330335546}
