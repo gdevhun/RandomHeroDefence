@@ -16,7 +16,7 @@ public class AssassinAbility : SyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 3);
+                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 3, DamageType.마법);
             }
         }
     }

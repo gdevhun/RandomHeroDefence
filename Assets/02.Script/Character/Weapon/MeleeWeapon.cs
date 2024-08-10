@@ -6,6 +6,7 @@ using UnityEngine;
 public class MeleeWeapon: MonoBehaviour
 {
     [HideInInspector] public WeaponEffect weaponEffect;
+    [HideInInspector] public DamageType damageType;
     [Header ("유지 시간")] public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     [HideInInspector] public float attackDamage;
@@ -30,7 +31,7 @@ public class MeleeWeapon: MonoBehaviour
         {
             if (other.gameObject.TryGetComponent(out EnemyBase enemyBase))
             {
-                enemyBase.TakeDamage(attackDamage); 
+                enemyBase.TakeDamage(attackDamage, damageType); 
             }
         }
     }

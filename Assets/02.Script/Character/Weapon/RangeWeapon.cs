@@ -6,6 +6,7 @@ using UnityEngine;
 public class RangeWeapon : MonoBehaviour
 {
     [HideInInspector] public WeaponEffect weaponEffect;
+    [HideInInspector] public DamageType damageType;
     [Header ("유지 시간")] public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     [Header ("이동 속도")] public float moveSpeed;
@@ -35,7 +36,7 @@ public class RangeWeapon : MonoBehaviour
         {
             if (other.gameObject.TryGetComponent(out EnemyBase enemyBase))
             {
-                enemyBase.TakeDamage(attackDamage); 
+                enemyBase.TakeDamage(attackDamage, damageType); 
             }
         }
     }

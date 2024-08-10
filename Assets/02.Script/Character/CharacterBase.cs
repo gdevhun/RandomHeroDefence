@@ -106,12 +106,14 @@ public class CharacterBase : MonoBehaviour
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.transform.position = enemyTrans.position;
                 go.GetComponent<MeleeWeapon>().weaponEffect = weaponEffect;
+                go.GetComponent<MeleeWeapon>().damageType = heroInfo.damageType;
                 go.GetComponent<MeleeWeapon>().attackDamage = heroInfo.attackDamage;
             }
             else
             {
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.GetComponent<RangeWeapon>().weaponEffect = weaponEffect;
+                go.GetComponent<RangeWeapon>().damageType = heroInfo.damageType;
                 go.GetComponent<RangeWeapon>().attackDamage = heroInfo.attackDamage;
                 SetLastBulletPos(go,enemyTrans,gunPointTrans);
                 SoundManager.instance.SFXPlay(atkSoundType);

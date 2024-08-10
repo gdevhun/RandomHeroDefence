@@ -11,7 +11,7 @@ public class MarioAbility : SyncAbilityBase, IHiddenAbility
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
-        characterBase.enemyTrans.GetComponent<EnemyBase>().TakeDamage((!isBunker || !isSoldier) ? characterBase.heroInfo.attackDamage * 50 : characterBase.heroInfo.attackDamage * 100);
+        characterBase.enemyTrans.GetComponent<EnemyBase>().TakeDamage((!isBunker || !isSoldier) ? characterBase.heroInfo.attackDamage * 50 : characterBase.heroInfo.attackDamage * 100, DamageType.마법);
         characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans, characterBase.gunPointTrans);
         instantAbilityEffect.transform.position += new Vector3(1f, 0, 0);
     }

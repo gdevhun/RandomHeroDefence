@@ -16,7 +16,7 @@ public class WrestlerAbility : SyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 2);
+                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 2, DamageType.마법);
             }
         }
     }

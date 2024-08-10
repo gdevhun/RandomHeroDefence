@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -70,7 +71,7 @@ public class EnemyBase : MonoBehaviour
         {
             // 현재 남은 스턴 시간보다 더 짧은 스턴이 들어오면 리턴
             if(value <= curStunTime) return;
-            Debug.Log("스턴 시작");
+            
             // 스턴 시작
             curStunTime = value;
             moveSpeed = 0;
@@ -90,7 +91,25 @@ public class EnemyBase : MonoBehaviour
     }
     
     // 피격
-    public void TakeDamage(float damage) { CurrentHp -= damage; FloatingDmg(damage); }
+    public void TakeDamage(float damage, DamageType dmgType)
+    {
+        float applyDmg = damage;
+        // 물리
+        if(dmgType == DamageType.물리)
+        {
+            float applyPhyDef = phyDef - DecreasePhyDef;
+            applyDmg = applyPhyDef > 0 ? applyDmg * (1 - phyDef / (phyDef + 100)) : damage;
+            CurrentHp -= applyDmg;
+            FloatingDmg(applyDmg);
+            return;
+        }
+
+        // 마법
+        float applyMagDef = magDef - decreaseMagDef;
+        applyDmg = applyMagDef > 0 ? applyDmg * (1 - magDef / (magDef + 100)) : damage;
+        CurrentHp -= applyDmg;
+        FloatingDmg(applyDmg);
+    }
     private void FloatingDmg(float dmg)
     {
         FloatingText instantFloatingText = PoolManager.instance.GetPool(PoolManager.instance.floatingTextPool.queMap, FloatingTextType.데미지플로팅).GetComponent<FloatingText>();
