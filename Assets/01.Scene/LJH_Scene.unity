@@ -16381,8 +16381,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1322370945}
   m_HandleRect: {fileID: 1322370944}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.2057613
+  m_Value: 1.0000001
+  m_Size: 0.20576134
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -35758,62 +35758,62 @@ MonoBehaviour:
   - mythicType: 20
     mythicSprite: {fileID: 21300000, guid: 8291a699b70ae91439aa1fc04b7aa0ad, type: 3}
     requireList:
-    - unitType: 1
-      unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
+    - unitType: 12
+      unitSprite: {fileID: 21300000, guid: fda38e573562ea44997dba87d454af70, type: 3}
       cnt: 1
-    - unitType: 1
-      unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
+    - unitType: 12
+      unitSprite: {fileID: 21300000, guid: fda38e573562ea44997dba87d454af70, type: 3}
       cnt: 2
-    - unitType: 1
-      unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
-      cnt: 3
+    - unitType: 17
+      unitSprite: {fileID: 21300000, guid: a3cc1430a27d21d4abacdc36e190670a, type: 3}
+      cnt: 1
   - mythicType: 21
     mythicSprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
     requireList:
-    - unitType: 1
-      unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
+    - unitType: 9
+      unitSprite: {fileID: 21300000, guid: 431c455b0dc25eb46b82e59fda03f068, type: 3}
       cnt: 1
-    - unitType: 2
-      unitSprite: {fileID: 21300000, guid: 7ca098fa96851ce4e9fecee21846d1b5, type: 3}
+    - unitType: 11
+      unitSprite: {fileID: 21300000, guid: 489e93b313a3eb54d9c0ab41545d4e98, type: 3}
       cnt: 1
-    - unitType: 0
-      unitSprite: {fileID: 21300000, guid: d8da0f918c005fb4c83e65ba6eea95a0, type: 3}
+    - unitType: 19
+      unitSprite: {fileID: 21300000, guid: 326199c5020889649af1ab4c682d2437, type: 3}
       cnt: 1
   - mythicType: 22
     mythicSprite: {fileID: 21300000, guid: ea37309a756c66f46a068173e80f9e12, type: 3}
     requireList:
-    - unitType: 2
-      unitSprite: {fileID: 21300000, guid: 7ca098fa96851ce4e9fecee21846d1b5, type: 3}
+    - unitType: 16
+      unitSprite: {fileID: 21300000, guid: 2012236a23e31ba448c929d7e28943cb, type: 3}
       cnt: 1
-    - unitType: 0
-      unitSprite: {fileID: 21300000, guid: d8da0f918c005fb4c83e65ba6eea95a0, type: 3}
+    - unitType: 10
+      unitSprite: {fileID: 21300000, guid: f27e3a2c432b99548a8e9c394a3aa679, type: 3}
       cnt: 1
-    - unitType: 1
-      unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
+    - unitType: 14
+      unitSprite: {fileID: 21300000, guid: af97816715c692641ad8087b382efb8c, type: 3}
       cnt: 1
   - mythicType: 23
     mythicSprite: {fileID: 21300000, guid: 98ba5744b8d69a14b85c6805435f28db, type: 3}
     requireList:
-    - unitType: 0
-      unitSprite: {fileID: 21300000, guid: d8da0f918c005fb4c83e65ba6eea95a0, type: 3}
+    - unitType: 18
+      unitSprite: {fileID: 21300000, guid: 8d68cbfddafea804490abed63aa1592d, type: 3}
       cnt: 1
-    - unitType: 2
-      unitSprite: {fileID: 21300000, guid: 7ca098fa96851ce4e9fecee21846d1b5, type: 3}
+    - unitType: 13
+      unitSprite: {fileID: 21300000, guid: c6832efce5324c14d8e9ac2b771f11ed, type: 3}
       cnt: 1
-    - unitType: 1
-      unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
+    - unitType: 3
+      unitSprite: {fileID: 21300000, guid: 0ad7c8245f96dec44abb837b1a6f5f6f, type: 3}
       cnt: 1
   - mythicType: 24
     mythicSprite: {fileID: 21300000, guid: 661cc91ab31677440b769a63c268edb3, type: 3}
     requireList:
-    - unitType: 1
-      unitSprite: {fileID: 21300000, guid: 6fbf622e307e950419bda075f2e09949, type: 3}
+    - unitType: 15
+      unitSprite: {fileID: 21300000, guid: 50a94a9931642cc4e8c1b95d9954930b, type: 3}
       cnt: 1
-    - unitType: 0
-      unitSprite: {fileID: 21300000, guid: d8da0f918c005fb4c83e65ba6eea95a0, type: 3}
+    - unitType: 8
+      unitSprite: {fileID: 21300000, guid: 1d682d0d6bae9bd4f90c5c27c816cd5e, type: 3}
       cnt: 1
-    - unitType: 2
-      unitSprite: {fileID: 21300000, guid: 7ca098fa96851ce4e9fecee21846d1b5, type: 3}
+    - unitType: 13
+      unitSprite: {fileID: 21300000, guid: c6832efce5324c14d8e9ac2b771f11ed, type: 3}
       cnt: 1
   mythicImage: {fileID: 321309383}
   mythicText: {fileID: 885157531}
