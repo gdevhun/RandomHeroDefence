@@ -488,6 +488,10 @@ PrefabInstance:
       value: NormalCircle (2)
       objectReference: {fileID: 0}
     - target: {fileID: 7360117738736446854, guid: cd7ce6aaab567ad4ea38a457903119b6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7360117738736446854, guid: cd7ce6aaab567ad4ea38a457903119b6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.02
       objectReference: {fileID: 0}
