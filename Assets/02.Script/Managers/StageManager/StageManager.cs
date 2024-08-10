@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,6 +7,22 @@ using UnityEngine.UI;
 
 // 스테이지 타입
 public enum StageType { Normal, MiniBoss, Boss }
+
+// 기준 스테이지 몬스터 스탯 정보
+[Serializable]
+public class StandardMonsterStat
+{
+    public float hp;
+    public float increaseHp;
+    public float phyDef;
+    public float magDef;
+    public float moveSpeed;
+    public float increaseMoveSpeed;
+    public float bossHp;
+    public float bossPhyDef;
+    public float bossMagDef;
+    public float bossMoveSpeed;
+}
 
 public class StageManager : MonoBehaviour
 {
@@ -60,6 +77,10 @@ public class StageManager : MonoBehaviour
     [Header ("몬스터 수 텍스트")] [SerializeField] private TextMeshProUGUI enemyCntText;
     [Header ("몬스터 수 필 이미지")] [SerializeField] private Image enemyCntFillImage;
 
+    // 기준 스테이지 몬스터 스탯 맵핑
+    [Header ("스테이지 몬스터 스탯 정보")] [SerializeField] private List<StandardMonsterStat> standardMonsterStatList = new List<StandardMonsterStat>();
+    private Dictionary<int, StandardMonsterStat> standardMonsterStatMap = new Dictionary<int, StandardMonsterStat>();
+
     // 스테이지 데이터 초기화 및 스테이지 시작
     private void Start()
     {
@@ -75,6 +96,9 @@ public class StageManager : MonoBehaviour
         stageTypePathMap.Add(pathPosList.gameObjectList[0], pathList[0]);
         stageTypePathMap.Add(pathPosList.gameObjectList[1], pathList[1]);
         stageTypePathMap.Add(pathPosList.gameObjectList[2], pathList[2]);
+
+        // 기준 스테이지 몬스터 스탯 맵핑
+        for(int i = 0; i < standardMonsterStatList.Count; i++) standardMonsterStatMap.Add(i, standardMonsterStatList[i]);
 
         for(int i = 0; i < maxStage; i++)
         {
@@ -197,10 +221,33 @@ public class StageManager : MonoBehaviour
         {
             instantEnemy = PoolManager.instance.GetPool(PoolManager.instance.enemyPool.queMap, stage.enemyType);
             instantEnemy.transform.position = stage.spawnPos.gameObjectList[i].transform.position;
-            instantEnemy.GetComponent<EnemyBase>().spawnPos = stage.spawnPos.gameObjectList[i];
-            instantEnemy.GetComponent<EnemyBase>().enemyType = stage.enemyType;
+            EnemyBase enemyBase = instantEnemy.GetComponent<EnemyBase>();
+            enemyBase.spawnPos = stage.spawnPos.gameObjectList[i];
+            enemyBase.enemyType = stage.enemyType;
             ++EnemyCnt;
             instantEnemyList.gameObjectList.Add(instantEnemy);
+
+            // 몬스터 스탯 설정
+
+            // 일반 스테이지
+            if(stage.stageType != StageType.MiniBoss && stage.stageType != StageType.Boss)
+            {
+                enemyBase.maxHp = standardMonsterStatMap[CurStage / 10].hp + standardMonsterStatMap[CurStage / 10].increaseHp * CurStage;
+                enemyBase.CurrentHp = standardMonsterStatMap[CurStage / 10].hp + standardMonsterStatMap[CurStage / 10].increaseHp * CurStage;
+                enemyBase.originMoveSpeed = standardMonsterStatMap[CurStage / 10].moveSpeed + standardMonsterStatMap[CurStage / 10].increaseMoveSpeed * CurStage;
+                enemyBase.moveSpeed = standardMonsterStatMap[CurStage / 10].moveSpeed + standardMonsterStatMap[CurStage / 10].increaseMoveSpeed * CurStage;
+                enemyBase.phyDef = standardMonsterStatMap[CurStage / 10].phyDef;
+                enemyBase.magDef = standardMonsterStatMap[CurStage / 10].magDef;
+                continue;
+            }
+
+            // 미니 보스 및 보스 스테이지
+            enemyBase.maxHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 2;
+            enemyBase.CurrentHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 2;
+            enemyBase.originMoveSpeed = stage.stageType == StageType.MiniBoss ? 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed : 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed * 2;
+            enemyBase.moveSpeed = stage.stageType == StageType.MiniBoss ? 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed : 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed * 2;
+            enemyBase.phyDef = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossPhyDef : standardMonsterStatMap[CurStage / 10].bossPhyDef * 2;
+            enemyBase.magDef = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossMagDef : standardMonsterStatMap[CurStage / 10].bossMagDef * 2;
         }
         return instantEnemy;
     }
