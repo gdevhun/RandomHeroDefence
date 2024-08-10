@@ -62,6 +62,21 @@ public class EnemyBase : MonoBehaviour
     public static int increaseEnemyGold; // 몬스터 골드 증가량
     [Header ("체력 필 오브젝트")] [SerializeField] private GameObject hpFillObj;
 
+    private float curStunTime; // 스턴 시간 계산용
+    public float SetStunTime
+    {
+        get { return curStunTime; }
+        set
+        {
+            // 현재 남은 스턴 시간보다 더 짧은 스턴이 들어오면 리턴
+            if(value <= curStunTime) return;
+            Debug.Log("스턴 시작");
+            // 스턴 시작
+            curStunTime = value;
+            moveSpeed = 0;
+        }
+    }
+
     // 초기화
     private void Awake()
     {
@@ -97,7 +112,7 @@ public class EnemyBase : MonoBehaviour
     public void InactiveObj() { PoolManager.instance.ReturnPool(PoolManager.instance.enemyPool.queMap,gameObject,enemyType); }
 
     // 몬스터 이동
-    private void Update() { EnemyMove(); }
+    private void Update() { EnemyMove(); GetStun(); }
     private void EnemyMove()
     {
         if(spawnPos == null) return;
@@ -113,6 +128,21 @@ public class EnemyBase : MonoBehaviour
             
             // 플립
             rend.flipX = StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position.x < transform.position.x ? true : false;
+        }
+    }
+
+    // 스턴
+    private void GetStun()
+    {
+        if(curStunTime > 0)
+        {
+            curStunTime -= Time.deltaTime;
+
+            if(curStunTime <= 0)
+            {
+                curStunTime = 0;
+                moveSpeed = originMoveSpeed;
+            }
         }
     }
 

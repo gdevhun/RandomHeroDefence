@@ -10,6 +10,7 @@ public class MagnusAbility : SyncAbilityBase, IHiddenAbility
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
+        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
         instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
         
         Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
@@ -21,8 +22,6 @@ public class MagnusAbility : SyncAbilityBase, IHiddenAbility
                 enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 20 + ((!isMakdus || !isAlisda) ? enemyBase.maxHp * 0.06f : enemyBase.maxHp * 0.12f));
             }
         }
-        
-        PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
     }
 
     // 히든 스킬

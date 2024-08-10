@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8009070320967867867}
   - component: {fileID: 6916282269682752609}
   - component: {fileID: 5393157290984983678}
+  - component: {fileID: -4252836791042615147}
   m_Layer: 0
   m_Name: AlisdaAbilityEffect
   m_TagString: Untagged
@@ -142,3 +143,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.21
+--- !u!114 &-4252836791042615147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787749243795536576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3121a4381acdbc3479a8443f15c698c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityEffectType: 0
+  activeTime: 1

@@ -1,16 +1,16 @@
-using System.Collections;
 using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "스킬/신화/테오도르")]
-public class TeodorAbility : AsyncAbilityBase, IHiddenAbility
+public class TeodorAbility : SyncAbilityBase, IHiddenAbility
 {
     private bool isAden = false, isEkion = false;
 
     // 1.5초 스턴
-    public override IEnumerator CastAbility(CharacterBase characterBase)
+    public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
+        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
         instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
 
         CastHiddenAbility(characterBase);
@@ -24,35 +24,19 @@ public class TeodorAbility : AsyncAbilityBase, IHiddenAbility
                 if (hit.CompareTag("Enemy"))
                 {
                     EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                    enemyBase.moveSpeed = 0;
+                    enemyBase.SetStunTime = 1.5f;
                 }
             }
-            yield return oneSecond;
-            yield return halfSecond;
-            foreach (Collider2D hit in hits)
-            {
-                if (hit.CompareTag("Enemy"))
-                {
-                    hit.GetComponent<EnemyBase>().moveSpeed = hit.GetComponent<EnemyBase>().originMoveSpeed;
-                }
-            }
-        }
-        else // 에이든과 에키온이 존재하는 경우
-        {
-            for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++)
-            {
-                EnemyBase enemyBase = StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>();
-                enemyBase.moveSpeed = 0;
-            }
-            yield return oneSecond;
-            yield return halfSecond;
-            for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++)
-            {
-                StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>().moveSpeed = StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>().originMoveSpeed;
-            }
-        }
 
-        PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
+            return;
+        }
+        
+        // 에이든과 에키온이 존재하는 경우
+        for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++)
+        {
+            EnemyBase enemyBase = StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>();
+            enemyBase.SetStunTime = 1.5f;
+        }
     }
 
     // 히든 스킬

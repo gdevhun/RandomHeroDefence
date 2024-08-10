@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7810687675082099353}
   - component: {fileID: 1843663601123563013}
   - component: {fileID: 3130465259219430628}
+  - component: {fileID: -6014478874006005931}
   m_Layer: 0
   m_Name: GangsterAbilityEffect
   m_TagString: Untagged
@@ -142,3 +143,17 @@ CircleCollider2D:
   m_Offset: {x: 0.0147640705, y: 0}
   serializedVersion: 2
   m_Radius: 0.09
+--- !u!114 &-6014478874006005931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831531895199409016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3121a4381acdbc3479a8443f15c698c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityEffectType: 0
+  activeTime: 1

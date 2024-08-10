@@ -7,6 +7,7 @@ public class BarbarianAbility : SyncAbilityBase
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
+        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
         instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
         
         Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
@@ -18,7 +19,5 @@ public class BarbarianAbility : SyncAbilityBase
                 enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 1.5f + enemyBase.CurrentHp * 0.06f);
             }
         }
-        
-        PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
     }
 }

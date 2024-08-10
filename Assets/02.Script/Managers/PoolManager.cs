@@ -105,7 +105,7 @@ public class PoolManager : MonoBehaviour
         QueMap(weaponEffectPool.queMap,weaponEffectPool.prefMap, 200);
         QueMap(enemyPool.queMap, enemyPool.prefMap, 200);
         QueMap(abilityEffectPool.queMap, abilityEffectPool.prefMap);
-        QueMap(floatingTextPool.queMap, floatingTextPool.prefMap, 300);
+        QueMap(floatingTextPool.queMap, floatingTextPool.prefMap, 500);
     }
 
     // (타입, 프리팹) 맵핑

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 9210567414380989375}
   - component: {fileID: 8163946754321311633}
   - component: {fileID: 45056742903936729}
+  - component: {fileID: -2436525011493545085}
   m_Layer: 0
   m_Name: MarioAbilityEffect
   m_TagString: Untagged
@@ -135,4 +136,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityEffectType: 0
   activeTime: 4.5
+  moveSpeed: 4.5
+--- !u!114 &-2436525011493545085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778528797859579355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2cbff7873bfe743b31a02263ea17d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   moveSpeed: 4.5

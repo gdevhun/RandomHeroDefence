@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6991617234572437951}
   - component: {fileID: 8252767281332501134}
   - component: {fileID: 5882577380001049327}
+  - component: {fileID: 4936011013468546700}
   m_Layer: 0
   m_Name: TonkeyAbilityEffect
   m_TagString: Untagged
@@ -120,3 +121,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0.15, y: 0}
   m_Size: {x: 0.2, y: 0.0001}
   m_Direction: 0
+--- !u!114 &4936011013468546700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9941539063167722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3121a4381acdbc3479a8443f15c698c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityEffectType: 0
+  activeTime: 1

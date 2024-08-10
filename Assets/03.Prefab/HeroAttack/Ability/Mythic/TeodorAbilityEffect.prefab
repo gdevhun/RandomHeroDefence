@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7566280598881408183}
   - component: {fileID: 982991699007854875}
   - component: {fileID: 9132021057284555429}
+  - component: {fileID: 3723547004238866488}
   m_Layer: 0
   m_Name: TeodorAbilityEffect
   m_TagString: Untagged
@@ -4986,6 +4987,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.7
+--- !u!114 &3723547004238866488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1232712395313365512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3121a4381acdbc3479a8443f15c698c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityEffectType: 0
+  activeTime: 1
 --- !u!1 &1390163860694302808
 GameObject:
   m_ObjectHideFlags: 0
