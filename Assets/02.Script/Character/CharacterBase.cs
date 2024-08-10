@@ -77,6 +77,16 @@ public class CharacterBase : MonoBehaviour
         prevAtkSpeed = limitAtkSpeed;
     }
 
+    // 적용 할 공격력 계산
+    public float GetApplyAttackDamage(float basicAttackDamage)
+    {
+        float applyAttack = heroInfo.damageType == DamageType.물리 ?
+            heroInfo.attackDamage + heroInfo.attackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] / 100 + heroInfo.attackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100
+            : heroInfo.attackDamage + heroInfo.attackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] / 100 + heroInfo.attackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100;
+
+        return applyAttack;
+    }
+
     // 공속 계산
     void Update() { if (prevAtkSpeed < limitAtkSpeed) prevAtkSpeed += Time.deltaTime; }
 
@@ -103,14 +113,14 @@ public class CharacterBase : MonoBehaviour
                 go.transform.position = enemyTrans.position;
                 go.GetComponent<MeleeWeapon>().weaponEffect = weaponEffect;
                 go.GetComponent<MeleeWeapon>().damageType = heroInfo.damageType;
-                go.GetComponent<MeleeWeapon>().attackDamage = heroInfo.attackDamage;
+                go.GetComponent<MeleeWeapon>().attackDamage = GetApplyAttackDamage(heroInfo.attackDamage);
             }
             else
             {
                 GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
                 go.GetComponent<RangeWeapon>().weaponEffect = weaponEffect;
                 go.GetComponent<RangeWeapon>().damageType = heroInfo.damageType;
-                go.GetComponent<RangeWeapon>().attackDamage = heroInfo.attackDamage;
+                go.GetComponent<RangeWeapon>().attackDamage = GetApplyAttackDamage(heroInfo.attackDamage);
                 SetLastBulletPos(go,enemyTrans,gunPointTrans);
                 SoundManager.instance.SFXPlay(atkSoundType);
             }

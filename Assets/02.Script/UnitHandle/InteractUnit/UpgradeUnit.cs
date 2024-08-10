@@ -38,7 +38,7 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         // 업그레이드
         int e = 3;
         if(heroGradeType == HeroGradeType.전설) --e;
-        for(int i = 0; i < e; i++) gradeUpgradeMap[curGradeType++]++;
+        for(int i = 0; i < e; i++) gradeUpgradeMap[curGradeType++] += 10;
 
         // UI 갱신
         UpdateUpgradeUI(heroGradeType);

@@ -18,7 +18,7 @@ public class GangsterAbility : SyncAbilityBase
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
                 enemyBase.SetStunTime = 0.5f;
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 1.5f, DamageType.물리);
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 1.5f, DamageType.물리);
             }
         }
     }

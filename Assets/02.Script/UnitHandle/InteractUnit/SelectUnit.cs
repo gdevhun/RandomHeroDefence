@@ -100,7 +100,8 @@ public class SelectUnit : MonoBehaviour
                 if(!UiUnit.instance.toolTipPanel.gameObject.activeSelf) UiUnit.instance.OpenPanel(UiUnit.instance.toolTipPanel.gameObject);
                 UiUnit.instance.toolTipPanel.SetToolTip(selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo,
                     selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability.abilityUiInfo,
-                        selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.신화 ? (selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability as IHiddenAbility).HiddenAbilityUiInfo : null);
+                        selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.신화 ? (selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability as IHiddenAbility).HiddenAbilityUiInfo : null,
+                            selectedPos.transform.GetChild(0).GetComponent<CharacterBase>());
 
                 // 사정거리 표시
                 OnOffIndicateAttackRange(true);

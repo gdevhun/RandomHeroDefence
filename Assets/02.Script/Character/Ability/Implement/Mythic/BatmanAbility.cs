@@ -12,7 +12,7 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
         {
             instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, characterBase.weaponEffect);
             instantAbilityEffect.GetComponent<RangeWeapon>().weaponEffect = characterBase.weaponEffect;
-            instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.heroInfo.attackDamage * 2;
+            instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 2;
             characterBase.SetLastBulletPos(instantAbilityEffect, StageManager.instance.instantEnemyList.gameObjectList[i].transform, characterBase.gunPointTrans);
         }
 
@@ -38,7 +38,7 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
                     CharacterBase batCharacterBase = GetUnitBase.unitPosMap[UnitType.뱃].ElementAt(i).Key.transform.GetChild(j).GetComponent<CharacterBase>();
                     instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, characterBase.weaponEffect);
                     instantAbilityEffect.GetComponent<RangeWeapon>().weaponEffect = characterBase.weaponEffect;
-                    instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.heroInfo.attackDamage * 2;
+                    instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 2;
                     characterBase.SetLastBulletPos(instantAbilityEffect, StageManager.instance.instantEnemyList.gameObjectList[k].transform, batCharacterBase.transform);
                 }
             }

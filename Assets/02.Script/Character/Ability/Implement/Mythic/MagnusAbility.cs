@@ -19,7 +19,7 @@ public class MagnusAbility : SyncAbilityBase, IHiddenAbility
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 20 + ((!isMakdus || !isAlisda) ? enemyBase.maxHp * 0.06f : enemyBase.maxHp * 0.12f), DamageType.물리);
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20 + ((!isMakdus || !isAlisda) ? enemyBase.maxHp * 0.06f : enemyBase.maxHp * 0.12f), DamageType.물리);
             }
         }
     }

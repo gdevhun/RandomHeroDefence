@@ -16,7 +16,7 @@ public class MakdusAbility : SyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 5, DamageType.물리);
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 5, DamageType.물리);
             }
         }
         EnemyBase.DecreaseMagDef += 50f;

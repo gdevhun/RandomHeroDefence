@@ -16,7 +16,7 @@ public class BarbarianAbility : SyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 1.5f + enemyBase.CurrentHp * 0.06f, DamageType.물리);
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 1.5f + enemyBase.CurrentHp * 0.06f, DamageType.물리);
             }
         }
     }

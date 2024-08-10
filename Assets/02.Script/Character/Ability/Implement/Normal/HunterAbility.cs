@@ -12,7 +12,7 @@ public class HunterAbility : AsyncAbilityBase
             if(!characterBase.isOnTarget) { yield return oneSecond; continue; }
             instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, characterBase.weaponEffect);
             instantAbilityEffect.GetComponent<RangeWeapon>().weaponEffect = characterBase.weaponEffect;
-            instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.heroInfo.attackDamage;
+            instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage);
             characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans, characterBase.gunPointTrans);
             instantAbilityEffect.transform.position += new Vector3(1f, 0, 0);
             yield return oneSecond;
