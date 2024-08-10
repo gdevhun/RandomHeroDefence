@@ -102,6 +102,12 @@ public class SelectUnit : MonoBehaviour
                     selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability.abilityUiInfo,
                         selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.신화 ? (selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability as IHiddenAbility).HiddenAbilityUiInfo : null);
 
+                // 사정거리 표시
+                OnOffIndicateAttackRange(true);
+
+                // 이동 할 위치 표시 끔
+                targetPos.SetActive(false);
+
                 // 판매 및 합성 패널 띄우기
                 HeroGradeType selectedHeroGradeType = selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType;
                 if(selectedHeroGradeType == HeroGradeType.신화) // 신화는 판매 및 합성 패널 켜져있으면 꺼줌
@@ -117,12 +123,6 @@ public class SelectUnit : MonoBehaviour
                     if(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급) UiUnit.instance.unitSellGoldText.text = (50 + 50 * (int)selectedHeroGradeType).ToString();
                     else if(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
                 }
-
-                // 사정거리 표시
-                OnOffIndicateAttackRange(true);
-
-                // 이동 할 위치 표시 끔
-                targetPos.SetActive(false);
 
                 return;
             }

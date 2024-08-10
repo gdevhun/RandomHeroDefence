@@ -110,7 +110,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(80, true);
             UpdateMissionInfo(0);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("일반수집가 퀘 완 80골드 획득");
         }
         if (!missionStatus[MissionList.고급수집가] && HasAllItems(HeroGradeType.고급))
         {
@@ -118,7 +117,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(200, true);
             UpdateMissionInfo(1);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("고급수집가 퀘 완 200골드 획득");
         }
         if (!missionStatus[MissionList.희귀수집가] && HasAllItems(HeroGradeType.희귀))
         {
@@ -126,7 +124,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(3, false);
             UpdateMissionInfo(2);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("희귀수집가 퀘 완 3다이아 획득");
         }
         if (!missionStatus[MissionList.전설수집가] && HasAllItems(HeroGradeType.전설))
         {
@@ -134,7 +131,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(3);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("전설수집가 퀘 완 10다이아 획득");
         }
         if (!missionStatus[MissionList.신화수집가] && HasAllItems(HeroGradeType.신화))
         {
@@ -142,7 +138,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(20, false);
             UpdateMissionInfo(4);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("신화수집가 퀘 완 20다이아 획득");
         }
     }
 
@@ -154,7 +149,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(2, false);
             UpdateMissionInfo(5);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("초보 퀘 완 2다이아 획득");
         }
         if (!missionStatus[MissionList.중수] && StageManager.instance.CurStage >= 20)
         {
@@ -162,7 +156,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(4, false);
             UpdateMissionInfo(6);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("중수 퀘 완 4다이아 획득");
         }
         if (!missionStatus[MissionList.숙련자] && StageManager.instance.CurStage >= 30)
         {
@@ -170,7 +163,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(8, false);
             UpdateMissionInfo(7);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("중수 퀘 완 8다이아 획득");
         }
         if (!missionStatus[MissionList.고수] && StageManager.instance.CurStage >= 40)
         {
@@ -178,7 +170,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(8);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("중수 퀘 완 10다이아 획득");
         }
         if (!missionStatus[MissionList.장인] && StageManager.instance.CurStage >= 45)
         {
@@ -186,7 +177,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(20, false);
             UpdateMissionInfo(9);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("중수 퀘 완 20다이아 획득");
         }
     }
 
@@ -198,7 +188,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(10);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("부자되기 첫걸음 퀘 완 10 다이아 획득");
         }
         if (!missionStatus[MissionList.나는구두쇠] && CurrencyManager.instance.Gold >= 1000)
         {
@@ -206,7 +195,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(20, false);
             UpdateMissionInfo(11);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("구두쇠 퀘 완 20 다이아 획득");
         }
         if (!missionStatus[MissionList.내가재드래곤] && CurrencyManager.instance.Gold >= 2000)
         {
@@ -214,7 +202,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(30, false);
             UpdateMissionInfo(12);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("재드래곤 퀘 완 30 다이아 획득");
         }
     }
 
@@ -226,7 +213,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(300, true);
             UpdateMissionInfo(13);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("전당포사장 퀘 완 300골드 획득");
         }
         if (!missionStatus[MissionList.금은방사장되기] && CurrencyManager.instance.Dia >= 20)
         {
@@ -234,7 +220,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(500, true);
             UpdateMissionInfo(14);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("금은방사장 퀘 완 500골드 획득");
         }
         if (!missionStatus[MissionList.나는대부호] && CurrencyManager.instance.Dia >= 40)
         {
@@ -242,7 +227,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(1000, true);
             UpdateMissionInfo(15);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("나는대부호 퀘 완 1000골드 획득");
         }
     }
 
@@ -254,7 +238,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(5, false);
             UpdateMissionInfo(16);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("줄타기장인 퀘 완");
         }
         if (!missionStatus[MissionList.메시급드리블] && StageManager.instance.EnemyCnt >= 110)
         {
@@ -262,7 +245,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(17);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("메시급드리블 퀘 완");
         }
         if (!missionStatus[MissionList.갬블러] && summonFailures >= 5)
         {
@@ -270,7 +252,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(18);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("갬블러 퀘 완");
         }
         if (!missionStatus[MissionList.룰렛중독] && rouletteFailures >= 5)
         {
@@ -278,7 +259,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(19);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("룰렛 중독 퀘 완");
         }
         if (!missionStatus[MissionList.가챠중독] && gachaFailures >= 3)
         {
@@ -286,7 +266,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(20);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("가챠중독 퀘 완");
         }
         if (!missionStatus[MissionList.도박치료상담전화는1336] && 
             missionStatus[MissionList.갬블러] && 
@@ -297,7 +276,6 @@ public class MissionManager : MonoBehaviour
             CurrencyManager.instance.AcquireCurrency(50, false);
             UpdateMissionInfo(21);
             StartCoroutine(NotifyMissionClear());
-            Debug.Log("도박치료상단전화퀘 완");
         }
     }
 
