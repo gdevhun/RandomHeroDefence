@@ -59,7 +59,7 @@ public class EnemyBase : MonoBehaviour
             UpdateBuffUI(value, UiUnit.instance.magDecText);
         }
     }
-    [Header ("몬스터 골드")] public int enemyGold;
+    [HideInInspector] public int enemyGold;
     public static int increaseEnemyGold; // 몬스터 골드 증가량
     [Header ("체력 필 오브젝트")] [SerializeField] private GameObject hpFillObj;
 

@@ -31,7 +31,7 @@ public class SellUnit : MonoBehaviour
         selectedCharacter.transform.SetParent(PoolManager.instance.poolSet.transform);
         PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, selectedCharacter, selectedUnitType);
         Debug.Log(soldierCnt);
-        if(selectedGradeType == HeroGradeType.일반 || selectedGradeType == HeroGradeType.고급) CurrencyManager.instance.AcquireCurrency(soldierCnt > 0 ? 100 + 50 * (int)selectedGradeType : 50 + 50 * (int)selectedGradeType, true);
+        if(selectedGradeType == HeroGradeType.일반 || selectedGradeType == HeroGradeType.고급) CurrencyManager.instance.AcquireCurrency(soldierCnt > 0 ? 2 * (10 + 20 * (int)selectedGradeType) : 10 + 20 * (int)selectedGradeType, true);
         else if(selectedGradeType == HeroGradeType.희귀 || selectedGradeType == HeroGradeType.전설) CurrencyManager.instance.AcquireCurrency((int)selectedGradeType, false);
         GetUnitBase.CurUnit -= 1;
         SoundManager.instance.SFXPlay(SoundType.Sell);

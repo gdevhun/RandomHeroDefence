@@ -8,5 +8,6 @@ public class StageData : ScriptableObject
     public int stageTime;
     public StageType stageType;
     public EnemyType enemyType;
+    public int stageGold;
     public ListGameObject spawnPos = new ListGameObject();
 }
