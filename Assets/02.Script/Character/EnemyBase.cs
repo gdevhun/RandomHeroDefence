@@ -71,7 +71,7 @@ public class EnemyBase : MonoBehaviour
         {
             // 현재 남은 스턴 시간보다 더 짧은 스턴이 들어오면 리턴
             if(value <= curStunTime) return;
-            
+
             // 스턴 시작
             curStunTime = value;
             moveSpeed = 0;
