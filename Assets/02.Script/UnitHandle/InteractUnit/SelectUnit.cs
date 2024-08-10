@@ -34,6 +34,9 @@ public class SelectUnit : MonoBehaviour
                 return;
             }
 
+            // 사정거리 표시 끔
+            OnOffIndicateAttackRange(false);
+
             // 선택된 유닛 스폰 위치 오브젝트
             selectedPos = hit.transform.gameObject;
 
@@ -115,6 +118,9 @@ public class SelectUnit : MonoBehaviour
                     else if(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
                 }
 
+                // 사정거리 표시
+                OnOffIndicateAttackRange(true);
+
                 // 이동 할 위치 표시 끔
                 targetPos.SetActive(false);
 
@@ -161,5 +167,12 @@ public class SelectUnit : MonoBehaviour
             // 이동 할 위치 표시 끔
             targetPos.SetActive(false);
         }
+    }
+
+    // 사정거리 표시 켜고 끄기
+    public void OnOffIndicateAttackRange(bool isOn)
+    {
+        if(selectedPos == null) return;
+        for(int i = 0; i < selectedPos.transform.childCount; i++) selectedPos.transform.GetChild(i).GetComponent<CharacterBase>().indicateAttackRange.SetActive(isOn);
     }
 }

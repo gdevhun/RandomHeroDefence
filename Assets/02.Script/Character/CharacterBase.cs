@@ -49,6 +49,8 @@ public class CharacterBase : MonoBehaviour
     [HideInInspector] public float limitAtkSpeed; // 공속
     [HideInInspector] public Transform enemyTrans; // 타겟 몬스터 트랜스폼
     [Header ("평타 사운드 타입")] [SerializeField] private SoundType atkSoundType;
+    private CircleCollider2D collider; // 콜라이더
+    [Header ("사정거리 표시")] public GameObject indicateAttackRange;
     public bool FlipX
     {
         get { return spriteRenderer.flipX; }
@@ -67,9 +69,11 @@ public class CharacterBase : MonoBehaviour
     // 초기화
     void Awake()
     {
+        collider = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         if (heroInfo.attackType == AttackType.근거리) gunPointTrans = null;
+        indicateAttackRange.transform.localScale = new Vector3(collider.radius * 2, collider.radius * 2, collider.radius * 2);
     }
     private void Start()
     {
