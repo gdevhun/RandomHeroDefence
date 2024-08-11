@@ -35,28 +35,21 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         curGradeType = heroGradeType;
 
         // 최대 업그레이드 체크
-        if(gradeUpgradeMap[curGradeType] >= 2100) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
+        int upgradeCnt = curGradeType == HeroGradeType.일반 ? normalUpgradeCnt : legendUpgradeCnt;
+        if(upgradeCnt >= 20) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 재화 체크
-        amount = curGradeType == HeroGradeType.일반 ? 30 + 10 * ++normalUpgradeCnt : 2 + ++legendUpgradeCnt;
+        amount = curGradeType == HeroGradeType.일반 ? 30 + 10 * upgradeCnt : 2 + upgradeCnt;
         if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 업그레이드
-        int e = 3;
-        if(heroGradeType == HeroGradeType.전설) --e;
-
-        int upgradeCoef = 0;
-        for(int i = 0; i < upgradeCoefList.Count; i++)
-        {
-            if(gradeUpgradeMap[curGradeType] < upgradeCoefList[i])
-            {
-                upgradeCoef = i;
-                break;
-            }
-        }
+        int e = curGradeType == HeroGradeType.일반 ? 3 : 2;
 
         HeroGradeType standardGradeType = heroGradeType;
-        for(int i = 0; i < e; i++) gradeUpgradeMap[standardGradeType++] += 20 + 20 * upgradeCoef;
+        for(int i = 0; i < e; i++) gradeUpgradeMap[standardGradeType++] += 20 + 20 * (upgradeCnt / 5);
+
+        if(curGradeType == HeroGradeType.일반) normalUpgradeCnt++;
+        else legendUpgradeCnt++;
 
         // UI 갱신
         UpdateUpgradeUI(heroGradeType);
