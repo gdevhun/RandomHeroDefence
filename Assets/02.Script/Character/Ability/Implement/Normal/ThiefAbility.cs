@@ -7,9 +7,9 @@ public class ThiefAbility : SyncAbilityBase
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
-        instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
+        instantAbilityEffect.transform.position = characterBase.transform.position + Vector3.up;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(characterBase.enemyTrans.transform.position, 0.7f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))

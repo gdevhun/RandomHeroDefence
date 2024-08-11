@@ -62,11 +62,7 @@ public enum EnemyType
 // 스킬 이펙트
 public enum AbilityEffectType
 {
-    갱스터, 시프, 레슬러,
-    어쌔신, 바바리안,
-    통키, 알론소,
-    알리스다, 막더스,
-    테오도르, 마그너스, 마리오, 유미
+    스턴, 시프
 }
 
 // 플로팅 텍스트

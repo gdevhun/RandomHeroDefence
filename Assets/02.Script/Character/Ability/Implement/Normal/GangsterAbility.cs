@@ -7,11 +7,7 @@ public class GangsterAbility : SyncAbilityBase
     // 150% 데미지, 0.5초 스턴
     public override void CastAbility(CharacterBase characterBase)
     {
-        instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
-        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
-        instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
-        
-        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(characterBase.enemyTrans.transform.position, 1f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))

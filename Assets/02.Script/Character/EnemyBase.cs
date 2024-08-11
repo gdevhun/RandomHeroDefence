@@ -61,6 +61,7 @@ public class EnemyBase : MonoBehaviour
     }
     [HideInInspector] public int enemyGold;
     [Header ("체력 필 오브젝트")] [SerializeField] private GameObject hpFillObj;
+    private GameObject instantStunEffect; // 생성된 스턴 이펙트
 
     private float curStunTime; // 스턴 시간 계산용
     public float SetStunTime
@@ -74,6 +75,10 @@ public class EnemyBase : MonoBehaviour
             // 스턴 시작
             curStunTime = value;
             moveSpeed = 0;
+            if(instantStunEffect != null) PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantStunEffect, AbilityEffectType.스턴);
+            instantStunEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, AbilityEffectType.스턴);
+            instantStunEffect.GetComponent<DeActiveAbility>().abilityEffectType = AbilityEffectType.스턴;
+            instantStunEffect.transform.position = transform.position;
         }
     }
 
@@ -160,6 +165,7 @@ public class EnemyBase : MonoBehaviour
             {
                 curStunTime = 0;
                 moveSpeed = originMoveSpeed;
+                if(instantStunEffect != null) PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantStunEffect, AbilityEffectType.스턴);
             }
         }
     }
