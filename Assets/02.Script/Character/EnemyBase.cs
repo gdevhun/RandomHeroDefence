@@ -60,7 +60,6 @@ public class EnemyBase : MonoBehaviour
         }
     }
     [HideInInspector] public int enemyGold;
-    public static int increaseEnemyGold; // 몬스터 골드 증가량
     [Header ("체력 필 오브젝트")] [SerializeField] private GameObject hpFillObj;
 
     private float curStunTime; // 스턴 시간 계산용

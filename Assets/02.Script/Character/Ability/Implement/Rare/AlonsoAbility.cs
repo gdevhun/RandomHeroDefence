@@ -1,8 +1,30 @@
+using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "스킬/희귀/알론소")]
-public class AlonsoAbility : SyncAbilityBase
+public class AlonsoAbility : AsyncAbilityBase
 {
-    // 모든 몬스터를 죽이고 얻는 골드량 10% 증가
-    public override void CastAbility(CharacterBase characterBase) { EnemyBase.increaseEnemyGold += 10; }
+    // 200% 데미지, 이속 감소 10(3초 유지)
+    public override IEnumerator CastAbility(CharacterBase characterBase)
+    {
+        instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
+        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
+        instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.CompareTag("Enemy"))
+            {
+                EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 2, DamageType.물리);
+            }
+        }
+
+        EnemyBase.DecreaseMoveSpeed += 0.1f;
+        yield return oneSecond;
+        yield return oneSecond;
+        yield return oneSecond;
+        EnemyBase.DecreaseMoveSpeed -= 0.1f;
+    }
 }
