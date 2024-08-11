@@ -113,6 +113,7 @@ public class CharacterBase : MonoBehaviour
                 go.transform.position = enemyTrans.position;
                 go.GetComponent<MeleeWeapon>().weaponEffect = weaponEffect;
                 go.GetComponent<MeleeWeapon>().damageType = heroInfo.damageType;
+                go.GetComponent<MeleeWeapon>().isEnter = false;
                 go.GetComponent<MeleeWeapon>().attackDamage = GetApplyAttackDamage(heroInfo.attackDamage);
             }
             else
