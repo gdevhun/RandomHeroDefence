@@ -46,7 +46,11 @@ public class StageManager : MonoBehaviour
                 StartStage(value);
                 CurrencyManager.instance.AcquireCurrency((curStage - 1) * 40 + CurrencyManager.instance.Gold / 10, true);
             }
-            else Debug.Log("스테이지 종료");
+            else
+            {
+                // 게임 클리어
+                GameStop();
+            }
         }
     }
 
@@ -60,7 +64,11 @@ public class StageManager : MonoBehaviour
         set
         {
             enemyCnt = value;
-            if(EnemyCnt > maxEnemyCnt) Debug.Log("몬스터 120 마리 초과");
+            if(EnemyCnt > maxEnemyCnt)
+            {
+                // 게임 실패
+                GameStop();
+            }
             UpdateEnemyCntUI(value);
         }
     }
@@ -119,20 +127,20 @@ public class StageManager : MonoBehaviour
             switch(stageData.stageType)
             {
                 case StageType.Normal :
-                    stageData.stageTime = 10;
+                    stageData.stageTime = 5;
                     stageData.enemyType = (EnemyType)(stageData.stageNumber / 5 * 2);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[0]);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[1]);
                     stageData.stageGold = 1 + stageData.stageNumber / 20;
                     break;
                 case StageType.MiniBoss :
-                    stageData.stageTime = 15;
+                    stageData.stageTime = 5;
                     stageData.enemyType = (EnemyType)(1 + 4 * (stageData.stageNumber / 10));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     stageData.stageGold = 250;
                     break;
                 case StageType.Boss :
-                    stageData.stageTime = 20;
+                    stageData.stageTime = 5;
                     stageData.enemyType = (EnemyType)(3 + 4 * (stageData.stageNumber / 10 - 1));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     stageData.stageGold = 500;
@@ -214,7 +222,11 @@ public class StageManager : MonoBehaviour
         }
 
         // 보스 잡았는지 체크
-        if(boss.activeSelf) Debug.Log("보스 잡기 실패");
+        if(boss.activeSelf)
+        {
+            // 게임 실패
+            GameStop();
+        }
 
         // 다음 스테이지
         ++CurStage;
@@ -259,6 +271,11 @@ public class StageManager : MonoBehaviour
         }
         return instantEnemy;
     }
+
+    // 게임 멈추기
+    // 게임 클리어 및 실패에서 호출
+    // 메인씬으로 가면 다시 타임스케일 돌려주기
+    private void GameStop() { Time.timeScale = 0f; }
 
     // 스테이지 UI 갱신
     private void UpdateStageNumUI(StageData stage) { stageNumText.text = stage.stageNumber.ToString(); }
