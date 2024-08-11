@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - MovePoint
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -54,4 +55,7 @@ TagManager:
     locked: 0
   - name: Weapon
     uniqueID: 3609840689
+    locked: 0
+  - name: SkillEffect
+    uniqueID: 2983681593
     locked: 0
