@@ -6,7 +6,7 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
 {
     private bool isAden = false, isEkion = false;
 
-    // 1.5초 스턴
+    // 2000% 데미지, 1.5초 스턴
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
@@ -24,6 +24,7 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
                 if (hit.CompareTag("Enemy"))
                 {
                     EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
+                    enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20, DamageType.마법);
                     enemyBase.SetStunTime = 1.5f;
                 }
             }
@@ -35,6 +36,7 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
         for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++)
         {
             EnemyBase enemyBase = StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>();
+            enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20, DamageType.마법);
             enemyBase.SetStunTime = 1.5f;
         }
     }

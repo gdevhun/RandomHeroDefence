@@ -17,7 +17,7 @@ MonoBehaviour:
     abilityName: "\uC2AC\uB85C\uC6B0\uB85C\uB4DC"
     abilityContent: "\uBAA8\uB4E0 \uAE38\uBAA9\uC5D0 3\uCD08 \uAD11\uC5ED \uC2AC\uB85C\uC6B0
       \uC7A5\uD310 \uC124\uCE58"
-  abilityEffectType: 11
+  abilityEffectType: 12
   instantAbilityEffect: {fileID: 0}
   hiddenAbilityUiInfo:
     abilitySprite: {fileID: 21300000, guid: ab7880740e5174f408626f50a14bcf26, type: 3}

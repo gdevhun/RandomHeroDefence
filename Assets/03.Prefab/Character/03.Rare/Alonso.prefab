@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 0762ad6e8c6d0cf49ac1fdf29e9a2fa8, type: 2}
-  maxStamina: 0
+  maxStamina: 5
   staminaFillObj: {fileID: 3321533790562124734}
 --- !u!1001 &2515898070451657439
 PrefabInstance:

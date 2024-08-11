@@ -10,6 +10,7 @@ public class MeleeWeapon: MonoBehaviour
     [Header ("유지 시간")] public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     [HideInInspector] public float attackDamage;
+    [HideInInspector] public bool isEnter;
 
     // 초기화
     void Awake() { thisWaitForSeconds = new WaitForSeconds(activeTime); }
@@ -27,11 +28,19 @@ public class MeleeWeapon: MonoBehaviour
     // 몬스터 타격
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(isEnter) return;
+        isEnter = true;
+
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (other.gameObject.TryGetComponent(out EnemyBase enemyBase))
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
+            foreach (Collider2D hit in hits)
             {
-                enemyBase.TakeDamage(attackDamage, damageType); 
+                if (hit.CompareTag("Enemy"))
+                {
+                    EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
+                    enemyBase.TakeDamage(attackDamage, damageType);
+                }
             }
         }
     }

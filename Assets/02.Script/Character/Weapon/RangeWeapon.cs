@@ -14,30 +14,36 @@ public class RangeWeapon : MonoBehaviour
     [HideInInspector] public float attackDamage;
 
     // 초기화
-    void Awake() { thisWaitForSeconds = new WaitForSeconds(activeTime); }
+    //void Awake() { thisWaitForSeconds = new WaitForSeconds(activeTime); }
 
     // 유지 시간 지나면 반환
-    private void OnEnable() { StartCoroutine(ActiveTime()); }
+    //private void OnEnable() { StartCoroutine(ActiveTime()); }
 
     // 이동
     private void Update() { transform.Translate(Vector2.right * moveSpeed * Time.deltaTime); }
 
     // 유지 시간 지나면 반환
-    private IEnumerator ActiveTime()
-    {
-        yield return thisWaitForSeconds;
-        PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, gameObject, weaponEffect);
-    }
+    // private IEnumerator ActiveTime()
+    // {
+    //     yield return thisWaitForSeconds;
+    //     PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, gameObject, weaponEffect);
+    // }
 
     // 몬스터 타격
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (other.gameObject.TryGetComponent(out EnemyBase enemyBase))
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
+            foreach (Collider2D hit in hits)
             {
-                enemyBase.TakeDamage(attackDamage, damageType); 
+                if (hit.CompareTag("Enemy"))
+                {
+                    EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
+                    enemyBase.TakeDamage(attackDamage, damageType);
+                }
             }
+            PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, gameObject, weaponEffect);
         }
     }
 }

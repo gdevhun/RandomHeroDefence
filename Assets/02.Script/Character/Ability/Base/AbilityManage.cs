@@ -94,13 +94,11 @@ public class AbilityManage : MonoBehaviour
                 break;
             case UnitType.에키온 : EnemyBase.DecreaseMoveSpeed -= 0.05f; if(EnemyBase.DecreaseMoveSpeed < 0) EnemyBase.DecreaseMoveSpeed = 0;
                 break;
-            case UnitType.뱃 : EnemyBase.DecreaseMagDef -= 10f; if(EnemyBase.DecreaseMagDef < 0) EnemyBase.DecreaseMagDef = 0;
+            case UnitType.뱃 : EnemyBase.DecreaseMagDef -= 20f; if(EnemyBase.DecreaseMagDef < 0) EnemyBase.DecreaseMagDef = 0;
                 break;
-            case UnitType.바이킹 : EnemyBase.DecreasePhyDef -= 10f; if(EnemyBase.DecreasePhyDef < 0) EnemyBase.DecreasePhyDef = 0;
+            case UnitType.바이킹 : EnemyBase.DecreasePhyDef -= 20f; if(EnemyBase.DecreasePhyDef < 0) EnemyBase.DecreasePhyDef = 0;
                 break;
             case UnitType.에이든 : UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] += 4; if(UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] > 72) UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] = 72; 
-                break;
-            case UnitType.알론소 : EnemyBase.increaseEnemyGold -= 10; if(EnemyBase.increaseEnemyGold < 0) EnemyBase.increaseEnemyGold = 0;
                 break;
             case UnitType.아아솔 : UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] -= 10; if(UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] < 0) UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] = 0; UiUnit.instance.magText.text = UpgradeUnit.instance.damageUpgradeMap[DamageType.마법].ToString() + " %";
                 break;
