@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2784811480246547205}
   - component: {fileID: 8446334804047695229}
   - component: {fileID: 8826008492418993639}
-  - component: {fileID: 7027886637402737408}
   m_Layer: 0
   m_Name: GansterAbilityEffectNew
   m_TagString: Untagged
@@ -121,17 +120,3 @@ CircleCollider2D:
   m_Offset: {x: 0.0147640705, y: 0}
   serializedVersion: 2
   m_Radius: 0.09
---- !u!114 &7027886637402737408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7930757169681516683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3121a4381acdbc3479a8443f15c698c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityEffectType: 0
-  activeTime: 1

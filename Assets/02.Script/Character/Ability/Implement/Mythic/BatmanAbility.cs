@@ -8,12 +8,20 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
     // 모든 몬스터에 200% 데미지 총알 1개 발사
     public override void CastAbility(CharacterBase characterBase)
     {
+        // 배트맨 바디
+        instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
+        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
+        instantAbilityEffect.transform.position = characterBase.transform.position + Vector3.up * 0.5f;
+
         for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++)
         {
-            instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, characterBase.weaponEffect);
-            instantAbilityEffect.GetComponent<RangeWeapon>().weaponEffect = characterBase.weaponEffect;
-            instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 2;
-            characterBase.SetLastBulletPos(instantAbilityEffect, StageManager.instance.instantEnemyList.gameObjectList[i].transform, characterBase.gunPointTrans);
+            // 배트맨 스킬 총알 발사
+            RangeWeapon rangeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, WeaponEffect.BatmanAbilityBullet).GetComponent<RangeWeapon>();
+            rangeWeapon.weaponEffect = WeaponEffect.BatmanAbilityBullet;
+            rangeWeapon.damageType = characterBase.heroInfo.damageType;
+            rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage * 2;
+            rangeWeapon.characterBase = characterBase;
+            characterBase.SetLastBulletPos(rangeWeapon.gameObject, StageManager.instance.instantEnemyList.gameObjectList[i].transform, characterBase.gunPointTrans);
         }
 
         CastHiddenAbility(characterBase);
@@ -36,10 +44,12 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
                 for(int k = 0; k < StageManager.instance.instantEnemyList.gameObjectList.Count; k++)
                 {
                     CharacterBase batCharacterBase = GetUnitBase.unitPosMap[UnitType.뱃].ElementAt(i).Key.transform.GetChild(j).GetComponent<CharacterBase>();
-                    instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, characterBase.weaponEffect);
-                    instantAbilityEffect.GetComponent<RangeWeapon>().weaponEffect = characterBase.weaponEffect;
-                    instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 2;
-                    characterBase.SetLastBulletPos(instantAbilityEffect, StageManager.instance.instantEnemyList.gameObjectList[k].transform, batCharacterBase.transform);
+                    RangeWeapon rangeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, WeaponEffect.BatmanAbilityBullet).GetComponent<RangeWeapon>();
+                    rangeWeapon.weaponEffect = WeaponEffect.BatmanAbilityBullet;
+                    rangeWeapon.damageType = characterBase.heroInfo.damageType;
+                    rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage * 2;
+                    rangeWeapon.characterBase = characterBase;
+                    characterBase.SetLastBulletPos(rangeWeapon.gameObject, StageManager.instance.instantEnemyList.gameObjectList[k].transform, batCharacterBase.transform);
                 }
             }
         }

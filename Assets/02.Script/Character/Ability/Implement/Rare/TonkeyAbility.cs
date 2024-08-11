@@ -8,7 +8,7 @@ public class TonkeyAbility : SyncAbilityBase
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
-        instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
+        instantAbilityEffect.transform.position = characterBase.transform.position + Vector3.up;
         
         CurrencyManager.instance.AcquireCurrency(1, false);
     }

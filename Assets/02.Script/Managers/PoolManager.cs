@@ -38,7 +38,8 @@ public enum WeaponEffect
     AlexBullet, AssassinMelee, BarbarianMelee, BunkerBullet, EkionMelee,
     AlonsoMelee, AdenMelee, BatBullet, TonkeyBullet, VikingMelee,
     AasoleBullet, AlisdaMelee, BaniesBullet, LouizyBullet, MakdusMelee,
-    BatmanBullet, TeodorMelee, MagnusMelee, MarioBullet, YumieMelee
+    BatmanBullet, TeodorMelee, MagnusMelee, MarioBullet, YumieMelee,
+    BatmanAbilityBullet, MarioAbilityBullet
 }
 // 사운드 타입
 public enum SoundType
@@ -62,7 +63,8 @@ public enum EnemyType
 // 스킬 이펙트
 public enum AbilityEffectType
 {
-    스턴, 시프
+    스턴, 시프, 통키, 알론소, 알리스다, 막더스,
+    배트맨, 마리오, 마그너스, 테오도르, 유미슬로우, 유미빛
 }
 
 // 플로팅 텍스트

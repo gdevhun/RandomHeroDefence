@@ -12,6 +12,8 @@ public class MagnusAbility : SyncAbilityBase, IHiddenAbility
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
         instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
+
+        CastHiddenAbility(characterBase);        
         
         Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
         foreach (Collider2D hit in hits)
@@ -19,7 +21,7 @@ public class MagnusAbility : SyncAbilityBase, IHiddenAbility
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20 + ((!isMakdus || !isAlisda) ? enemyBase.maxHp * 0.06f : enemyBase.maxHp * 0.12f), DamageType.물리);
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20 + ((!isMakdus || !isAlisda) ? enemyBase.maxHp * 0.06f : enemyBase.maxHp * 0.12f), characterBase.heroInfo.damageType);
             }
         }
     }

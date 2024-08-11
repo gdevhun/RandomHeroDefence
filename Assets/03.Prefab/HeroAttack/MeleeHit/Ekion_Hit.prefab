@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8588901167970883248}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.47, y: 10.55, z: -0.12}
+  m_LocalPosition: {x: 0, y: 10, z: -0.12}
   m_LocalScale: {x: 0.7, y: 0.6999999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4908,6 +4908,7 @@ MonoBehaviour:
   damageType: 0
   activeTime: 1
   attackDamage: 0
+  isEnter: 0
 --- !u!58 &6032239277233337872
 CircleCollider2D:
   m_ObjectHideFlags: 0

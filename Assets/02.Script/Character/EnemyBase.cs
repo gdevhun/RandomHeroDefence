@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -77,7 +78,6 @@ public class EnemyBase : MonoBehaviour
             moveSpeed = 0;
             if(instantStunEffect != null) PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantStunEffect, AbilityEffectType.스턴);
             instantStunEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, AbilityEffectType.스턴);
-            instantStunEffect.GetComponent<DeActiveAbility>().abilityEffectType = AbilityEffectType.스턴;
             instantStunEffect.transform.position = transform.position;
         }
     }
@@ -94,17 +94,19 @@ public class EnemyBase : MonoBehaviour
         CurrentHp = maxHp;
     }
     
-    // 피격
+    // 피격 계산
+    // => 물방, 마방 적용
     public void TakeDamage(float damage, DamageType dmgType)
     {
         float applyDmg = damage;
+
         // 물리
         if(dmgType == DamageType.물리)
         {
             float applyPhyDef = phyDef - DecreasePhyDef;
             applyDmg = applyPhyDef > 0 ? applyDmg * (1 - phyDef / (phyDef + 100)) : damage;
             CurrentHp -= applyDmg;
-            FloatingDmg(applyDmg);
+            if(applyDmg > 0) FloatingDmg(applyDmg);
             return;
         }
 
@@ -112,7 +114,7 @@ public class EnemyBase : MonoBehaviour
         float applyMagDef = magDef - decreaseMagDef;
         applyDmg = applyMagDef > 0 ? applyDmg * (1 - magDef / (magDef + 100)) : damage;
         CurrentHp -= applyDmg;
-        FloatingDmg(applyDmg);
+        if(applyDmg > 0) FloatingDmg(applyDmg);
     }
     private void FloatingDmg(float dmg)
     {
@@ -132,7 +134,11 @@ public class EnemyBase : MonoBehaviour
     }
     
     // 죽는 애니메이션이 끝날 때 호출
-    public void InactiveObj() { PoolManager.instance.ReturnPool(PoolManager.instance.enemyPool.queMap,gameObject,enemyType); }
+    public void InactiveObj()
+    {
+        if(instantStunEffect != null) PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantStunEffect, AbilityEffectType.스턴);
+        PoolManager.instance.ReturnPool(PoolManager.instance.enemyPool.queMap,gameObject,enemyType);
+    }
 
     // 몬스터 이동
     private void Update() { EnemyMove(); GetStun(); }

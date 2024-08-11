@@ -16,5 +16,5 @@ MonoBehaviour:
     abilitySprite: {fileID: 21300000, guid: f27e3a2c432b99548a8e9c394a3aa679, type: 3}
     abilityName: "\uACE8\uB4DC\uD578\uB354"
     abilityContent: "\uBAAC\uC2A4\uD130 \uACE8\uB4DC\uB7C9 10% \uC99D\uAC00"
-  abilityEffectType: 6
+  abilityEffectType: 3
   instantAbilityEffect: {fileID: 0}

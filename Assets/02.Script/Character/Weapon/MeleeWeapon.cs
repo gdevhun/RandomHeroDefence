@@ -11,6 +11,7 @@ public class MeleeWeapon: MonoBehaviour
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     [HideInInspector] public float attackDamage;
     [HideInInspector] public bool isEnter;
+    [HideInInspector] public CharacterBase characterBase;
 
     // 초기화
     void Awake() { thisWaitForSeconds = new WaitForSeconds(activeTime); }
@@ -39,7 +40,7 @@ public class MeleeWeapon: MonoBehaviour
                 if (hit.CompareTag("Enemy"))
                 {
                     EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                    enemyBase.TakeDamage(attackDamage, damageType);
+                    enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(attackDamage), damageType);
                 }
             }
         }

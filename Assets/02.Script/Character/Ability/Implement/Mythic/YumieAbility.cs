@@ -10,6 +10,9 @@ public class YumieAbility : AsyncAbilityBase, IHiddenAbility
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
 
+        GameObject instantAbilityLightEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, AbilityEffectType.유미빛);
+        instantAbilityLightEffect.GetComponent<DeActiveAbility>().abilityEffectType = AbilityEffectType.유미빛;
+
         EnemyBase.DecreaseMoveSpeed += 0.2f;
 
         for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++) StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>().TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 5, DamageType.마법);
@@ -18,7 +21,7 @@ public class YumieAbility : AsyncAbilityBase, IHiddenAbility
         yield return oneSecond;
         for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++) StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>().TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 5, DamageType.마법);
         yield return oneSecond;
-        
+
         EnemyBase.DecreaseMoveSpeed -= 0.2f;
     }
 
