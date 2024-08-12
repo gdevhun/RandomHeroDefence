@@ -17,4 +17,5 @@ MonoBehaviour:
     abilityName: "\uB3CC\uACA9"
     abilityContent: "150% \uB370\uBBF8\uC9C0, \uD604\uC7AC\uCCB4\uB825 6% \uB370\uBBF8\uC9C0"
   abilityEffectType: 4
+  abilitySoundType: 16
   instantAbilityEffect: {fileID: 0}

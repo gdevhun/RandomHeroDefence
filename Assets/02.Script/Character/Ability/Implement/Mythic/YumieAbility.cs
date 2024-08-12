@@ -7,6 +7,8 @@ public class YumieAbility : AsyncAbilityBase, IHiddenAbility
     // 초당 500% 데미지, 이동속도 20 감소(3초 유지)
     public override IEnumerator CastAbility(CharacterBase characterBase)
     {
+        SoundManager.instance.SFXPlay(SoundType.유미스킬2);
+
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
 

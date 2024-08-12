@@ -2,7 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 // 재생할 배경음 타입 => 키로 사용
-public enum BgmType { Main, Normal, MiniBoss, Boss }
+public enum BgmType
+{
+    게임메뉴,
+    구간1에서9, 스테이지10,
+    구간11에서19, 스테이지20,
+    구간21에서29, 스테이지30,
+    구간31에서34, 구간35에서39, 스테이지40,
+    구간41에서44, 구간45에서49, 스테이지50
+}
 
 public class SoundManager : MonoBehaviour
 {
@@ -34,7 +42,7 @@ public class SoundManager : MonoBehaviour
             Map();
 
             // 메인 BGM
-            BgmSoundPlay(BgmType.Main);
+            BgmSoundPlay(BgmType.게임메뉴);
         }
         else Destroy(gameObject);
     }
