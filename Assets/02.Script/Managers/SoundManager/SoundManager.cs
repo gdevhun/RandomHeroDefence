@@ -35,8 +35,8 @@ public class SoundManager : MonoBehaviour
             DontDestroyOnLoad(instance);
 
             // 볼륨 초기화
-            bgmVolume = 0.1f;
-            sfxVolume = 1f;
+            bgmVolume = 0.4f;
+            sfxVolume = 0.3f;
 
             // (타입, 배경음) 맵핑
             Map();
@@ -87,8 +87,5 @@ public class SoundManager : MonoBehaviour
         sfxVolume = volume;
         sfxImg.sprite = sfxVolume == 0 ? offSoundSprite : onSoundSprite;
     } 
-    
-    /*사운드 페널 버튼 처리 함수
-    public void OpenSoundSettingPanelBtn() => soundSettingPanel.SetActive(true);
-    public void CloseSoundSettingPanelBtn() => soundSettingPanel.SetActive(false);*/
+
 }
