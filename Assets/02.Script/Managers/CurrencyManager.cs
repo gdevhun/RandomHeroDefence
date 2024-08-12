@@ -8,7 +8,7 @@ public class CurrencyManager : MonoBehaviour
     {
         instance = this;
         Gold = 50;
-        Dia = 100;
+        Dia = 0;
     }
     
     // 골드

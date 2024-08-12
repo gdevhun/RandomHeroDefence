@@ -131,6 +131,7 @@ public class EnemyBase : MonoBehaviour
         animator.SetTrigger("isDead");
         CurrencyManager.instance.AcquireCurrency(enemyGold, true);
         StageManager.instance.instantEnemyList.gameObjectList.Remove(gameObject);
+        StageManager.instance.EnemyCnt--;
     }
     
     // 죽는 애니메이션이 끝날 때 호출

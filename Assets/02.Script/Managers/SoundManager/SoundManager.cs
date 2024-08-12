@@ -21,8 +21,8 @@ public class SoundManager : MonoBehaviour
 
     public Sprite offSoundSprite;
     public Sprite onSoundSprite;
-    public Image bgmImg;
-    public Image sfxImg;
+    [HideInInspector] public Image bgmImg;
+    [HideInInspector] public Image sfxImg;
     // 싱글톤
     public static SoundManager instance;
     private void Awake()

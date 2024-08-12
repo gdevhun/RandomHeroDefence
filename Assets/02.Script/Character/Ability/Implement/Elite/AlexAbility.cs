@@ -19,8 +19,9 @@ public class AlexAbility : AsyncAbilityBase
                 rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage;
                 rangeWeapon.characterBase = characterBase;
                 characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans, characterBase.gunPointTrans);
-                instantAbilityEffect.transform.position += new Vector3(1f * j, 0, 0);
+                instantAbilityEffect.transform.position += new Vector3(0.1f * j, 0, 0);
             }
+            if(i > 0) SoundManager.instance.SFXPlay(abilitySoundType);
             yield return oneSecond;
         }
     }

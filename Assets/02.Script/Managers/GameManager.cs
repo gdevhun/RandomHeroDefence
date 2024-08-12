@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
     public GameObject gameWinPanel;
     public GameObject gameOverPanel;
     public TextMeshProUGUI stageScoreTxt;
-    private readonly WaitForSeconds delay = new WaitForSeconds(2f);
+
+    // 게임씬으로 올 때 설정 필드
+    [SerializeField] private Image bgmImage, sfxImage;
+    [SerializeField] private Slider bgmSlider, sfxSlider;
     
     private void Awake()
     {
@@ -24,36 +27,48 @@ public class GameManager : MonoBehaviour
         
         Application.targetFrameRate = 60;
 
+        // 게임씬으로 올 때 사운드 매니저 설정
+        SoundManager.instance.bgmImg = bgmImage;
+        SoundManager.instance.sfxImg = sfxImage;
+        bgmSlider.onValueChanged.AddListener(SoundManager.instance.SetBgmVolume);
+        sfxSlider.onValueChanged.AddListener(SoundManager.instance.SetSfxVolume);
     }
     // 게임 멈추기
     // 게임 클리어 및 실패에서 호출
     // 메인씬으로 가면 다시 타임스케일 돌려주기
     private void GameStop() => Time.timeScale = 0f;
 
+    // 10초 뒤 게임 시작
+    public IEnumerator GameStartCo()
+    {
+        for(int i = 0; i < 10; i++) yield return StageManager.instance.oneSecond;
+        StageManager.instance.StartStage(StageManager.instance.CurStage);
+    }
+
     private IEnumerator ShowGameResultPanel(PlayerResType playerResType)
     {
-        yield return delay;
+        yield return StageManager.instance.oneSecond;
         if (playerResType == PlayerResType.게임승리)
         {
             gameWinPanel.SetActive(true);
         }
         else
         {
-            gameOverPanel.SetActive(false);
+            gameOverPanel.SetActive(true);
         }
-
         ShowStageRes();
+
+        yield return StageManager.instance.halfSecond;
+        GameStop();
     }
     
     public void PlayerGameWin()
     {
-        GameStop();
         StartCoroutine(ShowGameResultPanel(PlayerResType.게임승리));
     }
 
     public void PlayerGameOver()
     {
-        GameStop();
         StartCoroutine(ShowGameResultPanel(PlayerResType.게임오버));
     }
 
