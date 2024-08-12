@@ -13,15 +13,24 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
         instantAbilityEffect.transform.position = characterBase.transform.position + Vector3.up * 0.5f;
 
-        for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++)
+        // 배트맨 총알 발사
+        float cur = 0f;
+        for (int i = 0; i < 20; i++)
         {
-            // 배트맨 스킬 총알 발사
+            // 배트맨 총알 풀링
             RangeWeapon rangeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, WeaponEffect.BatmanAbilityBullet).GetComponent<RangeWeapon>();
             rangeWeapon.weaponEffect = WeaponEffect.BatmanAbilityBullet;
             rangeWeapon.damageType = characterBase.heroInfo.damageType;
-            rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage * 2;
+            rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage;
             rangeWeapon.characterBase = characterBase;
-            characterBase.SetLastBulletPos(rangeWeapon.gameObject, StageManager.instance.instantEnemyList.gameObjectList[i].transform, characterBase.gunPointTrans);
+
+            // 발사 방향 셋
+            float radian = cur * Mathf.Deg2Rad;
+            Vector2 direction = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+            rangeWeapon.transform.SetPositionAndRotation(characterBase.gunPointTrans.position, Quaternion.LookRotation(Vector3.forward, direction));
+
+            // 다음 발사
+            cur += 18;
         }
 
         CastHiddenAbility(characterBase);
@@ -41,15 +50,24 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
         {
             for(int j = 0; j < GetUnitBase.unitPosMap[UnitType.뱃].ElementAt(i).Key.transform.childCount; j++)
             {
-                for(int k = 0; k < StageManager.instance.instantEnemyList.gameObjectList.Count; k++)
+                float cur = 0f;
+                for (int k = 0; k < 20; k++)
                 {
+                    // 배트맨 총알 풀링
                     CharacterBase batCharacterBase = GetUnitBase.unitPosMap[UnitType.뱃].ElementAt(i).Key.transform.GetChild(j).GetComponent<CharacterBase>();
                     RangeWeapon rangeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, WeaponEffect.BatmanAbilityBullet).GetComponent<RangeWeapon>();
                     rangeWeapon.weaponEffect = WeaponEffect.BatmanAbilityBullet;
                     rangeWeapon.damageType = characterBase.heroInfo.damageType;
                     rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage * 2;
                     rangeWeapon.characterBase = characterBase;
-                    characterBase.SetLastBulletPos(rangeWeapon.gameObject, StageManager.instance.instantEnemyList.gameObjectList[k].transform, batCharacterBase.transform);
+
+                    // 발사 방향 셋
+                    float radian = cur * Mathf.Deg2Rad;
+                    Vector2 direction = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
+                    rangeWeapon.transform.SetPositionAndRotation(batCharacterBase.gunPointTrans.position, Quaternion.LookRotation(Vector3.forward, direction));
+
+                    // 다음 발사
+                    cur += 18;
                 }
             }
         }
