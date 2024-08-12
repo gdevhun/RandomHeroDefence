@@ -8,7 +8,7 @@ public class SelectUnit : MonoBehaviour
     [Header ("유닛 스폰 위치만 클릭되게")] [SerializeField] private LayerMask posLayerMask;
     private Vector3 sPos = Vector3.zero; // 시작 위치
     private const float dragThreshold = 0.5f; // 클릭과 드래그를 구분하는 임계 값
-    private bool isDrag = false; // 드래그 체크
+    [HideInInspector] public bool isDrag = false; // 드래그 체크
     [Header ("이동 할 위치 표시")] [SerializeField] private GameObject targetPos;
 
     private void Update() { Down(); }

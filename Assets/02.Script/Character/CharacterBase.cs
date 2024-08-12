@@ -94,6 +94,9 @@ public class CharacterBase : MonoBehaviour
     // 타겟 공격
     private void OnTriggerStay2D(Collider2D other)
     {
+        // 드래그 체크
+        if(SelectUnit.instance.isDrag) return;
+
         // 타겟 체크
         if (other.gameObject.CompareTag("Enemy") && (!isOnTarget || enemyTrans.GetComponent<EnemyBase>().isDead))
         {

@@ -31,6 +31,9 @@ public class AbilityManage : MonoBehaviour
             // 최대 스태미너가 되고 타겟이 존재 할 때 스킬 시전
             if((louizyCnt == 0 && stamina >= maxStamina && characterBase.isOnTarget) || (louizyCnt > 0 && stamina >= maxStamina - 1 && characterBase.isOnTarget))
             {
+                // 드래그 체크
+                if(SelectUnit.instance.isDrag) return;
+                
                 if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);
                 else if(ability is AsyncAbilityBase asyncAbilityBase) StartCoroutine(asyncAbilityBase.CastAbility(characterBase));
                 stamina = 0;
