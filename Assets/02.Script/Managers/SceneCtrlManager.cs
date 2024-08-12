@@ -22,9 +22,8 @@ public class SceneCtrlManager : MonoBehaviour
 
         }
         else Destroy(gameObject);
-        
-        Application.targetFrameRate = 60;
-        loadingBar=GameObject.FindWithTag("LoadingBar");
+
+        loadingBar=GameObject.FindGameObjectWithTag("LoadingBar");
     }
 
     private void SetLoadingBar() => loadingBar.transform.localPosition=(new Vector3(815, 462f, 0));

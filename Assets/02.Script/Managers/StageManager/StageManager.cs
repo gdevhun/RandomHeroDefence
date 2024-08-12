@@ -49,7 +49,7 @@ public class StageManager : MonoBehaviour
             else
             {
                 // 게임 클리어
-                GameStop();
+                GameManager.instance.PlayerGameOver();
             }
         }
     }
@@ -67,7 +67,7 @@ public class StageManager : MonoBehaviour
             if(EnemyCnt > maxEnemyCnt)
             {
                 // 게임 실패
-                GameStop();
+                GameManager.instance.PlayerGameOver();
             }
             UpdateEnemyCntUI(value);
         }
@@ -225,7 +225,7 @@ public class StageManager : MonoBehaviour
         if(boss.activeSelf)
         {
             // 게임 실패
-            GameStop();
+            GameManager.instance.PlayerGameOver();
         }
 
         // 다음 스테이지
@@ -271,12 +271,7 @@ public class StageManager : MonoBehaviour
         }
         return instantEnemy;
     }
-
-    // 게임 멈추기
-    // 게임 클리어 및 실패에서 호출
-    // 메인씬으로 가면 다시 타임스케일 돌려주기
-    private void GameStop() { Time.timeScale = 0f; }
-
+    
     // 스테이지 UI 갱신
     private void UpdateStageNumUI(StageData stage) { stageNumText.text = stage.stageNumber.ToString(); }
     private void UpdateStageTimeUI(int cur) { stageTimeText.text = cur.ToString(); }

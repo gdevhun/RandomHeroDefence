@@ -43,9 +43,9 @@ public class MissionManager : MonoBehaviour
     public Image missionClearImg;
     
     //아래 3개변수 사용하면됨
-    public int summonFailures = 0;  //유닛뽑기 꽝, 실패 횟수
-    public int rouletteFailures = 0;  //룰랫돌리기 꽝,실패 횟수
-    public int gachaFailures = 0; //신화뽑기(가챠) 꽝,실패 횟수
+    [HideInInspector] public int summonFailures = 0;  //유닛뽑기 꽝, 실패 횟수
+    [HideInInspector] public int rouletteFailures = 0;  //룰랫돌리기 꽝,실패 횟수
+    [HideInInspector] public int gachaFailures = 0; //신화뽑기(가챠) 꽝,실패 횟수
 
     [SerializeField] private RectTransform missionListPanel;
     private readonly Vector2 targetPanelRect = new Vector3(960, 490);
