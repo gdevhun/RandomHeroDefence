@@ -45,9 +45,12 @@ public enum WeaponEffect
 public enum SoundType
 {
     GetUnit, Sell, Click, Upgrade, NotEnough, Roulette,
-    Fist, Bullet, Sword, HeavySword,
-    Stun, CurrencyGet,
-    BatmanAbility, TeodorAbilit, MagnusAbility, MarioAbility, YumieAbility
+    평타각목둔기, 평타철둔기, 평타핸드, 평타에키온에이든테오도르, 총알마법평타, 총알물리평타,
+    갱스터스킬, 레슬러스킬, 시프스킬, 헌터스킬,
+    바바리안스킬, 벙커스킬, 알렉스스킬, 어쌔신스킬,
+    알론소스킬, 통키스킬,
+    막더스스킬, 알리스다스킬,
+    배트맨스킬, 마리오스킬, 마그너스스킬, 테오도르스킬, 유미스킬1, 유미스킬2
 }
 
 // 몬스터 타입

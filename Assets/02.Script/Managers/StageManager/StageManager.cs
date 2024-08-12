@@ -172,7 +172,17 @@ public class StageManager : MonoBehaviour
     private IEnumerator StartNormalStage(StageData stage)
     {
         // 사운드
-        SoundManager.instance.BgmSoundPlay(BgmType.Normal);
+        switch(stage.stageNumber)
+        {
+            case 1 : SoundManager.instance.BgmSoundPlay(BgmType.구간1에서9); break;
+            case 11 : SoundManager.instance.BgmSoundPlay(BgmType.구간11에서19); break;
+            case 21 : SoundManager.instance.BgmSoundPlay(BgmType.구간21에서29); break;
+            case 31 : SoundManager.instance.BgmSoundPlay(BgmType.구간31에서34); break;
+            case 35 : SoundManager.instance.BgmSoundPlay(BgmType.구간35에서39); break;
+            case 41 : SoundManager.instance.BgmSoundPlay(BgmType.구간41에서44); break;
+            case 45 : SoundManager.instance.BgmSoundPlay(BgmType.구간45에서49); break;
+            default : break;
+        }
 
         // 몬스터 소환
         int stageTime = stage.stageTime;
@@ -190,9 +200,6 @@ public class StageManager : MonoBehaviour
     // 미니보스 스테이지
     private IEnumerator StartMiniBossStage(StageData stage)
     {
-        // 사운드
-        SoundManager.instance.BgmSoundPlay(BgmType.MiniBoss);
-
         // 몬스터 소환
         EnemySpawn(stage);
         int stageTime = stage.stageTime;
@@ -209,8 +216,16 @@ public class StageManager : MonoBehaviour
     // 보스 스테이지
     private IEnumerator StartBossStage(StageData stage)
     {
-        // 사운드
-        SoundManager.instance.BgmSoundPlay(BgmType.Boss);
+        // 사운드 10 20 30 40 50
+        switch(stage.stageNumber)
+        {
+            case 10 : SoundManager.instance.BgmSoundPlay(BgmType.스테이지10); break;
+            case 20 : SoundManager.instance.BgmSoundPlay(BgmType.스테이지20); break;
+            case 30 : SoundManager.instance.BgmSoundPlay(BgmType.스테이지30); break;
+            case 40 : SoundManager.instance.BgmSoundPlay(BgmType.스테이지40); break;
+            case 50 : SoundManager.instance.BgmSoundPlay(BgmType.스테이지50); break;
+            default : break;
+        }
 
         // 몬스터 소환
         GameObject boss = EnemySpawn(stage);

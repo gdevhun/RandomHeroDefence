@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "스킬/신화/배트맨")]
 public class BatmanAbility : SyncAbilityBase, IHiddenAbility
 {
+    [Header ("배트맨 스킬 총알 개수")] [SerializeField] private int abilityBulletCnt;
+
     // 모든 몬스터에 200% 데미지 총알 1개 발사
     public override void CastAbility(CharacterBase characterBase)
     {
@@ -14,23 +16,19 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
         instantAbilityEffect.transform.position = characterBase.transform.position + Vector3.up * 0.5f;
 
         // 배트맨 총알 발사
-        float cur = 0f;
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < abilityBulletCnt; i++)
         {
             // 배트맨 총알 풀링
             RangeWeapon rangeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, WeaponEffect.BatmanAbilityBullet).GetComponent<RangeWeapon>();
             rangeWeapon.weaponEffect = WeaponEffect.BatmanAbilityBullet;
             rangeWeapon.damageType = characterBase.heroInfo.damageType;
-            rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage;
+            rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage * 2;
             rangeWeapon.characterBase = characterBase;
 
             // 발사 방향 셋
-            float radian = cur * Mathf.Deg2Rad;
+            float radian = 360 / abilityBulletCnt * i * Mathf.Deg2Rad;
             Vector2 direction = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
             rangeWeapon.transform.SetPositionAndRotation(characterBase.gunPointTrans.position, Quaternion.LookRotation(Vector3.forward, direction));
-
-            // 다음 발사
-            cur += 18;
         }
 
         CastHiddenAbility(characterBase);

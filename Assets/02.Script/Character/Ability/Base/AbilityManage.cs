@@ -33,7 +33,8 @@ public class AbilityManage : MonoBehaviour
             {
                 // 드래그 체크
                 if(SelectUnit.instance.isDrag) return;
-                
+
+                if(ability.abilitySoundType != SoundType.GetUnit) SoundManager.instance.SFXPlay(ability.abilitySoundType);
                 if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);
                 else if(ability is AsyncAbilityBase asyncAbilityBase) StartCoroutine(asyncAbilityBase.CastAbility(characterBase));
                 stamina = 0;
