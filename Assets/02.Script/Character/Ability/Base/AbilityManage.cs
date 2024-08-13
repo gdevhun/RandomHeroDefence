@@ -18,7 +18,7 @@ public class AbilityManage : MonoBehaviour
     [Header ("스킬 정보")] public AbilityBase ability;
 
     // 스태미나
-    [Header ("최대 스태미나")] [SerializeField] private int maxStamina;
+    [Header ("최대 스태미나")] public int maxStamina;
     private float maxStaminaFloat;
     private int stamina;
     public int Stamina

@@ -44,7 +44,7 @@ public class StageManager : MonoBehaviour
             if(curStage < maxStage)
             {
                 StartStage(value);
-                CurrencyManager.instance.AcquireCurrency((curStage - 1) * 40 + CurrencyManager.instance.Gold / 10, true);
+                CurrencyManager.instance.AcquireCurrency((curStage - 1) * 20 + CurrencyManager.instance.Gold / 10, true);
             }
             else
             {

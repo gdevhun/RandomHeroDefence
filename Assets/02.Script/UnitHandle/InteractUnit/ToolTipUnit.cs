@@ -23,7 +23,7 @@ public class ToolTipUnit : MonoBehaviour
         unitDmgText.text = characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage).ToString();
         unitSpeedText.text = heroInfo.attackSpeed.ToString();
         abilityImage.sprite = abilityInfo.abilitySprite;
-        abilityNameText.text = abilityInfo.abilityName;
+        abilityNameText.text = characterBase.GetComponent<AbilityManage>().maxStamina > 0 ? abilityInfo.abilityName + $" (스태미너 : {characterBase.GetComponent<AbilityManage>().maxStamina})" : abilityInfo.abilityName;
         abilityContentText.text = abilityInfo.abilityContent;
         if(heroInfo.heroGradeType == HeroGradeType.신화)
         {

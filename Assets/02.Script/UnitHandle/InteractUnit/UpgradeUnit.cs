@@ -26,7 +26,6 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
     [Header ("전설 레벨 텍스트")] [SerializeField] private TextMeshProUGUI legendLvText;
     [Header ("골드 텍스트")] [SerializeField] private TextMeshProUGUI goldText;
     [Header ("다이아 텍스트")] [SerializeField] private TextMeshProUGUI diaText;
-    private List<int> upgradeCoefList = new List<int>{100, 300, 600, 1000, 1500, 2100};
     private int normalUpgradeCnt = 0, legendUpgradeCnt = 0;
 
     // 유닛 업그레이드
@@ -39,7 +38,7 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         if(upgradeCnt >= 20) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 재화 체크
-        amount = curGradeType == HeroGradeType.일반 ? 30 + 10 * upgradeCnt : 2 + upgradeCnt;
+        amount = curGradeType == HeroGradeType.일반 ? 100 + 50 * upgradeCnt : 2 + upgradeCnt;
         if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 업그레이드
@@ -76,7 +75,7 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         if(heroGradeType == HeroGradeType.일반)
         {
             normalLvText.text = "Lv." + normalUpgradeCnt.ToString();
-            goldText.text = (30 + 10 * normalUpgradeCnt).ToString();
+            goldText.text = (100 + 50 * normalUpgradeCnt).ToString();
             return;
         }
 
