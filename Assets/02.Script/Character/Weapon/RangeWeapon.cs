@@ -7,10 +7,7 @@ public class RangeWeapon : MonoBehaviour
 {
     [HideInInspector] public WeaponEffect weaponEffect;
     [HideInInspector] public DamageType damageType;
-    [Header ("유지 시간")] public float activeTime;
-    [SerializeField] private WaitForSeconds thisWaitForSeconds;
     [Header ("이동 속도")] public float moveSpeed;
-    private float moveDirection;
     public float attackDamage;
     [HideInInspector] public CharacterBase characterBase;
 
@@ -34,4 +31,7 @@ public class RangeWeapon : MonoBehaviour
             PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, gameObject, weaponEffect);
         }
     }
+
+    // 경계 처리
+    private void OnTriggerExit2D(Collider2D other) { if(other.gameObject.CompareTag("Border")) PoolManager.instance.ReturnPool(PoolManager.instance.weaponEffectPool.queMap, gameObject, weaponEffect); }
 }

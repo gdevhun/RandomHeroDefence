@@ -8,6 +8,7 @@ TagManager:
   - MovePoint
   - FxTemporaire
   - LoadingBar
+  - Border
   layers:
   - Default
   - TransparentFX

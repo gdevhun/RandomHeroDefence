@@ -119,7 +119,14 @@ public class EnemyBase : MonoBehaviour
     private void FloatingDmg(float dmg)
     {
         FloatingText instantFloatingText = PoolManager.instance.GetPool(PoolManager.instance.floatingTextPool.queMap, FloatingTextType.데미지플로팅).GetComponent<FloatingText>();
-        instantFloatingText.text.text = dmg.ToString();
+
+        // 1000미만 => 그냥
+        // 1000000미만 => 1000으로 나누고 K
+        // 그 외 => 1000000으로 나누고 M
+        if(dmg < 1000) instantFloatingText.text.text = dmg.ToString();
+        else if(dmg < 1000000) instantFloatingText.text.text = $"{dmg / 1000}K";
+        else instantFloatingText.text.text = $"{dmg / 1000000}M";
+        
         Vector3 worldToScreen = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 0.5f);
         RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)instantFloatingText.canvasTransform, worldToScreen, null, out Vector2 localPoint);
         instantFloatingText.GetComponent<RectTransform>().localPosition = localPoint;
