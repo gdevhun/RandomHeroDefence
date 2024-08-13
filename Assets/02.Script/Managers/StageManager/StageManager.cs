@@ -259,6 +259,7 @@ public class StageManager : MonoBehaviour
             enemyBase.spawnPos = stage.spawnPos.gameObjectList[i];
             enemyBase.enemyType = stage.enemyType;
             enemyBase.enemyGold = stage.stageGold;
+            enemyBase.isDead = false;
             ++EnemyCnt;
             instantEnemyList.gameObjectList.Add(instantEnemy);
 

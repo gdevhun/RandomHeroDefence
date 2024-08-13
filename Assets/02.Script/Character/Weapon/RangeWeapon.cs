@@ -22,7 +22,7 @@ public class RangeWeapon : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.001f);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1f);
             foreach (Collider2D hit in hits)
             {
                 if (hit.CompareTag("Enemy"))

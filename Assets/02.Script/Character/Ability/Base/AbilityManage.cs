@@ -64,10 +64,15 @@ public class AbilityManage : MonoBehaviour
     }
     private void OnEnable()
     {
-        // 스태미너 X => 활성화 할 때 마다 한 번 스킬 시전
-        if(maxStamina > 0 || characterBase == null) return;
-        SyncAbilityBase syncAbilityBase = ability as SyncAbilityBase;
-        syncAbilityBase.CastAbility(characterBase);
+        if(characterBase == null) return;
+
+        // 스태미너 O => 소환 될 때 한 번 스태미너에 따라 스킬 시전
+        if(maxStamina > 0) StartCoroutine(StaminaIncreament());
+        else // 스태미너 X => 소환 될 때 한 번 즉시 시전
+        {
+            SyncAbilityBase syncAbilityBase = ability as SyncAbilityBase;
+            syncAbilityBase.CastAbility(characterBase);
+        }
     }
 
     // 스태미나 증가

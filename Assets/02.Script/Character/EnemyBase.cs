@@ -128,10 +128,13 @@ public class EnemyBase : MonoBehaviour
     // 죽음
     private void Die()
     {
+        if(isDead) return;
+
         animator.SetTrigger("isDead");
         CurrencyManager.instance.AcquireCurrency(enemyGold, true);
         StageManager.instance.instantEnemyList.gameObjectList.Remove(gameObject);
         StageManager.instance.EnemyCnt--;
+        isDead = true;
     }
     
     // 죽는 애니메이션이 끝날 때 호출
