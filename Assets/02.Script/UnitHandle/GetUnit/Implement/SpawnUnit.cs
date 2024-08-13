@@ -17,8 +17,8 @@ public class SpawnUnit : GetUnitBase, IConsumable
     public override void GetUnitHandle()
     {
         // 재화 체크
-        ++SpawnCnt;
         if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
+        ++SpawnCnt;
 
         // 최대 유닛 체크
         if(CurUnit >= maxUnit) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
@@ -51,7 +51,7 @@ public class SpawnUnit : GetUnitBase, IConsumable
         set
         {
             spawnCnt = value;
-            amount = 10 + spawnCnt / 2;
+            amount = 10 + spawnCnt;
             UpdateSpawnGoldUI();
         }
     }

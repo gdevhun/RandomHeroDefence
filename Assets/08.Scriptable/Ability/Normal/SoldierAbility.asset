@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48836a3d6fd12c045b1bce3571d296c2, type: 3}
   m_Name: SoldierAbility
   m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: 7ca098fa96851ce4e9fecee21846d1b5, type: 3}
+    abilitySprite: {fileID: 21300000, guid: b285833c001494247805fb3d5399a81a, type: 3}
     abilityName: "\uBAA8\uC9D1"
     abilityContent: "\uD310\uB9E4 \uACE8\uB4DC 100% \uCD94\uAC00"
   abilityEffectType: 2
+  abilitySoundType: 0
+  instantAbilityEffect: {fileID: 0}

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: LouizyAbility
   m_EditorClassIdentifier: 
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: 8d68cbfddafea804490abed63aa1592d, type: 3}
+    abilitySprite: {fileID: 21300000, guid: c67cb5ecf78926749a4848e6546d330c, type: 3}
     abilityName: "\uCD95\uBCF5"
     abilityContent: "\uC2A4\uD0DC\uBBF8\uB108 1 \uAC10\uC18C(\uC81C\uD55C 1\uBC88)"
   abilityEffectType: 18
+  abilitySoundType: 0
   instantAbilityEffect: {fileID: 0}

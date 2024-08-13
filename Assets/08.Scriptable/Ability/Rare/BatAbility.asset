@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BatAbility
   m_EditorClassIdentifier: 
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: fda38e573562ea44997dba87d454af70, type: 3}
+    abilitySprite: {fileID: 21300000, guid: 109bacc3a598fc949b5f41dd31e7eba2, type: 3}
     abilityName: "\uCF00\uC774\uBE0C"
     abilityContent: "\uB9C8\uBC29 20 \uAC10\uC18C"
   abilityEffectType: 12
+  abilitySoundType: 0
   instantAbilityEffect: {fileID: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TeodorAbility
   m_EditorClassIdentifier: 
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
+    abilitySprite: {fileID: 21300000, guid: 0b06dc24df19d564cb93023baab2feea, type: 3}
     abilityName: "\uAC15\uD0C0"
     abilityContent: "1\uCD08 \uC2A4\uD134"
   abilityEffectType: 9

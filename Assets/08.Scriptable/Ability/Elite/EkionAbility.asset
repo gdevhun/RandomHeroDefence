@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9f041678be4bdc468686b348fd95a9f, type: 3}
   m_Name: EkionAbility
   m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: 431c455b0dc25eb46b82e59fda03f068, type: 3}
+    abilitySprite: {fileID: 21300000, guid: ef30d715f2ca98c4c86b32e85cd798f5, type: 3}
     abilityName: "\uB77C\uC774\uD305\uB85C\uB4DC"
     abilityContent: "\uC774\uB3D9\uC18D\uB3C4 5 \uAC10\uC18C"
   abilityEffectType: 9
+  abilitySoundType: 0
+  instantAbilityEffect: {fileID: 0}
