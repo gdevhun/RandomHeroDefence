@@ -29,7 +29,7 @@ public class StageManager : MonoBehaviour
 {
     public static StageManager instance;
     private void Awake() { instance = this; }
-
+    
     // 스테이지 데이터 관리
     [HideInInspector] public List<StageData> stageList = new List<StageData>();
 
@@ -246,6 +246,13 @@ public class StageManager : MonoBehaviour
         for(int i = 0; i < stage.stageTime; i++)
         {
             yield return oneSecond;
+            // 보스 잡았는지 체크
+            if(boss.activeSelf)
+            {
+                // 게임 실패
+                GameManager.instance.PlayerGameOver();
+            }
+            
             UpdateStageTimeUI(--stageTime);
         }
 

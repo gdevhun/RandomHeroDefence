@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 067b3198ce9a9634192040fbf88f08d3, type: 2}
-  maxStamina: 4
+  maxStamina: 10
   staminaFillObj: {fileID: 8425631753969291418}
 --- !u!1 &7145664142685133053
 GameObject:

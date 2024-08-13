@@ -83,8 +83,8 @@ public class MissionManager : MonoBehaviour
     }
     private void UpdateMissionInfo(int listNum)
     {   //미션 완료시 text를 업데이트하기 위해 자식들을 가져와 수정
-        Transform imageChild = missionTextList[listNum].missionObject.transform.GetChild(0);
-        Transform textChild = missionTextList[listNum].missionObject.transform.GetChild(2);
+        Transform imageChild = missionTextList[listNum].missionObject.transform.GetChild(1);
+        Transform textChild = missionTextList[listNum].missionObject.transform.GetChild(3);
         if (imageChild.TryGetComponent(out Image inImage))
         {
             inImage.gameObject.SetActive(true);
@@ -107,35 +107,35 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.일반수집가] && HasAllItems(HeroGradeType.일반))
         {
             missionStatus[MissionList.일반수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(80, true);
+            CurrencyManager.instance.AcquireCurrency(50, true);
             UpdateMissionInfo(0);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.고급수집가] && HasAllItems(HeroGradeType.고급))
         {
             missionStatus[MissionList.고급수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(200, true);
+            CurrencyManager.instance.AcquireCurrency(150, true);
             UpdateMissionInfo(1);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.희귀수집가] && HasAllItems(HeroGradeType.희귀))
         {
             missionStatus[MissionList.희귀수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(3, false);
+            CurrencyManager.instance.AcquireCurrency(2, false);
             UpdateMissionInfo(2);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.전설수집가] && HasAllItems(HeroGradeType.전설))
         {
             missionStatus[MissionList.전설수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(10, false);
+            CurrencyManager.instance.AcquireCurrency(4, false);
             UpdateMissionInfo(3);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.신화수집가] && HasAllItems(HeroGradeType.신화))
         {
             missionStatus[MissionList.신화수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(20, false);
+            CurrencyManager.instance.AcquireCurrency(6, false);
             UpdateMissionInfo(4);
             StartCoroutine(NotifyMissionClear());
         }
@@ -182,24 +182,24 @@ public class MissionManager : MonoBehaviour
 
     private void CheckGoldMissions() //골드 모으기 미션
     {
-        if (!missionStatus[MissionList.부자되기첫걸음] && CurrencyManager.instance.Gold >= 500)
+        if (!missionStatus[MissionList.부자되기첫걸음] && CurrencyManager.instance.Gold >= 5000)
         {
             missionStatus[MissionList.부자되기첫걸음] = true;
-            CurrencyManager.instance.AcquireCurrency(10, false);
+            CurrencyManager.instance.AcquireCurrency(5, false);
             UpdateMissionInfo(10);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.나는구두쇠] && CurrencyManager.instance.Gold >= 1000)
+        if (!missionStatus[MissionList.나는구두쇠] && CurrencyManager.instance.Gold >= 20000)
         {
             missionStatus[MissionList.나는구두쇠] = true;
-            CurrencyManager.instance.AcquireCurrency(20, false);
+            CurrencyManager.instance.AcquireCurrency(15,false);
             UpdateMissionInfo(11);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.내가재드래곤] && CurrencyManager.instance.Gold >= 2000)
+        if (!missionStatus[MissionList.내가재드래곤] && CurrencyManager.instance.Gold >= 50000)
         {
             missionStatus[MissionList.내가재드래곤] = true;
-            CurrencyManager.instance.AcquireCurrency(30, false);
+            CurrencyManager.instance.AcquireCurrency(20, false);
             UpdateMissionInfo(12);
             StartCoroutine(NotifyMissionClear());
         }
@@ -207,21 +207,21 @@ public class MissionManager : MonoBehaviour
 
     private void CheckDiamondMissions() //다이아 모으기 미션
     {
-        if (!missionStatus[MissionList.전당포사장되기] && CurrencyManager.instance.Dia >= 10)
+        if (!missionStatus[MissionList.전당포사장되기] && CurrencyManager.instance.Dia >= 5)
         {
             missionStatus[MissionList.전당포사장되기] = true;
-            CurrencyManager.instance.AcquireCurrency(300, true);
+            CurrencyManager.instance.AcquireCurrency(200, true);
             UpdateMissionInfo(13);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.금은방사장되기] && CurrencyManager.instance.Dia >= 20)
+        if (!missionStatus[MissionList.금은방사장되기] && CurrencyManager.instance.Dia >= 10)
         {
             missionStatus[MissionList.금은방사장되기] = true;
             CurrencyManager.instance.AcquireCurrency(500, true);
             UpdateMissionInfo(14);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.나는대부호] && CurrencyManager.instance.Dia >= 40)
+        if (!missionStatus[MissionList.나는대부호] && CurrencyManager.instance.Dia >= 20)
         {
             missionStatus[MissionList.나는대부호] = true;
             CurrencyManager.instance.AcquireCurrency(1000, true);
@@ -273,7 +273,7 @@ public class MissionManager : MonoBehaviour
             missionStatus[MissionList.가챠중독])
         {
             missionStatus[MissionList.도박치료상담전화는1336] = true;
-            CurrencyManager.instance.AcquireCurrency(50, false);
+            CurrencyManager.instance.AcquireCurrency(25, false);
             UpdateMissionInfo(21);
             StartCoroutine(NotifyMissionClear());
         }
