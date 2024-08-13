@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     private void GameStop() => Time.timeScale = 0f;
 
     // 10초 뒤 게임 시작
-    public IEnumerator GameStartCo()
+    public IEnumerator GameStartRoutine()
     {
         for(int i = 0; i < 10; i++) yield return StageManager.instance.oneSecond;
         StageManager.instance.StartStage(StageManager.instance.CurStage);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,7 +54,13 @@ public class StageManager : MonoBehaviour
             }
         }
     }
-
+    //보스등장 알림 UI
+    [Header ("보스 타입 출현 인포 패널 오브젝트")] 
+    public GameObject notifyMiniBossSpawnPanel;
+    public GameObject notifyBossSpawnPanel;
+    private enum SpawnedBossType{
+        미니보스출현패널, 보스출현패널
+    }
     // 현재 몬스터 수
     [Header ("최대 몬스터 수")] [SerializeField] private int maxEnemyCnt;
     private float maxEnemyFloatCnt;
@@ -98,7 +105,7 @@ public class StageManager : MonoBehaviour
     {
         maxEnemyFloatCnt = maxEnemyCnt;
         InitStage();
-        StartCoroutine(GameManager.instance.GameStartCo());
+        StartCoroutine(GameManager.instance.GameStartRoutine());
     }
 
     // 스테이지 데이터 초기화
@@ -200,6 +207,9 @@ public class StageManager : MonoBehaviour
     // 미니보스 스테이지
     private IEnumerator StartMiniBossStage(StageData stage)
     {
+        // UI 미니보스 출현 인포 출력
+        StartCoroutine(SpawnedBossTypeInfoRoutine(SpawnedBossType.미니보스출현패널));
+        
         // 몬스터 소환
         EnemySpawn(stage);
         int stageTime = stage.stageTime;
@@ -216,6 +226,9 @@ public class StageManager : MonoBehaviour
     // 보스 스테이지
     private IEnumerator StartBossStage(StageData stage)
     {
+        // UI 미니보스 출현 인포 출력
+        StartCoroutine(SpawnedBossTypeInfoRoutine(SpawnedBossType.보스출현패널));
+        
         // 사운드 10 20 30 40 50
         switch(stage.stageNumber)
         {
@@ -291,4 +304,21 @@ public class StageManager : MonoBehaviour
     private void UpdateStageNumUI(StageData stage) { stageNumText.text = stage.stageNumber.ToString(); }
     private void UpdateStageTimeUI(int cur) { stageTimeText.text = cur.ToString(); }
     private void UpdateEnemyCntUI(int cur) { enemyCntText.text = $"{cur} / {maxEnemyCnt}"; enemyCntFillImage.fillAmount = cur / maxEnemyFloatCnt; }
+
+    private IEnumerator SpawnedBossTypeInfoRoutine(SpawnedBossType spawnedBossType)
+    {
+        if (spawnedBossType == SpawnedBossType.미니보스출현패널)
+        {
+            notifyMiniBossSpawnPanel.SetActive(true);
+            for(int i=0; i<3; i++) {yield return oneSecond;}
+            notifyMiniBossSpawnPanel.SetActive(false);
+        }
+        else
+        {
+            notifyBossSpawnPanel.SetActive(true);
+            for(int i=0; i<5; i++) {yield return oneSecond;}
+            notifyBossSpawnPanel.SetActive(false);
+        }
+        yield return null;
+    }
 }
