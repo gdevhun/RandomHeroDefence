@@ -198,6 +198,6 @@ public class EnemyBase : MonoBehaviour
     // 버프 UI 갱신
     private static void UpdateBuffUI(float val, TextMeshProUGUI txt)
     {
-        txt.text = val.ToString() + " %";
+        txt.text = ((int)val).ToString() + " %";
     }
 }
