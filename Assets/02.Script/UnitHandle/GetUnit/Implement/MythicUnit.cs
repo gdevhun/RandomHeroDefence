@@ -17,6 +17,7 @@ public class MythicComb
 public class UnitRequire
 {
     [Header ("필요한 유닛 타입")] public UnitType unitType;
+    [Header ("필요한 유닛 등급")] public HeroGradeType gradeType;
     [Header ("필요한 유닛 스프라이트")] public Sprite unitSprite;
     [Header ("필요한 유닛 수")] public int cnt; // 유닛 수 => 같은 유닛 3 개 필요 시 1, 2, 3 할당 => ex) Hunter 3 개 필요 시 Hunter 1, Hunter 2, Hunter 3
 }
@@ -31,16 +32,20 @@ public class MythicUnit : GetUnitBase
     public UnitType SelectedMythic
     {
         get { return selectedMythic; }
-        set { selectedMythic = value; UpdateMythicInfoUI(value); }
+        set { selectedMythic = value; UpdateMythicInfoUI(value); } 
     }
     [Header ("신화 이미지")] [SerializeField] private Image mythicImage;
     [Header ("신화 이름 텍스트")] [SerializeField] private TextMeshProUGUI mythicText;
     [Header ("필요 유닛 이미지")] [SerializeField] private List<Image> requireImageList = new List<Image>();
+    public Dictionary<HeroGradeType, Color> gradeColorMap = new Dictionary<HeroGradeType, Color>(); // 등급, 오라 색 맵핑
+    [Header ("오라 색")] [SerializeField] private List<Color> circleColorList = new List<Color>();
 
     // 신화 조합식 맵핑
+    // 등급 오라 색 맵핑
     private void Start()
     {
         for(int i = 0; i < mythicCombList.Count; i++) mythicCombMap.Add(mythicCombList[i].mythicType, mythicCombList[i]);
+        for(int i = 0; i < circleColorList.Count; i++) gradeColorMap.Add((HeroGradeType)i, circleColorList[i]);
         selectedMythic = UnitType.배트맨;
     }
 
@@ -100,6 +105,10 @@ public class MythicUnit : GetUnitBase
 
             // 보유 유닛 체크 표시
             requireImageList[i].transform.GetChild(0).gameObject.SetActive(unitCnt > mythicCombMap[mythicType].requireList[i].cnt - 1);
+
+            // 오라 색 표시
+            Color newColor = gradeColorMap[mythicCombMap[mythicType].requireList[i].gradeType];
+            requireImageList[i].transform.GetChild(1).gameObject.GetComponent<Image>().color = newColor;
         }
     }
 

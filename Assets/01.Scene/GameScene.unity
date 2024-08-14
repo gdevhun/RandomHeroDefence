@@ -42170,60 +42170,75 @@ MonoBehaviour:
     mythicSprite: {fileID: 21300000, guid: 8291a699b70ae91439aa1fc04b7aa0ad, type: 3}
     requireList:
     - unitType: 12
+      gradeType: 2
       unitSprite: {fileID: 21300000, guid: fda38e573562ea44997dba87d454af70, type: 3}
       cnt: 1
     - unitType: 12
+      gradeType: 2
       unitSprite: {fileID: 21300000, guid: fda38e573562ea44997dba87d454af70, type: 3}
       cnt: 2
     - unitType: 17
+      gradeType: 3
       unitSprite: {fileID: 21300000, guid: f7cc8cab3f782384b98663135dd5b9df, type: 3}
       cnt: 1
   - mythicType: 21
     mythicSprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
     requireList:
     - unitType: 9
+      gradeType: 1
       unitSprite: {fileID: 21300000, guid: 431c455b0dc25eb46b82e59fda03f068, type: 3}
       cnt: 1
     - unitType: 11
+      gradeType: 2
       unitSprite: {fileID: 21300000, guid: 489e93b313a3eb54d9c0ab41545d4e98, type: 3}
       cnt: 1
     - unitType: 19
+      gradeType: 3
       unitSprite: {fileID: 21300000, guid: 326199c5020889649af1ab4c682d2437, type: 3}
       cnt: 1
   - mythicType: 22
     mythicSprite: {fileID: 21300000, guid: ea37309a756c66f46a068173e80f9e12, type: 3}
     requireList:
     - unitType: 16
+      gradeType: 3
       unitSprite: {fileID: 21300000, guid: 2012236a23e31ba448c929d7e28943cb, type: 3}
       cnt: 1
     - unitType: 10
+      gradeType: 2
       unitSprite: {fileID: 21300000, guid: f27e3a2c432b99548a8e9c394a3aa679, type: 3}
       cnt: 1
     - unitType: 14
+      gradeType: 2
       unitSprite: {fileID: 21300000, guid: af97816715c692641ad8087b382efb8c, type: 3}
       cnt: 1
   - mythicType: 23
     mythicSprite: {fileID: 21300000, guid: 98ba5744b8d69a14b85c6805435f28db, type: 3}
     requireList:
     - unitType: 18
+      gradeType: 3
       unitSprite: {fileID: 21300000, guid: 8d68cbfddafea804490abed63aa1592d, type: 3}
       cnt: 1
     - unitType: 13
+      gradeType: 2
       unitSprite: {fileID: 21300000, guid: c6832efce5324c14d8e9ac2b771f11ed, type: 3}
       cnt: 1
     - unitType: 3
+      gradeType: 0
       unitSprite: {fileID: 21300000, guid: 0ad7c8245f96dec44abb837b1a6f5f6f, type: 3}
       cnt: 1
   - mythicType: 24
     mythicSprite: {fileID: 21300000, guid: 661cc91ab31677440b769a63c268edb3, type: 3}
     requireList:
     - unitType: 15
+      gradeType: 3
       unitSprite: {fileID: 21300000, guid: 50a94a9931642cc4e8c1b95d9954930b, type: 3}
       cnt: 1
     - unitType: 8
+      gradeType: 1
       unitSprite: {fileID: 21300000, guid: 1d682d0d6bae9bd4f90c5c27c816cd5e, type: 3}
       cnt: 1
     - unitType: 13
+      gradeType: 2
       unitSprite: {fileID: 21300000, guid: c6832efce5324c14d8e9ac2b771f11ed, type: 3}
       cnt: 1
   mythicImage: {fileID: 321309383}
@@ -42232,6 +42247,12 @@ MonoBehaviour:
   - {fileID: 2094306240}
   - {fileID: 1435388327}
   - {fileID: 832748142}
+  circleColorList:
+  - {r: 1, g: 1, b: 1, a: 0.7254902}
+  - {r: 0.17254902, g: 0.93333334, b: 0.3137255, a: 0.7254902}
+  - {r: 0.54901963, g: 0.23921569, b: 0.8862745, a: 0.7254902}
+  - {r: 0.8862745, g: 0.80784315, b: 0.38039216, a: 0.7254902}
+  - {r: 1, g: 0.101960786, b: 0.101960786, a: 0.7254902}
 --- !u!4 &1579742421
 Transform:
   m_ObjectHideFlags: 0
@@ -54962,8 +54983,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1484858137}
-  - {fileID: 2134507815}
   - {fileID: 1372951106}
+  - {fileID: 2134507815}
   m_Father: {fileID: 1114550875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
