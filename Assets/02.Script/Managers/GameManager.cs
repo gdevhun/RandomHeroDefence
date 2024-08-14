@@ -50,12 +50,13 @@ public class GameManager : MonoBehaviour
         if (playerResType == PlayerResType.게임승리)
         {
             gameWinPanel.SetActive(true);
+            ShowStageRes(gameWinPanel);
         }
         else
         {
             gameOverPanel.SetActive(true);
+            ShowStageRes(gameOverPanel);
         }
-        ShowStageRes();
 
         yield return StageManager.instance.halfSecond;
         GameStop();
@@ -71,12 +72,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ShowGameResultPanel(PlayerResType.게임오버));
     }
 
-    private void ShowStageRes()
+    private void ShowStageRes(GameObject panel)
     {
-        Transform clearedStageCnt = gameWinPanel.transform.GetChild(0);
+        Transform clearedStageCnt = panel.transform.GetChild(0);
         if (clearedStageCnt.TryGetComponent(out TextMeshProUGUI inText))
         {
-            inText.text = $"클리어 스테이지 수 : {StageManager.instance.CurStage.ToString()}";
+            inText.text = $"클리어 스테이지 수 : {(panel == gameWinPanel ? StageManager.instance.maxStage : StageManager.instance.CurStage).ToString()}";
         }
     } 
     

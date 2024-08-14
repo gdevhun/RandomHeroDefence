@@ -34,7 +34,7 @@ public class StageManager : MonoBehaviour
     [HideInInspector] public List<StageData> stageList = new List<StageData>();
 
     // 현재 스테이지
-    [Header ("최대 스테이지")] [SerializeField] private int maxStage;
+    [Header ("최대 스테이지")] public int maxStage;
     private int curStage;
     public int CurStage
     {
@@ -51,6 +51,7 @@ public class StageManager : MonoBehaviour
             {
                 // 게임 클리어
                 GameManager.instance.PlayerGameWin();
+                StopAllCoroutines();
             }
         }
     }
@@ -75,6 +76,7 @@ public class StageManager : MonoBehaviour
             {
                 // 게임 실패
                 GameManager.instance.PlayerGameOver();
+                StopAllCoroutines();
             }
             UpdateEnemyCntUI(value);
         }
@@ -253,6 +255,7 @@ public class StageManager : MonoBehaviour
             {
                 // 게임 클리어
                 GameManager.instance.PlayerGameWin();
+                yield break;
             }
         }
 
@@ -261,6 +264,7 @@ public class StageManager : MonoBehaviour
         {
             // 게임 실패
             GameManager.instance.PlayerGameOver();
+            yield break;
         }
 
         // 다음 스테이지

@@ -6,7 +6,6 @@ public class MythicCombPanel : MonoBehaviour
 
     private void OnEnable()
     {
-        mythicUnit.SelectedMythic = UnitType.배트맨;
         mythicUnit.SelectMythic("배트맨");
     }
 }
