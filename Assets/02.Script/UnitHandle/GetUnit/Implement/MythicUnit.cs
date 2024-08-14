@@ -205,6 +205,6 @@ public class MythicUnit : GetUnitBase
         ++CurUnit;
 
         // 사운드
-        SoundManager.instance.SFXPlay(SoundType.GetUnit);
+        SoundManager.instance.SFXPlay(SoundType.MythicComb);
     }
 }

@@ -44,7 +44,7 @@ public enum WeaponEffect
 // 사운드 타입
 public enum SoundType
 {
-    GetUnit, Sell, Click, Upgrade, NotEnough, Roulette,
+    GetUnit, Sell, Click, Upgrade, NotEnough, Roulette, MythicComb,
     평타각목둔기, 평타철둔기, 평타핸드, 평타에키온에이든테오도르, 총알마법평타, 총알물리평타,
     갱스터스킬, 레슬러스킬, 시프스킬, 헌터스킬,
     바바리안스킬, 벙커스킬, 알렉스스킬, 어쌔신스킬,

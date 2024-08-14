@@ -246,13 +246,6 @@ public class StageManager : MonoBehaviour
         for(int i = 0; i < stage.stageTime; i++)
         {
             yield return oneSecond;
-            // 보스 잡았는지 체크
-            if(boss.activeSelf)
-            {
-                // 게임 실패
-                GameManager.instance.PlayerGameOver();
-            }
-            
             UpdateStageTimeUI(--stageTime);
         }
 
