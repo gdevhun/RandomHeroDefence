@@ -26,7 +26,7 @@ public class MythicUnit : GetUnitBase
 {
     public static MythicUnit instance;
     private void Awake() { instance = this; }
-    [Header ("신화 조합식")] [SerializeField] private List<MythicComb> mythicCombList = new List<MythicComb>();
+    [Header ("신화 조합식")] public List<MythicComb> mythicCombList = new List<MythicComb>();
     public Dictionary<UnitType, MythicComb> mythicCombMap = new Dictionary<UnitType, MythicComb>(); // 신화 조합식 맵핑
     private UnitType selectedMythic; // 소환 할 신화
     public UnitType SelectedMythic
@@ -36,9 +36,10 @@ public class MythicUnit : GetUnitBase
     }
     [Header ("신화 이미지")] [SerializeField] private Image mythicImage;
     [Header ("신화 이름 텍스트")] [SerializeField] private TextMeshProUGUI mythicText;
-    [Header ("필요 유닛 이미지")] [SerializeField] private List<Image> requireImageList = new List<Image>();
+    [Header ("필요 유닛 이미지")] public List<Image> requireImageList = new List<Image>();
     public Dictionary<HeroGradeType, Color> gradeColorMap = new Dictionary<HeroGradeType, Color>(); // 등급, 오라 색 맵핑
     [Header ("오라 색")] [SerializeField] private List<Color> circleColorList = new List<Color>();
+    [Header ("신화 조합 가능 체크 표시")] public ListGameObject mythicCombCheckList = new ListGameObject();
 
     // 신화 조합식 맵핑
     // 등급 오라 색 맵핑
