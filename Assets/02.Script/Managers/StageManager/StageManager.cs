@@ -134,20 +134,20 @@ public class StageManager : MonoBehaviour
             switch(stageData.stageType)
             {
                 case StageType.Normal :
-                    stageData.stageTime = 20;
+                    stageData.stageTime = 1;
                     stageData.enemyType = (EnemyType)(stageData.stageNumber / 5 * 2);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[0]);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[1]);
                     stageData.stageGold = 1 + stageData.stageNumber / 20;
                     break;
                 case StageType.MiniBoss :
-                    stageData.stageTime = 30;
+                    stageData.stageTime = 1;
                     stageData.enemyType = (EnemyType)(1 + 4 * (stageData.stageNumber / 10));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     stageData.stageGold = 250;
                     break;
                 case StageType.Boss :
-                    stageData.stageTime = 60;
+                    stageData.stageTime = 10;
                     stageData.enemyType = (EnemyType)(3 + 4 * (stageData.stageNumber / 10 - 1));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     stageData.stageGold = 500;
@@ -247,6 +247,13 @@ public class StageManager : MonoBehaviour
         {
             yield return oneSecond;
             UpdateStageTimeUI(--stageTime);
+            
+            // 마지막 스테이지에서 보스 잡으면
+            if(stage.stageNumber == maxStage && !boss.activeSelf)
+            {
+                // 게임 클리어
+                GameManager.instance.PlayerGameWin();
+            }
         }
 
         // 보스 잡았는지 체크
