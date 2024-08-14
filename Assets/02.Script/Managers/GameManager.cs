@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject gameWinPanel;
     public GameObject gameOverPanel;
-    public TextMeshProUGUI stageScoreTxt;
 
     // 게임씬으로 올 때 설정 필드
     [SerializeField] private Image bgmImage, sfxImage;
@@ -72,7 +71,14 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ShowGameResultPanel(PlayerResType.게임오버));
     }
 
-    private void ShowStageRes()=>  stageScoreTxt.text = $"클리어 스테이지 수 : {StageManager.instance.CurStage.ToString()}";
+    private void ShowStageRes()
+    {
+        Transform clearedStageCnt = gameWinPanel.transform.GetChild(0);
+        if (clearedStageCnt.TryGetComponent(out TextMeshProUGUI inText))
+        {
+            inText.text = $"클리어 스테이지 수 : {StageManager.instance.CurStage.ToString()}";
+        }
+    } 
     
     //싱글톤으로 처리된 신컨트롤러매니저가 씬을 모두 돌았을 때 캐싱해제되는 문제를 위한 코드 호출 함수
     public void GameExitBtn()

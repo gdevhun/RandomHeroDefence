@@ -51,6 +51,7 @@ public class MissionManager : MonoBehaviour
     private readonly Vector2 targetPanelRect = new Vector3(960, 490);
     private readonly Vector2 invisiblePanelRect = new Vector3(1460, 490);
     private readonly WaitForSeconds twoSec = new WaitForSeconds(2f);
+    private readonly WaitForSeconds thirdSec = new WaitForSeconds(3f);
     private bool isRoutineRunning; //코루틴 중복 호출을 위한 변수
     private void Awake() { instance = this; }
     void Start()
@@ -76,7 +77,7 @@ public class MissionManager : MonoBehaviour
 
         isRoutineRunning = true;
         missionClearImg.gameObject.SetActive(true);
-        yield return new WaitForSeconds(2f); 
+        yield return thirdSec;
         missionClearImg.gameObject.SetActive(false);
 
         isRoutineRunning = false;
