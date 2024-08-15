@@ -123,9 +123,9 @@ public class EnemyBase : MonoBehaviour
         // 1000미만 => 그냥
         // 1000000미만 => 1000으로 나누고 K
         // 그 외 => 1000000으로 나누고 M
-        if(dmg < 1000) instantFloatingText.text.text = ((int)dmg).ToString();
-        else if(dmg < 1000000) instantFloatingText.text.text = $"{dmg / 1000}K";
-        else instantFloatingText.text.text = $"{dmg / 1000000}M";
+        if(dmg < 1000) instantFloatingText.text.text = $"{dmg:0.0}";
+        else if(dmg < 1000000) instantFloatingText.text.text = $"{dmg / 1000f:0.0}K";
+        else instantFloatingText.text.text = $"{dmg / 1000000f:0.0}M";
         
         Vector3 worldToScreen = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * 0.5f);
         RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)instantFloatingText.canvasTransform, worldToScreen, null, out Vector2 localPoint);
