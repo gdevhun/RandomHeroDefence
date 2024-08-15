@@ -2,10 +2,10 @@ using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "스킬/희귀/알론소")]
-public class AlonsoAbility : AsyncAbilityBase
+public class AlonsoAbility : SyncAbilityBase
 {
-    // 200% 데미지, 이속 감소 10(3초 유지)
-    public override IEnumerator CastAbility(CharacterBase characterBase)
+    // 200% 데미지, 스턴 1.5초
+    public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
@@ -17,14 +17,9 @@ public class AlonsoAbility : AsyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
+                enemyBase.SetStunTime = 1.5f;
                 enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 2, characterBase.heroInfo.damageType);
             }
         }
-        
-        EnemyBase.DecreaseMoveSpeed += 0.1f;
-        yield return oneSecond;
-        yield return oneSecond;
-        yield return oneSecond;
-        EnemyBase.DecreaseMoveSpeed -= 0.1f;
     }
 }
