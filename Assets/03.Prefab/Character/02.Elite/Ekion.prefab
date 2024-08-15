@@ -370,7 +370,7 @@ MonoBehaviour:
   gunPointTrans: {fileID: 0}
   limitAtkSpeed: 0
   enemyTrans: {fileID: 0}
-  atkSoundType: 9
+  atkSoundType: 10
   indicateAttackRange: {fileID: 3733817936004501723}
 --- !u!95 &2489706490217335231
 Animator:

@@ -45,7 +45,7 @@ public class CharacterBase : MonoBehaviour
     [HideInInspector] public float limitAtkSpeed; // 공속
     [HideInInspector] public Transform enemyTrans; // 타겟 몬스터 트랜스폼
     [Header ("평타 사운드 타입")] [SerializeField] private SoundType atkSoundType;
-    private CircleCollider2D collider; // 콜라이더
+    private CircleCollider2D coll; // 콜라이더
     [Header ("사정거리 표시")] public GameObject indicateAttackRange;
     public bool FlipX
     {
@@ -65,16 +65,35 @@ public class CharacterBase : MonoBehaviour
     // 초기화
     void Awake()
     {
-        collider = GetComponent<CircleCollider2D>();
+        coll = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         if (heroInfo.attackType == AttackType.근거리) gunPointTrans = null;
-        indicateAttackRange.transform.localScale = new Vector3(collider.radius * 2, collider.radius * 2, collider.radius * 2);
+        indicateAttackRange.transform.localScale = new Vector3(coll.radius * 2, coll.radius * 2, coll.radius * 2);
+    }
+    private void OnEnable()
+    {
+        if(heroInfo.heroGradeType == HeroGradeType.신화) return;
+
+        // 신화 조합 가능 개수 표시
+        UiUnit.instance.mythicCombPanel.SetActive(true);
+        MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
     }
     private void Start()
     {
         limitAtkSpeed = heroInfo.attackSpeed;
         prevAtkSpeed = limitAtkSpeed;
+    }
+    private void OnDisable()
+    {
+        if(heroInfo.heroGradeType == HeroGradeType.신화) return;
+        if(UiUnit.instance.mythicCombPanel == null) return;
+
+        // 신화 조합 가능 개수 표시
+        UiUnit.instance.mythicCombPanel.SetActive(true);
+        MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
     }
 
     // 적용 할 공격력 계산

@@ -307,7 +307,7 @@ MonoBehaviour:
   gunPointTrans: {fileID: 1901080698980376621}
   limitAtkSpeed: 0
   enemyTrans: {fileID: 0}
-  atkSoundType: 10
+  atkSoundType: 11
   indicateAttackRange: {fileID: 1200997927737935657}
 --- !u!58 &5297862799195278670
 CircleCollider2D:

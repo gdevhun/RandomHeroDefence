@@ -10,6 +10,7 @@ public class UiUnit : MonoBehaviour
     [Header ("유닛 핸들 패널")] public GameObject unitHandlePanel;
     [Header ("유닛 도박 패널")] public GameObject unitGamblePanel;
     [Header ("유닛 판매 / 합성 패널")] public GameObject unitSellCompPanel;
+    [Header ("신화 합성 패널")] public GameObject mythicCombPanel;
     [Header ("유닛 판매 골드 이미지")] public GameObject unitSellGoldImage;
     [Header ("유닛 판매 다이아 이미지")] public GameObject unitSellDiaImage;
     [Header ("유닛 판매 골드 텍스트")] public TextMeshProUGUI unitSellGoldText;
@@ -22,8 +23,11 @@ public class UiUnit : MonoBehaviour
     [Header ("이속 감소 텍스트")] public TextMeshProUGUI slowText;
 
     // 패널 열기
-    public void OpenPanel(GameObject panel) { panel.SetActive(true); SoundManager.instance.SFXPlay(SoundType.Click); }
+    public void OpenPanel(GameObject panel) { panel.SetActive(true); }
 
     // 패널 닫기
     public void ExitPanel(GameObject panel) { panel.SetActive(false); }
+
+    // 클릭 사운드
+    public void ClickSound() { SoundManager.instance.SFXPlay(SoundType.Click); }
 }
