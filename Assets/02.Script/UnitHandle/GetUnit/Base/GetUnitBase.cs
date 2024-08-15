@@ -20,7 +20,7 @@ public abstract class GetUnitBase : MonoBehaviour
     // 초기화
     private void Awake()
     {
-        if(maxUnit == 50) return;
+        //if(maxUnit == 50) return;
 
         spawnPosList = new ListGameObject();
         Transform unitPosSet = GameObject.Find("UnitPosSet").transform;

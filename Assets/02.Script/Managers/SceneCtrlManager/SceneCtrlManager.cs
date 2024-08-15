@@ -8,7 +8,7 @@ public class SceneCtrlManager : MonoBehaviour
 {
     // 싱글톤
     public static SceneCtrlManager instance;
-    private GameObject loadingBar;
+    [HideInInspector] public GameObject loadingBar;
     private readonly WaitForSeconds delay = new WaitForSeconds(2.5f);
     
     private void Awake()
@@ -22,8 +22,6 @@ public class SceneCtrlManager : MonoBehaviour
 
         }
         else Destroy(gameObject);
-
-        loadingBar=GameObject.FindGameObjectWithTag("LoadingBar");
     }
 
     private void SetLoadingBar() => loadingBar.transform.localPosition=(new Vector3(815, 462f, 0));
