@@ -140,21 +140,19 @@ public class StageManager : MonoBehaviour
                     stageData.enemyType = (EnemyType)(stageData.stageNumber / 5 * 2);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[0]);
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[1]);
-                    stageData.stageGold = 1 + stageData.stageNumber / 20;
+                    stageData.stageCurrency = 1 + stageData.stageNumber / 20;
                     break;
                 case StageType.MiniBoss :
                     stageData.stageTime = 30;
                     stageData.enemyType = (EnemyType)(1 + 4 * (stageData.stageNumber / 10));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
-                    //stageData.stageGold = 250;
-                    // 다이아 2개로
+                    stageData.stageCurrency = 2 + stageData.stageNumber / 10 ;
                     break;
                 case StageType.Boss :
                     stageData.stageTime = 60;
                     stageData.enemyType = (EnemyType)(3 + 4 * (stageData.stageNumber / 10 - 1));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
-                    //stageData.stageGold = 500;
-                    // 다이아 3개로
+                    stageData.stageCurrency = 3 + stageData.stageNumber / 10 ;
                     break;
             }
 
@@ -213,17 +211,21 @@ public class StageManager : MonoBehaviour
     {
         // UI 미니보스 출현 인포 출력
         StartCoroutine(SpawnedBossTypeInfoRoutine(SpawnedBossType.미니보스출현패널));
-
-        // 임시
-        CurrencyManager.instance.AcquireCurrency(2 + stage.stageNumber / 10, false);
         
         // 몬스터 소환
-        EnemySpawn(stage);
+        GameObject miniBoss = EnemySpawn(stage);
         int stageTime = stage.stageTime;
         for(int i = 0; i < stage.stageTime; i++)
         {
             yield return oneSecond;
             UpdateStageTimeUI(--stageTime);
+        }
+
+        // 미니보스 잡았는지 체크
+        if(miniBoss.activeSelf)
+        {
+            PoolManager.instance.ReturnPool(PoolManager.instance.enemyPool.queMap, miniBoss, stage.enemyType);
+            EnemyCnt--;
         }
 
         // 다음 스테이지
@@ -235,9 +237,6 @@ public class StageManager : MonoBehaviour
     {
         // UI 미니보스 출현 인포 출력
         StartCoroutine(SpawnedBossTypeInfoRoutine(SpawnedBossType.보스출현패널));
-
-        // 임시
-        CurrencyManager.instance.AcquireCurrency(3 + stage.stageNumber / 10, false);
         
         // 사운드 10 20 30 40 50
         switch(stage.stageNumber)
@@ -290,7 +289,7 @@ public class StageManager : MonoBehaviour
             EnemyBase enemyBase = instantEnemy.GetComponent<EnemyBase>();
             enemyBase.spawnPos = stage.spawnPos.gameObjectList[i];
             enemyBase.enemyType = stage.enemyType;
-            enemyBase.enemyGold = stage.stageGold;
+            enemyBase.enemyCurrency = stage.stageCurrency;
             enemyBase.isDead = false;
             ++EnemyCnt;
             instantEnemyList.gameObjectList.Add(instantEnemy);

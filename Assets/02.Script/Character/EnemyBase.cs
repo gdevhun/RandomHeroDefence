@@ -60,7 +60,7 @@ public class EnemyBase : MonoBehaviour
             UpdateBuffUI(value, UiUnit.instance.magDecText);
         }
     }
-    [HideInInspector] public int enemyGold;
+    [HideInInspector] public int enemyCurrency;
     [Header ("체력 필 오브젝트")] [SerializeField] private GameObject hpFillObj;
     private GameObject instantStunEffect; // 생성된 스턴 이펙트
 
@@ -138,7 +138,7 @@ public class EnemyBase : MonoBehaviour
         if(isDead) return;
 
         animator.SetTrigger("isDead");
-        CurrencyManager.instance.AcquireCurrency(enemyGold, true);
+        CurrencyManager.instance.AcquireCurrency(enemyCurrency, enemyType.ToString()[0] == 'N');
         StageManager.instance.instantEnemyList.gameObjectList.Remove(gameObject);
         StageManager.instance.EnemyCnt--;
         isDead = true;
