@@ -17,5 +17,5 @@ MonoBehaviour:
     abilityName: "\uBC84\uB2DD"
     abilityContent: "\uB2E4\uC774\uC544 1\uAC1C \uCD94\uAC00"
   abilityEffectType: 2
-  abilitySoundType: 21
+  abilitySoundType: 22
   instantAbilityEffect: {fileID: 0}
