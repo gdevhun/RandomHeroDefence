@@ -18,6 +18,6 @@ public class ThiefAbility : SyncAbilityBase
                 enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 1.5f, characterBase.heroInfo.damageType);
             }
         }
-        CurrencyManager.instance.AcquireCurrency(10, true);
+        CurrencyManager.instance.AcquireCurrency(5, true);
     }
 }

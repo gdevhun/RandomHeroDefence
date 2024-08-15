@@ -4786,7 +4786,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityEffectType: 0
-  activeTime: 5
+  activeTime: 2
 --- !u!1 &2885059128711189545
 GameObject:
   m_ObjectHideFlags: 0

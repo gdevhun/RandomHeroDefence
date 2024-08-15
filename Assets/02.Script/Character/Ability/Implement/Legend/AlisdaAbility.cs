@@ -17,7 +17,7 @@ public class AlisdaAbility : SyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.SetStunTime = 1.5f;
+                enemyBase.SetStunTime = 2f;
                 enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 5, characterBase.heroInfo.damageType);
             }
         }

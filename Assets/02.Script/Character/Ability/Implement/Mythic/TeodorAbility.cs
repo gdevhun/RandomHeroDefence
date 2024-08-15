@@ -25,7 +25,7 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
                 {
                     EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
                     enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20, DamageType.마법);
-                    enemyBase.SetStunTime = 1.5f;
+                    enemyBase.SetStunTime = 2f;
                 }
             }
 
@@ -37,7 +37,7 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
         {
             EnemyBase enemyBase = StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>();
             enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20, DamageType.마법);
-            enemyBase.SetStunTime = 1.5f;
+            enemyBase.SetStunTime = 2f;
 
             instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
             instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;

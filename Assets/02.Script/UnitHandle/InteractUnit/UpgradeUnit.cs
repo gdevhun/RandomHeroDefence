@@ -38,7 +38,7 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         if(upgradeCnt >= 20) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 재화 체크
-        amount = curGradeType == HeroGradeType.일반 ? 100 + 50 * upgradeCnt : 2 + upgradeCnt;
+        amount = curGradeType == HeroGradeType.일반 ? 100 + 25 * upgradeCnt : 2 + upgradeCnt;
         if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 업그레이드
@@ -75,7 +75,7 @@ public class UpgradeUnit : MonoBehaviour, IConsumable
         if(heroGradeType == HeroGradeType.일반)
         {
             normalLvText.text = "Lv." + normalUpgradeCnt.ToString();
-            goldText.text = (100 + 50 * normalUpgradeCnt).ToString();
+            goldText.text = (100 + 25 * normalUpgradeCnt).ToString();
             return;
         }
 

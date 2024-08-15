@@ -183,21 +183,21 @@ public class MissionManager : MonoBehaviour
 
     private void CheckGoldMissions() //골드 모으기 미션
     {
-        if (!missionStatus[MissionList.부자되기첫걸음] && CurrencyManager.instance.Gold >= 5000)
+        if (!missionStatus[MissionList.부자되기첫걸음] && CurrencyManager.instance.Gold >= 1000)
         {
             missionStatus[MissionList.부자되기첫걸음] = true;
             CurrencyManager.instance.AcquireCurrency(5, false);
             UpdateMissionInfo(10);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.나는구두쇠] && CurrencyManager.instance.Gold >= 20000)
+        if (!missionStatus[MissionList.나는구두쇠] && CurrencyManager.instance.Gold >= 5000)
         {
             missionStatus[MissionList.나는구두쇠] = true;
             CurrencyManager.instance.AcquireCurrency(15,false);
             UpdateMissionInfo(11);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.내가재드래곤] && CurrencyManager.instance.Gold >= 50000)
+        if (!missionStatus[MissionList.내가재드래곤] && CurrencyManager.instance.Gold >= 10000)
         {
             missionStatus[MissionList.내가재드래곤] = true;
             CurrencyManager.instance.AcquireCurrency(20, false);
@@ -236,14 +236,14 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.줄타기장인] && StageManager.instance.EnemyCnt >= 100)
         {
             missionStatus[MissionList.줄타기장인] = true;
-            CurrencyManager.instance.AcquireCurrency(5, false);
+            CurrencyManager.instance.AcquireCurrency(200, true);
             UpdateMissionInfo(16);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.메시급드리블] && StageManager.instance.EnemyCnt >= 110)
         {
             missionStatus[MissionList.메시급드리블] = true;
-            CurrencyManager.instance.AcquireCurrency(10, false);
+            CurrencyManager.instance.AcquireCurrency(4, false);
             UpdateMissionInfo(17);
             StartCoroutine(NotifyMissionClear());
         }

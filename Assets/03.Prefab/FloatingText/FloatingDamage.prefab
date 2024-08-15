@@ -150,6 +150,6 @@ MonoBehaviour:
   moveSpeed: 3
   alphaSpeed: 1
   text: {fileID: 0}
-  originWaitTime: 2
+  originWaitTime: 1
   type: 0
   canvasTransform: {fileID: 0}

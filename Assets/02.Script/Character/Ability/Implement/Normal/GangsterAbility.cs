@@ -13,7 +13,7 @@ public class GangsterAbility : SyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.SetStunTime = 0.5f;
+                enemyBase.SetStunTime = 1f;
                 enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 1.5f, characterBase.heroInfo.damageType);
             }
         }

@@ -36,7 +36,7 @@ public class SoundManager : MonoBehaviour
 
             // 볼륨 초기화
             bgmVolume = 0.9f;
-            sfxVolume = 0.1f;
+            sfxVolume = 0.6f;
 
             // (타입, 배경음) 맵핑
             Map();

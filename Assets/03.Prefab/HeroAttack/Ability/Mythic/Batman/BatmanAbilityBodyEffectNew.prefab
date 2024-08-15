@@ -4819,4 +4819,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityEffectType: 0
-  activeTime: 5
+  activeTime: 3

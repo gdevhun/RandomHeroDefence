@@ -6,7 +6,7 @@ public class MagnusAbility : SyncAbilityBase, IHiddenAbility
 {
     private bool isMakdus = false, isAlisda = false;
 
-    // 2000% 데미지 최대체력 6% 데미지
+    // 2000% 데미지 최대체력 2% 데미지
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
@@ -21,13 +21,15 @@ public class MagnusAbility : SyncAbilityBase, IHiddenAbility
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20 + ((!isMakdus || !isAlisda) ? enemyBase.maxHp * 0.06f : enemyBase.maxHp * 0.12f), characterBase.heroInfo.damageType);
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20 +
+                    ((!isMakdus || !isAlisda) ? characterBase.GetApplyAttackDamage(enemyBase.maxHp * 0.02f) :
+                        characterBase.GetApplyAttackDamage(enemyBase.maxHp * 0.4f)), characterBase.heroInfo.damageType);
             }
         }
     }
 
     // 히든 스킬
-    // 막더스와 알리스다가 존재하면 최대체력 12% 데미지
+    // 막더스와 알리스다가 존재하면 최대체력 4% 데미지
     [Header ("히든 스킬 UI 정보")] [SerializeField] private AbilityUiInfo hiddenAbilityUiInfo;
     public AbilityUiInfo HiddenAbilityUiInfo
     {

@@ -45,7 +45,7 @@ public class StageManager : MonoBehaviour
             if(curStage < maxStage)
             {
                 StartStage(value);
-                CurrencyManager.instance.AcquireCurrency((curStage - 1) * 20 + CurrencyManager.instance.Gold / 10, true);
+                CurrencyManager.instance.AcquireCurrency((curStage - 1) * 5 + CurrencyManager.instance.Gold / 10, true);
             }
             else
             {
@@ -146,13 +146,15 @@ public class StageManager : MonoBehaviour
                     stageData.stageTime = 30;
                     stageData.enemyType = (EnemyType)(1 + 4 * (stageData.stageNumber / 10));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
-                    stageData.stageGold = 250;
+                    //stageData.stageGold = 250;
+                    // 다이아 2개로
                     break;
                 case StageType.Boss :
                     stageData.stageTime = 60;
                     stageData.enemyType = (EnemyType)(3 + 4 * (stageData.stageNumber / 10 - 1));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
-                    stageData.stageGold = 500;
+                    //stageData.stageGold = 500;
+                    // 다이아 3개로
                     break;
             }
 
@@ -211,6 +213,9 @@ public class StageManager : MonoBehaviour
     {
         // UI 미니보스 출현 인포 출력
         StartCoroutine(SpawnedBossTypeInfoRoutine(SpawnedBossType.미니보스출현패널));
+
+        // 임시
+        CurrencyManager.instance.AcquireCurrency(2 + stage.stageNumber / 10, false);
         
         // 몬스터 소환
         EnemySpawn(stage);
@@ -230,6 +235,9 @@ public class StageManager : MonoBehaviour
     {
         // UI 미니보스 출현 인포 출력
         StartCoroutine(SpawnedBossTypeInfoRoutine(SpawnedBossType.보스출현패널));
+
+        // 임시
+        CurrencyManager.instance.AcquireCurrency(3 + stage.stageNumber / 10, false);
         
         // 사운드 10 20 30 40 50
         switch(stage.stageNumber)
@@ -302,8 +310,8 @@ public class StageManager : MonoBehaviour
             }
 
             // 미니 보스 및 보스 스테이지
-            enemyBase.maxHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 2;
-            enemyBase.CurrentHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 2;
+            enemyBase.maxHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 4;
+            enemyBase.CurrentHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 4;
             enemyBase.originMoveSpeed = stage.stageType == StageType.MiniBoss ? 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed : 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed * 2;
             enemyBase.moveSpeed = stage.stageType == StageType.MiniBoss ? 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed : 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed * 2;
             enemyBase.phyDef = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossPhyDef : standardMonsterStatMap[CurStage / 10].bossPhyDef * 2;
