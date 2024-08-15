@@ -57518,10 +57518,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wrestler
       objectReference: {fileID: 0}
-    - target: {fileID: 4136523924433054747, guid: bc71a6ec0edcb454da206c332f8540d5, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7503748333107613764, guid: bc71a6ec0edcb454da206c332f8540d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.8
@@ -57971,10 +57967,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Makdus
       objectReference: {fileID: 0}
-    - target: {fileID: 2087119594503938832, guid: 9216f197b9e291044a150876b80b5207, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2459004037873615915, guid: 9216f197b9e291044a150876b80b5207, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.82
@@ -58304,10 +58296,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ekion
       objectReference: {fileID: 0}
-    - target: {fileID: 9032080491498601046, guid: 128f21d456872cc43bb8cf570fad16a6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58345,10 +58333,6 @@ PrefabInstance:
     - target: {fileID: 1747529081742522658, guid: d212ce6814ccd4049afc17d8883bf6a4, type: 3}
       propertyPath: m_Name
       value: Aden
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747529081742522658, guid: d212ce6814ccd4049afc17d8883bf6a4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2675330779975174218, guid: d212ce6814ccd4049afc17d8883bf6a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58470,10 +58454,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alonso
       objectReference: {fileID: 0}
-    - target: {fileID: 7940115011484265282, guid: f192f41c42fdb7d4bbf2fb86e6589aa4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58555,10 +58535,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Assassin
       objectReference: {fileID: 0}
-    - target: {fileID: 5261889940100354755, guid: ff17d5b68038d7a4eb0cf83aed310c21, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -58620,10 +58596,6 @@ PrefabInstance:
     - target: {fileID: 4079279824701850116, guid: b7314328a544af145a02344dae0090af, type: 3}
       propertyPath: m_Name
       value: Thief
-      objectReference: {fileID: 0}
-    - target: {fileID: 4079279824701850116, guid: b7314328a544af145a02344dae0090af, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58706,10 +58678,6 @@ PrefabInstance:
     - target: {fileID: 6715264606764617040, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
       propertyPath: m_Name
       value: Gangster
-      objectReference: {fileID: 0}
-    - target: {fileID: 6715264606764617040, guid: 99700a61bf16e514685eb82dad02b8e3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -58866,10 +58834,6 @@ PrefabInstance:
     - target: {fileID: 4969480003396674547, guid: 324cbd824ebb84a499495ab740b2906f, type: 3}
       propertyPath: m_Name
       value: Alisda
-      objectReference: {fileID: 0}
-    - target: {fileID: 4969480003396674547, guid: 324cbd824ebb84a499495ab740b2906f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7714349222879374434, guid: 324cbd824ebb84a499495ab740b2906f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -59068,10 +59032,6 @@ PrefabInstance:
     - target: {fileID: 2145697942778096153, guid: ad6499bc8821bbb44adcb5a33b34f328, type: 3}
       propertyPath: m_Name
       value: Barbarian
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145697942778096153, guid: ad6499bc8821bbb44adcb5a33b34f328, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
