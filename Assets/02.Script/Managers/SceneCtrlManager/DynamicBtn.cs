@@ -13,5 +13,6 @@ public class DynamicBtn : MonoBehaviour
         SceneCtrlManager.instance.loadingBar = GameObject.FindGameObjectWithTag("LoadingBar");
         startBtn.onClick.AddListener(() => SceneCtrlManager.instance.AsyncLoadScene("GameScene"));
         exitBtn.onClick.AddListener(SceneCtrlManager.instance.ExitGame);
+        SoundManager.instance.BgmSoundPlay(BgmType.게임메뉴);
     }
 }

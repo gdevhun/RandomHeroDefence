@@ -40,9 +40,6 @@ public class SoundManager : MonoBehaviour
 
             // (타입, 배경음) 맵핑
             Map();
-
-            // 메인 BGM
-            BgmSoundPlay(BgmType.게임메뉴);
         }
         else Destroy(gameObject);
     }
