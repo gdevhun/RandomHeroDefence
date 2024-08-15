@@ -6,7 +6,7 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
 {
     private bool isAden = false, isEkion = false;
 
-    // 2000% 데미지, 1.5초 스턴
+    // 1000% 데미지, 2초 스턴
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
@@ -14,39 +14,21 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
         instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
 
         CastHiddenAbility(characterBase);
-        
-        // 둘 중 하나라도 존재하지 않는 경우
-        if(!isAden || !isEkion)
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 2f);
+        foreach (Collider2D hit in hits)
         {
-            Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
-            foreach (Collider2D hit in hits)
+            if (hit.CompareTag("Enemy"))
             {
-                if (hit.CompareTag("Enemy"))
-                {
-                    EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                    enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20, DamageType.마법);
-                    enemyBase.SetStunTime = 2f;
-                }
+                EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 10, DamageType.마법);
+                enemyBase.SetStunTime = !isAden || !isEkion ? 2f : 3f;
             }
-
-            return;
-        }
-        
-        // 에이든과 에키온이 존재하는 경우
-        for(int i = 0; i < StageManager.instance.instantEnemyList.gameObjectList.Count; i++)
-        {
-            EnemyBase enemyBase = StageManager.instance.instantEnemyList.gameObjectList[i].GetComponent<EnemyBase>();
-            enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 20, DamageType.마법);
-            enemyBase.SetStunTime = 2f;
-
-            instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
-            instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
-            instantAbilityEffect.transform.position = enemyBase.transform.position;
         }
     }
 
     // 히든 스킬
-    // 에이든과 에키온이 존재하면 필드의 모든 몬스터 스턴
+    // 에이든과 에키온이 존재하면 3초 스턴
     [Header ("히든 스킬 UI 정보")] [SerializeField] private AbilityUiInfo hiddenAbilityUiInfo;
     public AbilityUiInfo HiddenAbilityUiInfo
     {
