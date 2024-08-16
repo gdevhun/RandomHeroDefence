@@ -51,7 +51,6 @@ public class MissionManager : MonoBehaviour
     private readonly Vector2 targetPanelRect = new Vector3(960, 490);
     private readonly Vector2 invisiblePanelRect = new Vector3(1460, 490);
     private readonly WaitForSeconds twoSec = new WaitForSeconds(2f);
-    private readonly WaitForSeconds thirdSec = new WaitForSeconds(3f);
     private bool isRoutineRunning; //코루틴 중복 호출을 위한 변수
     private void Awake() { instance = this; }
     void Start()
@@ -77,7 +76,8 @@ public class MissionManager : MonoBehaviour
 
         isRoutineRunning = true;
         missionClearImg.gameObject.SetActive(true);
-        yield return thirdSec;
+        yield return twoSec;
+        yield return twoSec;
         missionClearImg.gameObject.SetActive(false);
 
         isRoutineRunning = false;
@@ -129,14 +129,14 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.전설수집가] && HasAllItems(HeroGradeType.전설))
         {
             missionStatus[MissionList.전설수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(4, false);
+            CurrencyManager.instance.AcquireCurrency(5, false);
             UpdateMissionInfo(3);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.신화수집가] && HasAllItems(HeroGradeType.신화))
         {
             missionStatus[MissionList.신화수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(6, false);
+            CurrencyManager.instance.AcquireCurrency(8, false);
             UpdateMissionInfo(4);
             StartCoroutine(NotifyMissionClear());
         }
@@ -161,21 +161,21 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.숙련자] && StageManager.instance.CurStage >= 30)
         {
             missionStatus[MissionList.숙련자] = true;
-            CurrencyManager.instance.AcquireCurrency(8, false);
+            CurrencyManager.instance.AcquireCurrency(6, false);
             UpdateMissionInfo(7);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.고수] && StageManager.instance.CurStage >= 40)
         {
             missionStatus[MissionList.고수] = true;
-            CurrencyManager.instance.AcquireCurrency(10, false);
+            CurrencyManager.instance.AcquireCurrency(8, false);
             UpdateMissionInfo(8);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.장인] && StageManager.instance.CurStage >= 45)
         {
             missionStatus[MissionList.장인] = true;
-            CurrencyManager.instance.AcquireCurrency(20, false);
+            CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(9);
             StartCoroutine(NotifyMissionClear());
         }
@@ -243,7 +243,7 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.메시급드리블] && StageManager.instance.EnemyCnt >= 110)
         {
             missionStatus[MissionList.메시급드리블] = true;
-            CurrencyManager.instance.AcquireCurrency(4, false);
+            CurrencyManager.instance.AcquireCurrency(5, false);
             UpdateMissionInfo(17);
             StartCoroutine(NotifyMissionClear());
         }
@@ -274,7 +274,7 @@ public class MissionManager : MonoBehaviour
             missionStatus[MissionList.가챠중독])
         {
             missionStatus[MissionList.도박치료상담전화는1336] = true;
-            CurrencyManager.instance.AcquireCurrency(25, false);
+            CurrencyManager.instance.AcquireCurrency(20, false);
             UpdateMissionInfo(21);
             StartCoroutine(NotifyMissionClear());
         }
