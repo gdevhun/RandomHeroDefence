@@ -9,6 +9,8 @@ TagManager:
   - FxTemporaire
   - LoadingBar
   - Border
+  - StartBtn
+  - ExitBtn
   layers:
   - Default
   - TransparentFX
