@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
 
     private void ShowStageRes(GameObject panel)
     {
-        Transform clearedStageCnt = panel.transform.GetChild(0);
+        Transform clearedStageCnt = panel.transform.GetChild(1);
         if (clearedStageCnt.TryGetComponent(out TextMeshProUGUI inText))
         {
             inText.text = $"클리어 스테이지 수 : {(panel == gameWinPanel ? StageManager.instance.maxStage : StageManager.instance.CurStage).ToString()}";
