@@ -101,8 +101,8 @@ public class CharacterBase : MonoBehaviour
     public float GetApplyAttackDamage(float basicAttackDamage)
     {
         float applyAttack = heroInfo.damageType == DamageType.물리 ?
-            basicAttackDamage + basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] / 100 + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100
-            : basicAttackDamage + basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] / 100 + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100;
+            basicAttackDamage + basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] / 100 + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100 + basicAttackDamage * CurrencyManager.instance.Gold * 0.0005f
+            : basicAttackDamage + basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] / 100 + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100 + basicAttackDamage * CurrencyManager.instance.Gold * 0.0005f;
 
         return applyAttack;
     }
