@@ -104,7 +104,7 @@ public class PoolManager : MonoBehaviour
         QueMap(unitPool.queMap, unitPool.prefMap);
         QueMap(soundPool.queMap, soundPool.prefMap, 100);
         QueMap(weaponEffectPool.queMap,weaponEffectPool.prefMap, 500);
-        QueMap(enemyPool.queMap, enemyPool.prefMap, 500);
+        QueMap(enemyPool.queMap, enemyPool.prefMap, 130);
         QueMap(abilityEffectPool.queMap, abilityEffectPool.prefMap);
         QueMap(floatingTextPool.queMap, floatingTextPool.prefMap, 20000);
     }

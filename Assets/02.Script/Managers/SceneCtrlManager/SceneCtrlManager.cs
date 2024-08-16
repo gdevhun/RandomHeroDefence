@@ -3,12 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneCtrlManager : MonoBehaviour
 {
     // 싱글톤
     public static SceneCtrlManager instance;
     [HideInInspector] public GameObject loadingBar;
+    [HideInInspector] public Button startBtn;
+    [HideInInspector] public Button exitBtn;
     private readonly WaitForSeconds delay = new WaitForSeconds(2.5f);
     
     private void Awake()
@@ -29,6 +32,7 @@ public class SceneCtrlManager : MonoBehaviour
     
     public void AsyncLoadScene(string nextScene)
     {
+        startBtn.interactable = exitBtn.interactable = false;
         SetLoadingBar();
         StartCoroutine(AsyncLoadSceneRoutine(nextScene));
     }
