@@ -320,7 +320,7 @@ public class MissionManager : MonoBehaviour
             SoundManager.instance.SFXPlay(SoundType.GetUnit);
         }
 
-        return missionUnitMap.Count == 5;
+        return heroGradeType == HeroGradeType.전설 || heroGradeType == HeroGradeType.신화 ? missionUnitMap.Count == 3 : missionUnitMap.Count == 5;
     }
 
 }
