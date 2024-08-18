@@ -247,21 +247,21 @@ public class MissionManager : MonoBehaviour
             UpdateMissionInfo(17);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.갬블러] && summonFailures >= 5)
+        if (!missionStatus[MissionList.갬블러] && summonFailures >= 10)
         {
             missionStatus[MissionList.갬블러] = true;
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(18);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.룰렛중독] && rouletteFailures >= 5)
+        if (!missionStatus[MissionList.룰렛중독] && rouletteFailures >= 10)
         {
             missionStatus[MissionList.룰렛중독] = true;
             CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(19);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.가챠중독] && gachaFailures >= 3)
+        if (!missionStatus[MissionList.가챠중독] && gachaFailures >= 10)
         {
             missionStatus[MissionList.가챠중독] = true;
             CurrencyManager.instance.AcquireCurrency(10, false);
@@ -274,7 +274,7 @@ public class MissionManager : MonoBehaviour
             missionStatus[MissionList.가챠중독])
         {
             missionStatus[MissionList.도박치료상담전화는1336] = true;
-            CurrencyManager.instance.AcquireCurrency(20, false);
+            CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(21);
             StartCoroutine(NotifyMissionClear());
         }

@@ -7,7 +7,7 @@ public class CurrencyManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        Gold = 40;
+        Gold = 50;
         Dia = 2;
     }
     

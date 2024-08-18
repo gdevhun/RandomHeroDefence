@@ -143,7 +143,7 @@ public class StageManager : MonoBehaviour
                     stageData.stageCurrency = 1 + stageData.stageNumber / 20;
                     break;
                 case StageType.MiniBoss :
-                    stageData.stageTime = 30;
+                    stageData.stageTime = 60;
                     stageData.enemyType = (EnemyType)(1 + 4 * (stageData.stageNumber / 10));
                     stageData.spawnPos.gameObjectList.Add(pathPosList.gameObjectList[2]);
                     stageData.stageCurrency = 2 + stageData.stageNumber / 10 ;
@@ -218,6 +218,17 @@ public class StageManager : MonoBehaviour
         for(int i = 0; i < stage.stageTime; i++)
         {
             yield return oneSecond;
+
+            // 보스 시간단축
+            if(EnemyCnt == 0 && stageTime > 10)
+            {
+                i = 0;
+                stageTime = 10;
+                stage.stageTime = 10;
+                UpdateStageTimeUI(10);
+                continue;
+            }
+
             UpdateStageTimeUI(--stageTime);
         }
 
@@ -255,6 +266,17 @@ public class StageManager : MonoBehaviour
         for(int i = 0; i < stage.stageTime; i++)
         {
             yield return oneSecond;
+
+            // 보스 시간단축
+            if(EnemyCnt == 0 && stageTime > 10)
+            {
+                i = 0;
+                stageTime = 10;
+                stage.stageTime = 10;
+                UpdateStageTimeUI(10);
+                continue;
+            }
+
             UpdateStageTimeUI(--stageTime);
             
             // 마지막 스테이지에서 보스 잡으면

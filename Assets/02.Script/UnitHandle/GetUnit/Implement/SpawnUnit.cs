@@ -51,7 +51,7 @@ public class SpawnUnit : GetUnitBase, IConsumable
         set
         {
             spawnCnt = value;
-            amount = 10 + spawnCnt * 2;
+            amount = 10 + spawnCnt * 3;
             UpdateSpawnGoldUI();
         }
     }

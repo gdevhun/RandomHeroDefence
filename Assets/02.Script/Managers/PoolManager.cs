@@ -148,7 +148,11 @@ public class PoolManager : MonoBehaviour
                 GameObject obj = Instantiate(prefab);
 
                 // 부모 설정
-                if(typeof(T) == typeof(FloatingTextType)) obj.transform.SetParent(floatingTextSet.transform);
+                if(typeof(T) == typeof(FloatingTextType))
+                {
+                    obj.transform.SetParent(floatingTextSet.transform);
+                    obj.transform.localScale = new Vector3(1f, 1f, 1f);
+                }
                 else obj.transform.SetParent(poolSet.transform);
 
                 // 비활성화

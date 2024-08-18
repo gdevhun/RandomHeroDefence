@@ -1634,6 +1634,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca68f045e6e23a34ca6aa480c6971d8c, type: 3}
   bgmVolume: 0
   sfxVolume: 0
+  sfxCnt: 0
   offSoundSprite: {fileID: 21300000, guid: 0c25031178dad4c068ed55b9e33212ad, type: 3}
   onSoundSprite: {fileID: 21300000, guid: 8e2ca54f4d1e24971a83483bbf303a0c, type: 3}
   bgmImg: {fileID: 0}

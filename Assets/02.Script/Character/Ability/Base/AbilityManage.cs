@@ -32,7 +32,7 @@ public class AbilityManage : MonoBehaviour
             if((louizyCnt == 0 && stamina >= maxStamina && characterBase.isOnTarget) || (louizyCnt > 0 && stamina >= maxStamina - 1 && characterBase.isOnTarget))
             {
                 // 드래그 체크
-                if(SelectUnit.instance.selectedPos != null && transform.parent.gameObject.name == SelectUnit.instance.selectedPos.name) return;
+                // if(SelectUnit.instance.selectedPos != null && transform.parent.gameObject.name == SelectUnit.instance.selectedPos.name) return;
 
                 if(ability.abilitySoundType != SoundType.GetUnit) SoundManager.instance.SFXPlay(ability.abilitySoundType);
                 if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);

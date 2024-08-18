@@ -56,7 +56,7 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
                     RangeWeapon rangeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, WeaponEffect.BatmanAbilityBullet).GetComponent<RangeWeapon>();
                     rangeWeapon.weaponEffect = WeaponEffect.BatmanAbilityBullet;
                     rangeWeapon.damageType = characterBase.heroInfo.damageType;
-                    rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage * 2;
+                    rangeWeapon.attackDamage = batCharacterBase.heroInfo.attackDamage * 2;
                     rangeWeapon.characterBase = characterBase;
 
                     // 발사 방향 셋

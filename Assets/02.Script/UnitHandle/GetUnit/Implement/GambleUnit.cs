@@ -7,8 +7,8 @@ public class GambleUnit : GetUnitBase, IConsumable
     private Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
     {
         { HeroGradeType.일반, 50 },
-        { HeroGradeType.희귀, 38 },
-        { HeroGradeType.전설, 12 }
+        { HeroGradeType.희귀, 40 },
+        { HeroGradeType.전설, 10 }
     };
 
     private void Start() { amount = 2; }
