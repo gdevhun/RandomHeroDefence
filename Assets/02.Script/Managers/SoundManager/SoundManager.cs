@@ -18,6 +18,7 @@ public class SoundManager : MonoBehaviour
 	[Header ("BGM 클립 리스트")] [SerializeField] private AudioClip[] bgmList;
 	private Dictionary<BgmType, AudioClip> mapBgm = new Dictionary<BgmType, AudioClip>(); // (타입, 배경음) 맵핑
 	[HideInInspector] public float bgmVolume, sfxVolume; // 배경음 볼륨 및 효과음 볼륨
+    [HideInInspector] public int sfxCnt; // 효과음 수
 
     public Sprite offSoundSprite;
     public Sprite onSoundSprite;
@@ -64,7 +65,11 @@ public class SoundManager : MonoBehaviour
     }
 
     // 효과음
-    public void SFXPlay(SoundType type) { PoolManager.instance.GetPool(PoolManager.instance.soundPool.queMap, type).GetComponent<AudioSource>().volume = sfxVolume; }
+    public void SFXPlay(SoundType type)
+    {
+        PoolManager.instance.GetPool(PoolManager.instance.soundPool.queMap, type).GetComponent<AudioSource>().volume = sfxVolume;
+        sfxCnt++;
+    }
 
     // 배경음 볼륨 조절
     public void SetBgmVolume(float volume)

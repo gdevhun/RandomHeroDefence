@@ -148,6 +148,7 @@ public class CharacterBase : MonoBehaviour
                 rangeWeapon.attackDamage = heroInfo.attackDamage;
                 rangeWeapon.characterBase = this;
                 SetLastBulletPos(rangeWeapon.gameObject, enemyTrans,gunPointTrans);
+                if(SoundManager.instance.sfxCnt > 10) return;
                 SoundManager.instance.SFXPlay(atkSoundType);
             }
         }
@@ -179,5 +180,9 @@ public class CharacterBase : MonoBehaviour
     }
 
     // 공격 애니메이션이 끝나면 사운드 재생
-    public void AtkSound() { SoundManager.instance.SFXPlay(atkSoundType); }
+    public void AtkSound()
+    {
+        if(SoundManager.instance.sfxCnt > 10) return;
+        SoundManager.instance.SFXPlay(atkSoundType);
+    }
 }
