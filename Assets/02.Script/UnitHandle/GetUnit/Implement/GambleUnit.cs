@@ -16,11 +16,11 @@ public class GambleUnit : GetUnitBase, IConsumable
     // 도박 구체화
     public override void GetUnitHandle()
     {
-        // 재화 체크
-        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
-
         // 최대 유닛 체크
         if(CurUnit >= maxUnit) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
+
+        // 재화 체크
+        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 랜덤 유닛
         GameObject instantUnit = GetUnit(gradeWeightMap);

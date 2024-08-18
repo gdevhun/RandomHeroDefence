@@ -17,7 +17,7 @@ public class AlonsoAbility : SyncAbilityBase
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.SetStunTime = 1.5f;
+                enemyBase.SetStunTime += 1.5f;
                 enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 2, characterBase.heroInfo.damageType);
             }
         }

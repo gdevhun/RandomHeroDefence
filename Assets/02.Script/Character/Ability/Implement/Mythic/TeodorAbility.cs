@@ -22,7 +22,7 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
                 enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 10, DamageType.마법);
-                enemyBase.SetStunTime = !isAden || !isEkion ? 2f : 3f;
+                enemyBase.SetStunTime += !isAden || !isEkion ? 2f : 3f;
             }
         }
     }
