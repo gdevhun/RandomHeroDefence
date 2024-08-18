@@ -88,6 +88,7 @@ public class EnemyBase : MonoBehaviour
         animator = GetComponent<Animator>();
         rend = GetComponent<SpriteRenderer>();
     }
+    private void OnEnable() { curPathIdx = 0; }
     void Start()
     {
         originMoveSpeed = moveSpeed;
