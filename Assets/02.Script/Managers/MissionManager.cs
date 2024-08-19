@@ -204,7 +204,7 @@ public class MissionManager : MonoBehaviour
             UpdateMissionInfo(12);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.내돈으로만레벨업] && CurrencyManager.instance.Gold >= 50000)
+        if (!missionStatus[MissionList.내돈으로만레벨업] && CurrencyManager.instance.Gold >= 5000)
         {
             missionStatus[MissionList.내돈으로만레벨업] = true;
             isMoneyGun = true;
