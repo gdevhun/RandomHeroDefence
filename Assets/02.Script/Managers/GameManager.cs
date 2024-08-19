@@ -43,17 +43,37 @@ public class GameManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Time.timeScale = 2f;
+            Time.timeScale = 1f;
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Time.timeScale = 3f;
+            Time.timeScale = 2f;
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha3))
         {
-            GameResume();
+            Time.timeScale = 3f;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            CurrencyManager.instance.AcquireCurrency(1000, true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            CurrencyManager.instance.ConsumeCurrency(1000, true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            CurrencyManager.instance.AcquireCurrency(1000, false);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            CurrencyManager.instance.ConsumeCurrency(1000, false);
         }
     }
 

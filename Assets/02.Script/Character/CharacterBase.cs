@@ -113,11 +113,9 @@ public class CharacterBase : MonoBehaviour
             ? (basicAttackDamage +
                basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] / 100
                + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100)
-            //* (1 + CurrencyManager.instance.Gold * 0.00002f)
             : (basicAttackDamage +
                basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] / 100
                + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100);
-            //* (1 + CurrencyManager.instance.Gold * 0.00002f);
             
         return ApplyLastAttackDamage(applyAttack);
     }
