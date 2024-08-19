@@ -192,7 +192,7 @@ MonoBehaviour:
   isDead: 0
   phyDef: 100
   magDef: 100
-  enemyGold: 100
+  enemyCurrency: 0
   hpFillObj: {fileID: 4816233620585827735}
 --- !u!1 &3961773531896422539
 GameObject:

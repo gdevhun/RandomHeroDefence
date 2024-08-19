@@ -50,14 +50,14 @@ public class GameManager : MonoBehaviour
         {
             GameResume();
         }
-        
     }
 
     // 10초 뒤 게임 시작
     public IEnumerator GameStartRoutine()
     {
         for(int i = 0; i < 10; i++) yield return StageManager.instance.oneSecond;
-        StageManager.instance.StartStage(StageManager.instance.CurStage);
+        StageManager.instance.CurStage = 40;
+        //StageManager.instance.StartStage(StageManager.instance.CurStage);
     }
 
     private IEnumerator ShowGameResultPanel(PlayerResType playerResType)
