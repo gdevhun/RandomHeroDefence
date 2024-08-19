@@ -11,7 +11,7 @@ public class AlonsoAbility : SyncAbilityBase
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
         instantAbilityEffect.transform.position = characterBase.enemyTrans.position;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 2f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))

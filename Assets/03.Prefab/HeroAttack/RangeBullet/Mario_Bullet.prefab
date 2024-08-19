@@ -135,6 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponEffect: 23
   damageType: 0
-  activeTime: 2
-  moveSpeed: 10
+  moveSpeed: 15
   attackDamage: 0
+  characterBase: {fileID: 0}

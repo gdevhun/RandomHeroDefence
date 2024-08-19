@@ -11,7 +11,7 @@ public class AlisdaAbility : SyncAbilityBase
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
         instantAbilityEffect.transform.position = characterBase.enemyTrans.position;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(characterBase.enemyTrans.transform.position, 1f);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(characterBase.enemyTrans.transform.position, 2f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))
