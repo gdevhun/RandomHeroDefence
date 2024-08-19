@@ -11,7 +11,7 @@ TagManager:
   - StartBtn
   - ExitBtn
   - IntroEffect
-  - LoadingCircle
+  - LoadingBar
   layers:
   - Default
   - TransparentFX
