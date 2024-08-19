@@ -38,6 +38,21 @@ public class GameManager : MonoBehaviour
     public void GamePause() => Time.timeScale = 0f; //게임정지
     public void GameResume() => Time.timeScale = 1f;
 
+    // 임시 게임속도
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Time.timeScale = 2f;
+        }
+
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            GameResume();
+        }
+        
+    }
+
     // 10초 뒤 게임 시작
     public IEnumerator GameStartRoutine()
     {

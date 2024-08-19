@@ -459,7 +459,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 5
 --- !u!114 &3365453780763900878
 MonoBehaviour:
   m_ObjectHideFlags: 0
