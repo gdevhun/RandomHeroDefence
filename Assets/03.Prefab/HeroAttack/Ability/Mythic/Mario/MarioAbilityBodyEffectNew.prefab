@@ -4745,7 +4745,7 @@ MonoBehaviour:
     delay: 0.8
     duration: 0.5
     shakeSpace: 0
-    shakeStrength: {x: 0.08, y: 0, z: 0.2}
+    shakeStrength: {x: 0.04, y: 0, z: 0.2}
     shakeCurve:
       serializedVersion: 2
       m_Curve:

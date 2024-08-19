@@ -45,7 +45,7 @@ public class StageManager : MonoBehaviour
             if(curStage < maxStage)
             {
                 StartStage(value);
-                CurrencyManager.instance.AcquireCurrency((curStage - 1) * 10 + CurrencyManager.instance.Gold / 15, true);
+                CurrencyManager.instance.AcquireCurrency((curStage - 1) * 10 + CurrencyManager.instance.Gold / 10, true);
             }
             else
             {
@@ -64,7 +64,7 @@ public class StageManager : MonoBehaviour
     }
     // 현재 몬스터 수
     [Header ("최대 몬스터 수")] [SerializeField] private int maxEnemyCnt;
-    private float maxEnemyFloatCnt;
+    [HideInInspector] public float maxEnemyFloatCnt;
     private int enemyCnt;
     public int EnemyCnt
     {

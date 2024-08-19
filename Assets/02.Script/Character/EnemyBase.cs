@@ -119,6 +119,9 @@ public class EnemyBase : MonoBehaviour
     }
     private void FloatingDmg(float dmg)
     {
+        // 플로팅 데미지 개수
+        //if(FloatingText.floatingCnt >= 2) return;
+
         FloatingText instantFloatingText = PoolManager.instance.GetPool(PoolManager.instance.floatingTextPool.queMap, FloatingTextType.데미지플로팅).GetComponent<FloatingText>();
 
         // 1000미만 => 그냥
