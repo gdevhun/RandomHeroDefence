@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,8 +14,7 @@ public enum MissionList
     초보, 중수, 숙련자, 고수, 장인,
     
     //골드 모으기 미션
-    부자되기첫걸음, 나는구두쇠, 내가재드래곤,
-    
+    부자되기첫걸음, 나는구두쇠, 내가재드래곤, 내돈으로만레벨업,    
     //다이아 모으기 미션
     전당포사장되기, 금은방사장되기, 나는대부호,
     
@@ -46,7 +45,7 @@ public class MissionManager : MonoBehaviour
     [HideInInspector] public int summonFailures = 0;  //유닛뽑기 꽝, 실패 횟수
     [HideInInspector] public int rouletteFailures = 0;  //룰랫돌리기 꽝,실패 횟수
     [HideInInspector] public int gachaFailures = 0; //신화뽑기(가챠) 꽝,실패 횟수
-
+        
     [SerializeField] private RectTransform missionListPanel;
     private readonly Vector2 targetPanelRect = new Vector3(960, 490);
     private readonly Vector2 invisiblePanelRect = new Vector3(1460, 490);
@@ -197,15 +196,22 @@ public class MissionManager : MonoBehaviour
             UpdateMissionInfo(11);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.내가재드래곤] && CurrencyManager.instance.Gold >= 10000)
+        if (!missionStatus[MissionList.내가재드래곤] && CurrencyManager.instance.Gold >= 30000)
         {
             missionStatus[MissionList.내가재드래곤] = true;
             CurrencyManager.instance.AcquireCurrency(20, false);
             UpdateMissionInfo(12);
             StartCoroutine(NotifyMissionClear());
         }
+        if (!missionStatus[MissionList.내돈으로만레벨업] && CurrencyManager.instance.Gold >= 50000)
+        {
+            missionStatus[MissionList.내돈으로만레벨업] = true;
+            CurrencyManager.instance.AcquireCurrency(20, false);
+            UpdateMissionInfo(22);
+            StartCoroutine(NotifyMissionClear());
+        }
     }
-
+ 
     private void CheckDiamondMissions() //다이아 모으기 미션
     {
         if (!missionStatus[MissionList.전당포사장되기] && CurrencyManager.instance.Dia >= 5)

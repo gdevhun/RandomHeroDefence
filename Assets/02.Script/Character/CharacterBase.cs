@@ -34,6 +34,7 @@ public class HeroInfo  //히어로 정보 클래스
 }
 public class CharacterBase : MonoBehaviour
 {
+    [HideInInspector] public bool isMoneyGunActive;
     [Header ("평타 이펙트 타입")] public WeaponEffect weaponEffect;
     private SpriteRenderer spriteRenderer; // 렌더러
     private Animator anim; // 애니메이션
@@ -96,21 +97,30 @@ public class CharacterBase : MonoBehaviour
         UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
     }
 
+    //머니건 활성화되면 계산더해지는 함수
+    private float ApplyLastAttackDamage(float attackDamage)
+    {
+        if (isMoneyGunActive)
+        {
+            attackDamage *= (1 + CurrencyManager.instance.Gold * 0.00002f);
+        }
+        return attackDamage;
+    }
     // 적용 할 공격력 계산
     // 물공 업그레이드, 마공 업그레이드, 등급 업그레이드 적용
     public float GetApplyAttackDamage(float basicAttackDamage)
     {
-        float applyAttack = heroInfo.damageType == DamageType.물리 ?
-            (basicAttackDamage +
-                basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] / 100
-                    + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100)
-                        * (1 + CurrencyManager.instance.Gold * 0.00002f)
+        float applyAttack = heroInfo.damageType == DamageType.물리
+            ? (basicAttackDamage +
+               basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] / 100
+               + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100)
+            //* (1 + CurrencyManager.instance.Gold * 0.00002f)
             : (basicAttackDamage +
-                basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] / 100
-                    + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100)
-                        * (1 + CurrencyManager.instance.Gold * 0.00002f);
-
-        return applyAttack;
+               basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] / 100
+               + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100);
+            //* (1 + CurrencyManager.instance.Gold * 0.00002f);
+            
+        return ApplyLastAttackDamage(applyAttack);
     }
 
     // 공속 계산

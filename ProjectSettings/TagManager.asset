@@ -7,10 +7,11 @@ TagManager:
   - Enemy
   - MovePoint
   - FxTemporaire
-  - LoadingBar
   - Border
   - StartBtn
   - ExitBtn
+  - IntroEffect
+  - LoadingCircle
   layers:
   - Default
   - TransparentFX

@@ -35,7 +35,8 @@ public class GameManager : MonoBehaviour
     // 게임 멈추기
     // 게임 클리어 및 실패에서 호출
     // 메인씬으로 가면 다시 타임스케일 돌려주기
-    private void GameStop() => Time.timeScale = 0f;
+    public void GamePause() => Time.timeScale = 0f; //게임정지
+    public void GameResume() => Time.timeScale = 1f;
 
     // 10초 뒤 게임 시작
     public IEnumerator GameStartRoutine()
@@ -59,7 +60,7 @@ public class GameManager : MonoBehaviour
         }
 
         yield return StageManager.instance.halfSecond;
-        GameStop();
+        GamePause();
     }
     
     public void PlayerGameWin()
@@ -84,13 +85,13 @@ public class GameManager : MonoBehaviour
     //싱글톤으로 처리된 신컨트롤러매니저가 씬을 모두 돌았을 때 캐싱해제되는 문제를 위한 코드 호출 함수
     public void GameExitBtn()
     {
-        Time.timeScale = 1f; // 타임스케일 복구
+        GameResume(); // 타임스케일 복구
         SceneCtrlManager.instance.ExitGame();
     }
 
     public void MenuSceneBtn()
     {
-        Time.timeScale = 1f; // 타임스케일 복구
+        GameResume(); // 타임스케일 복구
         SceneCtrlManager.instance.LoadScene("MenuScene");
     }
 }
