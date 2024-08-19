@@ -120,7 +120,7 @@ public class CharacterBase : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         // 드래그 체크
-        //if(SelectUnit.instance.selectedPos != null && transform.parent.gameObject.name == SelectUnit.instance.selectedPos.name) return;
+        if(SelectUnit.instance.isDrag && transform.parent.gameObject.name == SelectUnit.instance.selectedPos.name) return;
 
         // 타겟 체크
         if (other.gameObject.CompareTag("Enemy") && (!isOnTarget || enemyTrans.GetComponent<EnemyBase>().isDead))
