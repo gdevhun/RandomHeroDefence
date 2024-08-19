@@ -45,6 +45,7 @@ public class MissionManager : MonoBehaviour
     [HideInInspector] public int summonFailures = 0;  //유닛뽑기 꽝, 실패 횟수
     [HideInInspector] public int rouletteFailures = 0;  //룰랫돌리기 꽝,실패 횟수
     [HideInInspector] public int gachaFailures = 0; //신화뽑기(가챠) 꽝,실패 횟수
+    [HideInInspector] public bool isMoneyGun = false; // 머니건 활성화 여부
         
     [SerializeField] private RectTransform missionListPanel;
     private readonly Vector2 targetPanelRect = new Vector3(960, 490);
@@ -206,6 +207,7 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.내돈으로만레벨업] && CurrencyManager.instance.Gold >= 50000)
         {
             missionStatus[MissionList.내돈으로만레벨업] = true;
+            isMoneyGun = true;
             CurrencyManager.instance.AcquireCurrency(20, false);
             UpdateMissionInfo(22);
             StartCoroutine(NotifyMissionClear());

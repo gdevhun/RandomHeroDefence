@@ -34,7 +34,6 @@ public class HeroInfo  //히어로 정보 클래스
 }
 public class CharacterBase : MonoBehaviour
 {
-    [HideInInspector] public bool isMoneyGunActive;
     [Header ("평타 이펙트 타입")] public WeaponEffect weaponEffect;
     private SpriteRenderer spriteRenderer; // 렌더러
     private Animator anim; // 애니메이션
@@ -100,9 +99,9 @@ public class CharacterBase : MonoBehaviour
     //머니건 활성화되면 계산더해지는 함수
     private float ApplyLastAttackDamage(float attackDamage)
     {
-        if (isMoneyGunActive)
+        if (MissionManager.instance.isMoneyGun)
         {
-            attackDamage *= (1 + CurrencyManager.instance.Gold * 0.00002f);
+            attackDamage *= 1 + CurrencyManager.instance.Gold * 0.00002f;
         }
         return attackDamage;
     }
