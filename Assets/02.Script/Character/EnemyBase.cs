@@ -82,6 +82,8 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    public static int floatingDmgCnt;
+
     // 초기화
     private void Awake()
     {
@@ -120,9 +122,10 @@ public class EnemyBase : MonoBehaviour
     private void FloatingDmg(float dmg)
     {
         // 플로팅 데미지 개수
-        //if(FloatingText.floatingCnt >= 2) return;
+        if(floatingDmgCnt >= 50) return;
 
         FloatingText instantFloatingText = PoolManager.instance.GetPool(PoolManager.instance.floatingTextPool.queMap, FloatingTextType.데미지플로팅).GetComponent<FloatingText>();
+        floatingDmgCnt++;
 
         // 1000미만 => 그냥
         // 1000000미만 => 1000으로 나누고 K

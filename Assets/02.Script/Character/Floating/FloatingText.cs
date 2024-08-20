@@ -12,7 +12,6 @@ public class FloatingText : MonoBehaviour
     private float waitTime;
     [Header ("플로팅 텍스트 타입")] [SerializeField] private FloatingTextType type;
     [HideInInspector] public Transform canvasTransform;
-    public static int floatingCnt;
 
     private void Awake()
     {
@@ -25,7 +24,6 @@ public class FloatingText : MonoBehaviour
     {
         waitTime = originWaitTime;
         alpha = originAlpha;
-        //floatingCnt++;
     }
 
     private void Update()
@@ -39,7 +37,7 @@ public class FloatingText : MonoBehaviour
         if(waitTime <= 0)
         {
             PoolManager.instance.ReturnPool(PoolManager.instance.floatingTextPool.queMap, gameObject, type);
-            //floatingCnt--;
+            EnemyBase.floatingDmgCnt--;
         }
         else waitTime -= Time.deltaTime;
     }
