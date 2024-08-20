@@ -20,7 +20,17 @@ public enum MissionList
     전당포사장되기, 금은방사장되기, 나는대부호,
     
     //서브미션
-    줄타기장인, 메시급드리블, 갬블러, 룰렛중독, 가챠중독, 도박치료상담전화는1336
+    줄타기장인, 메시급드리블, 갬블러, 룰렛중독, 가챠중독, 도박치료상담전화는1336,
+    
+    //타임어택
+    빛의속도로, 빛보다빠르게, 기사회생,
+    
+    //히어로합성
+    섞고돌리고섞고, 실패는성공의어머니, 이것이연금술사,
+    
+    //히어판매
+    후퇴, 재분배, 재편성
+    
 }
 [System.Serializable]
 public class MissionText
@@ -42,12 +52,16 @@ public class MissionManager : MonoBehaviour
     public List<MissionText> missionTextList = new List<MissionText>();
     public Image missionClearImg;
     
-    //아래 3개변수 사용하면됨
+    //서브 미션들 관리 변수들
     [HideInInspector] public int summonFailures = 0;  //유닛뽑기 꽝, 실패 횟수
     [HideInInspector] public int rouletteFailures = 0;  //룰랫돌리기 꽝,실패 횟수
     [HideInInspector] public int gachaFailures = 0; //신화뽑기(가챠) 꽝,실패 횟수
     [HideInInspector] public bool isMoneyGunActive = false; // 머니건 활성화 여부
-        
+    [HideInInspector] public int heroSaleCnt  = 0; // 영웅 판매 횟수
+    [HideInInspector] public int heroFusionCnt = 0; //영웅 합성 횟수
+    [HideInInspector] public int curBossSurvivalSecond = 0; //현재보스생존시간초
+    
+    
     [SerializeField] private RectTransform missionListPanel;
     private readonly Vector2 targetPanelRect = new Vector3(960, 490);
     private readonly Vector2 invisiblePanelRect = new Vector3(1460, 490);
