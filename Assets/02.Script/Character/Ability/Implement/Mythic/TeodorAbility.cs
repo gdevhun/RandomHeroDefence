@@ -59,5 +59,9 @@ public class TeodorAbility : SyncAbilityBase, IHiddenAbility
                 break;
             }
         }
+
+        // 히든 활성화
+        if(!isEkion) return;
+        if(!MissionManager.instance.mythicHiddenAbilityActivateMap.ContainsKey(UnitType.테오도르)) MissionManager.instance.mythicHiddenAbilityActivateMap.Add(UnitType.테오도르, 1);
     }
 }

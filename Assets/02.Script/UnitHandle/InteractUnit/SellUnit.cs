@@ -39,5 +39,6 @@ public class SellUnit : MonoBehaviour
             UiUnit.instance.ExitPanel(UiUnit.instance.unitSellCompPanel);
             UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);  
         }
+        MissionManager.instance.heroSaleCnt++;
     }
 }

@@ -58,5 +58,9 @@ public class MarioAbility : SyncAbilityBase, IHiddenAbility
                 break;
             }
         }
+
+        // 히든 활성화
+        if(!isSoldier) return;
+        if(!MissionManager.instance.mythicHiddenAbilityActivateMap.ContainsKey(UnitType.마리오)) MissionManager.instance.mythicHiddenAbilityActivateMap.Add(UnitType.마리오, 1);
     }
 }

@@ -44,6 +44,7 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
     }
     public void CastHiddenAbility(CharacterBase characterBase)
     {
+        bool isHidden = false;
         for(int i = 0; i < GetUnitBase.unitPosMap[UnitType.뱃].Count; i++)
         {
             for(int j = 0; j < GetUnitBase.unitPosMap[UnitType.뱃].ElementAt(i).Key.transform.childCount; j++)
@@ -67,7 +68,13 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
                     // 다음 발사
                     cur += 18;
                 }
+
+                if(!isHidden) isHidden = true;
             }
         }
+        
+        // 히든 활성화
+        if(!isHidden) return;
+        if(!MissionManager.instance.mythicHiddenAbilityActivateMap.ContainsKey(UnitType.배트맨)) MissionManager.instance.mythicHiddenAbilityActivateMap.Add(UnitType.배트맨, 1);
     }
 }

@@ -67,6 +67,7 @@ public class CombUnit : GetUnitBase
             PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
             CurUnit -= 3;
             SoundManager.instance.SFXPlay(SoundType.NotEnough);
+            MissionManager.instance.heroFusionFailCnt++;
             return;
         }
 
@@ -74,5 +75,6 @@ public class CombUnit : GetUnitBase
         instantUnit.transform.SetParent(unitPos.transform);
         instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? 0 : 0.2f, -0.1f * (unitPos.transform.childCount - 1));
         CurUnit -= 2;
+        MissionManager.instance.heroFusionSucCnt++;
     }
 }

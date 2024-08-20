@@ -58,5 +58,9 @@ public class MagnusAbility : SyncAbilityBase, IHiddenAbility
                 break;
             }
         }
+
+        // 히든 활성화
+        if(!isAlisda) return;
+        if(!MissionManager.instance.mythicHiddenAbilityActivateMap.ContainsKey(UnitType.마그너스)) MissionManager.instance.mythicHiddenAbilityActivateMap.Add(UnitType.마그너스, 1);
     }
 }

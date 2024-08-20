@@ -29,7 +29,10 @@ public enum MissionList
     섞고돌리고섞고, 실패는성공의어머니, 이것이연금술사,
     
     //히어판매
-    후퇴, 재분배, 재편성
+    후퇴, 재분배, 재편성,
+
+    // 히든스킬
+    신화의힘, 태초의근원
     
 }
 [System.Serializable]
@@ -58,9 +61,10 @@ public class MissionManager : MonoBehaviour
     [HideInInspector] public int gachaFailures = 0; //신화뽑기(가챠) 꽝,실패 횟수
     [HideInInspector] public bool isMoneyGunActive = false; // 머니건 활성화 여부
     [HideInInspector] public int heroSaleCnt  = 0; // 영웅 판매 횟수
-    [HideInInspector] public int heroFusionCnt = 0; //영웅 합성 횟수
-    [HideInInspector] public int curBossSurvivalSecond = 0; //현재보스생존시간초
-    
+    [HideInInspector] public int heroFusionSucCnt = 0; //영웅 합성 성공 횟수
+    [HideInInspector] public int heroFusionFailCnt = 0; //영웅 합성 실패 횟수
+    public int curBossSurvivalSecond; //현재보스생존시간초
+    public Dictionary<UnitType, int> mythicHiddenAbilityActivateMap = new Dictionary<UnitType, int>(); // 신화 히든스킬 활성화
     
     [SerializeField] private RectTransform missionListPanel;
     private readonly Vector2 targetPanelRect = new Vector3(960, 490);
@@ -117,6 +121,10 @@ public class MissionManager : MonoBehaviour
         CheckGoldMissions();
         CheckDiamondMissions();
         CheckSubMissions();
+        CheckTimeAttackMissions();
+        CheckUnitCombMissions();
+        CheckUnitSellMissions();
+        CheckMythicHiddenAbilityMissions();
     }
     private void CheckCollectionMissions() //모으기미션
     {
@@ -302,6 +310,107 @@ public class MissionManager : MonoBehaviour
         }
     }
 
+    private void CheckTimeAttackMissions() // 타임어택 미션
+    {
+        if (!missionStatus[MissionList.빛의속도로] && curBossSurvivalSecond <= 15)
+        {
+            missionStatus[MissionList.빛의속도로] = true;
+            CurrencyManager.instance.AcquireCurrency(2, false);
+            UpdateMissionInfo(23);
+            StartCoroutine(NotifyMissionClear());
+        }
+
+        if (!missionStatus[MissionList.빛보다빠르게] && curBossSurvivalSecond <= 10)
+        {
+            missionStatus[MissionList.빛보다빠르게] = true;
+            CurrencyManager.instance.AcquireCurrency(5, false);
+            UpdateMissionInfo(24);
+            StartCoroutine(NotifyMissionClear());
+        }
+
+        if (!missionStatus[MissionList.기사회생] && curBossSurvivalSecond >= 58)
+        {
+            missionStatus[MissionList.기사회생] = true;
+            CurrencyManager.instance.AcquireCurrency(2000, true);
+            UpdateMissionInfo(25);
+            StartCoroutine(NotifyMissionClear());
+        }
+    }
+
+    private void CheckUnitCombMissions() // 유닛 합성 미션
+    {
+        if (!missionStatus[MissionList.섞고돌리고섞고] && heroFusionSucCnt >= 5)
+        {
+            missionStatus[MissionList.섞고돌리고섞고] = true;
+            CurrencyManager.instance.AcquireCurrency(200, true);
+            UpdateMissionInfo(26);
+            StartCoroutine(NotifyMissionClear());
+        }
+
+        if (!missionStatus[MissionList.실패는성공의어머니] && heroFusionFailCnt >= 5)
+        {
+            missionStatus[MissionList.실패는성공의어머니] = true;
+            CurrencyManager.instance.AcquireCurrency(2, false);
+            UpdateMissionInfo(27);
+            StartCoroutine(NotifyMissionClear());
+        }
+
+        if (!missionStatus[MissionList.이것이연금술사] && heroFusionFailCnt >= 20)
+        {
+            missionStatus[MissionList.이것이연금술사] = true;
+            CurrencyManager.instance.AcquireCurrency(10, false);
+            UpdateMissionInfo(28);
+            StartCoroutine(NotifyMissionClear());
+        }
+    }
+
+    private void CheckUnitSellMissions() // 유닛 판매 미션
+    {
+        if (!missionStatus[MissionList.후퇴] && heroSaleCnt >= 5)
+        {
+            missionStatus[MissionList.후퇴] = true;
+            CurrencyManager.instance.AcquireCurrency(2, false);
+            UpdateMissionInfo(29);
+            StartCoroutine(NotifyMissionClear());
+        }
+
+        if (!missionStatus[MissionList.재분배] && heroSaleCnt >= 10)
+        {
+            missionStatus[MissionList.재분배] = true;
+            CurrencyManager.instance.AcquireCurrency(400, true);
+            UpdateMissionInfo(30);
+            StartCoroutine(NotifyMissionClear());
+        }
+
+        if (!missionStatus[MissionList.재편성] && heroSaleCnt >= 20)
+        {
+            missionStatus[MissionList.재편성] = true;
+            CurrencyManager.instance.AcquireCurrency(600, true);
+            CurrencyManager.instance.AcquireCurrency(4, false);
+            UpdateMissionInfo(31);
+            StartCoroutine(NotifyMissionClear());
+        }
+    }
+
+    private void CheckMythicHiddenAbilityMissions() // 신화 히든스킬 미션
+    {
+        if (!missionStatus[MissionList.신화의힘] && mythicHiddenAbilityActivateMap.Count >= 1)
+        {
+            missionStatus[MissionList.신화의힘] = true;
+            CurrencyManager.instance.AcquireCurrency(2, false);
+            UpdateMissionInfo(32);
+            StartCoroutine(NotifyMissionClear());
+        }
+
+        if (!missionStatus[MissionList.태초의근원] && mythicHiddenAbilityActivateMap.Count >= 3)
+        {
+            missionStatus[MissionList.태초의근원] = true;
+            CurrencyManager.instance.AcquireCurrency(10, false);
+            UpdateMissionInfo(33);
+            StartCoroutine(NotifyMissionClear());
+        }
+    }
+
     private bool HasAllItems(HeroGradeType heroGradeType)
     {
         //필드에 해당 영웅이 존재하는지에 대한 함수 처리
@@ -340,6 +449,9 @@ public class MissionManager : MonoBehaviour
 
             // 사운드
             SoundManager.instance.SFXPlay(SoundType.GetUnit);
+
+            // 히든 활성화
+            if(!mythicHiddenAbilityActivateMap.ContainsKey(UnitType.유미)) mythicHiddenAbilityActivateMap.Add(UnitType.유미, 1);
         }
 
         return heroGradeType == HeroGradeType.전설 || heroGradeType == HeroGradeType.신화 ? missionUnitMap.Count == 3 : missionUnitMap.Count == 5;

@@ -219,7 +219,7 @@ public class StageManager : MonoBehaviour
         {
             yield return oneSecond;
 
-            // 보스 시간단축
+            // 필드에 몬스터가없으면 시간단축
             if(EnemyCnt == 0 && stageTime > 10)
             {
                 i = 0;
@@ -263,29 +263,38 @@ public class StageManager : MonoBehaviour
         // 몬스터 소환
         GameObject boss = EnemySpawn(stage);
         int stageTime = stage.stageTime;
+        int tempStageTime = stage.stageTime;
         for(int i = 0; i < stage.stageTime; i++)
         {
             yield return oneSecond;
 
-            // 보스 시간단축
-            if(EnemyCnt == 0 && stageTime > 10)
+            // 보스 잡았으면
+            if(!boss.activeSelf)
             {
-                i = 0;
-                stageTime = 10;
-                stage.stageTime = 10;
-                UpdateStageTimeUI(10);
-                continue;
+                // 보스 생존시간
+                MissionManager.instance.curBossSurvivalSecond = 60 - tempStageTime;
+
+                // 마지막 스테이지에서 잡았으면
+                if(stage.stageNumber == maxStage)
+                {
+                    // 게임 클리어
+                    GameManager.instance.PlayerGameWin();
+                    yield break;
+                }
+
+                // 필드에 몬스터가없으면 시간단축
+                if(EnemyCnt == 0 && stageTime > 10)
+                {
+                    i = 0;
+                    stageTime = 10;
+                    stage.stageTime = 10;
+                    UpdateStageTimeUI(10);
+                    continue;
+                }
             }
 
             UpdateStageTimeUI(--stageTime);
-            
-            // 마지막 스테이지에서 보스 잡으면
-            if(stage.stageNumber == maxStage && !boss.activeSelf)
-            {
-                // 게임 클리어
-                GameManager.instance.PlayerGameWin();
-                yield break;
-            }
+            tempStageTime--;
         }
 
         // 보스 잡았는지 체크
