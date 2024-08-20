@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -49,8 +48,7 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
         {
             for(int j = 0; j < GetUnitBase.unitPosMap[UnitType.뱃].ElementAt(i).Key.transform.childCount; j++)
             {
-                float cur = 0f;
-                for (int k = 0; k < 20; k++)
+                for (int k = 0; k < abilityBulletCnt; k++)
                 {
                     // 배트맨 총알 풀링
                     CharacterBase batCharacterBase = GetUnitBase.unitPosMap[UnitType.뱃].ElementAt(i).Key.transform.GetChild(j).GetComponent<CharacterBase>();
@@ -61,12 +59,9 @@ public class BatmanAbility : SyncAbilityBase, IHiddenAbility
                     rangeWeapon.characterBase = characterBase;
 
                     // 발사 방향 셋
-                    float radian = cur * Mathf.Deg2Rad;
+                    float radian = 360 / abilityBulletCnt * k * Mathf.Deg2Rad;
                     Vector2 direction = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
                     rangeWeapon.transform.SetPositionAndRotation(batCharacterBase.gunPointTrans.position, Quaternion.LookRotation(Vector3.forward, direction));
-
-                    // 다음 발사
-                    cur += 18;
                 }
 
                 if(!isHidden) isHidden = true;
