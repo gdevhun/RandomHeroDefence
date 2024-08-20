@@ -22,7 +22,7 @@ public class MarioAbility : SyncAbilityBase, IHiddenAbility
         rangeWeapon.damageType = characterBase.heroInfo.damageType;
         rangeWeapon.attackDamage = 0;
         rangeWeapon.characterBase = characterBase;
-        characterBase.enemyTrans.GetComponent<EnemyBase>().TakeDamage((!isBunker || !isSoldier) ? characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 50 : characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 100, DamageType.마법);
+        characterBase.enemyTrans.GetComponent<EnemyBase>().TakeDamage((!isBunker || !isSoldier) ? characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 40 : characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 80, DamageType.마법);
         characterBase.SetLastBulletPos(rangeWeapon.gameObject, characterBase.enemyTrans, characterBase.gunPointTrans);
     }
 

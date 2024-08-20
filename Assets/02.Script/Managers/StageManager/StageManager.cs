@@ -339,8 +339,8 @@ public class StageManager : MonoBehaviour
             }
 
             // 미니 보스 및 보스 스테이지
-            enemyBase.maxHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 4;
-            enemyBase.CurrentHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 4;
+            enemyBase.maxHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 5;
+            enemyBase.CurrentHp = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossHp : standardMonsterStatMap[CurStage / 10].bossHp * 5;
             enemyBase.originMoveSpeed = stage.stageType == StageType.MiniBoss ? 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed : 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed * 2;
             enemyBase.moveSpeed = stage.stageType == StageType.MiniBoss ? 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed : 1 + standardMonsterStatMap[CurStage / 10].bossMoveSpeed * 2;
             enemyBase.phyDef = stage.stageType == StageType.MiniBoss ? standardMonsterStatMap[CurStage / 10].bossPhyDef : standardMonsterStatMap[CurStage / 10].bossPhyDef * 2;

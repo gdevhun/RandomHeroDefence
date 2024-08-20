@@ -119,7 +119,7 @@ public class SelectUnit : MonoBehaviour
                 UiUnit.instance.OpenPanel(UiUnit.instance.unitSellCompPanel);
                 UiUnit.instance.unitSellGoldImage.SetActive(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급);
                 UiUnit.instance.unitSellDiaImage.SetActive(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설);
-                if(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급) UiUnit.instance.unitSellGoldText.text = SellUnit.instance.soldierCnt > 0 ? (2 * (10 + 20 * (int)selectedHeroGradeType)).ToString() : (10 + 20 * (int)selectedHeroGradeType).ToString();
+                if(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급) UiUnit.instance.unitSellGoldText.text = SellUnit.instance.soldierCnt > 0 ? (2 * (20 + 20 * (int)selectedHeroGradeType)).ToString() : (20 + 20 * (int)selectedHeroGradeType).ToString();
                 else if(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
 
                 return;

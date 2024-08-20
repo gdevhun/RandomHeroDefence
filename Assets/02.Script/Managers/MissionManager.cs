@@ -131,14 +131,14 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.일반수집가] && HasAllItems(HeroGradeType.일반))
         {
             missionStatus[MissionList.일반수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(200, true);
+            CurrencyManager.instance.AcquireCurrency(300, true);
             UpdateMissionInfo(0);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.고급수집가] && HasAllItems(HeroGradeType.고급))
         {
             missionStatus[MissionList.고급수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(600, true);
+            CurrencyManager.instance.AcquireCurrency(800, true);
             UpdateMissionInfo(1);
             StartCoroutine(NotifyMissionClear());
         }
@@ -177,28 +177,28 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.중수] && StageManager.instance.CurStage >= 20)
         {
             missionStatus[MissionList.중수] = true;
-            CurrencyManager.instance.AcquireCurrency(4, false);
+            CurrencyManager.instance.AcquireCurrency(5, false);
             UpdateMissionInfo(6);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.숙련자] && StageManager.instance.CurStage >= 30)
         {
             missionStatus[MissionList.숙련자] = true;
-            CurrencyManager.instance.AcquireCurrency(6, false);
+            CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(7);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.고수] && StageManager.instance.CurStage >= 40)
         {
             missionStatus[MissionList.고수] = true;
-            CurrencyManager.instance.AcquireCurrency(8, false);
+            CurrencyManager.instance.AcquireCurrency(15, false);
             UpdateMissionInfo(8);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.장인] && StageManager.instance.CurStage >= 45)
         {
             missionStatus[MissionList.장인] = true;
-            CurrencyManager.instance.AcquireCurrency(10, false);
+            CurrencyManager.instance.AcquireCurrency(20, false);
             UpdateMissionInfo(9);
             StartCoroutine(NotifyMissionClear());
         }
@@ -252,10 +252,10 @@ public class MissionManager : MonoBehaviour
             UpdateMissionInfo(14);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.나는대부호] && CurrencyManager.instance.Dia >= 20)
+        if (!missionStatus[MissionList.나는대부호] && CurrencyManager.instance.Dia >= 15)
         {
             missionStatus[MissionList.나는대부호] = true;
-            CurrencyManager.instance.AcquireCurrency(2500, true);
+            CurrencyManager.instance.AcquireCurrency(2000, true);
             UpdateMissionInfo(15);
             StartCoroutine(NotifyMissionClear());
         }
@@ -377,7 +377,7 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.재분배] && heroSaleCnt >= 10)
         {
             missionStatus[MissionList.재분배] = true;
-            CurrencyManager.instance.AcquireCurrency(400, true);
+            CurrencyManager.instance.AcquireCurrency(1000, true);
             UpdateMissionInfo(30);
             StartCoroutine(NotifyMissionClear());
         }
@@ -385,7 +385,7 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.재편성] && heroSaleCnt >= 20)
         {
             missionStatus[MissionList.재편성] = true;
-            CurrencyManager.instance.AcquireCurrency(600, true);
+            CurrencyManager.instance.AcquireCurrency(2000, true);
             CurrencyManager.instance.AcquireCurrency(4, false);
             UpdateMissionInfo(31);
             StartCoroutine(NotifyMissionClear());
