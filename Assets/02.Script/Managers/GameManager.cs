@@ -36,7 +36,20 @@ public class GameManager : MonoBehaviour
     // 게임 클리어 및 실패에서 호출
     // 메인씬으로 가면 다시 타임스케일 돌려주기
     public void GamePause() => Time.timeScale = 0f; //게임정지
-    public void GameResume() => Time.timeScale = 1f;
+    public void GameResume() => Time.timeScale = speedMode;
+
+    [SerializeField] private Image gameSpeedImg;
+    [SerializeField] private Sprite normalSpeedSprite;
+    [SerializeField] private Sprite twiceSpeedSprite;
+    [SerializeField] private TextMeshProUGUI gameSpeedTxt;
+    private float speedMode = 1f;
+    public void GameSpeedTwice()
+    {
+        Time.timeScale = Time.timeScale == 1f ? 2f : 1f;
+        gameSpeedImg.sprite = Time.timeScale == 2f ? twiceSpeedSprite : normalSpeedSprite;
+        gameSpeedTxt.text = Time.timeScale == 2f ? "X 2" : "X 1";
+        speedMode = Time.timeScale == 2f ? 2f : 1f;
+    }
 
     // 임시 게임속도
     private void Update()
@@ -124,13 +137,13 @@ public class GameManager : MonoBehaviour
     //싱글톤으로 처리된 신컨트롤러매니저가 씬을 모두 돌았을 때 캐싱해제되는 문제를 위한 코드 호출 함수
     public void GameExitBtn()
     {
-        GameResume(); // 타임스케일 복구
+        Time.timeScale = 1f;
         SceneCtrlManager.instance.ExitGame();
     }
 
     public void MenuSceneBtn()
     {
-        GameResume(); // 타임스케일 복구
+        Time.timeScale = 1f;
         SceneCtrlManager.instance.LoadScene("MenuScene");
     }
 }
