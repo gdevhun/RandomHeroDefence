@@ -99,7 +99,7 @@ public class CharacterBase : MonoBehaviour
     //머니건 활성화되면 계산더해지는 함수
     private float ApplyLastAttackDamage(float attackDamage)
     {
-        if (MissionManager.instance.isMoneyGun)
+        if (MissionManager.instance.isMoneyGunActive)
         {
             attackDamage *= 1 + CurrencyManager.instance.Gold * 0.00002f;
         }

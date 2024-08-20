@@ -14,7 +14,8 @@ public enum MissionList
     초보, 중수, 숙련자, 고수, 장인,
     
     //골드 모으기 미션
-    부자되기첫걸음, 나는구두쇠, 내가재드래곤, 내돈으로만레벨업,    
+    부자되기첫걸음, 나는구두쇠, 내가재드래곤, 머니건코드7777,  
+    
     //다이아 모으기 미션
     전당포사장되기, 금은방사장되기, 나는대부호,
     
@@ -45,7 +46,7 @@ public class MissionManager : MonoBehaviour
     [HideInInspector] public int summonFailures = 0;  //유닛뽑기 꽝, 실패 횟수
     [HideInInspector] public int rouletteFailures = 0;  //룰랫돌리기 꽝,실패 횟수
     [HideInInspector] public int gachaFailures = 0; //신화뽑기(가챠) 꽝,실패 횟수
-    [HideInInspector] public bool isMoneyGun = false; // 머니건 활성화 여부
+    [HideInInspector] public bool isMoneyGunActive = false; // 머니건 활성화 여부
         
     [SerializeField] private RectTransform missionListPanel;
     private readonly Vector2 targetPanelRect = new Vector3(960, 490);
@@ -108,35 +109,35 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.일반수집가] && HasAllItems(HeroGradeType.일반))
         {
             missionStatus[MissionList.일반수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(50, true);
+            CurrencyManager.instance.AcquireCurrency(200, true);
             UpdateMissionInfo(0);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.고급수집가] && HasAllItems(HeroGradeType.고급))
         {
             missionStatus[MissionList.고급수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(150, true);
+            CurrencyManager.instance.AcquireCurrency(600, true);
             UpdateMissionInfo(1);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.희귀수집가] && HasAllItems(HeroGradeType.희귀))
         {
             missionStatus[MissionList.희귀수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(2, false);
+            CurrencyManager.instance.AcquireCurrency(4, false);
             UpdateMissionInfo(2);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.전설수집가] && HasAllItems(HeroGradeType.전설))
         {
             missionStatus[MissionList.전설수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(5, false);
+            CurrencyManager.instance.AcquireCurrency(6, false);
             UpdateMissionInfo(3);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.신화수집가] && HasAllItems(HeroGradeType.신화))
         {
             missionStatus[MissionList.신화수집가] = true;
-            CurrencyManager.instance.AcquireCurrency(8, false);
+            CurrencyManager.instance.AcquireCurrency(10, false);
             UpdateMissionInfo(4);
             StartCoroutine(NotifyMissionClear());
         }
@@ -193,7 +194,7 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.나는구두쇠] && CurrencyManager.instance.Gold >= 5000)
         {
             missionStatus[MissionList.나는구두쇠] = true;
-            CurrencyManager.instance.AcquireCurrency(15,false);
+            CurrencyManager.instance.AcquireCurrency(10,false);
             UpdateMissionInfo(11);
             StartCoroutine(NotifyMissionClear());
         }
@@ -204,11 +205,10 @@ public class MissionManager : MonoBehaviour
             UpdateMissionInfo(12);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.내돈으로만레벨업] && CurrencyManager.instance.Gold >= 5000)
+        if (!missionStatus[MissionList.머니건코드7777] && CurrencyManager.instance.Gold >= 7777)
         {
-            missionStatus[MissionList.내돈으로만레벨업] = true;
-            isMoneyGun = true;
-            CurrencyManager.instance.AcquireCurrency(20, false);
+            missionStatus[MissionList.머니건코드7777] = true;
+            isMoneyGunActive = true;
             UpdateMissionInfo(22);
             StartCoroutine(NotifyMissionClear());
         }
@@ -226,14 +226,14 @@ public class MissionManager : MonoBehaviour
         if (!missionStatus[MissionList.금은방사장되기] && CurrencyManager.instance.Dia >= 10)
         {
             missionStatus[MissionList.금은방사장되기] = true;
-            CurrencyManager.instance.AcquireCurrency(500, true);
+            CurrencyManager.instance.AcquireCurrency(1000, true);
             UpdateMissionInfo(14);
             StartCoroutine(NotifyMissionClear());
         }
         if (!missionStatus[MissionList.나는대부호] && CurrencyManager.instance.Dia >= 20)
         {
             missionStatus[MissionList.나는대부호] = true;
-            CurrencyManager.instance.AcquireCurrency(1000, true);
+            CurrencyManager.instance.AcquireCurrency(2500, true);
             UpdateMissionInfo(15);
             StartCoroutine(NotifyMissionClear());
         }
@@ -262,17 +262,17 @@ public class MissionManager : MonoBehaviour
             UpdateMissionInfo(18);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.룰렛중독] && rouletteFailures >= 10)
+        if (!missionStatus[MissionList.룰렛중독] && rouletteFailures >= 5)
         {
             missionStatus[MissionList.룰렛중독] = true;
-            CurrencyManager.instance.AcquireCurrency(10, false);
+            CurrencyManager.instance.AcquireCurrency(5, false);
             UpdateMissionInfo(19);
             StartCoroutine(NotifyMissionClear());
         }
-        if (!missionStatus[MissionList.가챠중독] && gachaFailures >= 10)
+        if (!missionStatus[MissionList.가챠중독] && gachaFailures >= 5)
         {
             missionStatus[MissionList.가챠중독] = true;
-            CurrencyManager.instance.AcquireCurrency(10, false);
+            CurrencyManager.instance.AcquireCurrency(5, false);
             UpdateMissionInfo(20);
             StartCoroutine(NotifyMissionClear());
         }
@@ -282,7 +282,7 @@ public class MissionManager : MonoBehaviour
             missionStatus[MissionList.가챠중독])
         {
             missionStatus[MissionList.도박치료상담전화는1336] = true;
-            CurrencyManager.instance.AcquireCurrency(10, false);
+            CurrencyManager.instance.AcquireCurrency(15, false);
             UpdateMissionInfo(21);
             StartCoroutine(NotifyMissionClear());
         }
