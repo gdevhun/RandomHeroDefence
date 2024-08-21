@@ -70,6 +70,8 @@ public class StageManager : MonoBehaviour
         get { return enemyCnt; }
         set
         {
+            if(value < 0) return;
+            
             enemyCnt = value;
             if(EnemyCnt > maxEnemyCnt)
             {

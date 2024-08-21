@@ -88,6 +88,7 @@ public class MythicUnit : GetUnitBase
     public void SelectMythic(string mythicName) { SelectedMythic = (UnitType)Enum.Parse(typeof(UnitType), mythicName, true); }
 
     // 조합 가능한 신화가 있는지 체크, 조합 가능한 개수 반환
+    public void WrapCheckMythicComb() { CheckMythicComb(); }
     public int CheckMythicComb()
     {
         // 신화 조합 가능 체크
@@ -236,6 +237,11 @@ public class MythicUnit : GetUnitBase
             // 3.유닛 수 처리
             CurUnit -= curPos.Value;
         }
+
+        // 신화 조합 가능 개수 표시
+        UiUnit.instance.mythicCombPanel.SetActive(true);
+        mythicCombCheckCnt.text = CheckMythicComb().ToString();
+        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
 
         // 사운드
         SoundManager.instance.SFXPlay(SoundType.MythicComb);

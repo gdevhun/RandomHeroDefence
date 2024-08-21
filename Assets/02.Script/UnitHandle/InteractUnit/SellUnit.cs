@@ -24,6 +24,7 @@ public class SellUnit : MonoBehaviour
         // 4.유닛 수 처리
         // 5.사운드
         // 6.패널
+        // 7.신화 조합 가능 수 체크
         UnitType selectedUnitType = selectedUnit.heroInfo.unitType;
         if(SelectUnit.instance.selectedPos.transform.childCount == 1) GetUnitBase.unitPosMap[selectedUnitType].Remove(SelectUnit.instance.selectedPos);
         else --GetUnitBase.unitPosMap[selectedUnitType][SelectUnit.instance.selectedPos];
@@ -40,5 +41,10 @@ public class SellUnit : MonoBehaviour
             UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);  
         }
         MissionManager.instance.heroSaleCnt++;
+
+        // 신화 조합 가능 개수 표시
+        UiUnit.instance.mythicCombPanel.SetActive(true);
+        MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
     }
 }

@@ -71,29 +71,10 @@ public class CharacterBase : MonoBehaviour
         if (heroInfo.attackType == AttackType.근거리) gunPointTrans = null;
         indicateAttackRange.transform.localScale = new Vector3(coll.radius * 2, coll.radius * 2, coll.radius * 2);
     }
-    private void OnEnable()
-    {
-        if(heroInfo.heroGradeType == HeroGradeType.신화) return;
-
-        // 신화 조합 가능 개수 표시
-        UiUnit.instance.mythicCombPanel.SetActive(true);
-        MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
-        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
-    }
     private void Start()
     {
         limitAtkSpeed = heroInfo.attackSpeed;
         prevAtkSpeed = limitAtkSpeed;
-    }
-    private void OnDisable()
-    {
-        if(heroInfo.heroGradeType == HeroGradeType.신화) return;
-        if(UiUnit.instance.mythicCombPanel == null) return;
-
-        // 신화 조합 가능 개수 표시
-        UiUnit.instance.mythicCombPanel.SetActive(true);
-        MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
-        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
     }
 
     //머니건 활성화되면 계산더해지는 함수

@@ -68,6 +68,12 @@ public class CombUnit : GetUnitBase
             CurUnit -= 3;
             SoundManager.instance.SFXPlay(SoundType.NotEnough);
             MissionManager.instance.heroFusionFailCnt++;
+
+            // 신화 조합 가능 개수 표시
+            UiUnit.instance.mythicCombPanel.SetActive(true);
+            MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+            UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
+            
             return;
         }
 
@@ -76,5 +82,10 @@ public class CombUnit : GetUnitBase
         instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? 0 : 0.2f, -0.1f * (unitPos.transform.childCount - 1));
         CurUnit -= 2;
         MissionManager.instance.heroFusionSucCnt++;
+
+        // 신화 조합 가능 개수 표시
+        UiUnit.instance.mythicCombPanel.SetActive(true);
+        MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
     }
 }
