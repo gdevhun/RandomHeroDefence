@@ -68,6 +68,7 @@ public class EnemyBase : MonoBehaviour
             //if(value <= curStunTime) return;
 
             // 스턴 시작
+            Debug.Log(gameObject.name + "가 " + value + "초 만큼 스턴이 추가됨");
             curStunTime = value;
             moveSpeed = 0;
             if(instantStunEffect != null) PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantStunEffect, AbilityEffectType.스턴);
@@ -85,11 +86,6 @@ public class EnemyBase : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
     }
     private void OnEnable() { curPathIdx = 0; }
-    void Start()
-    {
-        originMoveSpeed = moveSpeed;
-        CurrentHp = maxHp;
-    }
     
     // 피격 계산
     // => 물방, 마방 적용

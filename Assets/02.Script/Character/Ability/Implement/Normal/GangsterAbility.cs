@@ -6,7 +6,7 @@ public class GangsterAbility : SyncAbilityBase
     // 150% 데미지, 0.5초 스턴
     public override void CastAbility(CharacterBase characterBase)
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(characterBase.enemyTrans.transform.position, 2f);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(characterBase.enemyTrans.transform.position, 1.5f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))
