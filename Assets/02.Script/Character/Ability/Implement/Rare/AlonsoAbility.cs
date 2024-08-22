@@ -20,7 +20,7 @@ public class AlonsoAbility : SyncAbilityBase
             Debug.DrawLine(start, end, Color.red, 3f);
         }
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1.5f);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 2f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))
