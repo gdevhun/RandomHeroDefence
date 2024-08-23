@@ -2,7 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 // 재생할 배경음 타입 => 키로 사용
-public enum BgmType { Main, Normal, MiniBoss, Boss }
+public enum BgmType
+{
+    게임메뉴,
+    구간1에서9, 스테이지10,
+    구간11에서19, 스테이지20,
+    구간21에서29, 스테이지30,
+    구간31에서34, 구간35에서39, 스테이지40,
+    구간41에서44, 구간45에서49, 스테이지50
+}
 
 public class SoundManager : MonoBehaviour
 {
@@ -10,11 +18,12 @@ public class SoundManager : MonoBehaviour
 	[Header ("BGM 클립 리스트")] [SerializeField] private AudioClip[] bgmList;
 	private Dictionary<BgmType, AudioClip> mapBgm = new Dictionary<BgmType, AudioClip>(); // (타입, 배경음) 맵핑
 	[HideInInspector] public float bgmVolume, sfxVolume; // 배경음 볼륨 및 효과음 볼륨
+    [HideInInspector] public int sfxCnt; // 효과음 수
 
     public Sprite offSoundSprite;
     public Sprite onSoundSprite;
-    public Image bgmImg;
-    public Image sfxImg;
+    [HideInInspector] public Image bgmImg;
+    [HideInInspector] public Image sfxImg;
     // 싱글톤
     public static SoundManager instance;
     private void Awake()
@@ -27,14 +36,11 @@ public class SoundManager : MonoBehaviour
             DontDestroyOnLoad(instance);
 
             // 볼륨 초기화
-            bgmVolume = 0.1f;
-            sfxVolume = 1f;
+            bgmVolume = 0.9f;
+            sfxVolume = 0.6f;
 
             // (타입, 배경음) 맵핑
             Map();
-
-            // 메인 BGM
-            BgmSoundPlay(BgmType.Main);
         }
         else Destroy(gameObject);
     }
@@ -59,7 +65,11 @@ public class SoundManager : MonoBehaviour
     }
 
     // 효과음
-    public void SFXPlay(SoundType type) { PoolManager.instance.GetPool(PoolManager.instance.soundPool.queMap, type).GetComponent<AudioSource>().volume = sfxVolume; }
+    public void SFXPlay(SoundType type)
+    {
+        PoolManager.instance.GetPool(PoolManager.instance.soundPool.queMap, type).GetComponent<AudioSource>().volume = sfxVolume;
+        sfxCnt++;
+    }
 
     // 배경음 볼륨 조절
     public void SetBgmVolume(float volume)
@@ -79,8 +89,5 @@ public class SoundManager : MonoBehaviour
         sfxVolume = volume;
         sfxImg.sprite = sfxVolume == 0 ? offSoundSprite : onSoundSprite;
     } 
-    
-    /*사운드 페널 버튼 처리 함수
-    public void OpenSoundSettingPanelBtn() => soundSettingPanel.SetActive(true);
-    public void CloseSoundSettingPanelBtn() => soundSettingPanel.SetActive(false);*/
+
 }

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BarbarianAbility
   m_EditorClassIdentifier: 
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: d764279998467d7498dfdc2c5150e43b, type: 3}
+    abilitySprite: {fileID: 21300000, guid: cffe3e7b250437c47a7ab93a9f7d779a, type: 3}
     abilityName: "\uB3CC\uACA9"
     abilityContent: "150% \uB370\uBBF8\uC9C0, \uD604\uC7AC\uCCB4\uB825 6% \uB370\uBBF8\uC9C0"
   abilityEffectType: 4
+  abilitySoundType: 17
   instantAbilityEffect: {fileID: 0}

@@ -68,15 +68,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 150
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3051f004e28f4ce488e548036075d118, type: 2}
-  m_sharedMaterial: {fileID: 2764020433065311155, guid: 3051f004e28f4ce488e548036075d118, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0a4f0f7195090674d9ad7735b64bb309, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 0a4f0f7195090674d9ad7735b64bb309, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278914047
-  m_fontColor: {r: 0.2535946, g: 1, b: 0.043137252, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -93,13 +93,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 28
+  m_fontSizeBase: 28
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 2
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -150,6 +150,6 @@ MonoBehaviour:
   moveSpeed: 3
   alphaSpeed: 1
   text: {fileID: 0}
-  originWaitTime: 2
+  originWaitTime: 1
   type: 0
   canvasTransform: {fileID: 0}

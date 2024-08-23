@@ -8,7 +8,7 @@ public class SelectUnit : MonoBehaviour
     [Header ("유닛 스폰 위치만 클릭되게")] [SerializeField] private LayerMask posLayerMask;
     private Vector3 sPos = Vector3.zero; // 시작 위치
     private const float dragThreshold = 0.5f; // 클릭과 드래그를 구분하는 임계 값
-    private bool isDrag = false; // 드래그 체크
+    [HideInInspector] public bool isDrag = false; // 드래그 체크
     [Header ("이동 할 위치 표시")] [SerializeField] private GameObject targetPos;
 
     private void Update() { Down(); }
@@ -33,6 +33,9 @@ public class SelectUnit : MonoBehaviour
                 if(UiUnit.instance.toolTipPanel.gameObject.gameObject.activeSelf && !UiUnit.instance.unitSellCompPanel.activeSelf) UiUnit.instance.ExitPanel(UiUnit.instance.toolTipPanel.gameObject);
                 return;
             }
+
+            // 사정거리 표시 끔
+            OnOffIndicateAttackRange(false);
 
             // 선택된 유닛 스폰 위치 오브젝트
             selectedPos = hit.transform.gameObject;
@@ -97,7 +100,14 @@ public class SelectUnit : MonoBehaviour
                 if(!UiUnit.instance.toolTipPanel.gameObject.activeSelf) UiUnit.instance.OpenPanel(UiUnit.instance.toolTipPanel.gameObject);
                 UiUnit.instance.toolTipPanel.SetToolTip(selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo,
                     selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability.abilityUiInfo,
-                        selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.신화 ? (selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability as IHiddenAbility).HiddenAbilityUiInfo : null);
+                        selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType == HeroGradeType.신화 ? (selectedPos.transform.GetChild(0).GetComponent<AbilityManage>().ability as IHiddenAbility).HiddenAbilityUiInfo : null,
+                            selectedPos.transform.GetChild(0).GetComponent<CharacterBase>());
+
+                // 사정거리 표시
+                OnOffIndicateAttackRange(true);
+
+                // 이동 할 위치 표시 끔
+                targetPos.SetActive(false);
 
                 // 판매 및 합성 패널 띄우기
                 HeroGradeType selectedHeroGradeType = selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType;
@@ -106,17 +116,11 @@ public class SelectUnit : MonoBehaviour
                     if(UiUnit.instance.unitSellCompPanel.activeSelf) UiUnit.instance.ExitPanel(UiUnit.instance.unitSellCompPanel);
                     return;
                 }
-                if(!UiUnit.instance.unitSellCompPanel.activeSelf)
-                {
-                    UiUnit.instance.OpenPanel(UiUnit.instance.unitSellCompPanel);
-                    UiUnit.instance.unitSellGoldImage.SetActive(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급);
-                    UiUnit.instance.unitSellDiaImage.SetActive(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설);
-                    if(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급) UiUnit.instance.unitSellGoldText.text = (50 + 50 * (int)selectedHeroGradeType).ToString();
-                    else if(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
-                }
-
-                // 이동 할 위치 표시 끔
-                targetPos.SetActive(false);
+                UiUnit.instance.OpenPanel(UiUnit.instance.unitSellCompPanel);
+                UiUnit.instance.unitSellGoldImage.SetActive(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급);
+                UiUnit.instance.unitSellDiaImage.SetActive(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설);
+                if(selectedHeroGradeType == HeroGradeType.일반 || selectedHeroGradeType == HeroGradeType.고급) UiUnit.instance.unitSellGoldText.text = SellUnit.instance.soldierCnt > 0 ? (2 * (20 + 20 * (int)selectedHeroGradeType)).ToString() : (20 + 20 * (int)selectedHeroGradeType).ToString();
+                else if(selectedHeroGradeType == HeroGradeType.희귀 || selectedHeroGradeType == HeroGradeType.전설) UiUnit.instance.unitSellDiaText.text = ((int)selectedHeroGradeType).ToString();
 
                 return;
             }
@@ -161,5 +165,12 @@ public class SelectUnit : MonoBehaviour
             // 이동 할 위치 표시 끔
             targetPos.SetActive(false);
         }
+    }
+
+    // 사정거리 표시 켜고 끄기
+    public void OnOffIndicateAttackRange(bool isOn)
+    {
+        if(selectedPos == null) return;
+        for(int i = 0; i < selectedPos.transform.childCount; i++) selectedPos.transform.GetChild(i).GetComponent<CharacterBase>().indicateAttackRange.SetActive(isOn);
     }
 }

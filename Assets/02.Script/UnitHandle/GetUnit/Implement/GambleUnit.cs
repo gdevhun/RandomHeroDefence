@@ -7,8 +7,8 @@ public class GambleUnit : GetUnitBase, IConsumable
     private Dictionary<HeroGradeType, int> gradeWeightMap = new Dictionary<HeroGradeType, int>
     {
         { HeroGradeType.일반, 50 },
-        { HeroGradeType.희귀, 38 },
-        { HeroGradeType.전설, 12 }
+        { HeroGradeType.희귀, 40 },
+        { HeroGradeType.전설, 10 }
     };
 
     private void Start() { amount = 2; }
@@ -16,11 +16,11 @@ public class GambleUnit : GetUnitBase, IConsumable
     // 도박 구체화
     public override void GetUnitHandle()
     {
-        // 재화 체크
-        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
-
         // 최대 유닛 체크
         if(CurUnit >= maxUnit) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
+
+        // 재화 체크
+        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
 
         // 랜덤 유닛
         GameObject instantUnit = GetUnit(gradeWeightMap);
@@ -35,6 +35,12 @@ public class GambleUnit : GetUnitBase, IConsumable
             PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
             SoundManager.instance.SFXPlay(SoundType.NotEnough);
             MissionManager.instance.summonFailures++;
+
+            // 신화 조합 가능 개수 표시
+            UiUnit.instance.mythicCombPanel.SetActive(true);
+            MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+            UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
+            
             return;
         }
 
@@ -42,6 +48,11 @@ public class GambleUnit : GetUnitBase, IConsumable
         instantUnit.transform.SetParent(unitPos.transform);
         instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? 0 : 0.2f, -0.1f * (unitPos.transform.childCount - 1));
         ++CurUnit;
+
+        // 신화 조합 가능 개수 표시
+        UiUnit.instance.mythicCombPanel.SetActive(true);
+        MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
     }
 
     // 재화

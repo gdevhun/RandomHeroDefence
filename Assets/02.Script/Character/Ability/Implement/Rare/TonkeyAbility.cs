@@ -7,10 +7,9 @@ public class TonkeyAbility : SyncAbilityBase
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
-        instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
+        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
+        instantAbilityEffect.transform.position = characterBase.transform.position + new Vector3(0f,0.5f,0f);
         
         CurrencyManager.instance.AcquireCurrency(1, false);
-
-        PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
     }
 }

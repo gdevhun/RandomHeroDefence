@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 642291696109055282}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.746169, y: -0.14385384, z: 0.049736097}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0.049736097}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -156,5 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEffect: 6
+  damageType: 0
   activeTime: 1
   attackDamage: 0
+  isEnter: 0

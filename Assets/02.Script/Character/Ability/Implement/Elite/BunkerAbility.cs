@@ -3,13 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "스킬/고급/벙커")]
 public class BunkerAbility : SyncAbilityBase
 {
-    // 최대체력 4% 데미지
+    // 300% 데미지
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, characterBase.weaponEffect);
-        instantAbilityEffect.GetComponent<RangeWeapon>().weaponEffect = characterBase.weaponEffect;
-        instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.enemyTrans.GetComponent<EnemyBase>().maxHp * 0.04f;
+        RangeWeapon rangeWeapon = instantAbilityEffect.GetComponent<RangeWeapon>();
+        rangeWeapon.weaponEffect = characterBase.weaponEffect;
+        rangeWeapon.damageType = characterBase.heroInfo.damageType;
+        rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage * 3;
+        rangeWeapon.characterBase = characterBase;
         characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans, characterBase.gunPointTrans);
-        instantAbilityEffect.transform.position += new Vector3(1f, 0, 0);
     }
 }

@@ -13,11 +13,15 @@ public class AlexAbility : AsyncAbilityBase
             for(int j = 1; j < 3; j++)
             {
                 instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, characterBase.weaponEffect);
-                instantAbilityEffect.GetComponent<RangeWeapon>().weaponEffect = characterBase.weaponEffect;
-                instantAbilityEffect.GetComponent<RangeWeapon>().attackDamage = characterBase.heroInfo.attackDamage;
+                RangeWeapon rangeWeapon = instantAbilityEffect.GetComponent<RangeWeapon>();
+                rangeWeapon.weaponEffect = characterBase.weaponEffect;
+                rangeWeapon.damageType = characterBase.heroInfo.damageType;
+                rangeWeapon.attackDamage = characterBase.heroInfo.attackDamage;
+                rangeWeapon.characterBase = characterBase;
                 characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans, characterBase.gunPointTrans);
-                instantAbilityEffect.transform.position += new Vector3(1f * j, 0, 0);
+                instantAbilityEffect.transform.position += new Vector3(0.1f * j, 0, 0);
             }
+            if(i > 0) SoundManager.instance.SFXPlay(abilitySoundType);
             yield return oneSecond;
         }
     }

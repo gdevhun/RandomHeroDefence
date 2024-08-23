@@ -1,14 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class MeleeWeapon: MonoBehaviour
 {
     [HideInInspector] public WeaponEffect weaponEffect;
+    [HideInInspector] public DamageType damageType;
     [Header ("유지 시간")] public float activeTime;
     [SerializeField] private WaitForSeconds thisWaitForSeconds;
     [HideInInspector] public float attackDamage;
+    [HideInInspector] public bool isEnter;
+    [HideInInspector] public CharacterBase characterBase;
 
     // 초기화
     void Awake() { thisWaitForSeconds = new WaitForSeconds(activeTime); }
@@ -26,11 +27,19 @@ public class MeleeWeapon: MonoBehaviour
     // 몬스터 타격
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(isEnter) return;
+        isEnter = true;
+
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (other.gameObject.TryGetComponent(out EnemyBase enemyBase))
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 0.001f);
+            foreach (Collider2D hit in hits)
             {
-                enemyBase.TakeDamage(attackDamage); 
+                if (hit.CompareTag("Enemy"))
+                {
+                    EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
+                    enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(attackDamage), damageType);
+                }
             }
         }
     }

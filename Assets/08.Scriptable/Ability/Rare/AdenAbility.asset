@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba45f90bde4c4e4185dfbdeb829da38, type: 3}
   m_Name: AdenAbility
   m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: 489e93b313a3eb54d9c0ab41545d4e98, type: 3}
+    abilitySprite: {fileID: 21300000, guid: d78b77e6b4a936d4991a33ab015e0183, type: 3}
     abilityName: "\uD2B8\uB808\uC774\uC11C"
     abilityContent: "\uC77C\uBC18\uB4F1\uAE09 \uC18C\uD658 \uAC00\uC911\uCE58 4 \uAC10\uC18C(\uC81C\uD55C
       3\uBC88)"
   abilityEffectType: 11
+  abilitySoundType: 0
+  instantAbilityEffect: {fileID: 0}

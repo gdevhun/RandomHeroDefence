@@ -7,20 +7,17 @@ public class MakdusAbility : SyncAbilityBase
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
-        instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
+        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
+        instantAbilityEffect.transform.position = characterBase.enemyTrans.position;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(characterBase.enemyTrans.transform.position, 1f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 5);
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 5, characterBase.heroInfo.damageType);
             }
         }
-        EnemyBase.DecreaseMagDef += 50f;
-        EnemyBase.DecreasePhyDef += 50f;
-
-        PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
     }
 }

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ec3e55c51b115458f3c6cc6010271b, type: 3}
   m_Name: AlonsoAbility
   m_EditorClassIdentifier: 
-  characterBase: {fileID: 0}
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: f27e3a2c432b99548a8e9c394a3aa679, type: 3}
+    abilitySprite: {fileID: 21300000, guid: 9091e85596f8242479c0f5d067bac3d5, type: 3}
     abilityName: "\uACE8\uB4DC\uD578\uB354"
-    abilityContent: "\uBAAC\uC2A4\uD130 \uACE8\uB4DC\uB7C9 10% \uC99D\uAC00"
-  abilityEffectType: 10
+    abilityContent: "200% \uB370\uBBF8\uC9C0, 1.5\uCD08 \uC2A4\uD134"
+  abilityEffectType: 3
+  abilitySoundType: 21
+  instantAbilityEffect: {fileID: 0}

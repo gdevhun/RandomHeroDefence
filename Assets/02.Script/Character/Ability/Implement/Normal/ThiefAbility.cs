@@ -6,19 +6,18 @@ public class ThiefAbility : SyncAbilityBase
     public override void CastAbility(CharacterBase characterBase)
     {
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
-        instantAbilityEffect.transform.position = characterBase.enemyTrans.transform.position;
+        instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
+        instantAbilityEffect.transform.position = characterBase.transform.position + new Vector3(0f,0.5f,0f);
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(instantAbilityEffect.transform.position, 1f);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(characterBase.enemyTrans.transform.position, 0.5f);
         foreach (Collider2D hit in hits)
         {
             if (hit.CompareTag("Enemy"))
             {
                 EnemyBase enemyBase = hit.GetComponent<EnemyBase>();
-                enemyBase.TakeDamage(characterBase.heroInfo.attackDamage * 1.5f);
+                enemyBase.TakeDamage(characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 1.5f, characterBase.heroInfo.damageType);
             }
         }
         CurrencyManager.instance.AcquireCurrency(10, true);
-
-        PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantAbilityEffect, abilityEffectType);
     }
 }

@@ -15,15 +15,15 @@ public class ToolTipUnit : MonoBehaviour
     [Header ("히든 스킬 설명 텍스트")] [SerializeField] private TextMeshProUGUI hiddenAbilityContentText;
 
     // 툴팁 정보 설정
-    public void SetToolTip(HeroInfo heroInfo, AbilityUiInfo abilityInfo, AbilityUiInfo hiddenAbilityInfo)
+    public void SetToolTip(HeroInfo heroInfo, AbilityUiInfo abilityInfo, AbilityUiInfo hiddenAbilityInfo, CharacterBase characterBase)
     {
         unitImage.sprite = heroInfo.unitSprite;
         unitNameText.text = heroInfo.unitType.ToString();
         unitInfoText.text = $"{heroInfo.heroGradeType} / {heroInfo.damageType} / {heroInfo.attackType}";
-        unitDmgText.text = heroInfo.attackDamage.ToString();
+        unitDmgText.text = ((int)characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage)).ToString();
         unitSpeedText.text = heroInfo.attackSpeed.ToString();
         abilityImage.sprite = abilityInfo.abilitySprite;
-        abilityNameText.text = abilityInfo.abilityName;
+        abilityNameText.text = characterBase.GetComponent<AbilityManage>().maxStamina > 0 ? abilityInfo.abilityName + $" (스태미너 : {characterBase.GetComponent<AbilityManage>().maxStamina})" : abilityInfo.abilityName;
         abilityContentText.text = abilityInfo.abilityContent;
         if(heroInfo.heroGradeType == HeroGradeType.신화)
         {

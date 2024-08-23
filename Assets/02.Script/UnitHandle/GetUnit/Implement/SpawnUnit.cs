@@ -16,12 +16,12 @@ public class SpawnUnit : GetUnitBase, IConsumable
     // 소환 구체화
     public override void GetUnitHandle()
     {
-        // 재화 체크
-        ++SpawnCnt;
-        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
-
         // 최대 유닛 체크
         if(CurUnit >= maxUnit) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
+        
+        // 재화 체크
+        if(!ConsumeCurrency()) { SoundManager.instance.SFXPlay(SoundType.NotEnough); return; }
+        ++SpawnCnt;
 
         // 랜덤 유닛
         GameObject instantUnit = GetUnit(gradeWeightMap);
@@ -34,6 +34,12 @@ public class SpawnUnit : GetUnitBase, IConsumable
         {
             PoolManager.instance.ReturnPool(PoolManager.instance.unitPool.queMap, instantUnit, instantUnit.GetComponent<CharacterBase>().heroInfo.unitType);
             SoundManager.instance.SFXPlay(SoundType.NotEnough);
+
+            // 신화 조합 가능 개수 표시
+            UiUnit.instance.mythicCombPanel.SetActive(true);
+            MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+            UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
+
             return;
         }
 
@@ -41,6 +47,11 @@ public class SpawnUnit : GetUnitBase, IConsumable
         instantUnit.transform.SetParent(unitPos.transform);
         instantUnit.transform.localPosition = new Vector3(unitPos.transform.childCount == 3 ? 0.1f : 0.2f * (unitPos.transform.childCount - 1), unitPos.transform.childCount == 3 ? 0 : 0.2f, -0.1f * (unitPos.transform.childCount - 1));
         ++CurUnit;
+
+        // 신화 조합 가능 개수 표시
+        UiUnit.instance.mythicCombPanel.SetActive(true);
+        MythicUnit.instance.mythicCombCheckCnt.text = MythicUnit.instance.CheckMythicComb().ToString();
+        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
     }
 
     // 재화
@@ -51,7 +62,7 @@ public class SpawnUnit : GetUnitBase, IConsumable
         set
         {
             spawnCnt = value;
-            amount = 10 + spawnCnt / 2;
+            amount = 10 + spawnCnt * 3;
             UpdateSpawnGoldUI();
         }
     }

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: VikingAbility
   m_EditorClassIdentifier: 
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: af97816715c692641ad8087b382efb8c, type: 3}
+    abilitySprite: {fileID: 21300000, guid: 8a96b38c76be79946a150249547b07bc, type: 3}
     abilityName: "\uBC14\uC774\uD551"
-    abilityContent: "\uBB3C\uBC29 10 \uAC10\uC18C"
+    abilityContent: "\uBB3C\uBC29 20 \uAC10\uC18C"
   abilityEffectType: 14
+  abilitySoundType: 0
   instantAbilityEffect: {fileID: 0}

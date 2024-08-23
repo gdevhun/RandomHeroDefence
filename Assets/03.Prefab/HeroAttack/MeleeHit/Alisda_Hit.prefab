@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 4787749243795536576}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.7061691, y: -0.26385385, z: 0.049736097}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0.049736097}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -142,7 +142,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.21
+  m_Radius: 0.14
 --- !u!114 &7034509397331896192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,5 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponEffect: 16
+  damageType: 0
   activeTime: 1
   attackDamage: 0
+  isEnter: 0

@@ -41,9 +41,10 @@ public class RouletteSpin : MonoBehaviour, IConsumable
 		spinBtn.interactable = true;
 
         // 회전이 끝나면 선택된 배수 만큼 다이아 추가
-		int coef = 0;
-		bool isSuccess = int.TryParse(selectedData.desc[selectedData.desc.Length - 1].ToString(), out coef);
-		CurrencyManager.instance.Dia += 2 * coef;
+		string[] splitDesc = selectedData.desc.Split(' ');
+		float coef = 0;
+		bool isSuccess = float.TryParse(splitDesc[splitDesc.Length - 1], out coef);
+		CurrencyManager.instance.Dia += (int)(2 * coef);
 
 		// 회전이 끝나면 사운드 반환
 		PoolManager.instance.ReturnPool(PoolManager.instance.soundPool.queMap, rouletteSound, SoundType.Roulette);

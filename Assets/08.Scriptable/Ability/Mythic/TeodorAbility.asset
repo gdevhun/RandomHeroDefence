@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: TeodorAbility
   m_EditorClassIdentifier: 
   abilityUiInfo:
-    abilitySprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
+    abilitySprite: {fileID: 21300000, guid: 0b06dc24df19d564cb93023baab2feea, type: 3}
     abilityName: "\uAC15\uD0C0"
-    abilityContent: "1\uCD08 \uC2A4\uD134"
-  abilityEffectType: 8
+    abilityContent: "2\uCD08 \uC2A4\uD134"
+  abilityEffectType: 9
+  abilitySoundType: 28
   instantAbilityEffect: {fileID: 0}
   hiddenAbilityUiInfo:
     abilitySprite: {fileID: 21300000, guid: deb7ea6c0c524da49b16ea97316f9e56, type: 3}
     abilityName: ???
     abilityContent: "\uC5D0\uC774\uB4E0\uACFC \uC5D0\uD0A4\uC628\uC774 \uC874\uC7AC\uD558\uBA74
-      \uBAA8\uB4E0 \uBAAC\uC2A4\uD130 \uC2A4\uD134"
+      3\uCD08 \uC2A4\uD134"

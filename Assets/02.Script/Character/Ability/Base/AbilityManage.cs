@@ -18,7 +18,7 @@ public class AbilityManage : MonoBehaviour
     [Header ("스킬 정보")] public AbilityBase ability;
 
     // 스태미나
-    [Header ("최대 스태미나")] [SerializeField] private int maxStamina;
+    [Header ("최대 스태미나")] public int maxStamina;
     private float maxStaminaFloat;
     private int stamina;
     public int Stamina
@@ -31,6 +31,10 @@ public class AbilityManage : MonoBehaviour
             // 최대 스태미너가 되고 타겟이 존재 할 때 스킬 시전
             if((louizyCnt == 0 && stamina >= maxStamina && characterBase.isOnTarget) || (louizyCnt > 0 && stamina >= maxStamina - 1 && characterBase.isOnTarget))
             {
+                // 드래그 체크
+                if(SelectUnit.instance.isDrag && transform.parent.gameObject.name == SelectUnit.instance.selectedPos.name) return;
+
+                if(ability.abilitySoundType != SoundType.GetUnit) SoundManager.instance.SFXPlay(ability.abilitySoundType);
                 if(ability is SyncAbilityBase syncAbilityBase) syncAbilityBase.CastAbility(characterBase);
                 else if(ability is AsyncAbilityBase asyncAbilityBase) StartCoroutine(asyncAbilityBase.CastAbility(characterBase));
                 stamina = 0;
@@ -57,13 +61,32 @@ public class AbilityManage : MonoBehaviour
             SyncAbilityBase syncAbilityBase = ability as SyncAbilityBase;
             syncAbilityBase.CastAbility(characterBase);
         }
+
+        // 막더스 처리
+        if(characterBase.heroInfo.unitType == UnitType.막더스)
+        {
+            EnemyBase.DecreaseMagDef += 50f;
+            EnemyBase.DecreasePhyDef += 50f;
+        }
     }
     private void OnEnable()
     {
-        // 스태미너 X => 활성화 할 때 마다 한 번 스킬 시전
-        if(maxStamina > 0 || characterBase == null) return;
-        SyncAbilityBase syncAbilityBase = ability as SyncAbilityBase;
-        syncAbilityBase.CastAbility(characterBase);
+        if(characterBase == null) return;
+
+        // 스태미너 O => 소환 될 때 한 번 스태미너에 따라 스킬 시전
+        if(maxStamina > 0) StartCoroutine(StaminaIncreament());
+        else // 스태미너 X => 소환 될 때 한 번 즉시 시전
+        {
+            SyncAbilityBase syncAbilityBase = ability as SyncAbilityBase;
+            syncAbilityBase.CastAbility(characterBase);
+        }
+
+        // 막더스 처리
+        if(characterBase.heroInfo.unitType == UnitType.막더스)
+        {
+            EnemyBase.DecreaseMagDef += 50f;
+            EnemyBase.DecreasePhyDef += 50f;
+        }
     }
 
     // 스태미나 증가
@@ -94,13 +117,11 @@ public class AbilityManage : MonoBehaviour
                 break;
             case UnitType.에키온 : EnemyBase.DecreaseMoveSpeed -= 0.05f; if(EnemyBase.DecreaseMoveSpeed < 0) EnemyBase.DecreaseMoveSpeed = 0;
                 break;
-            case UnitType.뱃 : EnemyBase.DecreaseMagDef -= 10f; if(EnemyBase.DecreaseMagDef < 0) EnemyBase.DecreaseMagDef = 0;
+            case UnitType.뱃 : EnemyBase.DecreaseMagDef -= 20f; if(EnemyBase.DecreaseMagDef < 0) EnemyBase.DecreaseMagDef = 0;
                 break;
-            case UnitType.바이킹 : EnemyBase.DecreasePhyDef -= 10f; if(EnemyBase.DecreasePhyDef < 0) EnemyBase.DecreasePhyDef = 0;
+            case UnitType.바이킹 : EnemyBase.DecreasePhyDef -= 20f; if(EnemyBase.DecreasePhyDef < 0) EnemyBase.DecreasePhyDef = 0;
                 break;
             case UnitType.에이든 : UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] += 4; if(UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] > 72) UiUnit.instance.unitSpawn.gradeWeightMap[HeroGradeType.일반] = 72; 
-                break;
-            case UnitType.알론소 : EnemyBase.increaseEnemyGold -= 10; if(EnemyBase.increaseEnemyGold < 0) EnemyBase.increaseEnemyGold = 0;
                 break;
             case UnitType.아아솔 : UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] -= 10; if(UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] < 0) UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] = 0; UiUnit.instance.magText.text = UpgradeUnit.instance.damageUpgradeMap[DamageType.마법].ToString() + " %";
                 break;

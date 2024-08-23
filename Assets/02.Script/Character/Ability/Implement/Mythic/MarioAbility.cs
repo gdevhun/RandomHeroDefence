@@ -9,11 +9,21 @@ public class MarioAbility : SyncAbilityBase, IHiddenAbility
     // 5000% 데미지 총알 1개 발사
     public override void CastAbility(CharacterBase characterBase)
     {
+        // 마리오 바디
         instantAbilityEffect = PoolManager.instance.GetPool(PoolManager.instance.abilityEffectPool.queMap, abilityEffectType);
         instantAbilityEffect.GetComponent<DeActiveAbility>().abilityEffectType = abilityEffectType;
-        characterBase.enemyTrans.GetComponent<EnemyBase>().TakeDamage((!isBunker || !isSoldier) ? characterBase.heroInfo.attackDamage * 50 : characterBase.heroInfo.attackDamage * 100);
-        characterBase.SetLastBulletPos(instantAbilityEffect, characterBase.enemyTrans, characterBase.gunPointTrans);
-        instantAbilityEffect.transform.position += new Vector3(1f, 0, 0);
+        instantAbilityEffect.transform.position = characterBase.transform.position + Vector3.up * 0.5f;
+
+        CastHiddenAbility(characterBase);
+
+        // 마리오 스킬 총알 발사
+        RangeWeapon rangeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, WeaponEffect.MarioAbilityBullet).GetComponent<RangeWeapon>();
+        rangeWeapon.weaponEffect = WeaponEffect.MarioAbilityBullet;
+        rangeWeapon.damageType = characterBase.heroInfo.damageType;
+        rangeWeapon.attackDamage = 0;
+        rangeWeapon.characterBase = characterBase;
+        characterBase.enemyTrans.GetComponent<EnemyBase>().TakeDamage((!isBunker || !isSoldier) ? characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 40 : characterBase.GetApplyAttackDamage(characterBase.heroInfo.attackDamage) * 80, DamageType.마법);
+        characterBase.SetLastBulletPos(rangeWeapon.gameObject, characterBase.enemyTrans, characterBase.gunPointTrans);
     }
 
     // 히든 스킬
@@ -48,5 +58,9 @@ public class MarioAbility : SyncAbilityBase, IHiddenAbility
                 break;
             }
         }
+
+        // 히든 활성화
+        if(!isSoldier) return;
+        if(!MissionManager.instance.mythicHiddenAbilityActivateMap.ContainsKey(UnitType.마리오)) MissionManager.instance.mythicHiddenAbilityActivateMap.Add(UnitType.마리오, 1);
     }
 }

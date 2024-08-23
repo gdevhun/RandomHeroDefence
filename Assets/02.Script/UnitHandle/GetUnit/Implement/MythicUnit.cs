@@ -17,6 +17,7 @@ public class MythicComb
 public class UnitRequire
 {
     [Header ("필요한 유닛 타입")] public UnitType unitType;
+    [Header ("필요한 유닛 등급")] public HeroGradeType gradeType;
     [Header ("필요한 유닛 스프라이트")] public Sprite unitSprite;
     [Header ("필요한 유닛 수")] public int cnt; // 유닛 수 => 같은 유닛 3 개 필요 시 1, 2, 3 할당 => ex) Hunter 3 개 필요 시 Hunter 1, Hunter 2, Hunter 3
 }
@@ -24,24 +25,29 @@ public class UnitRequire
 public class MythicUnit : GetUnitBase
 {
     public static MythicUnit instance;
-    private void Awake() { instance = this; }
-    [Header ("신화 조합식")] [SerializeField] private List<MythicComb> mythicCombList = new List<MythicComb>();
+    [Header ("신화 조합식")] public List<MythicComb> mythicCombList = new List<MythicComb>();
     public Dictionary<UnitType, MythicComb> mythicCombMap = new Dictionary<UnitType, MythicComb>(); // 신화 조합식 맵핑
     private UnitType selectedMythic; // 소환 할 신화
     public UnitType SelectedMythic
     {
         get { return selectedMythic; }
-        set { selectedMythic = value; UpdateMythicInfoUI(value); }
+        set { selectedMythic = value; UpdateMythicInfoUI(value); } 
     }
     [Header ("신화 이미지")] [SerializeField] private Image mythicImage;
     [Header ("신화 이름 텍스트")] [SerializeField] private TextMeshProUGUI mythicText;
-    [Header ("필요 유닛 이미지")] [SerializeField] private List<Image> requireImageList = new List<Image>();
+    [Header ("필요 유닛 이미지")] public List<Image> requireImageList = new List<Image>();
+    public Dictionary<HeroGradeType, Color> gradeColorMap = new Dictionary<HeroGradeType, Color>(); // 등급, 오라 색 맵핑
+    [Header ("오라 색")] [SerializeField] private List<Color> circleColorList = new List<Color>();
+    [Header ("신화 조합 가능 체크 이미지")] public ListGameObject mythicCombCheckList = new ListGameObject();
+    [Header ("신화 조합 가능 개수 표시")] public TextMeshProUGUI mythicCombCheckCnt;
 
     // 신화 조합식 맵핑
-    private void Start()
+    // 등급 오라 색 맵핑
+    private void Awake()
     {
+        instance = this;
         for(int i = 0; i < mythicCombList.Count; i++) mythicCombMap.Add(mythicCombList[i].mythicType, mythicCombList[i]);
-        selectedMythic = UnitType.배트맨;
+        for(int i = 0; i < circleColorList.Count; i++) gradeColorMap.Add((HeroGradeType)i, circleColorList[i]);
     }
 
     // 소환 할 신화 소환
@@ -79,10 +85,34 @@ public class MythicUnit : GetUnitBase
     }
 
     // 소환 할 신화 선택
-    public void SelectMythic(string mythicName)
+    public void SelectMythic(string mythicName) { SelectedMythic = (UnitType)Enum.Parse(typeof(UnitType), mythicName, true); }
+
+    // 조합 가능한 신화가 있는지 체크, 조합 가능한 개수 반환
+    public void WrapCheckMythicComb() { CheckMythicComb(); }
+    public int CheckMythicComb()
     {
-        SelectedMythic = (UnitType)Enum.Parse(typeof(UnitType), mythicName, true);
-        SoundManager.instance.SFXPlay(SoundType.Click);
+        // 신화 조합 가능 체크
+        int cnt = 0;
+
+        for(int i = 4; i > -1; i--)
+        {
+            SelectMythic(mythicCombList[i].mythicType.ToString());
+            
+            bool isComb = true;
+            for(int j = 0; j < 3; j++)
+            {
+                if(!requireImageList[j].transform.GetChild(0).gameObject.activeSelf)
+                {
+                    isComb = false;
+                    break;
+                }
+            }
+
+            mythicCombCheckList.gameObjectList[i].SetActive(isComb);
+            if(isComb) cnt++;
+        }
+
+        return cnt;
     }
 
     // 신화 소환 정보 UI 갱신
@@ -100,6 +130,10 @@ public class MythicUnit : GetUnitBase
 
             // 보유 유닛 체크 표시
             requireImageList[i].transform.GetChild(0).gameObject.SetActive(unitCnt > mythicCombMap[mythicType].requireList[i].cnt - 1);
+
+            // 오라 색 표시
+            Color newColor = gradeColorMap[mythicCombMap[mythicType].requireList[i].gradeType];
+            requireImageList[i].transform.GetChild(1).gameObject.GetComponent<Image>().color = newColor;
         }
     }
 
@@ -169,6 +203,13 @@ public class MythicUnit : GetUnitBase
             return;
         }
 
+        // 신화 소환
+        GameObject instantMyth = GetUnit(null);
+        GameObject mythPos = GetUnitPos(selectedMythic);
+        instantMyth.transform.SetParent(mythPos.transform);
+        instantMyth.transform.localPosition = new Vector3(0, 0.2f, 0);
+        ++CurUnit;
+
         // 신화 조합에 들어간 유닛 처리
         // 1.자식 수와 사용된 수가 같으면 맵핑 삭제하기, 아니면 자식 수 감소하기
         // 2.부모 해제하고 풀에 반환하기
@@ -197,14 +238,12 @@ public class MythicUnit : GetUnitBase
             CurUnit -= curPos.Value;
         }
 
-        // 신화 소환
-        GameObject instantMyth = GetUnit(null);
-        GameObject mythPos = GetUnitPos(selectedMythic);
-        instantMyth.transform.SetParent(mythPos.transform);
-        instantMyth.transform.localPosition = new Vector3(0, 0.2f, 0);
-        ++CurUnit;
+        // 신화 조합 가능 개수 표시
+        UiUnit.instance.mythicCombPanel.SetActive(true);
+        mythicCombCheckCnt.text = CheckMythicComb().ToString();
+        UiUnit.instance.ExitPanel(UiUnit.instance.mythicCombPanel);
 
         // 사운드
-        SoundManager.instance.SFXPlay(SoundType.GetUnit);
+        SoundManager.instance.SFXPlay(SoundType.MythicComb);
     }
 }

@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public enum DamageType  //데미지타입
 {
@@ -49,6 +45,8 @@ public class CharacterBase : MonoBehaviour
     [HideInInspector] public float limitAtkSpeed; // 공속
     [HideInInspector] public Transform enemyTrans; // 타겟 몬스터 트랜스폼
     [Header ("평타 사운드 타입")] [SerializeField] private SoundType atkSoundType;
+    private CircleCollider2D coll; // 콜라이더
+    [Header ("사정거리 표시")] public GameObject indicateAttackRange;
     public bool FlipX
     {
         get { return spriteRenderer.flipX; }
@@ -67,14 +65,40 @@ public class CharacterBase : MonoBehaviour
     // 초기화
     void Awake()
     {
+        coll = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         if (heroInfo.attackType == AttackType.근거리) gunPointTrans = null;
+        indicateAttackRange.transform.localScale = new Vector3(coll.radius * 2, coll.radius * 2, coll.radius * 2);
     }
     private void Start()
     {
         limitAtkSpeed = heroInfo.attackSpeed;
         prevAtkSpeed = limitAtkSpeed;
+    }
+
+    //머니건 활성화되면 계산더해지는 함수
+    private float ApplyLastAttackDamage(float attackDamage)
+    {
+        if (MissionManager.instance.isMoneyGunActive)
+        {
+            attackDamage *= 1 + CurrencyManager.instance.Gold * 0.00002f;
+        }
+        return attackDamage;
+    }
+    // 적용 할 공격력 계산
+    // 물공 업그레이드, 마공 업그레이드, 등급 업그레이드 적용
+    public float GetApplyAttackDamage(float basicAttackDamage)
+    {
+        float applyAttack = heroInfo.damageType == DamageType.물리
+            ? (basicAttackDamage +
+               basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.물리] / 100
+               + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100)
+            : (basicAttackDamage +
+               basicAttackDamage * UpgradeUnit.instance.damageUpgradeMap[DamageType.마법] / 100
+               + basicAttackDamage * UpgradeUnit.instance.gradeUpgradeMap[heroInfo.heroGradeType] / 100);
+            
+        return ApplyLastAttackDamage(applyAttack);
     }
 
     // 공속 계산
@@ -83,6 +107,9 @@ public class CharacterBase : MonoBehaviour
     // 타겟 공격
     private void OnTriggerStay2D(Collider2D other)
     {
+        // 드래그 체크
+        if(SelectUnit.instance.isDrag && transform.parent.gameObject.name == SelectUnit.instance.selectedPos.name) return;
+
         // 타겟 체크
         if (other.gameObject.CompareTag("Enemy") && (!isOnTarget || enemyTrans.GetComponent<EnemyBase>().isDead))
         {
@@ -99,17 +126,23 @@ public class CharacterBase : MonoBehaviour
             if (heroInfo.attackType == AttackType.근거리)
             {
                 anim.SetBool(IsAttacking,true);
-                GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
-                go.transform.position = enemyTrans.position;
-                go.GetComponent<MeleeWeapon>().weaponEffect = weaponEffect;
-                go.GetComponent<MeleeWeapon>().attackDamage = heroInfo.attackDamage;
+                MeleeWeapon meleeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect).GetComponent<MeleeWeapon>();
+                meleeWeapon.transform.position = enemyTrans.position;
+                meleeWeapon.weaponEffect = weaponEffect;
+                meleeWeapon.damageType = heroInfo.damageType;
+                meleeWeapon.attackDamage = heroInfo.attackDamage;
+                meleeWeapon.characterBase = this;
+                meleeWeapon.isEnter = false;
             }
             else
             {
-                GameObject go = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect);
-                go.GetComponent<RangeWeapon>().weaponEffect = weaponEffect;
-                go.GetComponent<RangeWeapon>().attackDamage = heroInfo.attackDamage;
-                SetLastBulletPos(go,enemyTrans,gunPointTrans);
+                RangeWeapon rangeWeapon = PoolManager.instance.GetPool(PoolManager.instance.weaponEffectPool.queMap, weaponEffect).GetComponent<RangeWeapon>();
+                rangeWeapon.weaponEffect = weaponEffect;
+                rangeWeapon.damageType = heroInfo.damageType;
+                rangeWeapon.attackDamage = heroInfo.attackDamage;
+                rangeWeapon.characterBase = this;
+                SetLastBulletPos(rangeWeapon.gameObject, enemyTrans,gunPointTrans);
+                if(SoundManager.instance.sfxCnt > 10) return;
                 SoundManager.instance.SFXPlay(atkSoundType);
             }
         }
@@ -141,5 +174,9 @@ public class CharacterBase : MonoBehaviour
     }
 
     // 공격 애니메이션이 끝나면 사운드 재생
-    public void AtkSound() { SoundManager.instance.SFXPlay(atkSoundType); }
+    public void AtkSound()
+    {
+        if(SoundManager.instance.sfxCnt > 10) return;
+        SoundManager.instance.SFXPlay(atkSoundType);
+    }
 }
