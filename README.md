@@ -11,8 +11,8 @@
 
 <br>
 
-<img width="1600" height="800" src="https://github.com/user-attachments/assets/ef3d5368-91c8-4d06-93ba-b43f611d78fc">
-<img width="1600" height="800" src="https://github.com/user-attachments/assets/4639435f-fbd1-424a-a7a8-0fefdc76c871">
+<img width="1600" height="650" src="https://github.com/user-attachments/assets/ef3d5368-91c8-4d06-93ba-b43f611d78fc">
+<img width="1600" height="650" src="https://github.com/user-attachments/assets/4639435f-fbd1-424a-a7a8-0fefdc76c871">
 
 </div>
 </details>
