@@ -11,6 +11,7 @@ public class SceneCtrlManager : MonoBehaviour
     [HideInInspector] public Button startBtn;
     [HideInInspector] public Button exitBtn;
     private readonly WaitForSeconds delay = new WaitForSeconds(2.5f);
+    public Texture2D cursorImg;
     
     private void Awake()
     {
@@ -20,6 +21,9 @@ public class SceneCtrlManager : MonoBehaviour
 
             // 씬 전환 시 파괴 X
             DontDestroyOnLoad(instance);
+
+            // 마우스 커서 변경
+            Cursor.SetCursor(cursorImg, Vector2.zero, CursorMode.ForceSoftware);
         }
         else Destroy(gameObject);
     }

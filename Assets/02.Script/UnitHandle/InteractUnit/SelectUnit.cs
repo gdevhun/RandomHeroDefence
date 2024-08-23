@@ -10,6 +10,7 @@ public class SelectUnit : MonoBehaviour
     private const float dragThreshold = 0.5f; // 클릭과 드래그를 구분하는 임계 값
     [HideInInspector] public bool isDrag = false; // 드래그 체크
     [Header ("이동 할 위치 표시")] [SerializeField] private GameObject targetPos;
+    [Header ("마우스 클릭 커서 이미지")] [SerializeField] private Texture2D clickCursorImg;
 
     private void Update() { Down(); }
 
@@ -45,6 +46,9 @@ public class SelectUnit : MonoBehaviour
 
             // 사운드
             SoundManager.instance.SFXPlay(SoundType.Click);
+
+            // 마우스 커서 변경
+            Cursor.SetCursor(clickCursorImg, Vector2.zero, CursorMode.ForceSoftware);
         }
 
         // 시작 위치가 있는지 체크
@@ -109,6 +113,9 @@ public class SelectUnit : MonoBehaviour
                 // 이동 할 위치 표시 끔
                 targetPos.SetActive(false);
 
+                // 마우스 커서 변경
+                Cursor.SetCursor(SceneCtrlManager.instance.cursorImg, Vector2.zero, CursorMode.ForceSoftware);
+
                 // 판매 및 합성 패널 띄우기
                 HeroGradeType selectedHeroGradeType = selectedPos.transform.GetChild(0).GetComponent<CharacterBase>().heroInfo.heroGradeType;
                 if(selectedHeroGradeType == HeroGradeType.신화) // 신화는 판매 및 합성 패널 켜져있으면 꺼줌
@@ -145,6 +152,9 @@ public class SelectUnit : MonoBehaviour
                 // 이동 할 위치 표시 끔
                 targetPos.SetActive(false);
 
+                // 마우스 커서 변경
+                Cursor.SetCursor(SceneCtrlManager.instance.cursorImg, Vector2.zero, CursorMode.ForceSoftware);
+
                 return;
             }
 
@@ -164,6 +174,9 @@ public class SelectUnit : MonoBehaviour
 
             // 이동 할 위치 표시 끔
             targetPos.SetActive(false);
+
+            // 마우스 커서 변경
+            Cursor.SetCursor(SceneCtrlManager.instance.cursorImg, Vector2.zero, CursorMode.ForceSoftware);
         }
     }
 
