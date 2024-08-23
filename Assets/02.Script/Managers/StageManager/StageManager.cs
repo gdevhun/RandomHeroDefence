@@ -101,7 +101,7 @@ public class StageManager : MonoBehaviour
 
     // 기준 스테이지 몬스터 스탯 맵핑
     [Header ("스테이지 몬스터 스탯 정보")] [SerializeField] private List<StandardMonsterStat> standardMonsterStatList = new List<StandardMonsterStat>();
-    private Dictionary<int, StandardMonsterStat> standardMonsterStatMap = new Dictionary<int, StandardMonsterStat>();
+    public Dictionary<int, StandardMonsterStat> standardMonsterStatMap = new Dictionary<int, StandardMonsterStat>();
 
     // 스테이지 데이터 초기화 및 스테이지 시작
     private void Start()

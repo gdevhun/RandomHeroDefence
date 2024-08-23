@@ -16,7 +16,7 @@ public class EnemyBase : MonoBehaviour
             UpdateHpUI();
         }
     }
-    [HideInInspector] public float originMoveSpeed; // 원본 이속
+    [Header ("원래 이동 속도")] public float originMoveSpeed; // 원본 이속
     [Header ("이동 속도")] public float moveSpeed;
     private static float decreaseMoveSpeed; // 이속 감소 수치
     public static float DecreaseMoveSpeed
@@ -29,7 +29,7 @@ public class EnemyBase : MonoBehaviour
         }
     }
     [HideInInspector] public GameObject spawnPos; // 몬스터 스폰 위치
-    private int curPathIdx = 0; // 현재 이동 할 위치 인덱스
+    [HideInInspector] public int curPathIdx = 0; // 현재 이동 할 위치 인덱스
     private SpriteRenderer rend; // 렌더러
     [HideInInspector] public EnemyType enemyType; // 몬스터 타입
     [HideInInspector] public bool isDead; // 죽었는지 체크
@@ -68,7 +68,6 @@ public class EnemyBase : MonoBehaviour
             //if(value <= curStunTime) return;
 
             // 스턴 시작
-            Debug.Log(gameObject.name + "가 " + value + "초 만큼 스턴이 추가됨");
             curStunTime = value;
             moveSpeed = 0;
             if(instantStunEffect != null) PoolManager.instance.ReturnPool(PoolManager.instance.abilityEffectPool.queMap, instantStunEffect, AbilityEffectType.스턴);
@@ -167,6 +166,13 @@ public class EnemyBase : MonoBehaviour
             rend.flipX = StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[curPathIdx].transform.position.x < transform.position.x ? true : false;
         }
     }
+    private void OnTriggerStay2D(Collider2D other) // 스폰되면 몬스터 스턴되는 문제
+    {
+        if (spawnPos != null && other.gameObject.name.Equals(StageManager.instance.stageTypePathMap[spawnPos].gameObjectList[0].name))
+        {
+            moveSpeed = originMoveSpeed;
+        }
+    }
 
     // 스턴
     private void GetStun()
@@ -193,8 +199,5 @@ public class EnemyBase : MonoBehaviour
     }
 
     // 버프 UI 갱신
-    private static void UpdateBuffUI(float val, TextMeshProUGUI txt)
-    {
-        txt.text = ((int)val).ToString() + " %";
-    }
+    private static void UpdateBuffUI(float val, TextMeshProUGUI txt) { txt.text = ((int)val).ToString(); }
 }
