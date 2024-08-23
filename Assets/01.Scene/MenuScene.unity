@@ -1473,6 +1473,7 @@ MonoBehaviour:
   loadingBar: {fileID: 0}
   startBtn: {fileID: 0}
   exitBtn: {fileID: 0}
+  cursorImg: {fileID: 2800000, guid: 44a99ee545fd8ba46a452b12c1f9378b, type: 3}
 --- !u!4 &1918634687
 Transform:
   m_ObjectHideFlags: 0
