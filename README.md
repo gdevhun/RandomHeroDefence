@@ -49,7 +49,7 @@
 | 이중휘 | Developer | 개발 |
 
 ## 빌드 파일 링크
-#### [<< 히랜디 itch.io >> CLICK HERE](https://wjh9330.itch.io/herorandomdefence)
+#### [<< 히랜디 itch.io >> CLICK HERE](https://wjh9330.itch.io/herorandomdefence) PW: UNICON2024
 
 ## 기술 스택 💻
 <img src="https://img.shields.io/badge/Unity-FFFFFF?style=for-the-badge&logo=Unity&logoColor=black">
