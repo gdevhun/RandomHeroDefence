@@ -7,7 +7,7 @@
 <details>
 <summary>게임디테일</summary> 
 <div markdown="1">
-  
+
 #### 게임설명1
 <img width="600" src="https://github.com/user-attachments/assets/f203bbd1-a1b2-4f50-af3c-3aa878b92f5b">
 
@@ -41,5 +41,5 @@
 ## 유튜브 시연 영상
 #### https://youtu.be/wQmIZXtzDl0
 ## 기술 스택 💻
-<img src="https://img.shields.io/badge/Unity-FFFFFF?style=for-the-badge&logo=Unity&logoColor=black">
-<img src="https://img.shields.io/badge/csharp-512BD4?style=for-the-badge&logo=csharp&logoColor=white">
+<img src="https://img.shields.io/badge/unrealengine-%23313131.svg?style=for-the-badge&logo=unrealengine&logoColor=white">
+<img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white">
