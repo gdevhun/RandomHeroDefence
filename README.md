@@ -49,7 +49,7 @@
 | 이중휘 | Developer | 개발 |
 
 ## 빌드 파일 링크
-#### [<< 히랜디 itch.io >> CLICK HERE](https://wjh9330.itch.io/herorandomdefence)
+#### [![itch.io](https://img.shields.io/badge/HeroRandomDefence%20itch.io-ff5c8d?style=for-the-badge&logo=itch.io&logoColor=white)](https://wjh9330.itch.io/herorandomdefence)
 
 ## 기술 스택 💻
 <img src="https://img.shields.io/badge/Unity-FFFFFF?style=for-the-badge&logo=Unity&logoColor=black">
